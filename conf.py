@@ -68,8 +68,8 @@ master_doc = 'index'
 
 # Definir detalles del tema:
 html_title = "Fullcoder Manuales"
-html_logo = "fullcoderlogo.png"
-html_favicon = "favicon.ico"
+html_logo = "_static/fullcoderlogo.png"
+html_favicon = "_static/favicon.ico"
 html_show_sphinx = False
 html_search_language = "es"
 html_short_title = "Inicio"
