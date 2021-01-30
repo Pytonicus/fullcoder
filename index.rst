@@ -7,7 +7,10 @@ Bienvenido a FullCoder, un sitio de Manual
 ==========================================
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
    :caption: PHP:
 
    php/sintaxis
+   php/funciones
+   php/procesamiento
+   php/database

@@ -1,5 +1,5 @@
-Sintaxis PHP 7.4
-================
+Sintaxis PHP
+============
 
 .. image:: /logos/logo-php.png
     :scale: 15%
@@ -10,8 +10,8 @@ Sintaxis PHP 7.4
 .. |time| date:: %H:%M
 
 
-Sintáxis básica de PHP7.4
-
+Sintáxis básica de PHP 7.4
+ 
 .. contents:: Índice
 
 Elementos básicos del lenguaje 
@@ -29,7 +29,7 @@ Comentarios
 
 .. code-block:: php
     :linenos:
-
+ 
     // Comentario de una sola línea
 
 * Comentarios multilínea:
