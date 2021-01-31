@@ -1,5 +1,5 @@
-Cifrado de datos
-================
+Codificación y Hash
+===================
 
 .. image:: /logos/logo-php.png
     :scale: 15%
