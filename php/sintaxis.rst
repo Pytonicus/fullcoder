@@ -558,6 +558,22 @@ Arrays asociativos
         $arreglo["subscripciones"]["netflix"] = "subscrito"; 
     ?>
 
+Control de errores
+##################
+
+.. code-block:: php
+    :linenos:
+
+    <?php
+        try{
+            throw new Exception(" No existe archivo de configuracion ");
+        }catch(Exception $e){
+            echo " Hubo un error" . $e->getMessage();
+        }finally{
+            echo "Cerrando BD";
+        }
+    ?>
+
 Programación modular
 ####################
 
