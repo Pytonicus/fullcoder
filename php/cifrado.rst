@@ -14,8 +14,8 @@ Cifrado de datos con funciones específicas de PHP 7.4
  
 .. contents:: Índice
 
-Cifrado bidireccional
-#####################
+Codificación
+############
 
 .. code-block:: php 
     :linenos:
@@ -74,8 +74,8 @@ Cifrado bidireccional
 
     ?>
 
-Cifrado con MD5
-###############
+Generar un Hash con MD5
+#######################
 
 .. code-block:: php 
     :linenos:
@@ -90,9 +90,9 @@ Cifrado con MD5
 
     ?>
 
-Ingresamos la url: http://localhost:8000/?password=coca-cola para cifrar el código.
+Ingresamos la url: http://localhost:8000/?password=coca-cola para ver el hash generado.
 
-* Código para descifrar:
+* Código para descifrar el hash:
 
 .. code-block:: php 
     :linenos:
@@ -110,4 +110,4 @@ Ingresamos la url: http://localhost:8000/?password=coca-cola para cifrar el cód
         }
     ?>
 
-Ingresamos la url: http://localhost:8000/?password=coca-cola para descifrar el código.
+Ingresamos la url: http://localhost:8000/?password=coca-cola para descifrar el hash.
