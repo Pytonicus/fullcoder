@@ -194,7 +194,7 @@ Trabajando con sesiones
         if(isset($_POST['cerrar'])){
             session_destroy();
         }
-    ?>
+    ?> 
  
     <form method="POST">
         <input type="text" name="usuario" placeholder="ingresa un usuario">
@@ -206,5 +206,5 @@ Trabajando con sesiones
         <input type="hidden" name="cerrar">
         <input type="submit" value="cerrar sesión">
     </form>
-
+ 
 

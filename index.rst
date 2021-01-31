@@ -14,3 +14,5 @@ Bienvenido a FullCoder, un sitio de Manual
    php/funciones
    php/procesamiento
    php/database
+   php/paquetes
+   php/cifrado

@@ -11,7 +11,7 @@ Manipulación de base de datos
 
 
 Manipulación de base de datos con PDO en PHP 7.4
- 
+  
 .. contents:: Índice
 
 Conexión SQLITE 3
@@ -27,7 +27,7 @@ Pasos iniciales:
 
 .. code-block:: php 
     :linenos:
-
+ 
     <?php 
         // realizamos la conexion con el motor sqlite y apuntamos directamente a la base de datos:
         $db = new PDO('sqlite:datos.sqlite');

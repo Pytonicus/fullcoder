@@ -11,7 +11,7 @@ Sintaxis PHP
 
 
 Sintáxis básica de PHP 7.4
- 
+  
 .. contents:: Índice
 
 Elementos básicos del lenguaje 
@@ -25,7 +25,7 @@ Instalación
 Comentarios
 ***********
 
-* Comentarios de una sola línea:
+* Comentarios de una sola línea: 
 
 .. code-block:: php
     :linenos:

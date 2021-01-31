@@ -8,7 +8,7 @@ Funciones predefinidas
 
 .. |date| date:: 
 .. |time| date:: %H:%M
-
+ 
 
 Funciones más usadas en PHP 7.4
 
@@ -566,4 +566,7 @@ Tratamiento de CORS
 
         echo "<h1>Sitio de prueba</h1>";
     ?>
+ 
 
+
+ 
