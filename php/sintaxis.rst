@@ -37,13 +37,11 @@ Comentarios
 .. code-block:: php
     :linenos:
 
-    '''
     /* Este comentario 
     tiene más de una línea.
     Puede servir para escribir
     un manual u otras cosas.
     */
-    '''
 
 Entrada y salida estandar
 *************************
@@ -207,6 +205,9 @@ Operadores aritméticos
     :linenos:
 
     <?php 
+        // la variable debe tener un valor asignado:
+        $resultado = 0
+
         $resultado += 12;
         $resultado -= 16;
         $resultado *= 19;
@@ -464,10 +465,10 @@ Arrays
             echo "</tr>";
         }
 
-        echo "</table>";
+        echo "</table>"; 
     ?>
 
-- Imprimir y asignar valores:
+* Imprimir y asignar valores:
 
 .. code-block:: php 
     :linenos:

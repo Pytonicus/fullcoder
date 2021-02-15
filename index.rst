@@ -16,3 +16,9 @@ Bienvenido a FullCoder, un sitio de Manual
    php/database
    php/paquetes
    php/cifrado
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Python:
+
+   python/sintaxis
