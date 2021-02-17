@@ -11,3 +11,10 @@ También debemos instalar el tema __faculty-sphinx-theme__: ``pip3 install facul
 Para compilar la web nos vamos a la raiz del proyecto desde un terminal y ejecutamos ``make html``. 
 
 En la carpeta ___build/html__ se encuentra la página compilada.
+
+## Crear manuales
+En el directorio template hay unos archivos base para clonar y crear nuevos manuales de forma estandar siguiendo estos pasos:
+
+- Crear una nueva carpeta con el nombre del lenguaje de programación o tecnología.
+- Copiar uno de los archivos y editar su contenido.
+- ir al archivo index.rst y copiar la estructura que tienen los otros lenguajes eliminando las líneas que apunten a archivos que no existen en la nueva carpeta.
