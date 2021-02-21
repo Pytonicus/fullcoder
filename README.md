@@ -2,13 +2,15 @@
 Bienvenid@ al repositorio de FullCoder. Con esta guía podrás desplegar tu propio repositorio de documentación con todo el contenido disponible de FullCoder.
 
 ## Instalar dependencias
-Para poder compilar FullCoder es necesario tener instalado __Python 3__ y añadir el paquete __Sphynx__: ``pip3 install -U Sphinx``
+Para poder compilar FullCoder es necesario tener instalado __Python 3__ y añadir el paquete __Sphynx__: ``pip install -U Sphinx``
 
-También debemos instalar el tema __faculty-sphinx-theme__: ``pip3 install faculty-sphinx-theme``
+También debemos instalar el tema __faculty-sphinx-theme__: ``pip install faculty-sphinx-theme``
 
 ## Compilar el sitio web
 
 Para compilar la web nos vamos a la raiz del proyecto desde un terminal y ejecutamos ``make html``. 
+
+NOTA: Alternativamente si no funciona la compilación a HTML se puede instalar sphinx del siguiente modo: ``sudo apt install python-sphinx``
 
 En la carpeta ___build/html__ se encuentra la página compilada.
 

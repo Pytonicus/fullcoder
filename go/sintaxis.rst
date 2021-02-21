@@ -283,35 +283,69 @@ Condicional if
 .. code-block:: GO 
     :linenos:
 
-    ...
+    package main
+
+    import "fmt"
+
+    func main() {
+        var edad int
+
+        fmt.Print("¿Qué edad tienes? \n>>> ")
+        fmt.Scan(&edad)
+
+        if edad >= 18 {
+            fmt.Println("Eres mayor de edad")
+        }
+    }
+
 
 * if / else:
 
 .. code-block:: GO 
     :linenos:
 
-    ...
+    package main
+
+    import "fmt"
+
+    func main() {
+        var edad int
+
+        fmt.Print("¿Qué edad tienes? \n>>> ")
+        fmt.Scan(&edad)
+
+        if edad >= 18 {
+            fmt.Println("Eres mayor de edad")
+        } else {
+            fmt.Println("Todavía eres menor de edad")
+        }
+    }
+
 
 * else-if:
 
 .. code-block:: GO 
     :linenos:
 
-    ...
+    package main
 
-* if alternativo:
+    import "fmt"
 
-.. code-block:: GO 
-    :linenos:
+    func main() {
+        var edad int
 
-    ...
+        fmt.Print("¿Qué edad tienes? \n>>> ")
+        fmt.Scan(&edad)
 
-* Operador ternario:
+        if edad >= 65 {
+            fmt.Println("Eres un anciano")
+        } else if edad >= 18 {
+            fmt.Println("Eres mayor de edad")
+        } else {
+            fmt.Println("Todavía eres menor de edad")
+        }
+    }
 
-.. code-block:: GO 
-    :linenos:
-
-    ...
 
 Condicional Switch
 ******************
@@ -320,7 +354,30 @@ Estructura de un switch:
 .. code-block:: GO 
     :linenos:
 
-    ...
+    package main
+
+    import "fmt"
+
+    func main() {
+        var operacion string
+
+        fmt.Print("¿Qué quieres saber? \n>>> ")
+        fmt.Scan(&operacion)
+
+        switch operacion {
+        case "nombre":
+            fmt.Println("Me llamo Guillermo")
+        case "apellidos":
+            fmt.Println("Mis apellidos son Granados Gómez")
+        case "edad":
+            fmt.Println("Tengo 33 años")
+        default:
+            fmt.Println("No reconozco el comando...")
+        }
+    }
+
+.. attention::
+    Se pueden validar más de un valor en case añadiéndolos con comas: **case 'a','e','i','o','u'**
 
 Bucle for
 *********
@@ -330,7 +387,62 @@ Bucle for
 .. code-block:: GO 
     :linenos:
 
-    ...
+    package main
+
+    import "fmt"
+
+    func main() {
+
+        for i := 0; i <= 10; i++ {
+            fmt.Println("Repetición nº", i)
+        }
+    }
+
+* for condicional:
+
+.. code-block:: GO 
+    :linenos:
+
+    package main
+
+    import "fmt"
+
+    func main() {
+        num := 0
+
+        for num <= 10 {
+            num++
+            fmt.Println("Se ha sumado el número, su valor actual es:", num)
+        }
+    }
+
+* for infinito:
+
+.. code-block:: GO
+    :linenos:
+
+    package main
+
+    import "fmt"
+
+    func main() {
+        var repetir string
+
+        repeticion := 0
+
+        for {
+            repeticion++
+
+            fmt.Println("Repetición nº", repeticion)
+
+            fmt.Print("¿Repetir otra vez? (s/n): ")
+            fmt.Scan(&repetir)
+
+            if repetir == "n" {
+                break
+            }
+        }
+    }
 
 * foreach:
 
@@ -348,20 +460,11 @@ Bucle for
 
 Bucle while
 ***********
+No existe el bucle While en GO, lo más párecido a esta estructura de control es el for condicional o el for infinito.
 
-* While sencillo:
+Apuntadores
+###########
 
-.. code-block:: GO 
-    :linenos:
-
-    ...
-
-* do-while:
-
-.. code-block:: GO 
-    :linenos:
-
-    ...
 
 Tipos de datos avanzados
 ########################
