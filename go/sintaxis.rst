@@ -527,7 +527,23 @@ Arrays
 .. code-block:: GO 
     :linenos:
 
-    ...
+    package main
+
+    import "fmt"
+
+    func main(){
+        // declarar array multidimensional:
+        var arrayMulti [4][4]int
+
+        // asignar un valor a una posición:
+        arrayMulti[2][1] = 11
+
+        // utilizar el valor asignado:
+        fmt.Println(arrayMulti[2][1])
+    }
+
+ME QUEDÉ EN LAS PORCIONES
+#########################
 
 Arrays asociativos
 ******************

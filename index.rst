@@ -22,9 +22,3 @@ Bienvenido a FullCoder, un sitio de Manual
    :caption: Python:
 
    python/sintaxis
-
-.. toctree::
-   :maxdepth: 1
-   :caption: Go:
-
-   go/sintaxis
