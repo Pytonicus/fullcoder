@@ -2,7 +2,7 @@ Funciones predefinidas
 ======================
 
 .. image:: /logos/logo-go.png
-    :scale: 15%
+    :scale: 30%
     :alt: Logo GO
     :align: center
 
@@ -153,7 +153,21 @@ Rango de números
 .. code-block:: GO
     :linenos:
 
-    ...
+    package main
+
+    // importar la librería rand:
+    import (
+        "fmt"
+        "math/rand"
+    )
+
+    func main() {
+        // se establece el rango en la variable:
+        aleatorio := rand.Int()
+
+        fmt.Println("El número aleatorio es: ", aleatorio)
+    }
+
 
 Recuperar valor máximo
 **********************
@@ -348,6 +362,22 @@ Tratamiento de CORS
 
     ...
  
+Manipulación del Sistema
+########################
 
+Averiguar el Sistema operativo
+******************************
 
- 
+.. code-block:: GO 
+    :linenos:
+
+    ...
+
+Averiguar la arquitectura
+*************************
+
+.. code-block:: GO
+    :linenos:
+
+    ...
+

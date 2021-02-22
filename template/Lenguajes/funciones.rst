@@ -349,6 +349,21 @@ Tratamiento de CORS
 
     ...
  
+Manipulación del Sistema
+########################
 
+Averiguar el Sistema operativo
+******************************
 
- 
+.. code-block:: LANG 
+    :linenos:
+
+    ...
+
+Averiguar la arquitectura
+*************************
+
+.. code-block:: LANG
+    :linenos:
+
+    ...

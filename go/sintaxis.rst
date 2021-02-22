@@ -462,8 +462,31 @@ Bucle while
 ***********
 No existe el bucle While en GO, lo más párecido a esta estructura de control es el for condicional o el for infinito.
 
-Apuntadores
-###########
+Punteros
+########
+
+.. code-block:: GO 
+    :linenos:
+
+    package main
+
+    import "fmt"
+
+    func main() {
+        // un puntero se define con un asterisco:
+        var num *int
+
+        numero := 5
+
+        // hacer que el apuntador no apunte a nada con nil:
+        num = nil
+
+        // apuntar el puntero a una variable:
+        num = &numero
+
+        fmt.Println("El identificador del puntero es:", num)
+        fmt.Println("El valor apuntado es:", *num)
+    }
 
 
 Tipos de datos avanzados
@@ -477,23 +500,29 @@ Arrays
 .. code-block:: GO 
     :linenos:
 
-    ...
+    package main
 
-- Declaración con función array():
+    import "fmt"
 
-.. code-block:: GO 
-    :linenos:
+    func main() {
+        // dclaración de array con tipo definido:
+        var array [5]int
+        array[2] = 7
+        fmt.Println(array[2])
 
-    ...
+        // asignar valores al array:
+
+        // asignación directa:
+        array2 := [3]string{"Paco", "Pepe", "Adolfo"}
+        fmt.Println(array2[2])
+
+        // array de tamaño dinámico:
+        array3 := [...]string{"Galletas", "Fresas", "Aceite", "Tomates"}
+        fmt.Println(array3[2])
+    }
+
 
 - Array multidimensional:
-
-.. code-block:: GO 
-    :linenos:
-
-    ...
-
-* Imprimir y asignar valores:
 
 .. code-block:: GO 
     :linenos:
@@ -550,35 +579,115 @@ Funciones
 .. code-block:: GO 
     :linenos:
 
-    ...
+    package main
+
+    import "fmt"
+
+    // declarar una función:
+    func saludar() {
+        fmt.Println("Saludo desde función")
+    }
+
+    func main() {
+        // utilizar una función:
+        saludar()
+    }
+
 
 * funciones:
 
 .. code-block:: GO 
     :linenos:
 
-    ...
+    package main
+
+    import "fmt"
+
+    // las funciones retornan un valor que se debe definir:
+    func saludar() string {
+        return "Saludo desde función"
+    }
+
+    func main() {
+
+        // utilizar una función:
+        fmt.Println(saludar())
+    }
+
 
 * uso de parámetros:
 
 .. code-block:: GO 
     :linenos:
 
-    ...
+    package main
+
+    import "fmt"
+
+    // los parametros se reciben con un valor definido::
+    func saludar(nombre string) string {
+        saludo := "Hola " + nombre
+        return saludo
+    }
+
+    func main() {
+
+        // pasar un parámetro:
+        fmt.Println(saludar("Guillermo"))
+    }
+
+
+* Retorno múltiple:
+
+.. code-block:: GO 
+    :linenos:
+
+    package main
+
+    package main
+
+    import "fmt"
+
+    // se define entre parentesis el tipo de devolución de varios valores:
+    func nombreCompleto(nombre string, apellidos string) (string, string) {
+        // se devuelven dos valores:
+        return nombre, apellidos
+    }
+
+    func main() {
+        // asignamos los valores a las variables:
+        n, m := nombreCompleto("Guillermo", "Granados Gómez")
+
+        // asignar un elemento con retorno múltiple:
+        soloNombre, _ := nombreCompleto("Guillermo", "Granados Gómez")
+
+        fmt.Println("Me llamo", n, m)
+        fmt.Println("Solo mi nombre es:", soloNombre)
+    }
 
 * Funciones anónimas:
 
 .. code-block:: GO 
     :linenos:
 
-    ...
+    package main
 
-* Ámbito global:
+    import "fmt"
 
-.. code-block:: GO 
-    :linenos:
+    // se crea la función:
+    func sumar(a, b int) int {
+        return a + b
+    }
 
-    ...
+    func main() {
+        // se crea una variable con las caracteristicas de la función:
+        var operacion func(int, int) int
+
+        // y se asigna la función anterior a la declaración anterior:
+        operacion = sumar
+
+        fmt.Println(operacion(20, 15))
+    }
 
 Programación orientada a objetos
 ################################

@@ -241,6 +241,14 @@ Bucle while
 
     ...
 
+Punteros
+########
+
+.. code-block:: GO 
+    :linenos:
+
+    ...
+
 Tipos de datos avanzados
 ########################
 
