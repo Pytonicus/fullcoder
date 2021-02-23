@@ -290,6 +290,19 @@ Bucle while
 
         print('Fallaste!')
 
+Detener secuenda de script
+**************************
+
+.. code-block:: python
+    :linenos:
+
+    for i in range(10):
+        if(i == 5):
+            print("Ya has llegado a 5 y no irás más lejos")
+            exit()
+
+    print("Esta frase no se mostrará")
+
 Tipos de datos avanzados
 ########################
 

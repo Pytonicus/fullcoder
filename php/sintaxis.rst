@@ -415,6 +415,22 @@ Bucle while
         while($num < 10);
     ?>
 
+Detener secuenda de script
+**************************
+
+.. code-block:: php
+    :linenos:
+
+    <?php 
+        for($i = 0; $i <= 10; $i++){
+            if($i == 5){
+                echo "Ya has llegado a 5 y no más";
+                die;
+            }
+        }
+        echo "Esta frase no se mostrará";
+    ?>
+
 Tipos de datos avanzados
 ########################
 

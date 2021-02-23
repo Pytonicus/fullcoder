@@ -22,3 +22,10 @@ Bienvenido a FullCoder, un sitio de Manual
    :caption: Python:
 
    python/sintaxis
+
+.. toctree::
+   :maxdepth: 1
+   :caption: C#:
+
+   csharp/sintaxis
+   csharp/funciones

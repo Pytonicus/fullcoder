@@ -92,8 +92,8 @@ Longitud de un String
         echo strlen($consola);
     ?>
 
-Conversión número a String 
-**************************
+Conversión a String 
+*******************
 
 .. code-block:: php
     :linenos:
@@ -164,6 +164,31 @@ Conversión a minúsculas
     <?php
         $descripcion = "La Nintendo Mega Drive es la mejor consola de Nintendo hasta la fecha";
         echo strtolower($descripcion);
+    ?>
+
+Eliminar espacios en blanco a los lados
+***************************************
+
+.. code-block:: php
+    :linenos:
+
+    <?php
+        $texto = "   soy un texto con espacios   ";
+        echo trim($texto);
+    ?>
+
+Localizar posición de caracteres en cadena
+******************************************
+
+.. code-block:: php
+    :linenos:
+
+    <?php 
+        $frase = "En esta frase se esconde el nombre Pepe";
+        
+        if(strpos($frase, "Pepe") == true){
+            echo "Hemos encontrado a Pepe!";
+        }
     ?>
 
 Manipulación de Números

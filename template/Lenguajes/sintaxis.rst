@@ -241,10 +241,18 @@ Bucle while
 
     ...
 
+Detener secuenda de script
+**************************
+
+.. code-block:: LANG
+    :linenos:
+
+    ...
+
 Punteros
 ########
 
-.. code-block:: GO 
+.. code-block:: LANG 
     :linenos:
 
     ...
