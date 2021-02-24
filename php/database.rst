@@ -198,9 +198,11 @@ Leer registros
         $conn = new PDO("mysql:host=$servidor;dbname=$base", $usuario, $clave);
 
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        // Preparar consulta y ejecutar directamente:
-        $sql = $conn->query("SELECT * FROM agenda")->fetchAll();
-        // Recorrer todos los datos:
+        // Preparar consulta:
+        $sql = $conn->query("SELECT * FROM agenda");
+        // Ejecutar consulta, ,fetch para registros individuales y fetchAll para multiples:
+        $sql = $sql->fetchAll(PDO::FETCH_ASSOC); // usar el parametro FETCH_ASSOC imprime de forma limpia.
+        // Recorrer todos los datos:        
         foreach($sql as $data){
             echo "- " . $data['nombre'] . "\n";
         }
