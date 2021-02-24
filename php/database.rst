@@ -29,12 +29,16 @@ Pasos iniciales:
     :linenos:
  
     <?php 
-        // realizamos la conexion con el motor sqlite y apuntamos directamente a la base de datos:
-        $db = new PDO('sqlite:datos.sqlite');
-        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
+        try{
+            // realizamos la conexion con el motor sqlite y apuntamos directamente a la base de datos:
+            $db = new PDO('sqlite:datos.sqlite');
+            $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
 
-        echo "Conexión realizada con éxito";
+            echo "Conexión realizada con éxito";
+        }catch(Exception $e){
+            echo "Error de conexión: " . $e->getMessage();
+        }
         // para cerrar la conexión:
         $con = null;
     ?>
@@ -56,15 +60,59 @@ Pasos iniciales:
         $servidor = "localhost";
         $usuario = "guillermo";
         $clave = "guillermo";
-        // preparamos la conexión eligiendo el motor mysql:
-        $conn = new PDO("mysql:host=$servidor;dbname=prueba", $usuario, $clave);
-        // realizamos la conexión:
-        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        echo "Conexión realizada con éxito";
+        try{
+            // preparamos la conexión eligiendo el motor mysql:
+            $conn = new PDO("mysql:host=$servidor;dbname=prueba", $usuario, $clave);
+            // realizamos la conexión:
+            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            echo "Conexión realizada con éxito";
+        }catch(Exception $e){
+            echo "Error de conexión: " . $e->getMessage();
+        }
+        // para cerrar la conexión:
+        $conn = null;
+    ?>  
+
+Conexión SQL SERVER
+###################
+Para realizar la conexión a SQL SERVER:
+* primero hay que descargar un controlador: https://docs.microsoft.com/en-us/sql/connect/php/download-drivers-php-sql-server?view=sql-server-ver15#download
+* Se extraen las librerías .dll en la carpeta ext/ del directorio php/ que tenganmos.
+* Se edita php.ini para que reconozca las librerías y se reinicia el servidor:
+
+.. code-block:: 
+
+    extension=php_sqlsrv_74_ts_x64.dll
+    extension=php_sqlsrv__74_nts_x64.dll
+    extension=php_pdo_sqlsrv_74_nts_x64.dll
+    extension=php_pdo_sqlsrv_74_ts_x64.dll
+
+* crear un usuario que pueda hacer login en el servidor DDBB y permitr el acceso desde SQL Server en lugar de Windows Authorization.
+* Luego podemos crear el conector:
+
+.. code-block:: php 
+    :linenos:
+
+    <?php 
+        // preparamos los datos del servidor:
+        $servidor = "NOMBREEQUIPO"; // no vale localhost.
+        $usuario = "guillermo";
+        $clave = "guillermo";
+        try{
+            // preparamos la conexión eligiendo el motor mysql:
+            $conn = new PDO("sqlsrv:server=$servidor;database=prueba", $usuario, $clave);
+            // realizamos la conexión:
+            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            echo "Conexión realizada con éxito";
+        }catch(Exception $e){
+            echo "Error de conexión: " . $e->getMessage();
+        }
 
         // para cerrar la conexión:
         $conn = null;
     ?>  
+
+
 
 Operaciones CRUD
 ################
