@@ -402,6 +402,20 @@ Clases y objetos
 
     ...
 
+* Modificar Get y Set de Atributos:
+
+.. code-block:: C#
+    :linenos:
+
+    ...
+
+* Creación de objeto:
+
+.. code-block:: C#
+    :linenos:
+
+    ...
+
 * Herencia:
 
 .. code-block:: LANG 
@@ -426,6 +440,23 @@ Interfaces
     :linenos:
 
     ...
+
+Structs
+#######
+
+.. code-block:: LANG
+    :linenos:
+
+    ...
+
+Enums
+#####
+
+.. code-block:: LANG
+    :linenos:
+
+    ...
+
 
 Importar y exportar
 ###################

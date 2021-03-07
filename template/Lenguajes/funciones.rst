@@ -164,6 +164,14 @@ Redondeo de decimales
 Manipulación de Arrays
 ######################
 
+Comprobar tamaño
+****************
+
+.. code-block:: C#
+    :linenos:
+
+    ...
+
 Imprimir contenido
 ******************
 
@@ -388,6 +396,22 @@ Averiguar la arquitectura
 *************************
 
 .. code-block:: LANG
+    :linenos:
+
+    ...
+
+Math: operaciones matemáticas
+#############################
+
+.. code-block:: C#
+    :linenos:
+
+    ...
+
+Random: Números aleatorios
+##########################
+
+.. code-block:: C#
     :linenos:
 
     ...

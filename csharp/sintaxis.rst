@@ -73,6 +73,9 @@ Datos de entrada y salida a través de la consola y/o el navegador.
             Console.ReadKey();
         }
 
+.. note::
+    El uso de Console.Read() es muy útil para evitar que se cierre la consola.
+
 Estructura en C#
 *****************
 
@@ -260,35 +263,116 @@ Condicional if
 .. code-block:: C# 
     :linenos:
 
-    ...
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int edad = 18;
+
+            if(edad >= 18)
+            {
+                Console.Write("Eres mayor de edad");
+            }
+
+            Console.Read();
+        }
+    }
 
 * if / else:
 
 .. code-block:: C# 
     :linenos:
 
-    ...
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int edad = 11;
+
+            if(edad >= 18)
+            {
+                Console.Write("Eres mayor de edad");
+            }
+            else
+            {
+                Console.Write("Todavía eres menor");
+            }
+
+            Console.Read();
+        }
+    }
 
 * else-if:
 
 .. code-block:: C# 
     :linenos:
 
-    ...
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.Write("Introduce tu edad: ");
+            string leer = Console.ReadLine();
+
+            int edad = Convert.ToInt32(leer);
+
+            if(edad >= 65)
+            {
+                Console.Write("Eres un anciano");
+            }else if(edad >= 18)
+            {
+                Console.Write("Eres mayor de edad");
+            }
+            else
+            {
+                Console.Write("Eres menor de edad");
+            }
+
+            Console.Read();
+        }
+    }
 
 * if alternativo:
 
 .. code-block:: C# 
     :linenos:
 
-    ...
+    class Program
+    {
+
+        static void Main(string[] args)
+        {
+            int edad = 18;
+            
+            if(edad >= 18)
+                Console.WriteLine("Eres mayor de edad");
+                
+            Console.Read();
+        }
+    }
+
+.. note::
+    Aparte de este if, existe for, foreach y while que comparten la misma forma de operar.
 
 * Operador ternario:
 
 .. code-block:: C# 
     :linenos:
 
-    ...
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int cantidad = 200;
+            string mensaje;
+
+            mensaje = cantidad >= 500 ? "es una pechá" : "es una mijita";
+
+            Console.Write(mensaje);
+            Console.Read();
+            
+        }
+    }
 
 Condicional Switch
 ******************
@@ -297,7 +381,32 @@ Estructura de un switch:
 .. code-block:: C# 
     :linenos:
 
-    ...
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.Write("Introduce un comando: ");
+            string operacion = Console.ReadLine();
+
+            switch (operacion)
+            {
+                case "saludar":
+                    Console.WriteLine("Hola amigo");
+                    break;
+                case "fecha":
+                    Console.WriteLine("Hoy es " + DateTime.Now.ToString());
+                    break;
+                case "lenguaje":
+                    Console.WriteLine("Esta app esta escrita en C#");
+                    break;
+                default:
+                    Console.WriteLine("Comando no reconocido...");
+                    break;
+            }
+
+            Console.Read();
+        }
+    }
 
 Bucle for
 *********
@@ -307,21 +416,27 @@ Bucle for
 .. code-block:: C# 
     :linenos:
 
-    ...
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            for(int i = 1; i <= 10; i++)
+            {
+                Console.WriteLine("El valor de contador es: {0}", i);
+            }
+            Console.Read();
+        }
+    }
 
 * foreach:
 
 .. code-block:: C# 
     :linenos:
 
-    ...
-
-* foreach clave / valor:
-
-.. code-block:: C# 
-    :linenos:
-
-    ...
+    foreach (string consola in videconsolas)
+    {
+        Console.WriteLine("Consola: {0}", consola);
+    }
 
 Bucle while
 ***********
@@ -331,22 +446,39 @@ Bucle while
 .. code-block:: C# 
     :linenos:
 
-    ...
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int i = 1;
+            while (i <= 10)
+            {
+                Console.WriteLine("El valor de contador es: {0}", i);
+                i++;
+            }
+                
+            Console.Read();
+        }
+    }
 
 * do-while:
 
 .. code-block:: C# 
     :linenos:
 
-    ...
-
-Punteros
-########
-
-.. code-block:: GO 
-    :linenos:
-
-    ...
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int i = 2;
+            do
+            {
+                Console.WriteLine("El valor de contador es: {0}", i);
+            } while (i < 1);
+                
+            Console.Read();
+        }
+    }
 
 Tipos de datos avanzados
 ########################
@@ -354,64 +486,107 @@ Tipos de datos avanzados
 Arrays
 ******
 
-- Declaración tradicional:
+* Declaración tradicional:
 
 .. code-block:: C# 
     :linenos:
 
-    ...
+    // declaración array:
+    string[] videconsolas = new string[3];
+    // creación y asignación: 
+    int[] fechas = new int[] {1987, 1983, 1990, 2011 };
 
-- Declaración con función array():
+    // carga de elementos manual:
+    videconsolas[0] = "Mega Drive";
+    videconsolas[1] = "Master System";
+    videconsolas[2] = "Saturn";
 
-.. code-block:: C# 
-    :linenos:
+    // Impresión de elementos:
+    Console.WriteLine("Consola de Tercera generación: {0}", videconsolas[1]);
 
-    ...
-
-- Array multidimensional:
-
-.. code-block:: C# 
-    :linenos:
-
-    ...
-
-* Imprimir y asignar valores:
+* Array multidimensional:
 
 .. code-block:: C# 
     :linenos:
 
-    ...
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string[] videconsolas = new string[3];
+            // array multidimensional, cuantos más puntos más dimensiones:
+            string[,] tabla = new string[,]
+            {
+                {"", "Nombre", "Apellidos","Edad"},
+                {"1", "Guillermo", "Granados Gómez", "33" },
+                {"2", "Eduardo", "Lopez Martinez", "34" },
+                {"3", "Alfredo", "Alferez Albeniz", "37" }
+            };
 
-Arrays asociativos
-******************
+            // imprimir valores: 
+            Console.WriteLine("{0}: {1}, {2}: {3}, {4}: {5} ", tabla[0,1], tabla[1,1], tabla[0,2], tabla[1,2], tabla[0,3], tabla[1,3]);
+           
+           // insertar datos:
+            tabla[4, 0] = "4";
+            tabla[4, 1] = "Luna";
+            tabla[4, 2] = "García Nuñez";
+            tabla[4, 3] = "23";
 
-- Declaración tradicional:
+            Console.Read();
+        }
+    }
 
-.. code-block:: C# 
+* Array Irregular:
+
+.. code-block:: C#
     :linenos:
 
-    ...
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // definición y asignación de espacio en primera dimension:
+            string[][] valores = new string[3][];
 
-- Declaración con función array():
+            // en cada dimensión se crea un array:
+            valores[0] = new string[3];
+            valores[1] = new string[6];
+            valores[2] = new string[8];
 
-.. code-block:: C# 
+            // inserción de registros:
+            valores[0][3] = "Hola amigo";
+
+            Console.Read();
+        }
+    }
+
+* Arrays por parámetros:
+
+.. code-block:: C#
     :linenos:
 
-    ...
+     class Program
+    {
+        static void Main(string[] args)
+        {
+            // crear el array:
+            int[] numeros = new int[] { 8, 16 };
 
-- Array multidimensional:
+            // pasar array:
+            sumar(numeros);
+        }
 
-.. code-block:: C# 
-    :linenos:
+        // recibir array por funciones:
+        static void sumar(int [] numeros)
+        {
+            int num1 = numeros[0];
+            int num2 = numeros[1];
+            int total = num1 + num2;
 
-    ...
-
-- Imprimir y asignar valores:
-
-.. code-block:: C# 
-    :linenos:
-
-    ...
+            Console.WriteLine("Total de la operación: " + total);
+            Console.Read();
+        }
+    }
 
 Control de errores
 ##################
@@ -547,8 +722,8 @@ Métodos
 Programación orientada a objetos
 ################################
 
-Los elementos de una clase se definen con ámbito **public**, **private** y **protected**. 
-Adicionalmente se puede agregar el modificador **static** para poder acceder a los atributos y métodos sin crear un objeto.
+Para crear una clase en Visual Studio hacemos clic derecho sobre el nombre deel proyecto y
+le damos a agregar -> clase. Elegimos una clase en blanco.
 
 Clases y objetos
 ****************
@@ -558,74 +733,432 @@ Clases y objetos
 .. code-block:: C# 
     :linenos:
 
-    ...
+    using System;
 
+    namespace Tipos
+    {
+        class Persona
+        {
+            // atributos de la clase:
+            public string nombre;
+            public string apellidos;
+            public int edad;
+
+            // métodos:
+            public void saludo()
+            {
+                Console.WriteLine('Hola, soy {0} {1}', this.nombre, this.apellidos);
+            }
+        }
+    }
+
+.. important::
+    Respecto a los modificadores de acceso existen 4 tipos en C#. Public (acceso total), Private (solo acceso desde misma clase),
+    Protected (acceso desde la misma clase e hijas), Internal (acceso desde cualquier clase).
 
 * Constructor:
 
 .. code-block:: C# 
     :linenos:
 
-    ...
+    using System;
+
+    namespace Tipos
+    {
+        class Persona
+        {
+            public string nombre;
+            public string apellidos;
+            public int edad;
+
+            // el constructor:
+            public Persona(string nombre, string apellidos, int edad)
+            {
+                // asignar valores a los atributos de clase con this:
+                this.nombre = nombre;
+                this.apellidos = apellidos;
+                this.edad = edad;
+            }
+
+            public void saludo()
+            {
+                Console.WriteLine("Hola, soy {0} {1}", this.nombre, this.apellidos);
+            }
+        }
+    }
+
+.. note:: 
+    Puedes crear varios constructores en una clase que reciban uno o dos parámetros, o todos o ninguno.
+    Esto permite que puedas crear objetos con más o menos información.
 
 * Get y Set:
 
 .. code-block:: C# 
     :linenos:
 
-    ...
+    using System;
 
-* Herencia:
+    namespace Tipos
+    {
+        class Persona
+        {
+            public string nombre;
+            public string apellidos;
+            public int edad;
+            private string dni;
+            // método rápido de asignar get y set:
+            private string enfermedades { get; set; }
+
+            public Persona(string nombre, string apellidos, int edad)
+            {
+                this.nombre = nombre;
+                this.apellidos = apellidos;
+                this.edad = edad;
+            }
+
+            // Get y set para trabajar con atributos privados:
+            public void SetDNI(string dni)
+            {
+                this.dni = dni;
+            }
+
+            public string GetDNI()
+            {
+                return this.dni;
+            }
+
+            public void saludo()
+            {
+                Console.WriteLine("Hola, soy {0} {1}", this.nombre, this.apellidos);
+            }
+        }
+    }
+
+* Modificar Get y Set de Atributos:
+
+.. code-block:: C#
+    :linenos:
+
+    // tenemos un atributo declarado vacío:
+    public int edad
+        {
+            get
+            {
+                return edad;
+            }
+            set
+            {   // podemos decirle que si la edad es menor a 18 que ponga 18 siempre o sino la edad nueva: 
+                edad = edad < 18 ? 18 : value;
+            }
+        }
+
+    // versión reducida:
+    public int edad
+        {
+            get => edad;
+            set => edad = edad < 18 ? 18 : value;
+        }
+
+* Creación de objeto:
+
+.. code-block:: C#
+    :linenos:
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // crear objeto de la clase:
+            Persona guillermo = new Persona("Guillermo", "Granados Gómez", 33);
+
+            // uso de atributo público:
+            guillermo.edad = 34;
+
+            // uso de método público:
+            guillermo.saludo();
+
+            // uso de atributos privados:
+            guillermo.SetDNI("34234234X");
+            Console.WriteLine("El DNI: {0}",guillermo.GetDNI());
+
+
+            Console.Read();
+        }
+    }
+
+* Destructores:
+
+.. code-block:: C#
+    :linenos:
+
+    using System;
+    // usaremos esta libería para debug:
+    using System.Diagnostics;
+
+    namespace Tipos
+    {
+        class Persona
+        {
+            public string nombre;
+            public string apellidos;
+            public int edad;
+            private string dni;
+
+            public Persona(string nombre, string apellidos, int edad)
+            {
+                this.nombre = nombre;
+                this.apellidos = apellidos;
+                this.edad = edad;
+            }
+
+            public void SetDNI(string dni)
+            {
+                this.dni = dni;
+            }
+
+            public string GetDNI()
+            {
+                return this.dni;
+            }
+
+            public void saludo()
+            {
+                Console.WriteLine("Hola, soy {0} {1}", this.nombre, this.apellidos);
+            }
+
+            // destructor solo se puede usar desde su clase y solo uno:
+            ~Persona()
+            {
+                // vamos a imprmir por depurador:
+                Debug.Write("Se ha destruido el objeto");
+            }
+        }
+    }
+
+
+.. attention::
+    Los destructores solo se deben usar cuando se va a devolver algún valor.
+
+Herencia
+########
+
+* Clase padre:
 
 .. code-block:: C# 
     :linenos:
 
-    ...
+    using System;
 
-Clases abstractas y resolución de ámbito
-****************************************
+    namespace Tipos
+    {
+        // clase padre:
+        class Vehiculo
+        {
+            // crear atributos privados con getter y setters:
+            protected int idVehiculo { get; set; }
+            protected string marca { get; set; }
+            protected string modelo { get; set; }
 
-- uso de clases no instanciables:
+            // creamos un constructor por defecto por si no establecemos valores en los parámetros:
+            public Vehiculo()
+            {
+                this.idVehiculo = 000000;
+                marca = "Marca vehículo";
+                modelo = "Modelo del vehículo";
+            }
 
-.. code-block:: C# 
+            // constructor parametrizado:
+            public Vehiculo(int id, string marca, string modelo)
+            {
+                this.idVehiculo = id;
+                this.marca = marca;
+                this.modelo = modelo;
+            }
+
+            // arrancar el vehiculo:
+            public void Arrancar()
+            {
+                Console.WriteLine("El vehículo {0} {1} se ha puesto en marcha", this.marca, this.modelo);
+                Console.Read();
+            }
+        }
+    }
+
+* Clase hija que hereda:
+
+.. code-block:: C#
     :linenos:
 
-    ...
+    using System;
+
+    namespace Tipos
+    {// con : le decimos la clase de donde debe heredad:
+        class Formula:Vehiculo
+        {
+            public int velocidadMax { get; set; }
+
+            // podemos usar los métodos del padre sin problemas:
+            public Formula(int id, string marca, string modelo) {
+                this.idVehiculo = id;
+                this.marca = marca;
+                this.modelo = modelo;
+
+            }
+            // métodos propios de la clase hija:
+            public void Turbo()
+            {
+                Console.WriteLine("El {0} {1} ha metido el turbo!", this.marca, this.modelo);
+                Console.Read();
+            }
+        }
+    }
+
+* Creando objetos:
+
+.. code-block:: C#
+    :linenos:
+
+    using System;
+
+    namespace Tipos
+    {
+        class Program
+        {
+            static void Main(string[] args)
+            {
+                Vehiculo ford = new Vehiculo(073233, "Ford", "Mustang");
+                ford.Arrancar();
+
+                Formula mclaren = new Formula(234323, "Mercedes", "McLaren");
+                mclaren.Arrancar();
+                mclaren.Turbo();
+            }
+        }
+    }
+
 
 Interfaces
-**********
+##########
 
 .. code-block:: C# 
     :linenos:
 
-    ...
+    interface IPersona
+    {
+        // definir métodos que tendrán la clase:
+        void Comer();
+        string Saludar();
+
+    }
+
+    class Gente : IPersona
+    {
+        public string nombre;
+
+        Gente(string nombre)
+        {
+            this.nombre = nombre;
+        }
+        public void Comer()
+        {
+            Console.WriteLine("{0} va a comer", this.nombre);
+            Console.Read();
+        }
+
+        public string Saludar()
+        {
+            return String.Format("{0} dice hola.", this.nombre);
+        }
+    }
+
+.. note:: 
+    En Visual Studio se puede crear una interfaz haciendo click derecho en 
+    el nombre del proyecto, agregar y seleccionamos interfaz.
+
+Structs
+#######
+
+.. code-block:: C#
+    :linenos:
+
+    using System;
+    using System.IO;
+
+    namespace Tipos
+    {
+        class Program
+        {   
+            // creamos la estructura en la clase:
+            struct Videoconsola
+            {
+                // atributos del struct:
+                public string marca;
+                public string modelo;
+
+                // constructor:
+                public Videoconsola(string marca, string modelo)
+                {
+                    this.marca = marca;
+                    this.modelo = modelo;
+                }
+
+                // metodos del struct:
+                public void ImprimirMensaje()
+                {
+                    Console.WriteLine("La videoconsola es {0} {1}", this.marca, this.modelo);
+                }
+            }
+
+            static void Main(string[] args)
+            {
+                // declaramos el struct:
+                Videoconsola megadrive;
+
+                // asignamos valores y se quita el error:
+                megadrive.marca = "Sega";
+                megadrive.modelo = "Mega Drive";
+
+                // la diferencia con las clases es que hasta que no asignamos valores a los atributos no podemos usar sus métodos:
+                megadrive.ImprimirMensaje();
+
+                Console.Read();
+            }
+        }
+    }
+
+Enums
+#####
+
+.. code-block:: C#
+    :linenos:
+
+    using System;
+
+    namespace Tipos
+    {
+        // los enum se declaran a nivel de namespace:
+        enum Semana { L, M, X, J, V, S, D=0}; // podemos reorganizar asignando indices numéricos
+        class Program
+        {   
+            static void Main(string[] args)
+            {
+                // asignar un día:
+                Semana lunes = Semana.L;
+                // imprimir valor:
+                Console.WriteLine(lunes);
+                // imprimir posición:
+                Console.WriteLine((int)Semana.D);
+                Console.Read();
+            }
+        }
+    }
+
 
 Importar y exportar
 ###################
 
-include y require
-*****************
-
-* Importar archivos C#:
-
-.. code-block:: C# 
-    :linenos:
-
-    ...
-
 Namespace
 *********
+Los namespace o espacios de nombre en C# sirven para organizar sus clases.
+Puedes ver más detalles en su documentación oficial: https://docs.microsoft.com/es-es/dotnet/csharp/programming-guide/namespaces/
 
-* Exportar (videojuegos.C#):
-
-    .. code-block:: C# 
-        :linenos:
-
-        ...
-    
-    * Importar namespace (index.C#):
-
-    .. code-block:: C# 
-        :linenos:
-
-        ...

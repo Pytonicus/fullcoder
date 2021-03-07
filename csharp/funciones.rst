@@ -14,16 +14,6 @@ Funciones más usadas en C#
 
 .. contents:: Índice
 
-Información del servidor 
-########################
-
-En un archivo vacío se guarda la siguiente función:
-
-.. code-block:: C#
-    :linenos:
-
-    ...
-
 Manipulación de variables
 #########################
 
@@ -33,7 +23,16 @@ Averiguar tipo de dato
 .. code-block:: C#
     :linenos:
 
-    ...
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string nombre = "Guillermo";
+
+            Console.WriteLine(nombre.GetType());
+            Console.Read();
+        }
+    }
 
 Validación
 **********
@@ -41,15 +40,16 @@ Validación
 .. code-block:: C#
     :linenos:
 
-    ...
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string nombre = "";
 
-Destrucción
-***********
-
-.. code-block:: C#
-    :linenos:
-
-    ...
+            Console.WriteLine(String.IsNullOrEmpty(nombre));
+            Console.Read();
+        }
+    }
 
 Manipulación de Strings
 #######################
@@ -96,7 +96,19 @@ Conversión String a Array
 .. code-block:: C#
     :linenos:
 
-    ...
+    class Program
+    {
+
+        static void Main(string[] args)
+        {
+            string frutas = "pera limón piña naranja pomelo manzana";
+
+            string[] fruta = frutas.Split(' ');
+
+            Console.WriteLine(fruta[2]);ç
+            Console.Read();
+        }
+    }
 
 Reemplazar palabras
 *******************
@@ -104,15 +116,19 @@ Reemplazar palabras
 .. code-block:: C#
     :linenos:
 
-    ...
+    class Program
+    {
 
-Primera letra mayúscula
-***********************
+        static void Main(string[] args)
+        {
+            string deseo = "Me voy a convertir en un desarrollador C#";
 
-.. code-block:: C#
-    :linenos:
+            string alcance = deseo.Replace("voy a convertir", "he convertido");
 
-    ...
+            Console.WriteLine(alcance);
+            Console.Read();
+        }
+    }
 
 Conversión a mayúsculas
 ***********************
@@ -222,94 +238,82 @@ Conversión String a Integer
     static void Main(string[] args)
         {
             string edad = "33";
-
-            // Parsing a entero:
-            int total = Int32.Parse(edad);
+            int total = Convert.ToInt32(edad);
 
             Console.WriteLine(total + 10);
             Console.ReadKey();
         }
 
-Conversión String a Float
-*************************
+Conversión String a Double
+**************************
 
 .. code-block:: C#
     :linenos:
 
-    ...
+    static void Main(string[] args)
+        {
+            // Reconoce decimales solo con , si tienen punto los tomará como entero Ej: 7866
+            string peso = "78,66";
 
-Redondeo de decimales
-*********************
+            double pesoReal = Convert.ToDouble(peso);
+
+            Console.WriteLine(pesoReal);
+            Console.ReadKey();
+        }
+
+Conversión a Double
+*******************
 
 .. code-block:: C#
     :linenos:
 
-    ...
+    static void Main(string[] args)
+        {
+            int peso = 78;
+
+            double pesoReal = Convert.ToDouble(peso) + 0.55;
+
+            Console.WriteLine(pesoReal);
+            Console.ReadKey();
+        }
+
+Double a entero
+***************
+
+.. code-block:: C#
+    :linenos:
+
+    static void Main(string[] args)
+        {
+            double altura = 1.67;
+
+            // Parsing a entero:
+            int conversion = Convert.ToInt32(altura);
+
+            Console.WriteLine(conversion);
+            Console.ReadKey();
+
+            Console.Read();
+        }
 
 Manipulación de Arrays
 ######################
 
-Imprimir contenido
-******************
-
-.. code-block:: C#
-    :linenos:
-
-    ...
-
-Rango de números
+Comprobar tamaño
 ****************
 
 .. code-block:: C#
     :linenos:
 
-    ...
+    int[] fechas = new int[] {1987, 1983, 1990, 2011 };
+    // ver el tamaño del array:
+    Console.WriteLine(fechas.Length);
 
-Recuperar valor máximo
-**********************
-
-.. code-block:: C#
-    :linenos:
-
-    ...
-
-Recuperar valor mínimo
-**********************
-
-.. code-block:: C#
-    :linenos:
-
-    ...
-
-Suma total de todos los valores
-*******************************
-
-.. code-block:: C#
-    :linenos:
-
-    ...
-
-Manipulación JSON
-#################
-
-Convertir Array en JSON 
-***********************
-
-.. code-block:: C#
-    :linenos:
-
-    ...
-
-Convertir JSON en Array 
-***********************
-
-.. code-block:: C#
-    :linenos:
-
-    ...
-
-.. attention::
-    Para poder trabajar con curl hay que instalar la dependencia ``sudo apt install C#7.4-curl``
+    // uso en bucle for:
+    for(int i = 0; i < fechas.Length; i++)
+    {
+        Console.WriteLine("Fecha: {0}", fechas[i]);
+    }
 
 Manipulación de fechas 
 ######################
@@ -317,38 +321,64 @@ Manipulación de fechas
 .. code-block:: C#
     :linenos:
 
-    ...
+    using System;
+
+    namespace Tipos
+    {
+        class Program
+        {   
+            static void Main(string[] args)
+            {
+                // creamos un objeto datetime con un fecha:
+                DateTime fecha = new DateTime(1987, 06, 06);
+                // imprimir:
+                Console.WriteLine("Nací el " + fecha);
+
+                // Mostrar el día de hoY:
+                Console.WriteLine(DateTime.Today);
+
+                // hoy con la hora:
+                Console.WriteLine(DateTime.Now);
+
+                // Conocer Mañana:
+                Console.WriteLine(DateTime.Today.AddDays(1));
+
+                // Ver solo la fecha:
+                Console.WriteLine(DateTime.Now.ToString("F"));
+
+                // Ver solo la hora:
+                Console.WriteLine(DateTime.Now.ToString("F"));
+
+                // Fecha formateada:
+                Console.WriteLine(DateTime.Now.ToString("dd/MM/yyyy"));
+
+                Console.Read();
+            }   
+        }
+    }
 
 * Códigos comunes para Fecha: 
 
 +----------------------------------------------+---------+
 | Tipo de valor                                | símbolo |
 +==============================================+=========+
-| Día en notación numeral                      | d       |
+| Día en notación numeral                      | dd      |
 +----------------------------------------------+---------+
-| Día por inicial                              | D       | 
+| Día por inicial                              | ddd     | 
 +----------------------------------------------+---------+
-| Día de la semana                             | l       |
+| Día de la semana                             | dddd    |
 +----------------------------------------------+---------+
-| Dias transcurridos desde comienzos de año    | z       |
+| Mes actual en notación numeral               | MM      |
 +----------------------------------------------+---------+
-| Dias que tiene el mes corriente              | t       |
+| Mes actual en notación numeral sin cero      | M       |
 +----------------------------------------------+---------+
-| Semanas transcurridas desde comienzos de año | W       |
+| Iniciales del mes corriente                  | MMM     |
 +----------------------------------------------+---------+
-| Mes actual en notación numeral               | m       |
+| Mes en notacion textual                      | MMMM    |
 +----------------------------------------------+---------+
-| Mes actual en notación numeral sin cero      | n       |
+| Año corriente en notación numeral            | yyyy    |
 +----------------------------------------------+---------+
-| Iniciales del mes corriente                  | M       |
-+----------------------------------------------+---------+
-| Año corriente en notación numeral            | Y       |
-+----------------------------------------------+---------+
-| Año con notación numeral abreviada           | y       |
-+----------------------------------------------+---------+
-| Año bisiesto (devuelve 1 si es bisiesto)     | L       |
-+----------------------------------------------+---------+
-| Fecha en formato ISO-8601                    | c       |
+| Año con notación numeral abreviada           | yy      |
 +----------------------------------------------+---------+
 
 * Códigos comunes para Hora:
@@ -356,123 +386,79 @@ Manipulación de fechas
 +----------------------------------------------+---------+
 | Tipo de valor                                | símbolo |
 +==============================================+=========+
-| Ver si la hora es AM o PM                    | a       |
+| Hora en formato 12                           | h       |
 +----------------------------------------------+---------+
-| Ver si la hora es AM o PM en mayúsculas      | A       | 
+| Hora en formato 24                           | H       |
 +----------------------------------------------+---------+
-| Hora en formato 12                           | g       |
+| Hora en formato 12 con 0 inicial             | hh      |
 +----------------------------------------------+---------+
-| Hora en formato 24                           | G       |
+| Hora en formato 24 con 0 inicial             | HH      |
 +----------------------------------------------+---------+
-| Hora en formato 12 con 0 inicial             | h       |
+| Minutos                                      | mm      |
 +----------------------------------------------+---------+
-| Hora en formato 24 con 0 inicial             | H       |
+| Segundos                                     | ss      |
 +----------------------------------------------+---------+
-| Minutos                                      | i       |
-+----------------------------------------------+---------+
-| Segundos                                     | s       |
-+----------------------------------------------+---------+
-| Microsegundos                                | u       |
+| Milésimas                                    | FFF     |
 +----------------------------------------------+---------+
 | Zona Horaria                                 | e       |
 +----------------------------------------------+---------+
 | Horario de sol reducido                      | I       |
 +----------------------------------------------+---------+
-| Desfase meridiano de Greenwitch              | O       |
-+----------------------------------------------+---------+
-| Hora formato Swatch Internet Time            | B       |
-+----------------------------------------------+---------+
-| Hora formato UNIX                            | U       |
+| Desfase meridiano de Greenwitch              | zz      |
 +----------------------------------------------+---------+
 
-
-Tratamiento de archivos
-#######################
-
-Recuperar contenido de archivo 
-******************************
+Math: operaciones matemáticas
+#############################
 
 .. code-block:: C#
     :linenos:
 
-    ...
+    using System;
 
-Manipulación de archivos
-************************
+    namespace Tipos
+    {
+        class Program
+        {   
+            static void Main(string[] args)
+            {
+                // uso de Math:
+                Console.WriteLine("Redondeo hacia arriba: " + Math.Ceiling(18.432));
+                Console.WriteLine("Redondeo hacia abajo: " + Math.Floor(51.70));
+                Console.WriteLine("Valor mas bajo entre {0} y {1} es: {2}", 10, 6, Math.Min(10, 6));
+                Console.WriteLine("Valor mas alto entre {0} y {1} es: {2}", 10, 6, Math.Max(10, 6));
+                Console.WriteLine("2 elevado a 3 es: " + Math.Pow(2, 3));
+                Console.WriteLine("El valor de PI es: " + Math.PI);
+                Console.WriteLine("La raiz cuadrada de 12 es: " + Math.Sqrt(12));
+                Console.WriteLine("El absoluto de -10 es: " + Math.Abs(10));
+                Console.WriteLine("El coseno de 5 es: " + Math.Cos(5));
 
-* Escritura de archivos:
+                Console.Read();
+            }
+        }
+    }
 
-.. code-block:: C#
-    :linenos:
-
-    ...
-
-* Lectura de archivos:
-
-.. code-block:: C#
-    :linenos:
-
-    ...
-
-* Actualización de archivos:
-
-.. code-block:: C#
-    :linenos:
-
-    ...
-
-Manipulación de cabeceras
-#########################
-
-Redirección
-***********
+Random: Números aleatorios
+##########################
 
 .. code-block:: C#
     :linenos:
 
-    ...
+    using System;
 
-Modificar el comportamiento de un script
-****************************************
+    namespace Tipos
+    {
+        class Program
+        {   
+            static void Main(string[] args)
+            {
+                // Crear objeto random:
+                Random aleatorio = new Random();
 
-.. code-block:: C#
-    :linenos:
+                // asignar valor aleatorio a numero:
+                int numero = aleatorio.Next(1,10); // se puede establecer valor minimo y valor máximo (10 no se incluye en este caso)
 
-    ...
-
-* Lista de MIMES más comunes: https://developer.mozilla.org/es/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types
-
-Descargar un archivo desde un script
-************************************
-
-.. code-block:: C#
-    :linenos:
-
-    ...
-
-Tratamiento de CORS
-*******************
-
-.. code-block:: C#
-    :linenos:
-
-    ...
- 
-Manipulación del Sistema
-########################
-
-Averiguar el Sistema operativo
-******************************
-
-.. code-block:: C# 
-    :linenos:
-
-    ...
-
-Averiguar la arquitectura
-*************************
-
-.. code-block:: C#
-    :linenos:
-
-    ...
+                Console.WriteLine(numero);
+                Console.Read();
+            }
+        }
+    }

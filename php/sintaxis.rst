@@ -301,6 +301,9 @@ Condicional if
         endif;
     ?>
 
+.. note::
+    Aparte de este if, existe for, foreach y while que comparten la misma forma de operar.
+
 * Operador ternario:
 
 .. code-block:: php 
