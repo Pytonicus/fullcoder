@@ -321,6 +321,21 @@ Python mola! y un archivo llamado texto.txt:
 
     print(os.listdir('./'))
 
+shutil: Manipulación de archivos
+################################
+
+.. code-block:: python
+    :linenos:
+
+    # Importar shutil:
+    import shutil
+
+    # Copiar un archivo:
+    shutil.copyfile('archivo.txt', 'nuevo.txt')
+
+    # mover un archivo:
+    shutil.move('/carpeta/origen', '/carpeta/destino')
+
 Random: Números aleatorios
 ##########################
 
