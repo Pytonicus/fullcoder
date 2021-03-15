@@ -22,6 +22,8 @@ Bienvenido a FullCoder, un sitio de Manual
    :caption: Python:
 
    python/sintaxis
+   python/funciones
+   python/librerias
 
 .. toctree::
    :maxdepth: 1

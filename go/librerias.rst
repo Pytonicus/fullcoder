@@ -1,5 +1,5 @@
-Funciones predefinidas
-======================
+Librería Estandar
+=================
 
 .. image:: /logos/logo-go.png
     :scale: 30%
@@ -10,7 +10,7 @@ Funciones predefinidas
 .. |time| date:: %H:%M
  
 
-Funciones más usadas en GO
+Módulos más usados en GO
 
 .. contents:: Índice
 

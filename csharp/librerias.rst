@@ -1,5 +1,5 @@
-Librerías comunes en C#
-=======================
+Librería Estandar
+=================
 
 .. image:: /logos/logo-csharp.png
     :scale: 80%
@@ -10,7 +10,7 @@ Librerías comunes en C#
 .. |time| date:: %H:%M
  
 
-Librerías de uso común en C#
+Clases de uso común en C#
 
 .. contents:: Índice
 

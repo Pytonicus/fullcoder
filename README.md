@@ -12,6 +12,8 @@ Para compilar la web nos vamos a la raiz del proyecto desde un terminal y ejecut
 
 NOTA: Alternativamente si no funciona la compilación a HTML se puede instalar sphinx del siguiente modo: ``sudo apt install python-sphinx``
 
+NOTA 2: Si falla la nota anterior, instala: ``sudo apt install sphinx-common`` y también ``sudo apt install python3-stemmer``
+
 En la carpeta ___build/html__ se encuentra la página compilada.
 
 ## Crear manuales

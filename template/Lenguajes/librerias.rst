@@ -1,5 +1,5 @@
-Funciones predefinidas
-======================
+Librería Estandar
+=================
 
 .. image:: /logos/logo-[].png
     :scale: 30%

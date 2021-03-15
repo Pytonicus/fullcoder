@@ -119,25 +119,25 @@ Creamos un objeto **sphere** y le añadimos el siguiente script:
 Colliders
 *********
 Son los colisionadores, establecen la forma física no traspasable de un objeto:
-- Box Collider - cajas
-- Sphere Collider - Esferas
-- Mesh Collider - Mallas (objetos irregulares)
-    - Physc Material: acepta un material de tipo física para añadir rebote entre otras cosas.
-- Capsule Collider - Cápsulas
-- Terrain - Terreno
+* Box Collider - cajas
+* Sphere Collider - Esferas
+* Mesh Collider - Mallas (objetos irregulares)
+* Physc Material: acepta un material de tipo física para añadir rebote entre otras cosas.
+* Capsule Collider - Cápsulas
+* Terrain - Terreno
 
 Métodos:
-- Is trigger: convierte al objeto en disparador
-- Material: Agrega efectos físicos como rebote y brillo metalizado entre otros.
-- Center: El centor del Collider
-- Radious: Solo para esferas, establece el radio de contacto del objeto.
-- Size: excepto esferas, establece el radio de contacto de un objeto.
+* Is trigger: convierte al objeto en disparador
+* Material: Agrega efectos físicos como rebote y brillo metalizado entre otros.
+* Center: El centor del Collider
+* Radious: Solo para esferas, establece el radio de contacto del objeto.
+* Size: excepto esferas, establece el radio de contacto de un objeto.
 
 Triggers
 ********
 Son los detonantes (is trigger debe estar activado), el 
 elemento puede perder su física para disparar un evento.
-- ideal para objetos recolectables.
+* ideal para objetos recolectables.
 
 Prueba a colocar junto a la esfera anterior un cubo al que le asignamos "is trigger" y le añadimos el siguiente script:
 
