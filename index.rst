@@ -17,7 +17,7 @@ Bienvenido a FullCoder, un sitio de Manual
    php/paquetes
    php/cifrado
 
-.. toctree::
+.. toctree:: 
    :maxdepth: 1
    :caption: Python:
 
@@ -32,3 +32,4 @@ Bienvenido a FullCoder, un sitio de Manual
    csharp/sintaxis
    csharp/funciones
    csharp/librerias
+   csharp/eventos

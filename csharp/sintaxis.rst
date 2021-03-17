@@ -9,7 +9,7 @@ Sintaxis C#
 .. |date| date::
 .. |time| date:: %H:%M
 
-
+  
 Sintáxis básica de C#
   
 .. contents:: Índice
@@ -21,10 +21,30 @@ Instalación
 ***********
 * Instalación: Mediante Visual Studio o Unity.
 
-* Instalación Visual Studio 2019:
+* Instalación Visual Studio 2019 Windows:
     * Descargamos la versión comunity
     * En carga de trabajo seleccionamos Desarrollo de escritorio de .NET y Desarrollo de la plataforma universal de Windows
     * En la siguiente pestaña de componentes individuales seleccionamos la opción Herramientas de LINQ to SQL
+
+* Instalación Monodevelop Linux:
+    * Para usar el IDE MonoDevelop:
+        * Añadir Repositorio:
+        
+        .. code-block:: 
+            :linenos:
+        
+            sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
+            echo "deb https://download.mono-project.com/repo/ubuntu vs-bionic main" | sudo tee /etc/apt/sources.list.d/mono-official-vs.list
+            sudo apt update
+            sudo apt install apt-transport-https dirmngr
+        
+        * Instalar MonoDevelop:
+        
+        .. code-block:: 
+        
+            sudo apt-get install monodevelop
+
+        * Instalar SDK .NET en Linux: https://dotnet.microsoft.com/download/dotnet/sdk-for-vs-code?utm_source=vs-code&amp;utm_medium=referral&amp;utm_campaign=sdk-install
 
 * Extensión de archivos: **.cs**
 

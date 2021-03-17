@@ -15,7 +15,7 @@ Funciones y otros elementos de Unity
 .. contents:: Índice
 
 Estructura base
-###############
+############### 
 
 .. code-block:: C#
     :linenos:

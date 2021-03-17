@@ -16,7 +16,7 @@ Manipulación de base de datos con PDO en PHP 7.4
 
 Conexión SQLITE 3
 #################
-
+ 
 Pasos iniciales:
 
 * Primero tenemos que instalar sqlite3 en nuestro sistema: ``sudo apt install php7.4-sqlite3``

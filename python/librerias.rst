@@ -16,7 +16,7 @@ Módulos básicos de Python 3.8
 
 platform: Manipulación del Sistema
 ##################################
-
+ 
 Información del sistema operativo
 *********************************
 
@@ -155,9 +155,9 @@ datetime: Manipulación de fechas
 +----------------------------------------------+---------+
 | Hora en formato 24                           | G       |
 +----------------------------------------------+---------+
-| Hora en formato 12 con 0 inicial             | %I       |
+| Hora en formato 12 con 0 inicial             | %I      |
 +----------------------------------------------+---------+
-| Hora en formato 24 con 0 inicial             | %H       |
+| Hora en formato 24 con 0 inicial             | %H      |
 +----------------------------------------------+---------+
 | Minutos                                      | %M      |
 +----------------------------------------------+---------+
@@ -339,7 +339,7 @@ shutil: Manipulación de archivos
 Random: Números aleatorios
 ##########################
 
-.. code-block:: C#
+.. code-block:: python
     :linenos:
 
     # Importar random:

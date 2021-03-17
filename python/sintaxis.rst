@@ -16,7 +16,7 @@ Sintáxis básica de Python 3.8
 
 Elementos básicos del lenguaje 
 ##############################
-
+ 
 Instalación
 ***********
 * Instalación: ``sudo apt install python3``

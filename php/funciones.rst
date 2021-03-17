@@ -16,7 +16,7 @@ Funciones más usadas en PHP 7.4
 
 Información del servidor 
 ########################
-
+ 
 En un archivo vacío se guarda la siguiente función:
 
 .. code-block:: php

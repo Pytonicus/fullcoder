@@ -12,7 +12,7 @@ Eventos y Delegados
 
 Delegados y eventos que corresponden al lenguaje C#
 
-.. contents:: Índice
+.. contents:: Índice 
 
 Delegados
 #########
@@ -124,4 +124,4 @@ Expresiones Lambda
 Eventos
 #######
 
-buscando ejemplos de uso...
+PROXIMAMENTE...
