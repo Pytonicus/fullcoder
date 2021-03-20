@@ -286,7 +286,8 @@ Borrar registros
 Actualizar registros
 ********************
 
-.. code:: php 
+.. code-block:: php 
+    :linenos:
 
     <?php 
         $servidor = "localhost";

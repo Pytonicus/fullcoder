@@ -66,7 +66,17 @@ Crear una tabla
 .. code-block:: python 
     :linenos:
 
-    ...
+    import sqlite3
+
+    conexion = sqlite3.connect("prueba.db")
+    cursor = conexion.cursor()
+
+    # Crear una tabla:
+    cursor.execute('CREATE TABLE usuario(nombre VARCHAR(100), edad INTEGER, email VARCHAR(100))')
+
+    conexion.commit()
+
+    conexion.close()
 
 Insertar registros
 ******************
@@ -74,15 +84,22 @@ Insertar registros
 .. code-block:: python 
     :linenos:
 
-    ...
+    import sqlite3
 
-Inserciones y actualizaciones múltiples
-***************************************
+    conexion = sqlite3.connect("prueba.db")
+    cursor = conexion.cursor()
 
-.. code-block:: python 
-    :linenos:
+    # creamos una lista con varias tuplas:
+    usuarios = [
+        ('Luis', 20, 'luis@luiser.com'),
+        ('Mira', 27, 'mira@ynomira.com'),
+        ('Juan', 90, 'ju@n.com')
+    ]
+    # ahora podemos ejecutar la consulta que introduce varios registros a la vez:
+    cursor.executemany("INSERT INTO usuario VALUES (?,?,?)", usuarios)
+    conexion.commit()
 
-    ...
+    conexion.close()
 
 Leer registros
 **************
@@ -90,7 +107,22 @@ Leer registros
 .. code-block:: python 
     :linenos:
 
-    ...
+    import sqlite3
+
+    conexion = sqlite3.connect("prueba.db")
+    cursor = conexion.cursor()
+
+    # Realizar consulta:
+    cursor.execute('SELECT * FROM usuario')
+    usuarios = cursor.fetchall() # recuperamos con este metodo una lista de registros.
+
+    print(usuarios)
+
+    # recorremos todos los registros:
+    for usuario in usuarios:
+        print("Nombre: {} \nEdad: {} \nEmail: {}\n\n".format(usuario[0], usuario[1], usuario[2]))
+
+    conexion.close()
 
 Borrar registros
 ****************
@@ -98,11 +130,31 @@ Borrar registros
 .. code-block:: python 
     :linenos:
 
-    ...
+    import sqlite3
+
+    conexion = sqlite3.connect("prueba.db")
+    cursor = conexion.cursor()
+
+    # Realizar consulta:
+    cursor.execute('DELETE FROM usuario WHERE nombre="Luis"')
+
+    conexion.commit()
+
+    conexion.close()
 
 Actualizar registros
 ********************
 
 .. code:: python 
 
-    ...
+    import sqlite3
+
+    conexion = sqlite3.connect("prueba.db")
+    cursor = conexion.cursor()
+
+    # Realizar consulta:
+    cursor.execute('UPDATE usuario SET nombre="Alberto" WHERE nombre="Juan"')
+
+    conexion.commit()
+
+    conexion.close()

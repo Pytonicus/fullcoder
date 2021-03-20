@@ -133,7 +133,7 @@ Diccionarios
 ************
 Los diccionarios son un tipo de dato similar a sus homónimos en Python o los objetos en javaScript:
 
-.. code-block::
+.. code-block:: C#
     :linenos:
 
     using System;
@@ -181,7 +181,7 @@ Los diccionarios son un tipo de dato similar a sus homónimos en Python o los ob
 
 * Ejemplo de listado de diccionarios:
 
-.. code-block::
+.. code-block:: C#
     :linenos:
 
     using System;
