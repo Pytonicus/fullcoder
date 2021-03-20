@@ -166,7 +166,7 @@ Redondeo de decimales
     print(round(numero, 2))
 
 
-Manipulación de Arrays
+Manipulación de Listas
 ######################
 
 Comprobar tamaño
@@ -187,6 +187,61 @@ Imprimir contenido
     :linenos:
 
     print(lista[1])
+
+Imprimir ultimo valor de la lista
+*********************************
+
+.. code-block:: python
+    :linenos:
+
+    print(lista[len(lista)-1])
+
+Añadir elemento a la lista
+**************************
+
+.. code-block:: python
+    :linenos:
+
+    lista.append("nuevo texto")
+    print lista
+
+Borra el último elemento
+************************
+
+.. code-block:: python
+    :linenos:
+
+    lista.pop()
+    print(lista)
+
+Borrar elemento por su posición
+*******************************
+
+.. code-block:: python
+    :linenos:
+
+    del lista[2]
+    print(lista)
+
+Combinar elementos de la lista en un string
+*******************************************
+
+.. code-block:: python
+    :linenos:
+
+    lista = ['P','e','p','e']
+    lista = ''.join(lista)
+    print(lista)
+
+Convertir a lista una serie de valores
+**************************************
+
+.. code-block:: python
+    :linenos:
+
+    numeros = range(0,30)
+    lista = list(numeros)
+    print(lista)
 
 Rango de números
 ****************
@@ -221,6 +276,62 @@ Suma total de todos los valores
 
     print(sum(rango))
 
+Ordenar elementos
+*****************
+
+.. code-block:: python 
+    :linenos:
+
+    lista = ["gato", "nocilla", "avión", "leche"]
+
+    # Orden normal:
+    print(sorted(lista))
+
+    # Orden inverso:
+    print(sorted(lista, reverse=True))
+
+.. note::
+    En las tuplas podemos usar casi todas las mismas funciones excepto append() y pop() y 
+    se cambia el modificador list() por tuple()
+
+Manipulación de Diccionarios 
+############################
+
+Convertir a tupla
+*****************
+
+.. code-block:: python 
+    :linenos:
+
+    tupla = diccionario.items()
+    print(tupla)
+
+Copiar un diccionario
+*********************
+
+.. code-block:: python
+    :linenos:
+
+    otro = diccionario.copy()
+    print(otro)
+
+Recuperar solo las claves del diccionarios
+******************************************
+
+.. code-block:: python
+    :linenos:
+
+    claves = diccionario.keys()
+    print(claves)
+
+Recuperar solo los valores del diccionario
+******************************************
+
+.. code:: python 
+    :linenos:
+
+    valores = diccionario.values()
+    print(valores)
 
 Tratamiento de archivos
 #######################

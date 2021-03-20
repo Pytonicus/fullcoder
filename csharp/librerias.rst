@@ -1,5 +1,5 @@
-Librería Estandar
-=================
+Namespace System
+================
 
 .. image:: /logos/logo-csharp.png
     :scale: 80%
@@ -10,7 +10,7 @@ Librería Estandar
 .. |time| date:: %H:%M
  
 
-Clases de uso común en C#
+Namespace de uso común en C#
 
 .. contents:: Índice
 
@@ -128,6 +128,108 @@ Las listas son idénticas a los arrays salvo que se pueden añadir o quitar elem
             }
         }
     }
+
+Diccionarios
+************
+Los diccionarios son un tipo de dato similar a sus homónimos en Python o los objetos en javaScript:
+
+.. code-block::
+    :linenos:
+
+    using System;
+    using System.Collections.Generic;
+
+    namespace diccio
+    {
+        class MainClass
+        {
+            public static void Main(string[] args)
+            {
+                // crear un diccionario:
+                Dictionary<string, string> consolas = new Dictionary<string, string>();
+
+                // agregar elementos
+                consolas.Add("nombre", "PlayStation");
+                consolas.Add("marca", "Sony");
+                consolas.Add("lanzamiento", "1994");
+
+                // utilizar elementos:
+                Console.WriteLine("La videoconsola {0} {1} fue lanzada en el año {2}", consolas["marca"], consolas["nombre"], consolas["lanzamiento"]);
+
+
+                // crear diccionario y asignar valores directamente:
+                Dictionary<string, string> userPedro = new Dictionary<string, string>()
+                {
+                    {"nombre", "Pedro"},
+                    {"apellidos", "Lopez Aguirrez"},
+                    {"Edad", "33"}
+                };
+
+                // Recorrer elementos del diccionario:
+                foreach (KeyValuePair<string, string> usuario in userPedro)
+                {
+                    Console.WriteLine("{0}: {1}", usuario.Key, usuario.Value);
+                }
+
+
+
+                Console.Read();
+            }
+        }
+    }
+
+
+* Ejemplo de listado de diccionarios:
+
+.. code-block::
+    :linenos:
+
+    using System;
+    using System.Collections.Generic;
+
+    namespace diccio
+    {
+        class MainClass
+        {
+            public static void Main(string[] args)
+            {
+                // crear un listado para diccionarios:
+                List<Dictionary<string, string>> usuarios = new List<Dictionary<string, string>>();
+
+                // crear diccionarios:
+                Dictionary<string, string> userPedro = new Dictionary<string, string>()
+                {
+                    {"nombre", "Pedro"},
+                    {"apellidos", "Lopez Aguirrez"}
+                };
+                Dictionary<string, string> userPaco = new Dictionary<string, string>()
+                {
+                    {"nombre", "Paco"},
+                    {"apellidos", "Ortega Marín"}
+                };
+                Dictionary<string, string> userJulia = new Dictionary<string, string>()
+                {
+                    {"nombre", "Julia"},
+                    {"apellidos", "Gamez Gómez" }
+                };
+
+                // añadir elementos al listado:
+                usuarios.Add(userPedro);
+                usuarios.Add(userPaco);
+                usuarios.Add(userJulia);
+
+
+
+                foreach (Dictionary<string, string> usuario in usuarios)
+                {
+                    Console.WriteLine("Usuario: {0} {1}", usuario["nombre"], usuario["apellidos"]);
+                }
+
+                Console.Read();
+            }
+        }
+    }
+
 
 System.IO
 #########

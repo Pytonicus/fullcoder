@@ -24,6 +24,8 @@ Bienvenido a FullCoder, un sitio de Manual
    python/sintaxis
    python/funciones
    python/librerias
+   python/paquetes
+   python/database
 
 .. toctree::
    :maxdepth: 1
