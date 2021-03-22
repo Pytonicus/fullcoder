@@ -16,7 +16,7 @@ Módulos básicos de Python 3.8
 
 platform: Manipulación del Sistema
 ##################################
- 
+  
 Información del sistema operativo
 *********************************
 

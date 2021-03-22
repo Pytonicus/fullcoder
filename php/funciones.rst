@@ -13,7 +13,7 @@ Funciones predefinidas
 Funciones más usadas en PHP 7.4
 
 .. contents:: Índice
-
+ 
 Información del servidor 
 ########################
  

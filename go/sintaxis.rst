@@ -9,7 +9,7 @@ Sintaxis GO
 .. |date| date::
 .. |time| date:: %H:%M
 
- 
+  
 Sintáxis básica de GO
    
 .. contents:: Índice

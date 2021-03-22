@@ -119,7 +119,7 @@ Localizar posición de caracteres en cadena
 
 Comprobar que no existe un valor
 ********************************
- 
+  
 .. code-block:: python
     :linenos:
 

@@ -9,7 +9,7 @@ Funciones predefinidas
 .. |date| date:: 
 .. |time| date:: %H:%M
   
-
+ 
 Funciones más usadas en GO
  
 .. contents:: Índice

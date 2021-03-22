@@ -13,7 +13,7 @@ Codificación y Hash
 Cifrado de datos con funciones específicas de PHP 7.4
   
 .. contents:: Índice
-
+ 
 Codificación
 ############
 

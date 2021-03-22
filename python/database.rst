@@ -71,7 +71,7 @@ Pasos iniciales:
 Operaciones CRUD
 ################
 Despues de realizar la conexión a la base de datos se pueden ejecutar las sentencias SQL del siguiente modo
-
+ 
 Crear base de datos
 *******************
  
