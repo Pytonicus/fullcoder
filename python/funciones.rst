@@ -123,11 +123,18 @@ Comprobar que no existe un valor
 .. code-block:: python
     :linenos:
 
-    secreto = "La palabra secreta es Pepe"
+    # Lista con datos repetidos:
+    lista_compra = ['galletas', 'pescado', 'galletas', 'fresas', 'pescado', 'pescado','fresas']
 
-    # Esto vale para cualquier tipo en Python:
-    if "Gato" not in secreto:
-        print("no hay palabra secreta")
+    # lista donde irán valores filtrados:
+    lista_unica = []
+
+    # recorrer los datos:
+    for compra in lista_compra:
+        if compra not in lista_unica:
+            lista_unica.append(compra)
+
+    print(lista_unica)
 
 Formatear contenido de una variable con otras
 *********************************************
