@@ -9,7 +9,7 @@ Librería Estandar
 .. |date| date::
 .. |time| date:: %H:%M
 
-
+ 
 Módulos básicos de Python 3.8
  
 .. contents:: Índice
@@ -206,6 +206,14 @@ Averiguar el tipo de dato recibido
 
     print(r.headers['content-type'])
 
+Recuperar contenido de la petición
+**********************************
+
+.. code-block:: python
+    :linenos:
+
+    print(r.content)
+
 Recuperar contenido de la petición formato texto 
 ************************************************
 
@@ -213,6 +221,7 @@ Recuperar contenido de la petición formato texto
     :linenos:
 
     print(r.text)
+
 
 Recuperar contenido de la petición formato JSON 
 ***********************************************

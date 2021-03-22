@@ -24,9 +24,12 @@ Bienvenido a FullCoder, un sitio de Manual
    python/sintaxis
    python/funciones
    python/librerias
+   python/otras_librerias
    python/database
    python/paquetes
-
+   python/emails
+   python/entornos
+   
 .. toctree::
    :maxdepth: 1
    :caption: C#:

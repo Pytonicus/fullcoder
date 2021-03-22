@@ -30,9 +30,15 @@ En la raiz del proyecto se crea un archivo llamado requirements.txt:
 Comandos mas destacados
 #######################
 
-* **pip3 install paquete**: Instala un paquete.
+* **pip3 install <paquete>**: Instala un paquete.
+* **pip3 uninstall <paquete>**: Desinstala un paquete.
+* **pip3 freeze**: Comprobar los paquetes instalados.
+
+.. important::
+    Los paquetes siempre se instalan globalmente. Para instalarlos de forma específica
+    en un proyecto debemos crear un entorno virtual.
 
 .. note::
     Se pueden encontrar paquetes Python en: https://pypi.org/
 
- 
+  

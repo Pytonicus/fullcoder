@@ -13,7 +13,7 @@ Sintaxis PHP
 Sintáxis básica de PHP 7.4
   
 .. contents:: Índice
- 
+
 Elementos básicos del lenguaje 
 ##############################
  

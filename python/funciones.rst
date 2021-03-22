@@ -116,7 +116,7 @@ Localizar posición de caracteres en cadena
     # Esto vale para cualquier tipo en Python:
     if "Gato" in secreto:
         print("Descifrado el secreto")
-
+ 
 Comprobar que no existe un valor
 ********************************
   

@@ -771,7 +771,7 @@ Clases y objetos
             }
         }
     }
- 
+
 .. important::
     Respecto a los modificadores de acceso existen 4 tipos en C#. Public (acceso total), Private (solo acceso desde misma clase),
     Protected (acceso desde la misma clase e hijas), Internal (acceso desde cualquier clase).

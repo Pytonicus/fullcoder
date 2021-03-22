@@ -13,7 +13,7 @@ Manejo de paquetes
 Manejo de paquetes y dependencias con Composer en PHP 7.4
 
 .. contents:: Índice
- 
+
 Instalar Composer
 #################
  

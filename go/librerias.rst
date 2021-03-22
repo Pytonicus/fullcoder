@@ -8,7 +8,7 @@ Librería Estandar
 
 .. |date| date:: 
 .. |time| date:: %H:%M
- 
+
   
 Módulos más usados en GO
  
