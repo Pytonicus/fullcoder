@@ -46,7 +46,7 @@ Comentarios
 
 Entrada y salida estandar
 *************************
-
+ 
 .. code-block:: python 
     :linenos:
 
@@ -55,6 +55,10 @@ Entrada y salida estandar
 
     # salida estandar:
     print(dato)
+
+    # salida en una sola línea:
+    for i in range(1,11):
+        print("{}...".format(i), end="") 
 
 Estructura en python
 ********************

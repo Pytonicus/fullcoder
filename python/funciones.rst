@@ -117,6 +117,18 @@ Localizar posición de caracteres en cadena
     if "Gato" in secreto:
         print("Descifrado el secreto")
 
+Comprobar que no existe un valor
+********************************
+ 
+.. code-block:: python
+    :linenos:
+
+    secreto = "La palabra secreta es Pepe"
+
+    # Esto vale para cualquier tipo en Python:
+    if "Gato" not in secreto:
+        print("no hay palabra secreta")
+
 Formatear contenido de una variable con otras
 *********************************************
 

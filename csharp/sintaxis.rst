@@ -47,7 +47,7 @@ Instalación
         * Instalar SDK .NET en Linux: https://dotnet.microsoft.com/download/dotnet/sdk-for-vs-code?utm_source=vs-code&amp;utm_medium=referral&amp;utm_campaign=sdk-install
 
 * Extensión de archivos: **.cs**
-
+ 
 Comentarios
 ***********
 
@@ -750,7 +750,7 @@ Clases y objetos
 
 * Estructura clase:
 
-.. code-block:: C# 
+.. code-block:: C#
     :linenos:
 
     using System;
@@ -764,10 +764,10 @@ Clases y objetos
             public string apellidos;
             public int edad;
 
-            // métodos:
+            // metodos:
             public void saludo()
             {
-                Console.WriteLine('Hola, soy {0} {1}', this.nombre, this.apellidos);
+                Console.WriteLine("Hola, soy {0} {1}", this.nombre, this.apellidos);
             }
         }
     }

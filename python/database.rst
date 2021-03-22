@@ -41,23 +41,49 @@ Conexión MySQL
 
 Pasos iniciales:
 
-* Paso x...
+* Paso 1: Instalar la librería MySQL: ``sudo apt-get install python-mysqldb``
 
 .. code-block:: python 
     :linenos:
 
-    ... 
+    # importar modulo mysql:
+    import MySQLdb
+
+    # preparar conexión:
+    host = 'localhost'
+    username = 'guillermo'
+    password = 'guillermo'
+    database = 'pruebas'
+
+    try:
+        # Realizar conexión:
+        conexion = MySQLdb.connect(user=username, passwd=password, host=host, db=database)
+        
+        # establecer cursor:
+        cursor = conexion.cursor()
+        
+        print("Conexión realizada con éxito")
+    except:
+        print("Error de conexión") 
+
+    conexion.close()
 
 Operaciones CRUD
 ################
+Despues de realizar la conexión a la base de datos se pueden ejecutar las sentencias SQL del siguiente modo
 
 Crear base de datos
 *******************
-
+ 
 .. code-block:: python 
     :linenos:
 
-    ...
+    # Crear una base de datos:
+    cursor.execute("CREATE DATABASE python_db")
+
+    conexion.commit()
+
+    conexion.close()
 
 
 Crear una tabla
@@ -65,11 +91,6 @@ Crear una tabla
 
 .. code-block:: python 
     :linenos:
-
-    import sqlite3
-
-    conexion = sqlite3.connect("prueba.db")
-    cursor = conexion.cursor()
 
     # Crear una tabla:
     cursor.execute('CREATE TABLE usuario(nombre VARCHAR(100), edad INTEGER, email VARCHAR(100))')
@@ -83,11 +104,6 @@ Insertar registros
 
 .. code-block:: python 
     :linenos:
-
-    import sqlite3
-
-    conexion = sqlite3.connect("prueba.db")
-    cursor = conexion.cursor()
 
     # creamos una lista con varias tuplas:
     usuarios = [
@@ -107,11 +123,6 @@ Leer registros
 .. code-block:: python 
     :linenos:
 
-    import sqlite3
-
-    conexion = sqlite3.connect("prueba.db")
-    cursor = conexion.cursor()
-
     # Realizar consulta:
     cursor.execute('SELECT * FROM usuario')
     usuarios = cursor.fetchall() # recuperamos con este metodo una lista de registros.
@@ -130,11 +141,6 @@ Borrar registros
 .. code-block:: python 
     :linenos:
 
-    import sqlite3
-
-    conexion = sqlite3.connect("prueba.db")
-    cursor = conexion.cursor()
-
     # Realizar consulta:
     cursor.execute('DELETE FROM usuario WHERE nombre="Luis"')
 
@@ -146,11 +152,6 @@ Actualizar registros
 ********************
 
 .. code:: python 
-
-    import sqlite3
-
-    conexion = sqlite3.connect("prueba.db")
-    cursor = conexion.cursor()
 
     # Realizar consulta:
     cursor.execute('UPDATE usuario SET nombre="Alberto" WHERE nombre="Juan"')

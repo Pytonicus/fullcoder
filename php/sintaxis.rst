@@ -9,7 +9,7 @@ Sintaxis PHP
 .. |date| date::
 .. |time| date:: %H:%M
 
-
+ 
 Sintáxis básica de PHP 7.4
   
 .. contents:: Índice

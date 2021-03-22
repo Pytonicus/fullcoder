@@ -9,7 +9,7 @@ Codificación y Hash
 .. |date| date::
 .. |time| date:: %H:%M
 
-
+ 
 Cifrado de datos con funciones específicas de PHP 7.4
   
 .. contents:: Índice

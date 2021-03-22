@@ -9,7 +9,7 @@ Comunicación Cliente / Servidor
 .. |date| date::
 .. |time| date:: %H:%M
 
-
+ 
 Variables superglobales para manejo y procesamiento de peticiones en PHP 7.4
 
 .. contents:: Índice
