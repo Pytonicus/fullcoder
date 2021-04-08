@@ -76,7 +76,7 @@ Pasos iniciales:
 Conexión SQL SERVER
 ###################
 Para realizar la conexión a SQL SERVER:
-* Instalamos el driver OBDC: https://www.microsoft.com/en-us/download/details.aspx?id=36434
+* Instalamos el driver ODBC: https://www.microsoft.com/en-us/download/details.aspx?id=36434
 * Descargamos el controlador para PHP: https://docs.microsoft.com/en-us/sql/connect/php/download-drivers-php-sql-server?view=sql-server-ver15#download
 * Se extraen las librerías .dll en la carpeta ext/ del directorio php/ que tenganmos.
 * Se edita php.ini para que reconozca las librerías y se reinicia el servidor:
