@@ -29,6 +29,7 @@ Bienvenido a FullCoder, un sitio de Manual
    python/paquetes
    python/emails
    python/entornos
+   python/analisis
    
 .. toctree::
    :maxdepth: 1
