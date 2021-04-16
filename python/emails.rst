@@ -13,7 +13,7 @@ Emails con Python
 Envío de emails con Python
 
 .. contents:: Índice
-
+ 
 smtplib: Envío de emails
 ########################
 

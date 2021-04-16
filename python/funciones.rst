@@ -138,7 +138,7 @@ Comprobar que no existe un valor
 
 Formatear contenido de una variable con otras
 *********************************************
-
+ 
 .. code-block:: python
     :linenos:
     

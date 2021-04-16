@@ -9,7 +9,7 @@ Bases de datos
 .. |date| date::
 .. |time| date:: %H:%M
 
- 
+  
 Trabajando con bases de datos en Python 
 
 .. contents:: Índice

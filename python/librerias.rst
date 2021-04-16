@@ -368,3 +368,29 @@ Random: Números aleatorios
 
 .. note::
     Más modulos de Python en la guía oficial: https://docs.python.org/3/library/
+
+
+Argparse: Pasar argumentos por consola
+######################################
+Para pasar argumentos a un script de python:
+
+.. code-block:: python 
+    :linenos:
+
+    # importamos la librería:
+    import argparse
+
+    # Crear objeto parser:
+    parser = argparse.ArgumentParser(description="Recibiendo argumentos")
+
+    # creamos los argumentos:
+    parser.add_argument('-x', '--saludo', help="Es solo un saludo")
+
+    # añadimos los argumentos:
+    parser = parser.parse_args()
+
+    # Se comprueba el argumetno recibido:
+    if parser.saludo:
+        # se puede también recuperar el valor del argumento:
+        print("Hola " + parser.saludo)
+
