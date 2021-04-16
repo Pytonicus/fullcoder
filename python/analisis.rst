@@ -214,6 +214,8 @@ Buscar registros por un valor
         {'nombre': 'Ernesto', 'apellidos': 'Granada Aferez'}
     ]
 
+    tabla_amigos = pd.DataFrame(amigos)
+
     # Recuperar todos los registros con el nombre alfredo:
     tabla_amigos[tabla_amigos['nombre'] == 'Alfredo']
 
@@ -231,8 +233,35 @@ Buscar registros por multiples valores
         {'nombre': 'Ernesto', 'apellidos': 'Granada Aferez'}
     ]
 
+    tabla_amigos = pd.DataFrame(amigos)
+
     # Recuperar todos los registros con el nombre alfredo:
     tabla_amigos[(tabla_amigos['nombre'] == 'Alfredo') & (tabla_amigos['apellidos'] == 'Ramirez Alberti')]
+
+Eliminar un registro
+++++++++++++++++++++
+Para eliminar un registro basta con saber su fila:
+
+.. code-block:: python
+    :linenos:
+
+    import pandas as pd 
+
+    amigos = [
+        {'nombre': 'Alfredo', 'apellidos': 'Ramirez Alberti'},
+        {'nombre': 'Laura', 'apellidos': 'Plutarco Pitágoras'},
+        {'nombre': 'Ernesto', 'apellidos': 'Granada Aferez'}
+    ]
+
+    tabla_amigos = pd.DataFrame(amigos)
+
+    # Recuperar todos los registros con el nombre alfredo:
+    tabla_amigos = tabla_amigos.drop(1)
+
+    tabla_amigos
+
+.. note::
+    Si queremos eliminar una columna: ``tabla_amigos = tabla_amigos.drop('apellidos', axis=1)``
 
 Series
 ******
@@ -323,9 +352,214 @@ Indexación booleana
 Gráficos
 ********
 
+* Ejemplo gráfico estandar: 
+
 .. code-block:: python
     :linenos:
 
     import pandas as pd 
 
-    .. buscar ejemplos
+    import pandas as pd 
+
+    ventas = [
+        {'tomates': 23, 'lechugas': 44, 'zanahorias': 172},
+        {'tomates': 434, 'lechugas': 156, 'zanahorias': 127},
+        {'tomates': 222, 'lechugas': 32, 'zanahorias': 142}
+    ]
+
+    tabla_ventas = pd.DataFrame(ventas)
+
+    # Imprime un gráfico en Jupyter:
+    tabla_ventas.plot() # esto equivale por defecto a tabla_ventas.plot(kind='line')
+
+Tipos de gráficos
++++++++++++++++++
+Modificando el parámetro **kind** obtendremos distintos gráficos:
+
+Tenemos el siguiente gráfico:
+
+.. code-block:: python
+    :linenos:
+
+    import pandas as pd 
+
+    ventas = [
+        {'cantidad': 23, 'beneficio': 1280},
+        {'cantidad': 123, 'beneficio': 640},
+        {'cantidad': 11, 'beneficio': 380}
+    ]
+
+    tabla_ventas = pd.DataFrame(ventas)
+    tabla_ventas.plot(kind='line')
+
+* bar: gráfico de barras.
+* barh: barras horizontales.
+* pie: gráfico circular o de queso. Funciona con series. ``tabla_ventas['beneficio'].plot(kind='pie')``
+* scatter: gráfico de dispersión, requiere valores x e y para poder dispersar.
+
+.. info::
+    Se puede ajustar un gráfico con dos valores de referencias por ejemplo en x la cantidad y en Y el beneficio:
+    ``tabla_ventas.plot(kind='bar', x="cantidad", y="beneficio")``
+
+Colores
++++++++
+Para personalizar colores en los gráficos le pasamos a plot() el parámetro 
+color seguido de un color hexadecimal o referencial:
+
+.. code-block:: python
+    :linenos:
+
+    import pandas as pd 
+
+    ventas = [
+        {'cantidad': 23, 'beneficio': 1280},
+        {'cantidad': 123, 'beneficio': 640},
+        {'cantidad': 11, 'beneficio': 380}
+    ]
+
+    tabla_ventas = pd.DataFrame(ventas)
+
+    # ponemos las barras amarillas:
+    tabla_ventas.plot(kind='bar', color="yellow", x="cantidad", y="beneficio")
+
+Mapa de colores
++++++++++++++++
+Se pueden usar varios colores con colormap:
+
+.. code-block:: python
+    :linenos:
+
+    import pandas as pd 
+
+    ventas = [
+        {'producto': 'Zanahorias', 'categoria': 'verduras', 'cantidad': 23, 'beneficio': 1280},
+        {'producto': 'Puerros', 'categoria': 'verduras', 'cantidad': 123, 'beneficio': 640},
+        {'producto': 'Lechugas', 'categoria': 'verduras', 'cantidad': 11, 'beneficio': 380},
+        {'producto': 'Galletas', 'categoria': 'desayunos', 'cantidad': 11, 'beneficio': 380},
+        {'producto': 'Cereales', 'categoria': 'desayunos', 'cantidad': 11, 'beneficio': 380},
+        {'producto': 'Coca cola', 'categoria': 'refrescos', 'cantidad': 11, 'beneficio': 380},
+        {'producto': 'desinfectante', 'categoria': 'limpieza', 'cantidad': 11, 'beneficio': 380}
+    ]
+
+    tabla_ventas = pd.DataFrame(ventas)
+
+    # Vamos a usar value_counts() para contear todos los valores de una serie:
+    tabla_ventas['categoria'].value_counts().plot(kind='pie', colormap="hot")
+
+Tamaño del gráfico 
+++++++++++++++++++
+Se puede definir un tamaño de gráfico con figsize:
+
+.. code-block:: python
+    :linenos:
+
+    import pandas as pd 
+
+    ventas = [
+        {'producto': 'Zanahorias', 'categoria': 'verduras', 'cantidad': 23, 'beneficio': 1280},
+        {'producto': 'Puerros', 'categoria': 'verduras', 'cantidad': 123, 'beneficio': 640},
+        {'producto': 'Lechugas', 'categoria': 'verduras', 'cantidad': 11, 'beneficio': 380},
+        {'producto': 'Galletas', 'categoria': 'desayunos', 'cantidad': 11, 'beneficio': 380},
+        {'producto': 'Cereales', 'categoria': 'desayunos', 'cantidad': 11, 'beneficio': 380},
+        {'producto': 'Coca cola', 'categoria': 'refrescos', 'cantidad': 11, 'beneficio': 380},
+        {'producto': 'desinfectante', 'categoria': 'limpieza', 'cantidad': 11, 'beneficio': 380}
+    ]
+
+    tabla_ventas = pd.DataFrame(ventas)
+
+    # ponemos las barras amarillas:
+    tabla_ventas['categoria'].value_counts().plot(kind='line', figsize=(10, 5))
+
+Indexación 
+**********
+La indexación por defecto se establece por fila, pero podemos cambiarla.
+
+Elegir columna como índice
+++++++++++++++++++++++++++
+Se puede elegir una columna que reemplazará los valores de fila:
+
+.. code-block:: python
+    :linenos:
+
+    import pandas as pd 
+
+    ventas = [
+        {'producto': 'Zanahorias', 'categoria': 'verduras', 'cantidad': 23, 'beneficio': 1280},
+        {'producto': 'Puerros', 'categoria': 'verduras', 'cantidad': 123, 'beneficio': 640},
+        {'producto': 'Lechugas', 'categoria': 'verduras', 'cantidad': 11, 'beneficio': 380},
+        {'producto': 'Galletas', 'categoria': 'desayunos', 'cantidad': 11, 'beneficio': 380},
+        {'producto': 'Cereales', 'categoria': 'desayunos', 'cantidad': 11, 'beneficio': 380},
+        {'producto': 'Coca cola', 'categoria': 'refrescos', 'cantidad': 11, 'beneficio': 380},
+        {'producto': 'desinfectante', 'categoria': 'limpieza', 'cantidad': 11, 'beneficio': 380}
+    ]
+
+    tabla_ventas = pd.DataFrame(ventas)
+
+    # cambiamos índice por categoria:
+    tabla_ventas.set_index('categoria')
+
+.. nota::
+    set_index() solo imprime valores, si queremos que se guarde el nuevo índice tenemos que pasarle el parámetro inplace=True:
+    ``tabla_ventas.set_index('categoria', inplace=True)``
+
+.. attention::
+    Si hemos guardado los índices podemos resetearlos ejecutando el método:
+    ``tabla_ventas.reset_index(inplace=True)``
+
+Ordenar índices
++++++++++++++++
+Los índices nuevos tienen el mismo orden de fila, para cambiarlo usamos sort_index():
+
+.. code-block:: python 
+    :linenos:
+
+    import pandas as pd 
+
+    ventas = [
+        {'producto': 'Zanahorias', 'categoria': 'verduras', 'cantidad': 23, 'beneficio': 1280},
+        {'producto': 'Puerros', 'categoria': 'verduras', 'cantidad': 123, 'beneficio': 640},
+        {'producto': 'Lechugas', 'categoria': 'verduras', 'cantidad': 11, 'beneficio': 380},
+        {'producto': 'Galletas', 'categoria': 'desayunos', 'cantidad': 11, 'beneficio': 380},
+        {'producto': 'Cereales', 'categoria': 'desayunos', 'cantidad': 11, 'beneficio': 380},
+        {'producto': 'Coca cola', 'categoria': 'refrescos', 'cantidad': 11, 'beneficio': 380},
+        {'producto': 'desinfectante', 'categoria': 'limpieza', 'cantidad': 11, 'beneficio': 380}
+    ]
+
+    tabla_ventas = pd.DataFrame(ventas)
+
+    tabla_ventas.set_index('categoria', inplace=True)
+
+    # ordenando por índices:
+    tabla_ventas.sort_index(inplace=True)
+
+    tabla_ventas
+
+.. note:: 
+    Si queremos ponerlos en orden descendiente le pasamos el parámetro ``ascending=False`` a sort_index()
+
+Buscar grupos por su índice
++++++++++++++++++++++++++++
+Al tener un índice personalizado podemos recuperar solo los registros que queramos:
+
+.. code-block:: python 
+    :linenos:
+
+    import pandas as pd 
+
+    ventas = [
+        {'producto': 'Zanahorias', 'categoria': 'verduras', 'cantidad': 23, 'beneficio': 1280},
+        {'producto': 'Puerros', 'categoria': 'verduras', 'cantidad': 123, 'beneficio': 640},
+        {'producto': 'Lechugas', 'categoria': 'verduras', 'cantidad': 11, 'beneficio': 380},
+        {'producto': 'Galletas', 'categoria': 'desayunos', 'cantidad': 11, 'beneficio': 380},
+        {'producto': 'Cereales', 'categoria': 'desayunos', 'cantidad': 11, 'beneficio': 380},
+        {'producto': 'Coca cola', 'categoria': 'refrescos', 'cantidad': 11, 'beneficio': 380},
+        {'producto': 'desinfectante', 'categoria': 'limpieza', 'cantidad': 11, 'beneficio': 380}
+    ]
+
+    tabla_ventas = pd.DataFrame(ventas)
+
+    tabla_ventas.set_index('categoria', inplace=True)
+
+    # Localizar solo aquellos que sean desayunos:
+    tabla_ventas.loc['desayunos']
+
