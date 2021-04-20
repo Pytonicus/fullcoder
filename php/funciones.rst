@@ -257,6 +257,24 @@ Imprimir contenido
         echo "</pre>";
     ?>
 
+Añadir elemento al array
+************************
+
+.. code-block:: php
+    :linenos:
+
+    <?php 
+        // tenemos un array:
+        $consolasSony = ["PlayStation", "PlayStation 2", "PlayStation 3"];
+
+        print_r($consolasSony);
+
+        // utilizamos la siguiente función en la cual el primer parámetro es el array anterior y los siguientes los elementos que se añaden:
+        array_push($consolasSony, "PlayStation 4", "PlayStation 5");
+
+        print_r($consolasSony);
+    ?>
+
 Rango de números
 ****************
 
