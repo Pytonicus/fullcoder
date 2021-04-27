@@ -30,6 +30,7 @@ Bienvenido a FullCoder, un sitio de Manual
    python/emails
    python/entornos
    python/analisis
+   python/django
    
 .. toctree::
    :maxdepth: 1

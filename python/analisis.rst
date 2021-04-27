@@ -710,5 +710,41 @@ Guardar DataFrame en Excel local
     # guardar el dataframe en el pc:
     excel.save()
 
+Recorrer dataframe con for
+**************************
+Este es un ejemplo de como convertir un dataframe en JSON:
+
+.. code-block:: python 
+    :linenos:
+
+    import pandas as pd 
+
+    ventas = [
+        {'producto': 'Zanahorias', 'categoria': 'verduras', 'cantidad': 23, 'beneficio': 1280},
+        {'producto': 'Puerros', 'categoria': 'verduras', 'cantidad': 123, 'beneficio': 640},
+        {'producto': 'Lechugas', 'categoria': 'verduras', 'cantidad': 11, 'beneficio': 380},
+        {'producto': 'Galletas', 'categoria': 'desayunos', 'cantidad': 11, 'beneficio': 380},
+        {'producto': 'Cereales', 'categoria': 'desayunos', 'cantidad': 11, 'beneficio': 380},
+        {'producto': 'Coca cola', 'categoria': 'refrescos', 'cantidad': 11, 'beneficio': 380},
+        {'producto': 'desinfectante', 'categoria': 'limpieza', 'cantidad': 11, 'beneficio': 380}
+    ]
+
+    total_ventas = pd.DataFrame(ventas)
+
+    # Preparar un listado:
+    json_ventas = []
+
+    # recorrer dataframe:
+    for i in total_ventas.index:
+        # construir formato y añadir:
+        json_ventas.append({
+            "Producto": total_ventas["producto"][i],
+            "Categoría": total_ventas["categoria"][i],
+            "Cantidad": total_ventas["cantidad"][i],
+            "Beneficio": total_ventas["beneficio"][i]
+        })
+
+    print(json_ventas)
+
 
 

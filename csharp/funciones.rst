@@ -298,7 +298,7 @@ Double a entero
 
 Manipulación de Arrays
 ######################
-
+ 
 Comprobar tamaño
 ****************
 
