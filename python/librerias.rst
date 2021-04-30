@@ -203,7 +203,7 @@ Averiguar el tipo de dato recibido
 
 .. code-block:: python
     :linenos:
-
+ 
     print(r.headers['content-type'])
 
 Recuperar contenido de la petición

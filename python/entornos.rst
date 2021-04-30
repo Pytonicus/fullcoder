@@ -33,4 +33,4 @@ pipenv: entorno virtual Python
 * Ejecutar script: ``pipenv run python prueba.py``
 * Guardar dependencias de entorno: ``pipenv run pip freeze > requirements.txt``
 
- 
+  

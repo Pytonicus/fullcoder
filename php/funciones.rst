@@ -259,7 +259,7 @@ Imprimir contenido
 
 Añadir elemento al array
 ************************
-
+ 
 .. code-block:: php
     :linenos:
 

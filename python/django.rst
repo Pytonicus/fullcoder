@@ -1,5 +1,5 @@
-Django
-======
+Framework: Django
+=================
 
 .. image:: /logos/logo-django.png
     :scale: 50%
@@ -189,6 +189,8 @@ rutas con parámetros
         path('sobremi/<int:id_entrada>', nombre_de_tu_app.about, name='sobremi'),
     ]
 
+* La ruta que recibe parámetros por ejemplo sería: http://localhost:5000/sobremi/19
+
 * Procesar parámetros desde la vista:
 
 .. code-block:: python
@@ -302,7 +304,7 @@ Con ListView podemos devolver una tabla de la base de datos de forma sencilla:
 
 De esta forma tenemos un listado en el template listo para recorrer usando el bucle sobre el valor object_list ``{% for pagina in object_list %}``
 
-..attention
+.. attention::
     Para que funcione esta vista y encuentre su template por defecto sería **page_list.html** y la colocamos dentro de la carpeta ``templates/nombre_de_tu_app/``
 
 DetailView
@@ -324,7 +326,7 @@ Con la vista detalle recuperamos un elemento de la base de datos para visualizar
 
 En la ruta deberemos asignar el parámetro ``<int:pk>`` para poder recibir el id del elemento.
 
-..attention
+.. attention::
     Debemos crear el template dentro de templates/nombre_de_tu_app/ con el nombre page_detail.html, ahora solo falta imprimir los datos usando el template tag {{page}}
 
 CreateView
@@ -554,7 +556,8 @@ Una buena práctica para no repetir código en plantillas es coger todo el conte
 * Entramos en la carpeta ``nombre_de_tu_app/templates/nombre_de_tu_app`` y creamos un archivo llamado base.html donde copiaremos el contenido común:
 * Ahora vamos a quitar el código de home.html y lo pegamos en base.html:
 
-.. code:: html
+.. code-block:: html
+    :linenos:
 
     <!DOCTYPE html>
     <html lang="es">
@@ -576,7 +579,9 @@ Una buena práctica para no repetir código en plantillas es coger todo el conte
 
 * Finalmente vamos a usar home.html como una plantilla de extensión con su propio código:
 
-.. code:: html 
+.. code-block:: html
+    :linenos:
+
 
     <!-- llamamos el template tag con extends: -->
     {% extends 'nombre_de_tu_app/base.html' %}
@@ -599,7 +604,8 @@ este tercer valor es el que utilizamos con el template tag **url**
 
 * vamos a editar el archivo base.html para añadir un menú de navegación:
 
-.. code:: html
+.. code-block:: html
+    :linenos:
 
     <!DOCTYPE html>
     <html lang="es">
@@ -637,7 +643,8 @@ Con este template tag vamos a cargar archivos estáticos de nuestra web, entre e
 * Dentro de la última carpeta podemos ir añadiendo carpetas básica como css, js e img para ir añadiendo los archivos correspondientes.
 * Ahora podemos utilizar archivos estáticos dentro de dichas rutas:
 
-.. code:: html
+.. code-block:: html
+    :linenos:
 
     <!-- cargamos el template tag static -->
     {% load static %}
@@ -686,7 +693,8 @@ Los template tags de datos muestran información que enviamos desde la vista al 
 
 * Ahora que tenemos un dato, podemos mostrarlo en cualquier template de nuestra app:
 
-.. code:: html
+.. code-block:: html
+    :linenos:
 
     <!DOCTYPE html>
     <html lang="es">
@@ -734,7 +742,8 @@ En los templates de Django para hacer un bucle for lo hacemos del siguiente modo
 
 * Y ahora podemos recorrer el diccionario en nuestro template con el template tag for:
 
-.. code:: html
+.. code-block:: html
+    :linenos:
 
     <h3>Listado de Clientes</h3>
     <ul>
@@ -748,7 +757,8 @@ Template tag if
 
 Con el template tag if podemos establecer condiciones dentro de los templates, retomando el ejemplo de for vamos a pintar de verde uno de los registros:
 
-.. code:: 
+.. code-block::
+    :linenos:
 
     <h3>Listado de Clientes</h3>
     <ul>
@@ -790,7 +800,7 @@ En cada app que creamos tenemos un archivo models.py, vamos a editar uno para ve
         def __str__(self):
             return self.titulo
 
-..attention
+.. attention::
     Tienes que tener registrada tu app en el apartado INSTALLED_APPS o sino dará error a la hora de migrar la base de datos.
 
 .. hint::
@@ -905,7 +915,7 @@ Cuando creamos un modelo nuevo lo primero que tenemos que hacer es maquetar la e
 * Para crear el modelo de las tablas de una app ejecutamos ``python manage.py makemigrations nombre_de_tu_app``.
 * Si todo va bien, migramos la base de datos con ``python manage.py migrate nombre_de_tu_app``
 
-..attention
+.. attention::
     Antes de hacer una migración debemos generar todo el Scaffold para el sistema de login por primera vez ejecutando ``python manage.py migrate``
 
 ORM de Django y sus QuerySets
@@ -930,7 +940,7 @@ Para salir de la consola ORM escribimos ``exit()`` y pulsamos intro
 .. hint::
     Podemos encadenar algunos querysets por ejemplo recuperar todos los datos y ordenarlos por fecha: ``Prueba.objects.all().order_by('-fecha_creacion')``
 
-
+ 
 Realizar QuerySets desde vista y pasarlos a template
 ****************************************************
 
@@ -956,7 +966,8 @@ En Django podemos crear formularios individuales y reutilizables.
 Crear un formulario
 *******************
 
-.. code::
+.. code-block:: python
+    :linenos: 
 
     # importamos la librería forms:
     from django import forms

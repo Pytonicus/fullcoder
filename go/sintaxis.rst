@@ -13,7 +13,7 @@ Sintaxis GO
 Sintáxis básica de GO
    
 .. contents:: Índice
-
+ 
 Elementos básicos del lenguaje 
 ##############################
 

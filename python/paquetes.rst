@@ -19,7 +19,7 @@ Instalar pip3
 
 * Ejecutar en terminal ``sudo apt install python3-pip``
 
-
+ 
 Archivo de configuración
 ########################
 

@@ -13,7 +13,7 @@ Funciones predefinidas
 Funciones más usadas en GO
  
 .. contents:: Índice
-
+ 
 Manipulación de variables
 #########################
 

@@ -19,7 +19,7 @@ smtplib: Envío de emails
 
 Modo básico
 ***********
-
+ 
 .. code-block:: python
     :linenos:
 
