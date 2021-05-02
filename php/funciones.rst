@@ -256,7 +256,7 @@ Imprimir contenido
         print_r($fabricantes);
         echo "</pre>";
     ?>
-
+ 
 Añadir elemento al array
 ************************
  

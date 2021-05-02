@@ -220,7 +220,7 @@ Añadir elemento a la lista
 
 .. code-block:: python
     :linenos:
- 
+  
     lista.append("nuevo texto")
     print lista
 

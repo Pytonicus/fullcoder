@@ -21,7 +21,7 @@ Instalación
 ***********
 * Instalación: ``sudo apt install python3``
 * Extensión de archivos: **.py**
-  
+   
 Comentarios
 ***********
 

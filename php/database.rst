@@ -112,7 +112,7 @@ Para realizar la conexión a SQL SERVER:
         // para cerrar la conexión:
         $conn = null;
     ?>  
-
+ 
 
  
 Operaciones CRUD

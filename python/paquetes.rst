@@ -22,7 +22,7 @@ Instalar pip3
  
 Archivo de configuración
 ########################
-
+ 
 En la raiz del proyecto se crea un archivo llamado requirements.txt:
 * Para guardar la lista de paquetes instalados en nuestro entorno: ``pip3 freeze > requirements.txt``
 * Para instalar dependencias ``pip3 install -r requirements.txt``

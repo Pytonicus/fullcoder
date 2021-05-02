@@ -16,7 +16,7 @@ Envío de emails con Python
  
 smtplib: Envío de emails
 ########################
-
+ 
 Modo básico
 ***********
  

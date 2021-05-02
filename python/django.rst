@@ -939,7 +939,7 @@ Para salir de la consola ORM escribimos ``exit()`` y pulsamos intro
 
 .. hint::
     Podemos encadenar algunos querysets por ejemplo recuperar todos los datos y ordenarlos por fecha: ``Prueba.objects.all().order_by('-fecha_creacion')``
-
+ 
  
 Realizar QuerySets desde vista y pasarlos a template
 ****************************************************

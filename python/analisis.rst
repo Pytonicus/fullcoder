@@ -13,7 +13,7 @@ Análisis de datos
 Análisis de datos con diferentes tecnologías
 
 .. contents:: Índice
- 
+  
 Anaconda 
 ########
 * Para instalar Anaconda primero instalamos las siguientes dependencias: 

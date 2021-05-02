@@ -241,7 +241,7 @@ Jinja2 es el motor de plantillas que se utiliza de serie en Flask.
     </html>
 
 * De vuelta a main.py se renderiza el template:
-
+ 
 .. code-block:: python
     :linenos:
  

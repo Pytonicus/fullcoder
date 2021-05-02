@@ -33,6 +33,12 @@ Bienvenido a FullCoder, un sitio de Manual
    python/django
    python/flask
    python/drf
+
+.. toctree::
+   :maxdepth: 1
+   :caption: JavaScript:
+
+   javascript/sintaxis
    
 .. toctree::
    :maxdepth: 1

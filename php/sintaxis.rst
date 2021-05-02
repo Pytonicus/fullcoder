@@ -16,7 +16,7 @@ Sintáxis básica de PHP 7.4
 
 Elementos básicos del lenguaje 
 ##############################
-  
+   
 Instalación
 ***********
 * Instalación: ``sudo apt install php7.4``

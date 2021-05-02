@@ -32,5 +32,5 @@ pipenv: entorno virtual Python
 * Ver paquetes instalados: ``pipenv graph``
 * Ejecutar script: ``pipenv run python prueba.py``
 * Guardar dependencias de entorno: ``pipenv run pip freeze > requirements.txt``
-
+ 
   
