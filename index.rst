@@ -39,6 +39,7 @@ Bienvenido a FullCoder, un sitio de Manual
    :caption: JavaScript:
 
    javascript/sintaxis
+   javascript/funciones
    
 .. toctree::
    :maxdepth: 1

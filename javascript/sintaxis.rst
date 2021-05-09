@@ -1,5 +1,5 @@
 Sintaxis javascript
-============
+===================
 
 .. image:: /logos/JavaScript-logo.png
     :scale: 25%

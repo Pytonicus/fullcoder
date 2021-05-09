@@ -394,3 +394,18 @@ Para pasar argumentos a un script de python:
         # se puede también recuperar el valor del argumento:
         print("Hola " + parser.saludo)
 
+Time: manipulación de tiempo
+############################
+Su uso más frecuente es para crear pausas en el código.
+
+.. code-block:: python
+    :linenos:
+
+    # importar librería 
+    import time
+
+    print("Hola")
+    # establece pausa de 5 segundos:
+    time.sleep(5)
+
+    print("Hola de nuevo")
