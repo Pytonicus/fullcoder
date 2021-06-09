@@ -495,37 +495,79 @@ Clases y objetos
 
     megaDrive.descripcion()
 
+* Get y Set:
+
+.. code-block:: python 
+    :linenos:
+
+    class Persona:
+        def __init__(self, nombre, apellido, edad, dni):
+            self.nombre = nombre 
+            self.apellido = apellido 
+            self.edad = edad 
+            # para atributos y métodos privados añadimos _ antes de forma simbólica:
+            self._dni = dni
+
+        # para evitar recuperar el atributo dni usamos el siguiente decorador que lo encapsula:
+        @property # Este sería el get
+        def dni(self):
+            return self._dni
+
+        @dni.setter # y este el set
+        def dni(self, dni):
+            self._dni = dni
+        
+        def saludar(self):
+            print("Hola, me llamo {} {} y tengo {} años".format(self.nombre, self.apellido, self.edad))
+
+
+    pedro = Persona("Pedro", "Martinez Sal", 37, "323223112V")
+    pedro.saludar()
+
+    # Uso de get:
+    print("Mi DNI es: " + pedro.dni)
+
+    # Uso de set:
+    pedro.dni = "75753233X"
+    print("Nuevo DNI: " + pedro.dni)
+
 * Herencia:
 
 .. code-block:: python 
     :linenos:
 
     class Persona():
-        nombre = ""
-        genero = ""
-        peso = 0
-        estatura = 0
 
-        def __init__(self):
-            self.nombre = "Alfredo"
-            self.genero = "Masculino"
-            self.peso = 82
-            self.estatura = 174
+        def __init__(self, nombre, genero):
+            self.nombre = nombre
+            self.genero = genero
 
         def datos(self):
-            print("Su nombre es {}, su género {}, pesa {} kilos y mide {}.".format(self.nombre, self.genero, self.peso, self.estatura))
+            print("Su nombre es {} y su género es.".format(self.nombre, self.genero))
 
 
     class Luis(Persona):
-        def __init__(self):
-            self.nombre = "Luis"
-            self.genero = "Masculino"
-            self.peso = 79
-            self.estatura = 158
+        def __init__(self, nombre, genero, peso, estatura):
+            # para los atributos del padre cargamos el superconstructor y le pasamos los atributos del padre:
+            super().__init__(nombre, genero)
+            self.peso = peso
+            self.estatura = estatura
 
-    luis = Luis()
-    # y podemos acceder a los metodos del padre como a sus atributos:
+        # Podemos sobrecargar el método para que imprima más atributos:
+        def datos(self):
+            print("Su nombre es {}, su género {}, pesa {} kilos y mide {}.".format(self.nombre, self.genero, self.peso, self.estatura))
+
+    # Objeto creado con padre y uso de metodo datos:
+    pedro = Persona("Pedro", "Masculino")
+    pedro.datos()
+
+    # Objeto creado con hijo y uso de metodo datos:
+    luis = Luis("Luis", "Masculino", 90, 1.75)
     luis.datos()
+
+.. note::
+    Se puede hacer herencia múltiple pasándole a la clase hija varias clases padres por parámetro y esta podrá trabajar con todos sus atributos y métodos. 
+    Ej: class **Luis(Persona, Profesion):**
 
 Clases abstractas
 *****************
@@ -596,10 +638,6 @@ Las interfaces como tales no existen en python pero hay un modo de trabajar de f
 
 
     class NeoGeo(VideoconsolaInterface):
-        modelo = ""
-        marca = ""
-        precio = ""
-
         def __init__(self, modelo, marca, precio):
             self.modelo = modelo
             self.marca = marca
@@ -612,6 +650,28 @@ Las interfaces como tales no existen en python pero hay un modo de trabajar de f
 
     neoGeo = NeoGeo("Neo Geo Pocket", "SNK", "149.99")
     neoGeo.descripcion()
+
+Método "__str__"
+****************
+El método **__str__()** retorna una cadena al imprimir el objeto que se genera:
+
+.. code-block:: python 
+    :linenos:
+
+    class Consola:
+    
+        def __init__(self, marca, modelo):
+            self.marca = marca 
+            self.modelo = modelo 
+
+        # el método __str__ define una cadena que retorna al imprmir:
+        def __str__(self):
+            return "Es una videoconsola {} {}.".format(self.marca, self.modelo)
+
+    playstation = Consola("Sony", "PlayStation")
+
+    # Al imprimir el valor devolverá la cadena asignada en __str__:
+    print(playstation)
 
 Importar y exportar
 ###################
