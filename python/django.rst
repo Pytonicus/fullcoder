@@ -963,8 +963,8 @@ Formularios
 
 En Django podemos crear formularios individuales y reutilizables.
 
-Crear un formulario
-*******************
+Crear un formulario básico
+**************************
 
 .. code-block:: python
     :linenos: 
@@ -1012,6 +1012,69 @@ Este otro método es mas fácil de personalizar a mi parecer, y organiza mejor t
             }
 
     De este modo tenemos otra forma de sacar los formularios, lo demás es todo igual.
+
+Crear formulario y aceptar parámetros para su configuración
+***********************************************************
+
+Este tercer método permite recibir parámetros al formulario de modo que podamos configurar ciertas características del mismo:
+
+.. code-block:: python
+    :linenos: 
+
+    class PublisherForm(forms.ModelForm):
+
+    # tenemos un campo con su uso más avanzado:
+    name = forms.CharField(
+        label='Nombre',
+        max_length=255,
+        required=False,
+        widget=forms.TextInput(
+            attrs={'class': 'form-control'}
+        )
+    )
+
+    # En el meta rescatamos el Modelo y los campos:
+    class Meta:
+        model = Publisher
+        fields = ('name', )
+
+    # Y ahora se define un init que recibirá los args y kwargs, estos segundos los usaremos para comprobar que se recibe:
+    def __init__(self, *args, **kwargs):
+        # se crean las variables con los argumentos posibles:
+        self.required = kwargs.pop('required', None)
+        self.readonly = kwargs.pop('readonly', None)
+        self.disabled = kwargs.pop('disabled', None)
+        super().__init__(*args, **kwargs)
+
+        # se comprueba si se reciben y se genera el comportamiento de cada uno:
+        if self.required:
+            if self.required == 'all':
+                for x in self.fields:
+                    self.fields[x].widget.attrs['required'] = True
+            else:
+                for field in self.required:
+                    self.fields[field].widget.attrs['required'] = True
+
+        if self.readonly:
+            if self.readonly == 'all':
+                for x in self.fields:
+                    self.fields[x].widget.attrs['readonly'] = True
+            else:
+                for field in self.readonly:
+                    self.fields[field].widget.attrs['readonly'] = True
+
+        if self.disabled:
+            if self.disabled == 'all':
+                for x in self.fields:
+                    self.fields[x].widget.attrs['disabled'] = True
+            else:
+                for field in self.disabled:
+                    self.fields[field].widget.attrs['disabled'] = True
+
+    De este modo se tiene un control universal de cada campo.
+
+    Si queremos establecer un campo del formulario como requerido:
+    * form = PublisherForm(required = ['Nombre'])
 
 Utilizar un formulario
 **********************

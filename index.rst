@@ -40,6 +40,12 @@ Bienvenido a FullCoder, un sitio de Manual
 
    javascript/sintaxis
    javascript/funciones
+
+.. toctree::
+   :maxdepth: 1
+   :caption: TypeScript:
+
+   typescript/angular
    
 .. toctree::
    :maxdepth: 1
@@ -49,3 +55,9 @@ Bienvenido a FullCoder, un sitio de Manual
    csharp/funciones
    csharp/librerias
    csharp/eventos
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Otros Lenguajes:
+
+   otros/basic
