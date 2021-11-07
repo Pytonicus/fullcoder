@@ -467,9 +467,10 @@ Funciones
 .. code-block:: python 
     :linenos:
 
-    tu_nombre = lambda nombre: "Hola {}".format(nombre)
+    # lambda recibe uno o varios parámetros y hace un return directamente de forma anonima:
+    sumar = lambda a,b,c: a+b+c 
 
-    print(tu_nombre("Gabriel"))
+    print(sumar(10,13,18))
 
 * Ámbito global:
 

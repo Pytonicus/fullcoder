@@ -313,6 +313,49 @@ Ordenar elementos
     En las tuplas podemos usar casi todas las mismas funciones excepto append() y pop() y 
     se cambia el modificador list() por tuple()
 
+
+Filtrar elementos con función filter
+************************************
+
+.. code-block:: python
+    :linenos:
+
+    lista_consolas = [
+        {'marca': 'Sega', 'modelo':'Mega Drive', 'generación': '4ª Generación'},
+        {'marca': 'Sega', 'modelo':'Master System', 'generación': '3ª Generación'},
+        {'marca': 'Sony', 'modelo':'PlayStation', 'generación': '5ª Generación'},
+        {'marca': 'Nintendo', 'modelo':'Gamecube', 'generación': '6ª Generación'}
+    ]
+
+    # recuperar todas las consolas menos las de Segaa:
+    consolas = list(filter(lambda consola: consola['marca'] != 'Sega', lista_consolas))
+
+    print(consolas)
+
+    .. attention:
+        El añadir la función list() es debido a que el dato que devuelve es tipo filter, entonces hay que convertirlo, lo mismo ocurre con map().
+    .. note::
+        La función filter recibe dos parámetros, el primero será la función a ejectuar y el segundo un iterable como una lista, set o tupla.
+
+Mapear elementos de un iterable con map
+***************************************
+La función map recorre todos los elementos de un iterable de modo similar a una secuencia for.
+
+.. code-block:: python
+    :linenos:
+
+    numeros = [8, 5, 2, 0, 3, 9, 5]
+
+    # multiplicar por 10 los números:
+    numeros_diez = list(map(lambda x: x*10, numeros))
+
+    print(numeros_diez)
+
+    # sumar ambas listas:
+    total_numeros = list(map(lambda x,y: x+y, numeros, numeros_diez))
+
+    print(total_numeros)
+
 Manipulación de Diccionarios 
 ############################
 
