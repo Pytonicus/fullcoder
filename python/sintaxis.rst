@@ -307,6 +307,56 @@ Detener secuenda de script
 
     print("Esta frase no se mostrará")
 
+Compresión de listas
+********************
+Las compresión de lista es un método para recuperar una serie de valores y agregarlos a una lista en una sola secuencia:
+
+.. code-block:: python 
+    :linenos:
+
+    # tenemos un diccionario:
+    lista_consolas = [
+        {'marca': 'Sega', 'modelo':'Mega Drive', 'generación': '4ª Generación'},
+        {'marca': 'Sega', 'modelo':'Master System', 'generación': '3ª Generación'},
+        {'marca': 'Sony', 'modelo':'PlayStation', 'generación': '5ª Generación'},
+        {'marca': 'Nintendo', 'modelo':'Gamecube', 'generación': '6ª Generación'}
+    ]
+
+    # se crea una lista y dentro lo primero que anotamos es el dato a recuperar y acto seguido el bucle sobre la lista de valores:
+    consolas = [consola['modelo'] for consola in lista_consolas]
+
+    print(consolas)
+
+* Con condición: 
+
+.. code-block:: python
+    :linenos:
+
+    lista_consolas = [
+        {'marca': 'Sega', 'modelo':'Mega Drive', 'generación': '4ª Generación'},
+        {'marca': 'Sega', 'modelo':'Master System', 'generación': '3ª Generación'},
+        {'marca': 'Sony', 'modelo':'PlayStation', 'generación': '5ª Generación'},
+        {'marca': 'Nintendo', 'modelo':'Gamecube', 'generación': '6ª Generación'}
+    ]
+
+    # Se añaden la condición después del bucle:
+    consolas = [consola['modelo'] for consola in lista_consolas if consola['marca'] == 'Sega']
+
+    print(consolas)
+
+* Con un bucle for el resultado sería:
+
+.. code-block:: python
+    :linenos:
+
+    consolas = []
+    for consola in lista_consolas:
+        if consola['marca'] == 'Sega':
+            consolas.append(consola['modelo'])
+
+.. note::
+    Hay que tener en cuenta que el primer dato es solo el resultado de un bucle for, teniendo eso en cuenta se pueden hacer muchos tipos de operaciones.
+
 Tipos de datos avanzados
 ########################
 
