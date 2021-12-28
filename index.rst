@@ -43,10 +43,12 @@ Bienvenido a FullCoder, un sitio de Manual
 
 .. toctree::
    :maxdepth: 1
-   :caption: TypeScript:
+   :caption: GO:
 
-   typescript/angular
-   
+   go/sintaxis
+   go/funciones
+   go/librerias
+
 .. toctree::
    :maxdepth: 1
    :caption: C#:
