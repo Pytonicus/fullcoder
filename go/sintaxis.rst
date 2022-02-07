@@ -93,7 +93,6 @@ Estructura en GO
         fmt.Println("Hola a full!")
     }
 
-
 Concatenación
 *************
 Concatenación de variables y cadenas se realiza con **+**
@@ -135,7 +134,10 @@ Comandos de GO:
 * go run archivo.go: ejecuta un script de go.
 * godoc: Abre un servidor web en la dirección http://localhost:6000
 * go get: permite descargar bibliotecas y utilidades de terceros.
-* go mod: permite gestionar los proyectos locales.
+* go mod: permite gestionar los proyectos locales. ``go mod init nombre_proyecto``
+
+.. attention::
+    Para poder importar paquetes externos con **go get** antes hay que ejecutar el comando **go mod init nombre_proyecto**
 
 Variables y tipos de datos
 ##########################
@@ -159,6 +161,14 @@ Variables y tipos de datos
         var decimalLargo float64 = 32.23423423
         var booleano bool = true
 
+        // declaración múltiple: 
+        var (
+            nombre    = "Guillermo"
+            apellidos = "Granados Gómez"
+            edad      = 34
+        )
+
+        fmt.Println("Soy", nombre, apellidos, "y tengo", edad, "años.")
 
         // declaracion con operador de inicialización:
         texto := "Cadena de texto \n - separada por una línea"
@@ -291,7 +301,7 @@ Condicional if
         var edad int
 
         fmt.Print("¿Qué edad tienes? \n>>> ")
-        fmt.Scan(&edad)
+        fmt.Scanln(&edad)
 
         if edad >= 18 {
             fmt.Println("Eres mayor de edad")
@@ -312,7 +322,7 @@ Condicional if
         var edad int
 
         fmt.Print("¿Qué edad tienes? \n>>> ")
-        fmt.Scan(&edad)
+        fmt.Scanln(&edad)
 
         if edad >= 18 {
             fmt.Println("Eres mayor de edad")
@@ -335,7 +345,7 @@ Condicional if
         var edad int
 
         fmt.Print("¿Qué edad tienes? \n>>> ")
-        fmt.Scan(&edad)
+        fmt.Scanln(&edad)
 
         if edad >= 65 {
             fmt.Println("Eres un anciano")
@@ -344,6 +354,34 @@ Condicional if
         } else {
             fmt.Println("Todavía eres menor de edad")
         }
+    }
+
+* if declaración corta:
+
+.. code-block:: GO
+    :linenos:
+
+    package main
+
+    import "fmt"
+
+    // crear una función para recibir parámetros:
+    func calcula_edad(e int) string {
+        // asignar una variable al scope de un if:
+        if edad := e; edad >= 18 {
+            return "Eres mayor de edad"
+        } else {
+            return "Eres menor de edad"
+        }
+    }
+
+    func main() {
+        var mi_edad int
+
+        fmt.Println("¿Qué edad Tienes?")
+        fmt.Print(">>> ")
+        fmt.Scanln(&mi_edad)
+        fmt.Println(calcula_edad(mi_edad))
     }
 
 
@@ -362,7 +400,7 @@ Estructura de un switch:
         var operacion string
 
         fmt.Print("¿Qué quieres saber? \n>>> ")
-        fmt.Scan(&operacion)
+        fmt.Scanln(&operacion)
 
         switch operacion {
         case "nombre":
@@ -378,6 +416,9 @@ Estructura de un switch:
 
 .. attention::
     Se pueden validar más de un valor en case añadiéndolos con comas: **case 'a','e','i','o','u'**
+
+.. Note::
+    Los Switch en GO permiten validar condiciones como a > 10 de un modo similar a if.
 
 Bucle for
 *********
@@ -398,7 +439,7 @@ Bucle for
         }
     }
 
-* for condicional:
+* foreach:
 
 .. code-block:: GO 
     :linenos:
@@ -408,18 +449,27 @@ Bucle for
     import "fmt"
 
     func main() {
-        num := 0
+        // existe un slice:
+        consolas := []string{"Megadrive", "Playstation", "Gameboy"}
 
-        for num <= 10 {
-            num++
-            fmt.Println("Se ha sumado el número, su valor actual es:", num)
+        // y lo podemos recorrer con un for y range:
+        for i, v := range consolas {
+            fmt.Println(i, v)
+        }
+
+        // si no queremos usar el índice:
+        for _, v := range consolas {
+            fmt.Println(v)
         }
     }
 
-* for infinito:
+Bucle while
+***********
+Según la guía de Go el bucle For es el bucle While de go:
 
-.. code-block:: GO
-    :linenos:
+
+.. code-block:: GO 
+:linenos:
 
     package main
 
@@ -444,48 +494,79 @@ Bucle for
         }
     }
 
-* foreach:
-
-.. code-block:: GO 
-    :linenos:
-
-    ...
-
-* foreach clave / valor:
-
-.. code-block:: GO 
-    :linenos:
-
-    ...
-
-Bucle while
-***********
-No existe el bucle While en GO, lo más párecido a esta estructura de control es el for condicional o el for infinito.
-
 Punteros
 ########
+Cuando trabajamos con punteros establecemos un enlace con una variable, de modo que por ejemplo
+en el caso de las funciones, al enviar parámetros lo que mandamos es una copia, pero gracias a los punteros
+se puede enviar por parámetros la variable original para modificarla.
 
 .. code-block:: GO 
     :linenos:
 
     package main
 
-    import "fmt"
+    import (
+        "fmt"
+    )
+
+    // La función recibe un puntero tipo string:
+    func cambiar(nombre *string) {
+        *nombre = "Adolfo"
+    }
 
     func main() {
-        // un puntero se define con un asterisco:
-        var num *int
+        // se crea una variable con un nombre:
+        nombre := "Pedro"
+        fmt.Println(nombre)
 
-        numero := 5
+        // se envía el puntero de la variable original para modificar:
+        cambiar(&nombre)
 
-        // hacer que el apuntador no apunte a nada con nil:
-        num = nil
+        // al imprimir de nuevo la variable original vemos que el nombre cambió:
+        fmt.Println(nombre)
 
-        // apuntar el puntero a una variable:
-        num = &numero
+        // podemos ver la referencia de la memoria donde se asignó el puntero:
+        fmt.Println(&nombre)
+    }
 
-        fmt.Println("El identificador del puntero es:", num)
-        fmt.Println("El valor apuntado es:", *num)
+Defer
+*****
+Defer ejecutará la función seleccionada como la última. Esta sentencia se usa normalmente para cerrar archivos.
+
+- Ejemplo con funciones:
+
+.. code-block:: GO 
+    :linenos:
+
+    package main
+
+    import (
+        "fmt"
+    )
+
+    // funciones a cargar:
+    func funcion1() {
+        fmt.Println("Hola desde función 1")
+    }
+
+    func funcion2() {
+        fmt.Println("Hola desde función 2")
+    }
+
+    func funcion3() {
+        fmt.Println("Hola desde función 3")
+    }
+
+    func funcion4() {
+        fmt.Println("Hola desde función 4")
+    }
+
+    func main() {
+        // ahora se ejecutarán las funciones con los mensajes:
+        funcion1()
+        defer funcion2()
+        funcion3()
+        funcion4()
     }
 
 
@@ -516,9 +597,12 @@ Arrays
         array2 := [3]string{"Paco", "Pepe", "Adolfo"}
         fmt.Println(array2[2])
 
-        // array de tamaño dinámico:
+        // Asignación directa sin establecer longitud:
         array3 := [...]string{"Galletas", "Fresas", "Aceite", "Tomates"}
         fmt.Println(array3[2])
+
+        // recuperar una parte del array:
+        fmt.Println(array3[:2])
     }
 
 
@@ -542,47 +626,121 @@ Arrays
         fmt.Println(arrayMulti[2][1])
     }
 
-ME QUEDÉ EN LAS PORCIONES
-#########################
+.. note::
+    Como en otros lenguajes de programación clásicos los arrays son de un tamaño 
+    definido previamente en su declaración. Para trabajar con tamaños dinámicos existen los Slices
 
-Arrays asociativos
-******************
+Slices
+******
 
 - Declaración tradicional:
 
 .. code-block:: GO 
     :linenos:
 
-    ...
+    package main
 
-- Declaración con función array():
+    import "fmt"
+
+    func main() {
+        // declaración y asignación directa:
+        personas := []string{"Paco", "Pepe", "Adolfo"}
+        fmt.Println(personas[2])
+
+        // declarar y asignar una parte de otro slice:
+        var dos []string = personas[:2]
+
+        fmt.Println(dos)
+    }
+
+
+- Slice multidimensional:
 
 .. code-block:: GO 
     :linenos:
 
-    ...
+    package main
 
-- Array multidimensional:
+    import "fmt"
+
+    func main(){
+        // declaración y asignación directa:
+        agenda := [][]string{
+            []string{"Paco", "22", "Futbolista"},
+            []string{"Pedro", "34", "Barrendero"},
+        }
+
+        fmt.Println(agenda[0][0], "es un", agenda[0][2], "y tiene", agenda[0][1], "años")
+    }
+
+Mapas
+*****
+Los mapas son colecciones de datos de la misma forma que un diccionario en Python o un objeto literal en JavaScript.
 
 .. code-block:: GO 
     :linenos:
 
-    ...
+    package main
 
-- Imprimir y asignar valores:
+    import "fmt"
 
-.. code-block:: GO 
-    :linenos:
+    // se crea un struct:
+    type Consola struct {
+        marca, modelo string
+        lanzamiento   int
+    }
 
-    ...
+    func main() {
+        // ahora se crea el mapa y se utiliza el struct de base:
+        var consolas = map[int]Consola{
+            0: Consola{marca: "Sega", modelo: "Saturn", lanzamiento: 1994},
+            1: Consola{marca: "Sony", modelo: "PlayStation", lanzamiento: 1994},
+        }
+
+        // añadir un nuevo valor con su clave definida:
+        consolas[2] = Consola{marca: "Nintendo", modelo: "64", lanzamiento: 1996}
+
+        fmt.Println(consolas)
+    }
+
+.. important::
+    Para crear un mapa vacío lo más común es utilizar la función **make()**
 
 Control de errores
 ##################
 
+El control de errores en GO no funciona del mismo modo que en otros lenguajes de programación. En el caso de GO cuando se realizan ciertas operaciones estas requieren de dos variables,
+una de ellas la que se esta trabajando y la segunda un error que si todo va bien devuelve un valor nil. Si no devuelve nil usamos una condición if para devolver un mensaje de error:
+
 .. code-block:: GO
     :linenos:
 
-    ...
+    package main
+
+    import (
+        "fmt"
+        "log"
+        "strconv"
+    )
+
+    func main() {
+
+        num := "40.36"
+
+        num_entero, err := strconv.Atoi(num)
+
+        // en este caso manejamos el error:
+        if err != nil {
+            log.Fatal(err, "\n El valor introducido no es un entero")
+        }
+
+        fmt.Println(num_entero)
+
+    }
+
+
+.. note:
+    En este ejemplo se puede ver también el uso de la librería log
 
 Programación modular
 ####################
@@ -652,6 +810,27 @@ Funciones
         fmt.Println(saludar("Guillermo"))
     }
 
+* Recibir parámetros indefinidos:
+
+.. code-block:: GO 
+    :linenos:
+
+    package main
+
+    import (
+        "fmt"
+    )
+
+    // enviar parámetros de forma dinámica:
+    func imprimir(cosas ...string) {
+        fmt.Println(cosas)
+    }
+
+    func main() {
+
+        imprimir("Consola", "Movil", "Tablet")
+
+    }
 
 * Retorno múltiple:
 
@@ -708,50 +887,117 @@ Funciones
 Programación orientada a objetos
 ################################
 
-Los elementos de una clase se definen con ámbito **public**, **private** y **protected**. 
-Adicionalmente se puede agregar el modificador **static** para poder acceder a los atributos y métodos sin crear un objeto.
+El paradigma orientado a objetos en GO cambia radicalmente frente a otro lenguajes sustituyendo las clases por estructuras.
 
-Clases y objetos
-****************
-
-* Estructura clase:
+Structs
+*******
+Los Structs son estructuras de datos similares a las clases con la diferencia que estos carecen de constructores y métodos de antemano.
 
 .. code-block:: GO 
     :linenos:
 
-    ...
+    package main
 
+    import "fmt"
 
-* Constructor:
+    // Crear una estructura:
+    type Consola struct {
+        marca       string
+        modelo      string
+        lanzamiento int
+    }
+
+    func main() {
+        // crear un nuevo objeto del tipo Consola:
+        playstation := Consola{marca: "Sony", modelo: "Playstation", lanzamiento: 1994}
+
+        // uso de atributos:
+        fmt.Println("La consola", playstation.marca, playstation.modelo, "fue lanzada en", playstation.lanzamiento)
+    }
+
+Métodos de structs
+******************
 
 .. code-block:: GO 
     :linenos:
 
-    ...
+    package main
 
-* Get y Set:
+    import "fmt"
 
-.. code-block:: GO 
-    :linenos:
+    type Consola struct {
+        marca       string
+        modelo      string
+        lanzamiento int
+    }
 
-    ...
+    // Método de Consola:
+    // los métodos reciben primero un puntero a la structura y luego los datos:
+    func (c *Consola) imprimir() { // en los paréntesis de imprimir recibe los parámetros requeridos:
+        fmt.Println("La consola", c.marca, c.modelo, "fue lanzada en", c.lanzamiento)
+    }
 
-* Herencia:
+    func main() {
+        playstation := Consola{marca: "Sony", modelo: "Playstation", lanzamiento: 1994}
 
-.. code-block:: GO 
-    :linenos:
+        // ejecutar la función:
+        playstation.imprimir()
+    }
 
-    ...
 
-Clases abstractas y resolución de ámbito
-****************************************
+Herencia
+********
 
 - uso de clases no instanciables:
 
 .. code-block:: GO 
     :linenos:
 
-    ...
+    package main
+
+    import "fmt"
+
+    type Consola struct {
+        marca       string
+        modelo      string
+        lanzamiento int
+    }
+
+    func (c *Consola) imprimir() {
+        fmt.Println("La consola", c.marca, c.modelo, "fue lanzada en", c.lanzamiento)
+    }
+
+    // Herencia:
+    type Portatil struct {
+        // cargar el struct del que se quiere heredar:
+        Consola
+        alimentacion string // se pueden añadir nuevos atributos
+    }
+
+    // también se pueden añadir métodos que utilicen los atributos y métodos del padre:
+    func (p *Portatil) imp_portatil() {
+        fmt.Println("La consola", p.marca, p.modelo, "fue lanzada en", p.lanzamiento, "y utiliza", p.alimentacion, "para funcionar")
+    }
+
+    func main() {
+        playstation := Consola{marca: "Sony", modelo: "Playstation", lanzamiento: 1994}
+
+        playstation.imprimir()
+
+        // crear objeto, aqui solo se puede añadir los atributos existentes en el struct:
+        gameboy := Portatil{alimentacion: "4 Pilas AAA"}
+        // para añadir los atributos del padre se realiza de forma individual:
+        gameboy.marca = "Nintendo"
+        gameboy.modelo = "Gameboy"
+        gameboy.lanzamiento = 1990
+
+        // se puede ver como se aislan los atributos del padre y los del hijo:
+        fmt.Println(gameboy)
+
+        gameboy.imprimir()
+        gameboy.imp_portatil()
+    }
+
 
 Interfaces
 **********
@@ -759,34 +1005,89 @@ Interfaces
 .. code-block:: GO 
     :linenos:
 
-    ...
+    package main
+
+    import "fmt"
+
+    // se crea un interface y se le asignan los métodos del struct:
+    type Printer interface {
+        imprimir()
+        encender()
+    }
+
+    type Consola struct {
+        marca       string
+        modelo      string
+        lanzamiento int
+    }
+
+    func (c *Consola) imprimir() {
+        fmt.Println("La consola", c.marca, c.modelo, "fue lanzada en", c.lanzamiento)
+    }
+
+    func (c *Consola) encender() {
+        fmt.Println("Se ha encendido la", c.modelo)
+    }
+
+    type Portatil struct {
+        consola      Consola
+        alimentacion string
+    }
+
+    // se crean las funciones que manejará los métodos usando el interface:
+    func imprimirConsola(printer Printer) {
+        printer.imprimir()
+    }
+
+    func encenderConsola(printer Printer) {
+        printer.encender()
+    }
+
+    func main() {
+        playstation := Consola{marca: "Sony", modelo: "Playstation", lanzamiento: 1994}
+        // se utiliza el interface en lugar
+        imprimirConsola(&playstation)
+        encenderConsola(&playstation)
+    }
+
 
 Importar y exportar
 ###################
 
-include y require
-*****************
+Paquetes en GO
+**************
+GO reconoce cada carpeta como un paquete, de este modo en una aplicación básica existirá un archivo main.go referenciando al paquete main y el resto
+de archivos exportarán sus funciones automáticamente si estan son públicas, que en GO las funciones públicas comienzan en **Mayúscula**.
 
-* Importar archivos GO:
+- Paso 1: Crear nuevo directorio y dentro un archivo **main.go**
+- Paso 2: Crear archivo go.mod - Abrir terminal en la raiz del proyecto y ejectuar ``go mod init nombre_proyecto``
+- Paso 3: Crear un nuevo paquete **consolas** y dentro un archivo al que llamaremos **listar.go**:
 
 .. code-block:: GO 
     :linenos:
 
-    ...
+    package consolas // cada paquete lleva el nombre de su carpeta correspondiente
 
-Namespace
-*********
+    import "fmt"
 
-* Exportar (videojuegos.GO):
+    // las funciones solo serán públicas si las ponemos en mayúsculas:
+    func Listado() {
+        fmt.Println("NES, Gameboy, Megadrive, Saturn")
+    }
 
-    .. code-block:: GO 
-        :linenos:
+- Paso 4: Importar paquete y ejecutar función en **main.go**:
 
-        ...
-    
-    * Importar namespace (index.GO):
+.. code-block::
+    :linenos:
 
-    .. code-block:: GO 
-        :linenos:
+    package consolas // cada paquete lleva el nombre de su carpeta correspondiente
 
-        ...
+    import "fmt"
+
+    // las funciones solo serán públicas si las ponemos en mayúsculas:
+    func Listado() {
+        fmt.Println("NES, Gameboy, Megadrive, Saturn")
+    }
+
+- Paso 5: Para ejecutar todo el proyecto ir a raiz desde consola y ejecutar ``go run .``
+

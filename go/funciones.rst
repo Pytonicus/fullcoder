@@ -41,103 +41,98 @@ Destrucción
 
     ...
 
-Manipulación de Strings
-#######################
 
-Longitud de un String 
-*********************
+Manipulación de Arrays y Slices 
+###############################
 
-.. code-block:: GO
-    :linenos:
-
-    ...
-
-Conversión número a String 
-**************************
-
-.. code-block:: GO
-    :linenos:
-
-    ...
-
-Conversión String a Array
-*************************
-
-.. code-block:: GO
-    :linenos:
-
-    ...
-
-Reemplazar palabras
-*******************
-
-.. code-block:: GO
-    :linenos:
-
-    ...
-
-Primera letra mayúscula
-***********************
-
-.. code-block:: GO
-    :linenos:
-
-    ...
-
-Conversión a mayúsculas
-***********************
-
-.. code-block:: GO
-    :linenos:
-
-    ...
-
-Conversión a minúsculas
-***********************
-
-.. code-block:: GO
-    :linenos:
-
-    ...
-
-Manipulación de Números
-#######################
-
-Conversión Float a Integer
-**************************
+Recuperar longitud
+******************
 
 .. code-block:: GO
     :linenos:
 
     package main
 
-    import "fmt"
+    import (
+        "fmt"
+    )
 
-    func main(){
-        edad := 33.23
-        edadNum := int(edad)
+    func main() {
+        personas := []string{"Paco", "Pepe", "Adolfo", "Eugenia"}
 
-        fmt.Println(edadNum)
+        // mostrar cantidad de elementos:
+        fmt.Println(len(personas))
+
+        // mostrar tamaño total asignado para slice que será el mismo por defecto cuando asignamos al definir el slice:
+        fmt.Println(cap(personas))
     }
 
-Conversión String a Float
-*************************
+Manipulación de mapas
+#####################
+
+Crear un mapa
+*************
+
+.. code-block:: GO 
+    :linenos:
+
+    package main
+
+    import "fmt"
+
+    func main() {
+        // crear un mapa usando make:
+        consola := make(map[string]string)
+
+        // asignar valores:
+        consola["marca"] = "Nintendo"
+        consola["modelo"] = "3DS"
+
+        fmt.Println(consola)
+        fmt.Println("Tengo una", consola["marca"], consola["modelo"])
+    }
+
+Agregar elementos
+*****************
 
 .. code-block:: GO
     :linenos:
 
-    ...
+    package main
 
-Redondeo de decimales
-*********************
+    import (
+        "fmt"
+    )
 
-.. code-block:: GO
+    func main() {
+        personas := []string{"Paco", "Pepe", "Adolfo", "Eugenia"}
+
+        // agregar elementos:
+        personas = append(personas, "Laura")
+
+        fmt.Println(len(personas))
+
+        // Al añadir un elemento en el slice go asigna un tamaño extra siempre basado en múltiplos de 2 (1,2,4,8,16...):
+        fmt.Println(cap(personas))
+    }
+
+Crear slice
+***********
+
+.. code-block:: GO 
     :linenos:
 
-    ...
+    package main
 
-Manipulación de Arrays
-######################
+    import "fmt"
+
+    func main() {
+        // definir un slice usando make que recibe tres parámetros:
+        consolas := make([]string, 0, 3) // primero el tipo de dato, luego la longitud actual y por último la capacidad
+
+        // podemos imprimir el indice 3 que estará vacio:
+        fmt.Println("Longitud:", len(consolas), "Capacidad:", cap(consolas))
+    }
 
 Imprimir contenido
 ******************
@@ -153,20 +148,7 @@ Rango de números
 .. code-block:: GO
     :linenos:
 
-    package main
-
-    // importar la librería rand:
-    import (
-        "fmt"
-        "math/rand"
-    )
-
-    func main() {
-        // se establece el rango en la variable:
-        aleatorio := rand.Int()
-
-        fmt.Println("El número aleatorio es: ", aleatorio)
-    }
+    ...
 
 
 Recuperar valor máximo

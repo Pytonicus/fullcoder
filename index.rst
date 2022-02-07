@@ -48,6 +48,9 @@ Bienvenido a FullCoder, un sitio de Manual
    go/sintaxis
    go/funciones
    go/librerias
+   go/concurrencia
+   go/testing
+   go/web
 
 .. toctree::
    :maxdepth: 1
