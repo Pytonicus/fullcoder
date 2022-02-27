@@ -19,7 +19,7 @@ Codificación
 
 .. code-block:: php 
     :linenos:
-
+ 
     <?php
 
         define('METODO','AES-256-CBC'); //En esta constante guardamos el método de encriptación

@@ -17,7 +17,7 @@ Análisis de datos con diferentes tecnologías
 Anaconda 
 ########
 * Para instalar Anaconda primero instalamos las siguientes dependencias: 
-
+ 
     .. code::
 
         sudo apt install libgl1-mesa-glx libegl1-mesa
@@ -30,6 +30,26 @@ Anaconda
 * Cerramos la terminal para que se actualicen los cambios.
 * Ejecutamos en terminal: ``anaconda-navigator``
 * Abrimos Jupyter y podemos trabajar con un cuaderno nuevo.
+
+Jupyter
+#######
+
+JupyterLab 
+**********
+
+Si tan solo queremos Jupyter en nuestro equipo podemos instalarlo de la siguiente forma:
+
+- Instalar JupyterLab: ``pip install jupyterlab``
+- Ejecutar desde terminal: ``jupyter-lab``
+
+De este modo se abrirá Jupiter lab que contiene una serie de herramientas entre ellas Notebook.
+
+Solo Jupyter Notebook
+*********************
+Con esta instalación tendremos tan solo el notebook de jupyter:
+
+- Instalar Jupyter Notebook: ``pip install notebook``
+- Ejecutar Notebook: ``jupyter notebook``
 
 Pandas
 ######

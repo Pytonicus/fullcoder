@@ -18,7 +18,7 @@ Conexión SQLITE 3
 #################
  
 Pasos iniciales:
-
+ 
 * Primero tenemos que instalar sqlite3 en nuestro sistema: ``sudo apt install php7.4-sqlite3``
 * Luego localizamos el archivo **php.ini** que suele estar en **/etc/php/7.4/ y dentro de las carpetas **apache2** y **cli** encontraremos estos archivos.
 * Editamos y buscamos las líneas que ponen ``;extension=pdo_sqlite`` y ``;extension=sqlite`` si tienen un **;** lo quitamos para habilitarlas.

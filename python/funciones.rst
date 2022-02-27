@@ -16,7 +16,7 @@ Funciones básicas de Python 3.8
 
 Manipulación de variables
 #########################
-
+ 
 Averiguar tipo de dato
 **********************
  

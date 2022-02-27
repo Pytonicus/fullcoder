@@ -85,7 +85,7 @@ Ejecución con concurrencia
         // como ya no va a imprimir el mensaje se ejecuta del siguiente modo:
         canal <- servidor + " en ejecución"
     }
-
+ 
     func main() {
         // para leer los resultados se crea un canal:
         canal := make(chan string)

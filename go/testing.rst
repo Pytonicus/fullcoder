@@ -53,7 +53,5 @@ Los test unitarios se pueden realizar a los paquetes que se vayan creando en GO:
 - Paso 4: Ejecutar el test abriendo una terminal en la carpeta **calcular** con el comando ``go test``
 
 
-
-
 .. attention::
     Recuerda ejecutar **go mod init nombre_proyecto** antes de trabajar con paquetes

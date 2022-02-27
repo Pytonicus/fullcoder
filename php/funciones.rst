@@ -18,7 +18,7 @@ Información del servidor
 ########################
 
 En un archivo vacío se guarda la siguiente función:
-
+ 
 .. code-block:: php
     :linenos:
 

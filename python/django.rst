@@ -505,6 +505,7 @@ Los decoradores sirven para hacer modificaciones en las vistas, como por ejemplo
         form_class = PageForm 
         success_url = reverse_lazy('pages:pages')
 
+
 * Añadimos lo siguiente al final de settings.py para definir hacia donde irá para inciar sesión:
 
 .. code-block:: python
@@ -593,6 +594,10 @@ Una buena práctica para no repetir código en plantillas es coger todo el conte
     {% endblock %}
 
 Siguiendo este patrón podemos reutilizar el código base de la web en nuevas páginas o incluso nuevas apps de Django.
+
+.. note::
+    En relación a extends podemos cargar cualquier plantilla a modo de fragmento, por ejemplo para ordenar css inline, un sidebar u otros elementos dinámicos que
+    hagan falta en el día a día. El objetivo es reducir el número de lineas HTML aumentando la cantidad de plantillas identificables y reutilizables.
 
 Template tag url
 ++++++++++++++++
@@ -912,11 +917,10 @@ Generar modelo y migrar la base de datos
 
 Cuando creamos un modelo nuevo lo primero que tenemos que hacer es maquetar la estructura que vamos a migrar cada vez que generemos la base de datos:
 
-* Para crear el modelo de las tablas de una app ejecutamos ``python manage.py makemigrations nombre_de_tu_app``.
-* Si todo va bien, migramos la base de datos con ``python manage.py migrate nombre_de_tu_app``
+* Para crear el modelo de las tablas de una app ejecutamos ``python manage.py makemigrations``.
+* Si todo va bien, migramos la base de datos con ``python manage.py migrate``
+* Para comprobar el estado de las migraciones se ejecuta: ``python manage.py showmigrations``
 
-.. attention::
-    Antes de hacer una migración debemos generar todo el Scaffold para el sistema de login por primera vez ejecutando ``python manage.py migrate``
 
 ORM de Django y sus QuerySets
 #############################
@@ -932,6 +936,8 @@ Ahora vamos a conocer los distintos comandos para realizar QuerySets:
 * ``Prueba.objects.all()``: devuelve todos los registros de la tabla Prueba
 * ``Prueba.objects.create(titulo="Ejemplo", descripcion="esto es una entrada")``: Genera un nuevo registro en la tabla Prueba, ten en cuenta que esten todos los campos o sino que puedan estar en blanco (blank=True)
 * ``Prueba.objects.filter(titulo__contains = 'Ejemplo')``: Permite filtrar las tablas para devolver solo aquellos que contienen la palabra clave, si quitamos __contains solo obtendrá los que tengan exactamente y únicamente esa palabra.
+* ``Prueba.objects.filter(titulo__contains = 'Ejemplo').first()``: Añadiendo el metodo first trae solo el primer registro.
+* ``Prueba.objects.count()``: Devuelve el número total de registros que hay en la tabla.
 * ``Prueba.objects.order_by('fecha_creacion')``: Permite ordenar los registros de la tabla nuevamente cuando se cargan en la vista.
 * ``Prueba.objects.delete(titulo="Ejemplo")``: Elimina un valor según el campo que hayamos elegido para buscarlo
 
@@ -939,6 +945,10 @@ Para salir de la consola ORM escribimos ``exit()`` y pulsamos intro
 
 .. hint::
     Podemos encadenar algunos querysets por ejemplo recuperar todos los datos y ordenarlos por fecha: ``Prueba.objects.all().order_by('-fecha_creacion')``
+
+.. hint::
+    Para filtrar por campos de una tabla relacionada se usa doble guión bajo en la clave foranea: ``Videojuego.objects.filter(Consola__marca:'Sega')``
+
  
  
 Realizar QuerySets desde vista y pasarlos a template
@@ -1104,6 +1114,10 @@ Si queremos usar un formulario lo importamos a la vista del siguiente modo.
     <!-- por último podemos depurar lo que envía el formulario con el siguiente tag: -->
     {{request.POST}}
 
+.. note:: 
+    Si queremos utilizar los campos sueltos para un mayor control del front se llaman como atributos de un objeto: ``{{ formulario.nombre }}`` 
+    Esto carga el input, los label y cualquier otra propiedad relacionada con el campo.
+
 Validar un formulario 
 *********************
 
@@ -1139,6 +1153,248 @@ El formulario se valida una vez enviado a la vista antes de ser guardado o gesti
 
         # si no se ha recibido ninguna petición post se carga como tal:
         return render(request, 'nombre_de_tu_app/contacto.html', {'form': form})
+
+
+Usuarios en Django
+##################
+
+Django cuenta con modelos integrados para gestionar usuarios y permisos
+
+Users o usuarios
+****************
+
+Cargar librerías
+++++++++++++++++
+
+- Los metodos de usuarios se importan desde ``django.contrib.auth`` los metodos ``authenticate``, ``users``, ``login``, ``logout``
+- El modelo de usuarios se importa desde ``django.contrib.auth.models`` en donde se encuentran ``User`` y ``Group``
+- Los formularios de usuarios se importan desde ``django.contrib.auth.forms`` en donde se encuentran ``UserCreationForm`` y ``AuthenticationForm``
+
+
+Se pueden llamar desde las vistas o los templates con ``request.user`` para hacer validaciones o simplemente mostrarlo.
+
+También se pueden consultar en la bases de datos con el ORM:
+- ``User.objects.create_user(username, password, email)``: Permite crear un nuevo usuario.
+- ``User.objects.get(username).set_password('password')``: permite cambiar la contraseña. 
+
+Sistema de autenticación 
+++++++++++++++++++++++++
+- Preparando la ruta (urls.py):
+
+.. code-block:: python 
+    :linenos:
+
+    urlpatterns = [
+        path('admin/', admin.site.urls),
+        path('', views.panel, name='panel'),
+        path('register/', views.register, name='register'),
+        path('login/', views.start, name='login'),
+        path('logout/', views.close, name='logout'),
+    ]
+
+- Preparando la vista (views.py):
+
+.. code-block:: python
+    :linenos:
+
+    from django.shortcuts import render, redirect, HttpResponse
+    # importar los metodos del auth necesarios:
+    from django.contrib.auth import authenticate, login, logout
+    # se importa el formulario de autenticación:
+    from django.contrib.auth.forms import AuthenticationForm, UserCreationForm 
+
+
+    def panel(request):
+        # preparamos la respuesta que por defecto redirige a login: 
+        response = redirect('login')
+
+        # comprobamos que se ha iniciado sesión y cambiamos la respuesta de ser así:
+        if request.user.is_authenticated:
+            response = HttpResponse('<h1>Hola ' + request.user.username + '!</h1><a href="logout/">Cerrar sesión</a>')
+
+        return response
+
+
+    def register(request):
+        # cargamos el formulario de creación de usuarios:
+        form = UserCreationForm()
+        # cargamos la respuesta:
+        response = render(request, 'core/register.html', {'form': form})
+
+        # Se valida y se genera el nuevo usuario:
+        if request.method == "POST":
+            form = UserCreationForm(data=request.POST)
+
+            if form.is_valid():
+                user = form.save()
+                # Se puede aprovechar para hacer login automáticamente:
+                if user is not None:
+                    login(request, user)
+                    response = redirect('panel')
+
+        return response
+
+
+    def start(request):
+        # se carga el formulario de autenticación:
+        form = AuthenticationForm()
+        # preparamos la respuesta:
+        response = render(request, "core/login.html", {'form': form})
+
+        # si llega algo se intentará iniciar sesión:
+        if request.method == 'POST':
+            form = AuthenticationForm(data=request.POST)
+
+            if form.is_valid():
+                username = form.cleaned_data['username']
+                password = form.cleaned_data['password']
+
+                # se verifica que el usuario existe o no:
+                user = authenticate(username=username, password=password)
+
+                # si existe se inicia sesión:
+                if user:
+                    login(request, user)
+                    response = redirect('panel')
+
+        return response
+        
+
+    def close(request):
+        # realizar logout:
+        logout(request)
+        return redirect('panel')
+
+
+- Preparando plantilla para login (login.html):
+
+.. code-block:: html 
+    :linenos:
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+    </head>
+    <body>
+        <form method="POST">
+            {{ form.as_p }}
+            {% csrf_token %}
+            <button type="submit">Iniciar sesión</button>
+        </form>
+        <hr />
+        <a href="{% url 'register' %}">Crear usuario</a>
+    </body>
+    </html>
+
+- Preparamos plantilla para el registro (register.html):
+
+.. code-block:: html 
+    :linenos:
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+    </head>
+    <body>
+        <form method="POST">
+            {{ form.as_p }}
+            {% csrf_token %}
+            <button type="submit">Registrar usuario</button>
+        </form>
+        <hr />
+        <a href="{% url 'login' %}">Iniciar sesión</a>
+    </body>
+    </html>
+
+Cambiar usuario por email
++++++++++++++++++++++++++
+Se puede reemplazar el campo para iniciar sesión por otro valor como un DNI o también el Email:
+
+- Abstaer el formulario para usar email (forms.py):
+
+.. code-block:: python
+    :linenos:
+
+    from django import forms
+    # se importan los formularios de creación y autenticación para abstraer:
+    from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+    # se importa el modelo user:
+    from django.contrib.auth.models import User
+
+    # Extender un nuevo formulario a partir del original:
+    class CreationWithEmail(UserCreationForm):
+        # se recupera el campo username y se cambia su formato:
+        username = forms.EmailField(label='Correo electrónico')
+
+        class Meta:
+            model = User 
+            fields = ['username', 'password1', 'password2']
+
+
+    # hacemos lo mismo con authentication:
+    class AuthenticationEmail(AuthenticationForm):
+        username = forms.EmailField(label='Correo electrónico')
+
+        class Meta:
+            model = User 
+            fields = ['username', 'password1']
+
+- Implementar formularios en las vistas de login y register (views.py):
+
+.. code-block:: python 
+    :linenos:
+    
+    from django.shortcuts import render, redirect, HttpResponse
+    from django.contrib.auth import authenticate, login, logout
+    # se reemplazan los forms de auth por los recien creados:
+    from .forms import CreationWithEmail, AuthenticationEmail
+
+
+    def register(request):
+        # Reemplazamos el formulario:
+        form = CreationWithEmail()
+        response = render(request, 'core/register.html', {'form': form})
+
+        if request.method == "POST":
+            # Reemplazamos el formulario:
+            form = CreationWithEmail(data=request.POST)
+
+            if form.is_valid():
+                user = form.save()
+                
+                if user is not None:
+                    login(request, user)
+                    response = redirect('panel')
+
+        return response
+
+
+    def start(request):
+        # Reemplazamos el formulario:
+        form = AuthenticationEmail()
+        response = render(request, "core/login.html", {'form': form})
+
+        if request.method == 'POST':
+        # Reemplazamos el formulario:
+            form = AuthenticationEmail(data=request.POST)
+
+            if form.is_valid():
+                username = form.cleaned_data['username']
+                password = form.cleaned_data['password']
+
+                user = authenticate(username=username, password=password)
+
+                if user:
+                    login(request, user)
+                    response = redirect('panel')
+
+        return response
+
+Groups o grupos
+***************
+
+Los grupos se usan para agrupar permisos con determinados usuarios.
+
 
 Panel de administración
 #######################
@@ -1193,7 +1449,7 @@ tabla esta dentro de apartados. Podemos cambiar el título de estos apartados ac
         verbose_name = 'App de Prueba'
 
 * Para que esto funcione tenemos que exportar dicha configuración a settings.py:
-
+ 
 .. code-block:: python
     :linenos: 
 
@@ -1236,6 +1492,7 @@ editando el archivo admin.py:
 
     admin.site.register(Prueba, PruebaAdmin)
 
+
 Cambiar título al panel
 ***********************
 
@@ -1252,3 +1509,4 @@ Para cambiar el título que se muestra en el panel es tan sencillo como irnos a 
     
     # cambiar texto de la pestaña de navegación:
     admin.site.site_title = 'Mi sitio web dedicado a Django!!!'
+

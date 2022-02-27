@@ -16,7 +16,7 @@ Trabajando con bases de datos en Python
   
 Conexión SQLITE 3
 #################
-
+ 
 .. code-block:: python 
     :linenos:
  

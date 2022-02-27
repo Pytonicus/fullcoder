@@ -19,7 +19,7 @@ System.Collections
 
 ArrayList 
 *********
-
+ 
 Los arrayList son un tipo de array que puede contenter valores mixtos.
 
 .. code-block:: C#

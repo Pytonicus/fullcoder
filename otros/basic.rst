@@ -19,7 +19,7 @@ Funcionamiento del Commodore 64
 
 Teclas
 ******
-
+ 
 * **RETURN**: Su funcionamiento base es similar a la tecla Intro de un teclado actual, efectuando un salto de línea o ejecutando un comando.
 
 * **SHIFT**: Su funcionamiento base es similar a la tecla Mayúscula de un teclado actual, al mantenerla pulsada y presionar una tecla se dibuja el caracter izquierdo bajo las teclas,

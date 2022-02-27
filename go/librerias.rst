@@ -285,7 +285,7 @@ Librería (time):
 
 .. code-block:: GO
     :linenos:
-
+ 
     package main
 
     import (

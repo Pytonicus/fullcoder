@@ -11,7 +11,7 @@ Framework: Django Rest Framework
 
  
 Esta es la documentación que he recopilado para trabajar con Django, un framework basado en Python que sirve para desarrollar aplicaciones web.
-
+ 
 .. contents:: Índice 
  
 Primeros Pasos
@@ -201,3 +201,138 @@ Tenemos varios tipos de permisos para gestionar nusetra API. Para establecer per
             'rest_framework.permissions.IsAuthenticatedOrReadOnly',
         ],
     }
+
+Crear documentación automática
+******************************
+Es muy interesante crear un sistema de documentación automática en nuestra api rest.
+
+Para ello se hace lo siguiente:
+
+1. Instalar coreapi: ``pip install coreapi``
+2. Crear la ruta de la documentación en urls.py:
+
+.. code-block:: python
+    :linenos:
+
+    # se importa el modulo de documentación:
+    from rest_framework.documentation import include_docs_urls
+
+    urlpatterns = [
+        # se usa el modulo de documentación para cargar las rutas, podemos definir si es pública o privada con el tercer parámetro:
+        path('docs/', include_docs_urls(title='Nombre API', public=False)),
+
+3. Se añade a la constante **REST_FRAMEWORK** el siguiente valor en **settings.py**:
+
+.. code-block:: python 
+    :linenos:
+
+    REST_FRAMEWORK = {'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema' }
+
+
+Autenticación con JWT
+#####################
+
+1. Instalar jwt: ``pip install djangorestframework-simplejwt``
+2. Se añade a **INSTALLED_APPS** la aplicación simplejwt: ``'rest_framework_simplejwt'``
+3. Se añaden a la constante **REST_FRAMEWORK** los siguientes valores en **settings.py**:
+
+.. code-block:: python 
+    :linenos:
+
+    REST_FRAMEWORK = {
+        'DEFAULT_PERMISSION_CLASSES': [
+            'rest_framework.permissions.IsAuthenticated',
+        ],
+        'DEFAULT_AUTHENTICATION_CLASSES': ( # Este apartado define los metodos de autenticación
+            'rest_framework_simplejwt.authentication.JWTAuthentication', # este es el método jwt que vamos a usar
+            'rest_framework.authentication.SessionAuthentication', # este es el método por sesión 
+            'rest_framework.authentication.BasicAuthentication', # y este es el método básico de usuario y contraseña
+        ),
+        
+    }
+
+3. Toca añadir las rutas para obtener el token de autenticación en urls.py:
+
+.. code-block:: python 
+    :linenos:
+
+    # Se importan los metodos para obtener y refrescar el token:
+    from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
+
+    
+    urlpatterns = [
+        path('api/', include(router.urls)),
+        path('admin/', admin.site.urls),
+        path('docs/', include_docs_urls('API Fetlix', public=False)),
+        # Añadimos la ruta para obtener el token y para refrescarlo:
+        path('api/token', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+        path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh')
+    ]
+
+
+Establecer un tiempo de caducidad del token
+*******************************************
+
+
+
+Obtener un Token
+****************
+
+Para obtener un Token se hace lo siguiente:
+1. Abrir Postman o Insomnia (u otro cliente API).
+2. Ejecutar una petición **POST** a la ruta **http://127.0.0.1:8000/api/token** con usuario y contraseña:
+
+.. code-block:: json 
+    :linenos:
+
+    	{
+            "username":"misterg@gmail.com",
+            "password":"maizfrito"
+        }
+
+3. Esto nos devolverá un token por ejemplo:
+
+.. code-block:: json 
+    :linenos:
+
+    {
+        "refresh": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY0NjA1MzkxNCwiaWF0IjoxNjQ1OTY3NTE0LCJqdGkiOiJmOGVhOWUzNTdhMGU0ZWU4ODU0Y2NiNWE2NTdjOGY1ZiIsInVzZXJfaWQiOjN9.9DvZVyzfZcmB-v9P_mgETFighXz2KjChPc_EslH5X3M",
+        "access": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQ1OTY3ODE0LCJpYXQiOjE2NDU5Njc1MTQsImp0aSI6IjBhNmEyNWM2YjVlMDQ4ZjQ5MzQxYzM2MGNlODM2OTdiIiwidXNlcl9pZCI6M30.He7w5XxjCrgeWupFOnGdVH4EusJ5fRZMbY3zkyZetCI"
+    }
+
+4. Ahora este token "access" se utilizará para todas las operaciones contra la API que requieran autenticación.
+
+Haciendo una petición contra la API con JWT
+*******************************************
+Ejemplo de uso con Python.
+
+La petición se podría dividir en dos partes:
+
+1. Solicitud de token:
+
+.. code-block:: python 
+    :linenos:
+
+    import requests
+
+    headers = {
+        'Content-Type': 'application/json',
+        'Accept': '*/*',
+    }
+
+    data = '{"username":"misterg@gmail.com", "password":"sabotaje"}'
+
+    r = requests.post('http://127.0.0.1:8000/api/token', headers=headers, data=data)
+    print(r.status_code)
+    token = r.json()
+
+2. Petición de datos (listado de series):
+
+.. code-block:: python 
+    :linenos:
+
+    headers['Authorization'] = 'Bearer ' + token['access']
+
+    r = requests.get('http://127.0.0.1:8000/api/series/', headers=headers)
+    print(r.status_code)
+    print(r.content)

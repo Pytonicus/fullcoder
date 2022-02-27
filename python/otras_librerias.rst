@@ -16,7 +16,7 @@ Librerías de uso común en Python.
 
 Pillow: Tratamiento de imágenes
 ###############################
-  
+   
 * Instalación: ``pip3 install Pillow``
 
 .. code-block:: python

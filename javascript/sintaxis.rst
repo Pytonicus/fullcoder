@@ -21,7 +21,7 @@ Instalación
 ***********
 * Instalación: No se requiere, con un navegador compatible como Chrome o Firefox es suficiente.
 * Extensión de archivos: **.js**
-
+ 
 Comentarios
 ***********
 

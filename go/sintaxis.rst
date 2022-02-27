@@ -138,7 +138,7 @@ Comandos de GO:
 
 .. attention::
     Para poder importar paquetes externos con **go get** antes hay que ejecutar el comando **go mod init nombre_proyecto**
-
+ 
 Variables y tipos de datos
 ##########################
 

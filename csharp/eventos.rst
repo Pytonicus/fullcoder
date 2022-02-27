@@ -5,7 +5,7 @@ Eventos y Delegados
     :scale: 80%
     :alt: Logo C#
     :align: center
-
+ 
 .. |date| date:: 
 .. |time| date:: %H:%M
  

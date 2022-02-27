@@ -66,7 +66,7 @@ Recuperar longitud
         // mostrar tamaño total asignado para slice que será el mismo por defecto cuando asignamos al definir el slice:
         fmt.Println(cap(personas))
     }
-
+ 
 Manipulación de mapas
 #####################
 

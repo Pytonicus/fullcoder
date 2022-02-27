@@ -94,7 +94,7 @@ Creamos un objeto **sphere** y le añadimos el siguiente script:
     {
         public float velocidad = 2f; // establecemos la velocidad
         Rigidbody cuerpoRigido; // declaramos un objeto de tipo cuerpo rígido
-
+ 
         void Start()
         {
             // inicializamos el cuerpo rígido recuperando el componente de únity:

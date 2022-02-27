@@ -16,7 +16,7 @@ Variables superglobales para manejo y procesamiento de peticiones en PHP 7.4
 
 GET
 ###
-   
+    
 En el caso de recibir los siguientes parámetros: http://localhost:8000/?marca=Sega&modelo=Dreamcast&lanzamiento=1999
 
 * Su procesamiento sería:

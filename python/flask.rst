@@ -15,7 +15,7 @@ Documentación básica para trabajar con el Microframework Flask
  
 Configuraciones
 ###############  
- 
+  
 Creación del proyecto
 *********************
 

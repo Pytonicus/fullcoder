@@ -19,7 +19,7 @@ Configurar Visual Studio
 
 * Abrir el Visual Studio Installer
 * Añadir en carga de trabajos **Desarrollo de escritorio .NET**
-
+ 
 Crear un Proyecto
 *****************
 * Para crear un nuevo proyecto seleccionamos la opción **APlicacion de WPF (.NET Framework)** y le ponemos el nombre que queramos.

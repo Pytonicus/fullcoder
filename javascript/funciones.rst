@@ -39,7 +39,7 @@ Longitud de un String
     var consola = "La videoconsola PlayStation fue lanzada en 1995";
     // ajustamos la cantidad de decimales a mostrar:
     console.log(consola.length);
-
+ 
 Conversión número a String 
 **************************
 

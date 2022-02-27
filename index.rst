@@ -16,6 +16,7 @@ Bienvenido a FullCoder, un sitio de Manual
    php/database
    php/paquetes
    php/cifrado
+   php/laravel
 
 .. toctree:: 
    :maxdepth: 1
