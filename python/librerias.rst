@@ -230,6 +230,40 @@ Recuperar contenido de la petición formato JSON
     :linenos:
 
     print(r.json())
+
+Haciendo una petición contra API con JWT
+****************************************
+La petición se podría dividir en dos partes:
+
+1. Solicitud de token:
+
+.. code-block:: python 
+    :linenos:
+
+    import requests
+
+    headers = {
+        'Content-Type': 'application/json',
+        'Accept': '*/*',
+    }
+
+    data = '{"username":"misterg@gmail.com", "password":"sabotaje"}'
+
+    r = requests.post('http://127.0.0.1:8000/api/token', headers=headers, data=data)
+    print(r.status_code)
+    token = r.json()
+
+2. Petición de datos (listado de series):
+
+.. code-block:: python 
+    :linenos:
+
+    headers['Authorization'] = 'Bearer ' + token['access']
+
+    r = requests.get('http://127.0.0.1:8000/api/series/', headers=headers)
+    print(r.status_code)
+    print(r.content)
+    
  
 os: Manipulación del Sistema
 ############################
