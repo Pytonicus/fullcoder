@@ -68,6 +68,9 @@ Pasamos a configurar el proyecto:
 
 * Realizamos la migración de la base de datos ``python manage.py migrate``
 * Y creamos un superusuario ``python manage.py createsuperuser``
+  
+.. note::
+    Una forma cómoda de trabajar con aplicaciones mixtas es crear un directorio API dentro de la app y ahí un nuevo views.py y serializers.py 
 
 Serializadores
 ##############
@@ -135,6 +138,45 @@ para crear un ViewSet nos vamos a (API/views.py):
 
 Con esto ya tenemos listo el ViewSet.
 
+Custom Endpoints
+****************
+Los Custom endpoints se usan para realizar acciones como filtrado en listas o para actualizar algún tipo de dato específico evítando la creación de nuevos viewsets:
+
+
+* Ejemplo de uso añadiendo una opción para puntuar una serie:
+  
+.. code-block:: python 
+    :linenos:
+
+    class SerieViewSet(viewsets.ModelViewSet):
+        queryset = Serie.objects.all()
+        serializer_class = SerieSerializer
+        permission_classes = [SoloMeOrReadOnly]
+
+        def get_serializer_class(self):
+            serializer = self.serializer_class
+
+            if self.action == 'retrieve':
+                serializer = DetailSerieSerializer
+            # se añade la opción del nuevo serializador:
+            if self.action == 'set_score': # y se utiliza un nuevo serializador específico:
+                serializer = ScoreSerializer # se utiliza el serializador de Score que llama a su modelo
+
+            return serializer
+
+            # Con action vamos a crear un endpoint que establezca otra funcionalidad: 
+            @action(detail=True, method=['PUT'], url_path='set-score', permission_classes=[IsAdminUser]) # el detail si es True nos hará la acción sobre un elemento en lugar del listado.
+            # bajo este decorador se define la función (get o set) que recibirá además del request un valor entero para realizar la acción:
+            def set_score(self, request, serie_id: int):
+                data = {'serie': serie_id, 'user': request.user.pk, 'score': int(request.POST['score'])}
+                # se le pasa la información a la función que controla los serializadores:
+                serializer = self.get_serializer_class()(data=data)
+                # se valida y si todo va bien se guarda la información:
+                serializer.is_valid(raise_exception=True)
+                serializer.save()
+
+                return Response(status=status.HTTP_200_OK)
+
 Rutas de la API
 ###############
 
@@ -165,13 +207,79 @@ Ahora podemos ejecutar la API en ``http://localhost:8080/api/v1/`` y ver como po
 .. attention::
     Con el nivel actual de permisos cualquiera puede introducir valores en la API. Para cambiar eso tenemos que ir al apartado de **permisos**
 
-  
+Modelo relacional y como mostrarlo
+##################################
+
+En DRF se pueden mostrar las relaciones entre tablas en una vista final entre otras personalizaciones.
+
+Ejemplo de series y episodios:
+
+1. Los serializadores:
+
+.. code-block:: python 
+    :linenos:
+
+    from rest_framework import serializers
+    from .models import Serie, Episodio
+
+
+    class SerieSerializer(serializers.ModelSerializer):
+
+        class Meta:
+            model = Serie
+            fields = ('id', 'title', 'description')
+
+
+    class EpisodioSerializer(serializers.ModelSerializer):
+
+        class Meta:
+            model = Episodio 
+            fields = ('id', 'name')
+
+    # Para recuperar los episodios de una serie:
+    class DetailSerieSerializer(serializers.ModelSerializer):
+        # se crea el campo serializado para recuperar los episodios:
+        episodes = EpisodioSerializer(source='episodio_set', many=True)
+
+        class Meta:
+            # se añade el modelo serie y los campos de esta añadiendo el nuevo campo episodes:
+            model = Serie
+            fields = ('id', 'title', 'description', 'episodes')
+
+2. Ahora se modifica el comportamiento del Viewset que queremos:
+
+.. code-block:: python 
+    :linenos:
+
+    class SerieViewSet(viewsets.ModelViewSet):
+        queryset = Serie.objects.all()
+        serializer_class = SerieSerializer
+        permission_classes = [IsAuthenticatedOrReadOnly]
+
+        # Ahora hay que relacionar los dos serializadores de Series:
+        def get_serializer_class(self):
+            # Si estamos listando todas las series que devuelva el primer serializador:
+            serializer = self.serializer_class
+
+            # Si invocamos la vista detalle o 'retrieve' que devuelva la serie con sus episodios:
+            if self.action == 'retrieve':
+                serializer = DetailSerieSerializer
+
+            return serializer
+
+De este modo cuando se listan todas las series se muestran tal cual y cuando accedemos a una nos indica los episodios que contiene.
+
 Permisos 
 ########
 
 Tenemos varios tipos de permisos para gestionar nusetra API. Para establecer permisos creamos una lista al final de (prueba_api/settings.py):
 
-* Por defecto nuestra API estará disponible para lectura y escritura de cualquier extraño.
+* Por defecto nuestra API estará disponible para lectura y escritura ante cualquier extraño.
+
+Permisos Globales (settings.py)
+*******************************
+Se pueden establecer permisos globales en toda la aplicación editando settings.py:
+
 * Establecer permisos a solo lectura:
 
 .. code:: python 
@@ -202,8 +310,87 @@ Tenemos varios tipos de permisos para gestionar nusetra API. Para establecer per
         ],
     }
 
+Permisos individuales
+*********************
+
+En los ViewSets se pueden definir permisos para cada vista usando la variable **permission_classes**:
+
+.. code-block:: Python
+    :linenos:
+
+    from rest_framework import viewsets
+    from .serializers import SerieSerializer
+    # Se importan los permisos que vayamos a establecer como IsAuthenticatedOrReadOnly, IsAuthenticate, o IsAdminUser:
+    from rest_framework.permissions import IsAuthenticatedOrReadOnly
+    from series.models import Consola
+
+    class ConsolaViewSet(viewsets.ModelViewSet):
+        queryset = Consola.objects.all()
+        serializer_class = ConsolaSerializer
+        # Se establece el permiso para esta vista:
+        permission_classes = [IsAuthenticatedOrReadOnly]
+
+
+Permisos personalizados
+***********************
+Se puede crear un nuevo permiso y utilizarlo tanto como permiso global como para ViewSets individuales:
+
+* En la aplicación deseada se crea un archivo **permissions.py**:
+
+.. code-block:: python
+    :linenos:
+
+    # se creará un permiso para que acepte solo un usuario:
+    # se importa el permiso base:
+    from rest_framework.permissions import BasePermission
+
+    # se crea la clase del permiso:
+    class SoloMeOrReadOnly(BasePermission):
+
+        # tendrá una función que comprueba si soy yo el que inicia sesión o no:
+        def has_permission(self, request, view):
+            if request.method == 'GET':
+                return True 
+            else:
+                return bool(request.user.is_authenticated and request.user.username == 'guillermo')
+
+        
+        # Este segundo método se invoca para establecer los permisos en un objeto (un articulo o elemento simple):
+        def has_object_permission(self, request, view, obj):
+            if request.method == 'GET':
+                return True 
+            else:
+                return bool(request.user.is_authenticated and request.user.username == 'guillermo')
+
+* En el **ViewSet** se invoca y se aplica como un permiso cualquiera:
+
+.. code-block:: python 
+    :linenos:
+
+    # se importa el permiso creado:
+    from .permissions import SoloMeOrReadOnly
+
+    class ConsolaViewSet(viewsets.ModelViewSet):
+        queryset = Consola.objects.all()
+        serializer_class = ConsolaSerializer
+        # ahora se asigna como un permiso cualquiera:
+        permission_classes = [SoloMeOrReadOnly]
+
+        def get_serializer_class(self):
+            serializer = self.serializer_class
+
+            if self.action == 'retrieve':
+                serializer = DetailConsolaSerializer
+
+            return serializer
+
+.. note::
+    El método **has_object_permission** que se ocupa de los permisos de un elemento en la tabla no es obligatorio si vamos a tener los mismos permisos como en el ejemplo anterior.
+
+
 Crear documentación automática
-******************************
+##############################
+
 Es muy interesante crear un sistema de documentación automática en nuestra api rest.
 
 Para ello se hace lo siguiente:
@@ -268,12 +455,6 @@ Autenticación con JWT
         path('api/token', TokenObtainPairView.as_view(), name='token_obtain_pair'),
         path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh')
     ]
-
-
-Establecer un tiempo de caducidad del token
-*******************************************
-
-
 
 Obtener un Token
 ****************

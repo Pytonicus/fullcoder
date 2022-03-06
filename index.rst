@@ -34,6 +34,8 @@ Bienvenido a FullCoder, un sitio de Manual
    python/django
    python/flask
    python/drf
+   python/testing
+   python/despliegue
 
 .. toctree::
    :maxdepth: 1

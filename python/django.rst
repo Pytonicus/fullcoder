@@ -516,6 +516,96 @@ Los decoradores sirven para hacer modificaciones en las vistas, como por ejemplo
     LOGOUT_REDIRECT_URL = 'home'
 
 
+Middleware en Django  
+####################
+
+Los Middlewares se utilizan para controlar como se procesa la información, estos middlewares se ejecutan de forma global antes o despues de cada petición.
+Por defecto django cuenta con al menos cuatro middlewares: SecurityMiddleware, SessionMiddleware, CommonMiddleware y AuthenticationMiddleware.
+Los middlewares se declaran en **settings.py** en la constante **MIDDLEWARE**
+
+* SecurityMiddleware: Intenta garantizar la seguridad en la aplicación evitanto ataques XSS.
+* SessionMiddleware: Accede a la cookie de sesión y define donde se guardan las sesiones.
+* CommomMiddleware: Se encarga de normalizar las direcciones añadiendo www o / al final.
+* CsrfViewMiddleware: Sirve para garantizar que se cumple el CSRF_TOKEN.
+* AuthenticationMiddleware: Sirve para conseguir el usuario de la petición y añadirlo al request.
+* MessageMiddleware: Especialmente usado para mensajes flash, aunque ya se delegan sobre todo al Frontend.
+* XFrameOptionMiddleware: Evita errores de X-Content o Iframes y ataques click-jacking
+
+
+Crear Custom Middleware
+***********************
+
+1. Dentro de una App se crea un archivo **middleware.py** (cada app tiene su propio archivo o también se puede sacar en la raiz):
+2. Este sería el comportamiento base de un middleware:
+   
+.. code-block:: python 
+    :linenos:
+
+    # Se importa el modulo que llama a las peticiones:
+    from typing import Callable
+
+    # Se crea una clase para el middleware:
+    class NombreMiddleware:
+        # en el constructor recibirá la respuesta con Callable:
+        def __init__(self, get_response: Callable):
+            # guardamos en el atributo de clase la petición:
+            self.get_response = get_response
+
+
+        # se genera el metodo de llamada:
+        def __call__(self, request):
+            # guardamos la respuesta de la petición:
+            response = self.get_response(request)
+
+
+            return response 
+
+3. Activar middleware en **settings.py**:
+   
+.. code-block:: python 
+    :linenos:
+
+    MIDDLEWARE = [
+        'django.middleware.security.SecurityMiddleware',
+        'django.contrib.sessions.middleware.SessionMiddleware',
+        'django.middleware.common.CommonMiddleware',
+        'django.middleware.csrf.CsrfViewMiddleware',
+        'django.contrib.auth.middleware.AuthenticationMiddleware',
+        'django.contrib.messages.middleware.MessageMiddleware',
+        'django.middleware.clickjacking.XFrameOptionsMiddleware',
+        'core.middleware.NombreMiddleware' # añadir el nuevo middleware creado
+    ]
+
+4. Ahora se va a crear un custom middleware que filtre direcciones IP:
+
+.. code-block:: python 
+    :linenos:
+
+    # instalamos para el ejemplo django-ipware:
+    from ipware import get_client_ip
+    from django.http import HttpResponse
+
+    # se asigna el nombre del middleware:
+    class IpValidMiddleware:
+        def __init__(self, get_response):
+            self.get_response = get_response
+            # Creamos la lista negra de ips:
+            self.black_list = ['127.0.0.1']
+
+
+        def __call__(self, request):
+            response = self.get_response(request)
+
+            # recuperamos la ip de la request en dos variables (obligatorio aunque se use solo una):
+            ip, is_routable = get_client_ip(request)
+
+            # comprobamos si esta en lista negra y cambiamos la response en caso de que sea así:
+            if ip in self.black_list:
+                # tiramos de error 404:
+                response = HttpResponse('Bad request', status=404)
+
+            return response 
+
 Templates
 #########
 
@@ -774,6 +864,121 @@ Con el template tag if podemos establecer condiciones dentro de los templates, r
             </li> 
         {% endfor %} 
     </ul>
+
+Crear template tags customizados
+********************************
+Son muy útiles para cargar etiquetas con contenido específico que se pueda usar en plantillas.
+
+Como preparar el archivo de templatetags:
+1. Dentro de una app como **core** crear carpeta llamada **templatetags**.
+2. Dentro de **templatetags** se crea un archivo con una colección de tags **components.py**:
+
+
+Simple tag
+++++++++++
+
+Devuelve información pura como números, cadenas, listados, objetos, diccionarios.
+
+.. code-block:: python 
+    :linenos:
+
+    # se importa la librería template:
+    from django import template 
+
+    # se registra la librería:
+    register = template.Library()
+
+    # y se van creando cada una de las tags:
+    @register.simple_tag 
+    def get_title():
+        return 'bienvenidos a mi página'
+
+- Cogemos un template y lo aplicamos:
+
+.. code-block:: html 
+    :linenos:
+
+    <!-- Se carga el módulo con los template tags: -->
+    {% load components %}
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <!-- hay que crear una variable a partir del simple_tag: -->
+        {% get_title as title %}
+        <!-- Utilizar la variable: -->
+        <h1>{{ title }} </h1>
+        <form method="POST">
+            {{ form.as_p }}
+            {% csrf_token %}
+            <button type="submit">Iniciar sesión</button>
+        </form>
+        <hr />
+        <a href="{% url 'register' %}">Crear usuario</a>
+    </body>
+    </html>
+
+Filter tags
++++++++++++
+Los filter tags se utilizan para filtrar datos en otros tags, y pueden ser simples o compuestos:
+
+- Se reutiliza el archivo **components.py** (aunque se puede crear uno nuevo):
+
+.. code-block:: python 
+    :linenos:
+
+    # se puede registrar un filtro sencillo:
+    @register.filter
+    def upper(value):
+        return value.upper()
+
+    # o un filtro con hasta dos parámetros:
+    @register.filter 
+    def change_language(value, arg):
+        
+        if arg == 'english':
+            value = 'Welcome to my site'
+        if arg == 'français':
+            value = 'bienvenu à mon site'
+
+        return value
+
+- Estos filtros son utilizados en los templates así:
+
+.. code-block:: html 
+    :linenos:
+
+    {% load components %}
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        {% get_title as title %}
+        <!-- Utilizar un filtro simple: -->
+        <h1>{{ title|upper }} </h1>
+        <!-- Utilizar filtros compuestos: -->
+        <h2>{{ title|change_language:'english' }} </h2>
+        <h2>{{ title|change_language:'français' }} </h2>
+        <form method="POST">
+            {{ form.as_p }}
+            {% csrf_token %}
+            <button type="submit">Iniciar sesión</button>
+        </form>
+        <hr />
+        <a href="{% url 'register' %}">Crear usuario</a>
+    </body>
+    </html>
+    
 
 Modelos
 #######
@@ -1510,3 +1715,11 @@ Para cambiar el título que se muestra en el panel es tan sencillo como irnos a 
     # cambiar texto de la pestaña de navegación:
     admin.site.site_title = 'Mi sitio web dedicado a Django!!!'
 
+Enviar Emails
+#############
+
+libreria send_email() send_mass_email() en HTML también 
+
+...
+
+https://docs.djangoproject.com/en/4.0/topics/email/
