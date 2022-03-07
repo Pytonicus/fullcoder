@@ -1,4 +1,6 @@
 {
     "python.pythonPath": "C:\\Users\\Guillermo\\AppData\\Local\\Programs\\Python\\Python39\\python.exe",
-    "restructuredtext.confPath": "${workspaceFolder}"
+    "restructuredtext.confPath": "${workspaceFolder}",
+    "esbonio.sphinx.confDir": "/home/pytonicus/Documentos/proyectos_personales/fullcoder",
+    "esbonio.server.enabled": true
 }

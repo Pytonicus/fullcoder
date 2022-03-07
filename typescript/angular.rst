@@ -32,6 +32,10 @@ Para ejecutar un comando de Angular CLI el prefijo que se utiliza es ``ng``:
 * Levantar servidor y abrir navegador: ``ng serve -o`` (ruta por defecto: localhost:4200)
 * Levantar en otro puerto: ``ng serve -o --port 4500``
 * Crear un componente:  ``ng generate component nombre_componente``
+* Crear componente en linea: ``ng generate component comonente_linea -s -t``
+* Crear un pipe: ``ng generate pipe nombrePipe``
+* Crear un servicio: ``ng generate service nombreServicio``
+* Crear interface en angular: ``ng generate interface nombreInterface``
 
 Otros comandos útiles de npm
 ****************************
@@ -108,6 +112,12 @@ Esto mostrará el título del módulo y el subtítulo del componente menú de co
     Mover la carpeta de un componente de forma manual causará fallos en la aplicación ya que no coincidirán las 
     rutas.
 
+Crear componente en línea
+*************************
+
+Un componente en línea contiene en un solo archivo ts, la lógica, el código html y el código css:
+
+* Crear componente en linea: ``ng generate component comonente_linea -s -t``
 
 Data Binding
 ############
@@ -441,20 +451,1158 @@ ngOnInit() - Cargar método cuando se inicialice el componente
 
     }
 
+ngAfterContentChecked() - Ejecutar después de que se refresque un componente 
+****************************************************************************
+
+Este evento se dispará cuando angular refresca un componente permitiendo ejecutar métodos adicionales en el proceso.
+
+* caso de ejemplo con un marcador cuyos jugadores se deben ordenar por los que más han encanastado:
+
+.. code-block:: typescript 
+    :linenos:
+
+    import { Component, Input, OnInit } from '@angular/core';
+
+    @Component({
+        selector: 'app-top-score',
+        templateUrl: './top-score.component.html',
+        styleUrls: ['./top-score.component.css']
+    })
+    export class TopScoreComponent implements OnInit {
+
+        @Input() equipoLocal: any;
+        @Input() equipoVisitante: any;
+
+        jugadores: any = [];
+
+        constructor() { }
+
+        ngOnInit(): void {
+            this.jugadores = [...this.equipoLocal.jugadores, ...this.equipoVisitante.jugadores];
+        }
+
+        // hook para dispararse cada vez que haya cambios en los valores:
+        ngAfterContentChecked(){
+            this.sortJugadores();
+        }
+
+        sortJugadores() {
+            this.jugadores.sort( (a: any, b: any)=> {
+            return (b.puntos - a.puntos);
+            } );
+        }
+    }
 
 Pipes
 #####
 
+El pipe permite formatear valores que vienen del componente. 
+
+Pipes de texto 
+**************
+ 
+* Tenemos un atributo texto en el componente:
+
+.. code-block:: Typescript
+    :linenos:
+
+    import { Component, OnInit } from '@angular/core';
+
+    @Component({
+        selector: 'app-pipes-angular',
+        templateUrl: './pipes-angular.component.html',
+        styleUrls: ['./pipes-angular.component.css']
+    })
+    export class PipesAngularComponent implements OnInit {
+        // se crean un atributo con datos:
+        texto: string = 'La mejor consola es la Switch'
+
+        constructor() { }
+
+        ngOnInit(): void {
+        }
+
+    }
+
+* En el template vamos a ver los pipes:
+
+.. code-block:: html 
+    :linenos:
+
+    <div class="card">
+        <h1>Pipes de texto</h1>
+        <table border=1>
+            <tr>
+                <th>Nombre</th>
+                <th>Valor sin pipe</th>
+                <th>Valor con pipe</th>
+                <th>Descripción</th>
+            </tr>
+            <tr>
+                <td>Uppercase</td>
+                <td>{{ texto }}</td>
+                <td>{{ texto|uppercase }}</td>
+                <td>Todas las letras a mayúsculas</td>
+            </tr>
+            <tr>
+                <td>Lowercase</td>
+                <td>{{ texto }}</td>
+                <td>{{ texto|lowercase }}</td>
+                <td>Todas las letras a minúsculas</td>
+            </tr>
+            <tr>
+                <td>Titlecase</td>
+                <td>{{ texto }}</td>
+                <td>{{ texto|titlecase }}</td>
+                <td>todas las primeras letras a mayúsculas</td>
+            </tr>
+        </table>
+    </div>
+
+
+Pipes de formato y fecha
+************************
+
+* Tenemos los siguientes atributos:
+
+.. code-block:: Typescript
+    :linenos:
+
+    import { Component, OnInit } from '@angular/core';
+
+    @Component({
+        selector: 'app-pipes-angular',
+        templateUrl: './pipes-angular.component.html',
+        styleUrls: ['./pipes-angular.component.css']
+    })
+    export class PipesAngularComponent implements OnInit {
+        // se crea un atributo de tipo mixto:
+        id: any = 11;
+        // también creamos una fecha:
+        fecha: Date = new Date();
+
+        constructor() {
+            // ahora se combina con una nomenclatura:
+            this.id = '000' + this.id;
+        }
+
+        ngOnInit(): void {
+
+        }
+
+    }
+
+* Y estos son los pypes:
+
+.. code-block:: html 
+    :linenos:
+
+    <div class="card">
+        <h1>Pipes de formato y fecha</h1>
+        <table border=1>
+            <tr>
+                <th>Nombre</th>
+                <th>Valor sin pipe</th>
+                <th>Valor con pipe</th>
+                <th>Descripción</th>
+            </tr>
+            <tr>
+            <td>Slice</td>
+            <td>{{ id }}</td>
+            <td>{{ id|slice: -3 }}</td>
+            <td>Corta un número de caracteres</td>
+            </tr>
+            <tr>
+            <td>Date</td>
+            <td>{{ fecha }}</td>
+            <td>{{ fecha|date: 'dd/MM/yyyy hh:mm' }}</td>
+            <td>Formatea una fecha, también disponible opciones: "long", "medium", "short"</td>
+            </tr>
+        </table>
+    </div>
+
+
+Pipes núméricos
+***************
+
+* Estos son los atributos a modificar:
+
+.. code-block:: Typescript
+    :linenos:
+
+    import { Component, OnInit } from '@angular/core';
+
+    @Component({
+        selector: 'app-pipes-angular',
+        templateUrl: './pipes-angular.component.html',
+        styleUrls: ['./pipes-angular.component.css']
+    })
+    export class PipesAngularComponent implements OnInit {
+        // se crea un atributo numérico:
+        importe: number = 1927.327823;
+
+        constructor() {
+        }
+
+        ngOnInit(): void {
+
+        }
+
+    }
+
+* Veamos los pipes numéricos:
+
+.. code-block:: html 
+    :linenos:
+
+    <div class="card">
+        <h1>Pipes Numéricos</h1>
+        <table border=1>
+            <tr>
+                <th>Nombre</th>
+                <th>Valor sin pipe</th>
+                <th>Valor con pipe</th>
+                <th>Descripción</th>
+            </tr>
+            <tr>
+            <td>Decimal</td>
+            <td>{{ importe }}</td>
+            <td>{{ importe|number: "5.2-2" }}</td>
+            <td>Establece la cantidad de números mínimos de enteros y los decimales</td>
+            </tr>
+            <tr>
+            <td>Currency</td>
+            <td>{{ importe }}</td>
+            <td>{{ importe|currency: "€" }}</td>
+            <td>Trabaja con divisas, por defecto $ pero se puede cambiar por otro</td>
+            </tr>
+        </table>
+    </div>
+
+
+Crear un pipe 
+*************
+
+* Para crear un Pipe se utiliza el comando: ``ng generate pipe nombrePipe``
+* Generar un pipe en una carpeta: ``ng generate pipe pipes/nombrePipe
+* Editar el pipe:
+
+.. code-block:: typescript 
+    :linenos:
+
+    import { Pipe, PipeTransform } from '@angular/core';
+
+    @Pipe({
+        name: 'nombrePipe'
+    })
+
+    export class NombrePipePipe implements PipeTransform {
+        // el metodo transform recibe siempre el value y luego podemos definir el tipo de dato que retorna:
+        transform(value: number, decimales: number, moneda?: string): number | string { // se puede poner el parametro opcional ?
+            // vamos a hacer un redondeo:
+            const factor = Math.pow(10,decimales);
+
+            let valorRedondeado;
+            if(value >= 0){
+            valorRedondeado = Math.round(value * factor) / factor;
+            }else{
+            valorRedondeado = Math.round(-value * factor) / factor;
+            }
+            // formatear el valor numérico similar al nuestro:
+            let valorFormateado = new Intl.NumberFormat('de-DE', {minimumFractionDigits: decimales}).format(valorRedondeado);
+
+            return moneda ? valorFormateado + ' ' + moneda : valorFormateado;
+        }
+
+    }
+
+
+Ahora esto se utiliza en un número decimal del template ``{{ number|nombrePipe:2 }}`` o con una moneda ``{{ number|nombrePipe:2:'€' }}`` y lo redondeará a un entero.
+
+.. note::
+    Los args son opcionales, se puede utilizar el método transform solo con el parametro value.
+
+
+Directivas angular
+##################
+
+Las directivas sirven para controlar el comportamiento de la información desde el template. 
+
+.. attention::
+    cuando se utilizan números en las cadenas estos se escriben ``*ngSwitchCase="20"``, si son cadenas ``*ngSwitchCase="'hola'"`` y si son atributos ``*ngSwitchCase="atributo"``  
+
+Directivas de control
+*********************
+
+Condicional if (*ngIf) 
+++++++++++++++++++++++
+* Creamos un atributo edad en el componente:
+
+.. code-block:: typescript 
+    :linenos:
+
+    import { Component, OnInit } from '@angular/core';
+
+    @Component({
+        selector: 'app-directiva-if',
+        templateUrl: './directiva-if.component.html',
+        styleUrls: ['./directiva-if.component.css']
+    })
+    export class DirectivaIfComponent implements OnInit {
+        // ponemos una edad:
+        public edad: number;
+
+        constructor() {
+            // inicializamos la edad:
+            this.edad = 0;
+        }
+
+        ngOnInit(): void {
+        }
+
+    }
+
+* En el template veremos el *ngIf:
+
+.. code-block:: html 
+    :linenos: 
+
+    <div class="row">
+        <h1>ngIf</h1>
+        <input type="number" [(ngModel)]="edad">
+        <p>Tienes {{ edad }} años.</p>
+        <!-- Establecer if: -->
+        <p *ngIf="edad >=18; else menor">Eres mayor de edad</p>
+        <!-- para el else usamos un ng-tempalte: -->
+        <ng-template #menor>
+            <p>Eres menor de edad</p>
+        </ng-template>
+    </div>
+
+.. attetion::
+    Hay que añadir el módulo FormsModule en app.module.ts
+
+
+Condicional Switch (*ngSwitch)
+++++++++++++++++++++++++++++++
+
+* Tenemos una edad en el componente igual al ejemplo anterior.
+* En el template veremos *ngSwitch:
+
+.. code-block:: html 
+    :linenos:
+
+    <div class="row">
+        <h1>ngIf</h1>
+        <input type="number" [(ngModel)]="edad">
+        <p>Tienes {{ edad }} años.</p>
+        <!-- Establecer switch: -->
+        <div [ngSwitch]="edad">
+            <p *ngSwitchCase="18">Ya eres mayor de edad!</p>
+            <p *ngSwitchCase="65">Ya eres un anciano!</p>
+        </div>
+    </div>
+
+
+Condicional For (*ngFor)
+++++++++++++++++++++++++
+
+* Creamos una lista de elementos en el componente:
+
+.. code-block:: typescript 
+    :linenos:
+
+    import { Component, OnInit } from '@angular/core';
+
+    @Component({
+        selector: 'app-directiva-for',
+        templateUrl: './directiva-for.component.html',
+        styleUrls: ['./directiva-for.component.css']
+    })
+    export class DirectivaForComponent implements OnInit {
+        // crear colección:
+        consolas: Array<any>;
+
+        constructor() {
+            // harcodear datos:
+            this.consolas = [
+            {marca: 'Sony', modelo: 'Playstation', lanzamiento: 1995},
+            {marca: 'Sega', modelo: 'Dreamcast', lanzamiento: 1998},
+            {marca: 'Nintendo', modelo: 'Gameboy', lanzamiento: 1989},
+            {marca: 'Nintendo', modelo: 'Gamecube', lanzamiento: 2002},
+            {marca: 'Sony', modelo: 'Playstation 2', lanzamiento: 2001}
+            ]
+        }
+
+        ngOnInit(): void {
+        }
+
+    }
+
+* Cargar listado en el template:
+
+.. code-block: html 
+    :linenos:
+
+    <div class="card">
+        <h1>Listado de consolas con *ngFor</h1>
+
+        <table border=1>
+            <tr>
+                <th>ID</th>
+                <th>Consola</th>
+                <th>Marca</th>
+                <th>Lanzamiento</th>
+            </tr>
+            <!-- Se recorre el for, opcionalmente podemos cargar el índice tras el ; -->
+            <tr *ngFor="let consola of consolas; let i = index">
+                <td>{{ i + 1 }}</td>
+                <td>{{ consola.modelo }}</td>
+                <td>{{ consola.marca }}</td>
+                <td>{{ consola.lanzamiento }}</td>
+            </tr>
+        </table>
+    </div>
+
+.. note::
+    Una cosa interesante es que cuando se producen cambios en la información del componente esto se actualizan en la vista automáticamente sin hacer nada.
+
+Directivas de atributos 
+***********************
+
+Las directivas de atributos al igual que los atributos dinámicos [src], [value], etc... permiten asignar un valor que proviene del componente como el
+nombre de una clase o el valor de un estilo css.
+
+
+Implementar clase ngClass
++++++++++++++++++++++++++
+
+* Tenemos el listado de consolas en el componente:
+
+.. code-block:: typescript
+    :linenos:
+
+    import { Component, OnInit } from '@angular/core';
+
+    @Component({
+        selector: 'app-clases',
+        templateUrl: './clases.component.html',
+        styleUrls: ['./clases.component.css']
+    })
+    export class ClasesComponent implements OnInit {
+
+        consolas: Array<any>;
+
+        constructor() {
+            // harcodear datos:
+            this.consolas = [
+            {marca: 'Sony', modelo: 'Playstation', lanzamiento: 1995},
+            {marca: 'Sega', modelo: 'Dreamcast', lanzamiento: 1998},
+            {marca: 'Nintendo', modelo: 'Gameboy', lanzamiento: 1989},
+            {marca: 'Nintendo', modelo: 'Gamecube', lanzamiento: 2002},
+            {marca: 'Sony', modelo: 'Playstation 2', lanzamiento: 2001}
+            ]
+        }
+
+        ngOnInit(): void {
+        }
+
+    }
+
+* En el css se crean unas clases con los nombres de las marcas:
+
+.. code-block:: css 
+    :linenos:
+
+    .Sony{
+        color: gray;
+    }
+
+    .Sega{
+        color: blue;
+    }
+
+    .Nintendo{
+        color: red;
+    }
+
+* Ahora en el template se implementan las clases según su marca:
+
+.. code-block:: html 
+    :linenos:
+
+    <div class="card">
+
+    <table border=1>
+        <tr>
+            <th>ID</th>
+            <th>Consola</th>
+            <th>Marca</th>
+            <th>Lanzamiento</th>
+        </tr>
+        <tr *ngFor="let consola of consolas; let i = index">
+            <!-- ngClass recibe un atributo que compara con el nombre de una clase css -->
+            <td [ngClass]="consola.marca">{{ i + 1 }}</td>
+            <td [ngClass]="consola.marca">{{ consola.modelo }}</td>
+            <td [ngClass]="consola.marca">{{ consola.marca }}</td>
+            <td [ngClass]="consola.marca">{{ consola.lanzamiento }}</td>
+        </tr>
+    </table>
+    </div>
 
 
 
-Módulos
-#######
+Implementar estilo ngStyle
+++++++++++++++++++++++++++
+
+* En primer lugar añadimos un atributo edad y un método que defina los colores:
+
+.. code-block:: typescript
+    :linenos:
+
+    import { Component, OnInit } from '@angular/core';
+
+    @Component({
+        selector: 'app-clases',
+        templateUrl: './clases.component.html',
+        styleUrls: ['./clases.component.css']
+    })
+    export class ClasesComponent implements OnInit {
+
+        edad: number;
+
+        constructor() {
+            this.edad = 0;
+        }
+
+        ngOnInit(): void {
+        }
+
+        // vamos a crear un método para recuperar el color:
+        getColor(){
+            if(this.edad < 18){
+            return "red";
+            }else if(this.edad >= 18){
+            return "green";
+            }else{
+            return "blue";
+            }
+        }
+
+    }
+
+* En el template se implementa la directiva:
+
+.. code-block:: html
+    :linenos:
+
+    <div class="row">
+        <input type="number" [(ngModel)]="edad">
+        <p>Tienes {{ edad }} años.</p>
+        <!-- Establecer switch: -->
+        <p *ngIf="edad >=18; else menor" [ngStyle]="{'color': getColor()}">Eres mayor de edad</p>
+        <!-- para el else usamos un ng-tempalte: -->
+        <ng-template #menor>
+            <p [ngStyle]="{'color': getColor()}">Eres menor de edad</p>
+        </ng-template>
+    </div>
 
 
-Interfaces en Angular 
+Jerarquía de componentes 
+########################
+
+Enviar valores de padre a hijo 
+******************************
+
+* El componente padre tiene un valor:
+
+.. code-block:: typescript 
+    :linenos:
+
+    import { Component, OnInit } from '@angular/core';
+
+    @Component({
+        selector: 'app-padre',
+        templateUrl: './padre.component.html',
+        styleUrls: ['./padre.component.css']
+    })
+    export class PadreComponent implements OnInit {
+        // tenemos un valor en el padre:
+        numeroPadre : number;
+
+        constructor() {
+            // al que se le asigna un número:
+            this.numeroPadre = 30;
+
+        }
+
+        ngOnInit(): void {
+        }
+
+    }
+
+* El padre envía a través del selector del hijo el atributo numeroPadre:
+
+.. code-blocK:: html 
+    :linenos:
+
+    <div class="card">
+        <h2>Componente padre</h2>
+        <p>Valor número padre: {{ numeroPadre }}</p>
+        <app-hijo [numeroHijo]="numeroPadre"></app-hijo>
+    </div>
+
+* El hijo se prepara en el componente para recibir valores del padre:
+
+.. code-block:: typescript 
+    :linenos:
+
+    // se importa input:
+    import { Component, OnInit, Input } from '@angular/core';
+
+    @Component({
+        selector: 'app-hijo',
+        templateUrl: './hijo.component.html',
+        styleUrls: ['./hijo.component.css']
+    })
+    export class HijoComponent implements OnInit {
+        // con el decorador Input se prepara el atributo para recibir los datos:
+        @Input() numeroHijo : number = 0;
+
+        constructor() { }
+
+        ngOnInit(): void {
+        }
+
+    }
+
+* Ahora se puede utilizar el atributo numeroHijo con los datos del padre:
+
+.. code-block:: html 
+    :linenos:
+
+    <div class="card">
+        <h3>Componente hijo</h3>
+        <p>Valor número hijo: {{ numeroHijo }}</p>
+    </div>
+
+
+Enviar valores de hijo a padre 
+******************************
+
+* El procedimiento es similar, esta vez comenzamos por el componente hijo:
+
+.. code-block:: typescript 
+    :linenos:
+
+    // se importa output y también el emisor de eventos:
+    import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+
+    @Component({
+        selector: 'app-hijo',
+        templateUrl: './hijo.component.html',
+        styleUrls: ['./hijo.component.css']
+    })
+    export class HijoComponent implements OnInit {
+        // con el decorador Output se crea un nuevo objeto de tipo emisor:
+        @Output() valor : EventEmitter<any> = new EventEmitter();
+
+        constructor() { }
+
+        ngOnInit(): void {
+        }
+
+        // preparamos un método para disparar el evento:
+        handleChangeValor(){
+            this.valor.emit({numeroHijo: 50})
+        }
+
+    }
+
+* Añadimos un botón en el hijo que ejecutará el método emisor:
+
+.. code-block:: html
+    :linenos:
+
+    <div class="card">
+        <h3>Componente hijo</h3>
+        <button (click)="handleChangeValor()">Cargar valor en el padre</button>
+    </div>
+
+* El padre deberá tener un método para recibir el evento emitido y actualizar el atributo numérico:
+
+.. code-block:: typescript 
+    :linenos:
+
+    import { Component, OnInit } from '@angular/core';
+
+    @Component({
+        selector: 'app-padre',
+        templateUrl: './padre.component.html',
+        styleUrls: ['./padre.component.css']
+    })
+    export class PadreComponent implements OnInit {
+        numeroPadre : number;
+
+        constructor() {
+            this.numeroPadre = 0;
+
+        }
+
+        ngOnInit(): void {
+        }
+
+        // recibimos el valor y lo asignamos al numeroPadre:
+        getValor($event: any): void{
+            this.numeroPadre = $event.numeroHijo;
+        }
+
+    }
+
+* La plantilla solo tendrá que mostrar el número por defecto que cambiará al pulsar el botón:
+
+.. code-block:: html 
+    :linenos:
+
+    <div class="card">
+        <h2>Componente padre</h2>
+        <p>Valor recibido: {{ numeroPadre }}</p>
+        <!-- Ahora se recibe el valor en un método del padre que recibirá el evento: -->
+        <app-hijo (valor)="getValor($event)"></app-hijo>
+    </div>
+
+
+Servicios en Angular 
+####################
+
+* Crear un servicio: ``ng generate service nombreServicio``
+* Crear un servicio en un directorio: ``ng generate service services/nombreServicio``:
+
+.. code-block:: typescrypt
+    :linenos:
+
+    import { Injectable } from '@angular/core';
+
+    @Injectable({
+        providedIn: 'root' // esto indica que el servicio estará disponible en toda la aplicación
+    })
+    export class ConsolasService {
+        // se crean los atributos como privados:
+        private consolas: any = [
+            {marca: 'Sony', modelo: 'Playstation', lanzamiento: 1995},
+            {marca: 'Sega', modelo: 'Dreamcast', lanzamiento: 1998},
+            {marca: 'Nintendo', modelo: 'Gameboy', lanzamiento: 1989},
+            {marca: 'Nintendo', modelo: 'Gamecube', lanzamiento: 2002},
+            {marca: 'Sony', modelo: 'Playstation 2', lanzamiento: 2001}
+        ]
+
+        constructor() { }
+
+        // se generan los métodos para obtener el listado:
+        getConsolas(): any {
+            return this.consolas;
+        }
+    }
+
+* Implementamos el servicio en un componente:
+
+.. code-block:: typescript 
+    :linenos:
+
+    import { Component, OnInit } from '@angular/core';
+    // se importa el servicio:
+    import { ConsolasService } from 'src/app/services/consolas.service';
+
+    @Component({
+        selector: 'app-directiva-for',
+        templateUrl: './directiva-for.component.html',
+        styleUrls: ['./directiva-for.component.css']
+    })
+    export class DirectivaForComponent implements OnInit {
+        // crear colección:
+        consolas: Array<any> = [];
+
+        // se instancia por parámetros el servicio:
+        constructor(private consolasService: ConsolasService) {
+
+        }
+
+        ngOnInit(): void {
+            // cuando haya cargado la página y obtenido los clientes se carga en el Init:
+            this.consolas = this.consolasService.getConsolas();
+        }
+
+    }
+
+* Ya se puede usar el servicio en el template:
+
+.. code-block:: html 
+    :linenos:
+
+    <div class="card">
+        <h1>Listado de consolas con *ngFor</h1>
+
+        <table border=1>
+            <tr>
+            <th>ID</th>
+            <th>Consola</th>
+            <th>Marca</th>
+            <th>Lanzamiento</th>
+            </tr>
+            <tr *ngFor="let consola of consolas; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>{{ consola.modelo }}</td>
+            <td>{{ consola.marca }}</td>
+            <td>{{ consola.lanzamiento }}</td>
+            </tr>
+        </table>
+    </div>
+
+
+Cargar datos en servicio
+************************
+
+Para enviar información al servicio hacemos lo siguiente:
+
+* Ahora se modifica el servicio para añadir un set:
+
+.. code-block:: typescript 
+    :linenos:
+
+    import { Injectable } from '@angular/core';
+
+    @Injectable({
+        providedIn: 'root'
+    })
+    export class ConsolasService {
+        private consolas: any = [
+            {marca: 'Sony', modelo: 'Playstation', lanzamiento: 1995},
+            {marca: 'Sega', modelo: 'Dreamcast', lanzamiento: 1998},
+            {marca: 'Nintendo', modelo: 'Gameboy', lanzamiento: 1989},
+            {marca: 'Nintendo', modelo: 'Gamecube', lanzamiento: 2002},
+            {marca: 'Sony', modelo: 'Playstation 2', lanzamiento: 2001}
+        ]
+
+        constructor() { }
+
+        getConsolas(): any {
+            return this.consolas;
+        }
+
+        // crear un set que añadirá el nuevo elemento en la lista:
+        setConsola(consola: any): void {
+            this.consolas.push(consola);
+        }
+    }
+
+* Crear un componente por ejemplo **crearConsola** y editar su componente:
+
+.. code-block:: typescript 
+    :linenos:
+
+    import { Component, OnInit } from '@angular/core';
+    // se importa el servicio:
+    import { ConsolasService } from 'src/app/services/consolas.service';
+
+    @Component({
+        selector: 'app-crear-consola',
+        templateUrl: './crear-consola.component.html',
+        styleUrls: ['./crear-consola.component.css']
+    })
+    export class CrearConsolaComponent implements OnInit {
+        // se prepara el objeto para añadir una consola:
+        consola: any = {
+            marca: '',
+            modelo: '',
+            lanzamiento: ''
+        }
+        // se carga el servicio en el constructor:
+        constructor(private consolasService: ConsolasService) { }
+
+        ngOnInit(): void {
+        }
+
+        // preparamos un método para añadir consola:
+        crearConsola(): void{
+            this.consolasService.setConsola(this.consola);
+        }
+
+    }
+
+
+* En su template tendrá un formulario:
+
+.. code-blocK:: html 
+    :linenos:
+
+    <div class="card">
+        <label>Marca</label>
+        <input type="text" name="marca" [(ngModel)]="consola.marca">
+        <label>Modelo</label>
+        <input type="text" name="modelo" [(ngModel)]="consola.modelo">
+        <label>Lanzamiento</label>
+        <input type="number" name="lanzamiento" [(ngModel)]="consola.lanzamiento">
+        <button (click)="crearConsola()">Añadir</button>
+    </div>
+
+.. attention::
+    Recuerda que hay que añadir FormsModule en el módulo principal app.
+
+
+Interfaces Angular 
+##################
+
+* Crear interface en angular: ``ng generate interface nombreInterface``
+* Crear en una carpeta específica: ``ng generate interface interfaces/nombreInterface``
+
+.. code-block:: typescript  
+    :linenos:
+
+    export interface Consola {
+        marca: string,
+        modelo: string,
+        lanzamiento: number
+    }
+
+Ahora para establecerlo como un tipo de propiedad lo asignamos al atributo:
+
+.. code-block:: typescript 
+    :linenos:
+
+    import { Component, OnInit } from '@angular/core';
+    // se importa la interfaz consolas:
+    import { Consolas } from 'src/app/interfaces/consolas';
+    import { ConsolasService } from 'src/app/services/consolas.service';
+
+    @Component({
+        selector: 'app-crear-consola',
+        templateUrl: './crear-consola.component.html',
+        styleUrls: ['./crear-consola.component.css']
+    })
+    export class CrearConsolaComponent implements OnInit {
+        // se prepara el objeto para añadir una consola:
+        consola: Consolas = {
+            marca: '',
+            modelo: '',
+            lanzamiento: 0
+        }
+        constructor(private consolasService: ConsolasService) { }
+
+        ngOnInit(): void {
+        }
+
+        crearConsola(): void{
+            this.consolasService.setConsola(this.consola);
+        }
+
+    }
+
+Esta interfaz se puede aplicar en donde se necesite ya sea controladores o servicios.
+
+.. note::
+    Si tenemos que definir un listado de objetos podemos declararlo usando el nombre de la intefaz: ``consolas: Array<NombreInterface> = [];``
+
+
+Rutas en angular
+################
+
+Si hemos añadido **angular routing** para crear nuestro proyecto podemos usar las rutas de angular de forma sencilla.
+
+
+* Se crean dos componentes nuevo para páginas: ``ng generate component pages/index`` y ``ng generate component pages/about``
+* Al iniciar le proyecto se crea un archivo en **apps** llamado **app-routing.module.ts** que vamos a editar:
+
+.. code-block:: typescript 
+    :linenos:
+
+    import { NgModule } from '@angular/core';
+    import { RouterModule, Routes } from '@angular/router';
+    // importamos los componentes:
+    import { AboutComponent } from './pages/about/about.component';
+    import { IndexComponent } from './pages/index/index.component';
+
+    // Aquí se van añadiendo las rutas:
+    const routes: Routes = [
+        {path: '', component: IndexComponent}, // añadimos la ruta raiz
+        {path: 'about', component: AboutComponent} // y las rutas que tengamos según componentes
+    ];
+
+    @NgModule({
+        imports: [RouterModule.forRoot(routes)],
+        exports: [RouterModule]
+    })
+    export class AppRoutingModule { }
+
+Ahora se añade el enrutador al template de **app.component.html**:
+
+.. code-block:: html 
+    :linenos:
+
+    <!-- Aquí añadimos la ruta: -->
+    <router-outlet></router-outlet>
+
+Enlaces de rutas
+****************
+
+Para crear enlaces en las rutas hacemos lo siguiente en un template como **app.component.html**:
+
+.. code-block:: html 
+    :linenos:
+
+    <div class="navbar">
+        <h2>Rutas</h2>
+        <!-- Para el enrutamiento se usa routerLink y para indicar que clase css usar cuando esta activo routerLinkActive -->
+        <button routerLink="/" routerLinkActive="seleccionado" [routerLinkActiveOptions]="{exact: true}">Inicio</button><!-- para que la raiz no se quede marcada hay que pasar este tercer parámetro -->
+        <button routerLink="about" routerLinkActive="seleccionado">About</button>
+    </div>
+
+    <router-outlet></router-outlet>
+
+
+.. note::
+    Lo ideal es crear un nuevo componente para un navbar
+
+
+Rutas no existente
+******************
+
+Para solucionar las rutas inexistentes se crea un componente 404: ``ng generate component pages/error``
+* Se añade al enrutador:
+
+.. code-block:: typescript 
+    :linenos:
+
+    import { NgModule } from '@angular/core';
+    import { RouterModule, Routes } from '@angular/router';
+    import { AboutComponent } from './pages/about/about.component';
+    import { ErrorComponent } from './pages/error/error.component';
+    // se importa el componente:
+    import { IndexComponent } from './pages/index/index.component';
+
+    const routes: Routes = [
+        {path: '', component: IndexComponent},
+        {path: 'about', component: AboutComponent},
+        {path: '**', component:ErrorComponent} // va añadido siempre al final esta ruta
+    ];
+
+    @NgModule({
+        imports: [RouterModule.forRoot(routes)],
+        exports: [RouterModule]
+    })
+    export class AppRoutingModule { }
+
+Ahora quedaría retocar la plantilla de la página para que muestre un error 404 personalizado.
+
+
+Formularios Reactivos 
 #####################
 
+Vamos a trabajar con **ReactiveFormsModule** para implementar validaciones más potentes y otras características.
 
-Servicios
-#########
+* Lo primero será cargar la librería **ReactiveFormsModule** en **app.module.ts**:
+
+.. code-block:: typescript 
+    :linenos:
+
+    import { NgModule } from '@angular/core';
+    import { BrowserModule } from '@angular/platform-browser';
+
+    import { AppRoutingModule } from './app-routing.module';
+    import { AppComponent } from './app.component';
+    import { AboutComponent } from './pages/about/about.component';
+    import { IndexComponent } from './pages/index/index.component';
+    import { ErrorComponent } from './pages/error/error.component';
+    import { CrearConsolaComponent } from './componets/crear-consola/crear-consola.component';
+    // se importa la librería ReactiveFormsModule
+    import { ReactiveFormsModule } from '@angular/forms';
+
+    @NgModule({
+        declarations: [
+            AppComponent,
+            AboutComponent,
+            IndexComponent,
+            ErrorComponent,
+            CrearConsolaComponent
+        ],
+        imports: [
+            BrowserModule,
+            AppRoutingModule,
+            ReactiveFormsModule // y se declara para usar en el modulo app
+        ],
+        providers: [],
+        bootstrap: [AppComponent]
+    })
+    export class AppModule { }
+
+* Ahora se trabaja el componente:
+
+.. code-block:: typescript 
+    :linenos:
+
+    import { Component, OnInit } from '@angular/core';
+    // se importa formgroup, formcontrol y validators:
+    import { FormControl, FormGroup, Validators } from '@angular/forms';
+
+    @Component({
+        selector: 'app-crear-consola',
+        templateUrl: './crear-consola.component.html',
+        styleUrls: ['./crear-consola.component.css']
+    })
+    export class CrearConsolaComponent implements OnInit {
+        // creamos el atributo que manejara el form con el tipo FormGroup:
+        public consolaForm: FormGroup;
+
+        constructor() {
+            // se implementa el formulario con sus campos:
+            this.consolaForm = new FormGroup({ // también se aplicarán los validadores:
+            marca: new FormControl('', [Validators.required]),
+            modelo: new FormControl('', [Validators.required]),
+            lanzamiento: new FormControl(0, [Validators.required])
+            });
+        }
+
+        ngOnInit(): void {
+
+        }
+
+        enviarConsola(): void{
+            console.log('se dispara');
+            console.log(this.consolaForm.value);
+        }
+
+    }
+
+* Ahora pasamos al template a crear el formulario:
+
+.. code-block:: html 
+    :linenos:
+
+    <div class="card">
+    <!-- se carga la directiva formgroup con el atributo a una función que guardará la información:-->
+    <form [formGroup]="consolaForm" (ngSubmit)="enviarConsola()">
+        <label>Marca</label>
+        <input type="text" formControlName="marca">
+        <div *ngIf="consolaForm.controls['marca'].invalid">El campo es requerido</div>
+        <label>Modelo</label>
+        <input type="text" formControlName="modelo">
+        <div *ngIf="consolaForm.controls['modelo'].invalid">El campo es requerido</div>
+        <label>Lanzamiento</label>
+        <input type="number" formControlName="lanzamiento">
+        <div *ngIf="consolaForm.controls['lanzamiento'].invalid">El campo es requerido</div>
+    <!-- Validar todo el formulario antes de poder activar el botón: -->
+    <button [disabled]="consolaForm.invalid" type="submit">Enviar</button>
+    </form>
+    <!-- Para depurar el formulario cargamos con pre los elementos: -->
+    <pre>{{ consolaForm.value | json }}</pre>
+    </div>
+
+
+
+Tipos de validaciones comunes:
+
+- pristine: limpio, nada escrito.
+- dirty: se ha escrito.
+- touched: ha sido seleccionado.
+- untouched: no esta seleccionado.
+- valid: es válido.
+- invalid: no es válido.
