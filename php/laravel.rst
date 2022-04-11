@@ -975,3 +975,8 @@ Actualizar registros
 
         <input type="submit" value="registrar" />
     </form>
+
+
+Sistema de usuarios Laravel
+###########################
+

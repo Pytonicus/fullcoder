@@ -49,6 +49,10 @@ El archivo principal básico:
 * Arrancar el servidor: ``python main.py``
 * Abrir en navegador: http://localhost:5000
 
+.. note::
+    Al tener habilitado el flag debug en la función run nos dará un pin al arrancar el servidor,
+    dicho pin se usará para abrir el depurador en el navegador cuando tengamos algún error de manera que 
+    se pulsará sobre el icono de la consola en cualquier línea y se introduce el pin.
 
 Rutas
 #####
@@ -136,6 +140,10 @@ Es posible estipular uno o varios métodos permitidos en una ruta:
 
     if __name__ == "__main__":
         app.run(host='localhost', debug=True)
+
+.. note::
+    aunque en este ejemplo se usa GET para validar el metodo de entrada, es más común y más cómodo validar el método POST, 
+    ya que este último podría presentar más iteracciones en el código que el método GET.
 
 Redirecciones
 *************
@@ -606,3 +614,246 @@ De este modo se gestionaría la subida de un archivo desde un formulario:
 
     if __name__ == "__main__":
         app.run(host='localhost', debug=True)
+
+
+Bases de datos con SqlAlchemy
+#############################
+
+Instalar librería 
+*****************
+
+* Para usar esta librería se instala: ``pip install Flask-Sqlalchemy``
+
+Crear paquete del proyecto 
+**************************
+
+Se crea un paquete llamado **application** y dentro un archivo **__init__.py** para inicializarlo, se mueve aquí el archivo principal de la aplicación.
+
+
+Configurar base de datos 
+************************
+
+En el paquete **application** del proyecto se crea un archivo config.py:
+
+.. code-block:: python 
+    :linenos:
+
+    import os    
+
+    secret_key = 'CAB7D2CD6CCDC28113C9A3189DEE647BD945B0903EFEC1E160F2ADB5203CE649'
+    PWD = os.path.abspath(os.curdir)    
+
+    DEBUG = True # Modo depuración lo pasamos aquí
+    # Vinculamos el conector a la base de datos, en este caso sqlite:
+    SQLALCHEMY_DATABASE_URI = 'sqlite:///{}/dbase.db'.format(PWD)
+    SQLALCHEMY_TRACK_MODIFICATIONS = False # por rendimiento definimos el track en false
+
+ahora editamos el archivo principal para añadir los cambios:
+
+.. code-block:: python 
+    :linenos:
+
+    from flask import Flask
+    # Se carga el sqlalchemy también aqui:
+    from flask_sqlalchemy import SQLAlchemy
+    # se carga el archivo de configuración:
+    from application import config    
+
+    app = Flask(__name__)
+
+    # se añade una linea para cargar el archivo config en app:
+    app.config.from_object(config)
+    # y se carga la base de datos:
+    db = SQLAlchemy(app)
+
+    @app.route('/')
+    def inicio():
+        return 'Página principal'    
+
+    if __name__ == "__main__":  # establecemos el debug que tenemos en config:
+        app.run(host='localhost', debug=config.DEBUG)
+
+
+Crear modelo de datos 
+*********************
+
+En el paquete **application** del proyecto se creará un archivo llamado models.py:
+
+.. code-block:: python 
+    :linenos:
+
+    # Se importan los tipos de datos:
+    from sqlalchemy import *
+    # se importa el relacionador:
+    from sqlalchemy.orm import relationship
+    # se importa la configuración de la base de datos:
+    from application.app import db 
+
+
+    # creamos un primer modelo que será relacionable con el segundo:
+    class Categories(db.Model):
+        """ Categorías """
+        # se define nombre interno de tabla y los campos:
+        __tablename__ = 'categories'
+        id = Column(Integer, primary_key=True)
+        name = Column(String(100))
+        
+        # retornar clase y función:
+        def __repr__(self):
+            return (u'<{self.__class__.__name__}: {self.id}>'.format(self=self))
+
+
+    # Crear otro modelo relacionado con el primero:
+    class Articles(db.Model):
+        """ Artículos """
+        __tablename__ = 'articles'
+        id = Column(Integer, primary_key=True)
+        nombre = Column(String(100),nullable=False)
+        precio = Column(Float,default=0)
+        iva = Column(Integer,default=21)
+        descripcion = Column(String(255))
+        image = Column(String(255))
+        stock = Column(Integer,default=0)
+        CategoriaId=Column(Integer,ForeignKey('categories.id'), nullable=False)
+        categoria = relationship("Categories", backref="Articles")    
+
+        def precio_final(self):
+            return self.precio*self.iva/100    
+
+        def __repr__(self):
+            return (u'<{self.__class__.__name__}: {self.id}>'.format(self=self))
+
+
+Crear base de datos 
+*******************
+Para crear la base de datos ejecutamos la línea de comandos python y los siguientes comandos:
+
+* importar configuración base de datos: ``from application.app import db``
+* importar modelos de datos a crear: ``from application.models import Categories, Articles``
+* Ejecutar creación de tablas: ``db.create_all()``
+
+
+Migrar datos modificados en el modelo
+*************************************
+
+Actualmente Flask no incorpora un modelo de migración de datos como en el caso de Django. Si se añade un nuevo dato hay que ejecutar primero ``db.drop_all()`` y a continuación
+``db.create_all()``
+
+CRUD desde consola python
+*************************
+* importar configuración base de datos: ``from application.app import db``
+
+Crear registro 
+++++++++++++++
+
+* asignar valor al modelo que se quiere adherir dato: ``cat=Categories(name="RPG")``
+* Cargar en el orm los datos: ``db.session.add(cat)``
+* Cargar en el orm varios datos: ``db.session.add_all([cat1, cat2])``
+* Comitear los datos en la base de datos: ``db.session.commit()``
+
+
+Leer registro 
++++++++++++++
+
+* Cargar una lista completa de registros: ``cat=Categories.query.all()`` (se tiene que recorrer con un bucle)
+* Cargar primer elemento de la lista: ``cat=Categories.query.first()``
+* Cargar un elemento de la lista por dato de referencia: ``cat=Categories.query.get(1)``
+* Filtrar registros: ``Categories.query.filter_by(name="RPG").all()``
+* Filtrar por múltiples campos: ``Categories.query.filter_by(name="RPG").filter_by(subname="rol").all()``
+* Ortdenar registros recuperados: ``Categories.query.order_by("name").all()``
+
+.. note::
+    Cada registro recuperado es un objeto, por lo que acceder a cada campo es igual al acceder a un atributo de una clase ej: **cat.name**
+
+.. note::
+    Al igual que se filtran registros y se obtienen todos los resultados posibles, podemos obtener con first() el primer resultado posible.
+
+
+Editar registro
++++++++++++++++
+* Cargar un elemento de la lista por dato de referencia: ``cat=Categories.query.get(1)``
+* Modificar un campo del elemento: ``cat.name="Rol"``
+* Cargar en el orm los datos: ``db.session.add(cat)``
+* Comitear los datos en la base de datos: ``db.session.commit()``
+
+
+Eliminar registro
++++++++++++++++++
+* Cargar un elemento de la lista por dato de referencia: ``cat=Categories.query.get(1)``
+* Cargar en el orm los datos con delete: ``db.session.delete(cat)``
+* Comitear los datos en la base de datos: ``db.session.commit()``
+
+
+Trabajar con relaciones 
++++++++++++++++++++++++
+
+A partir de un campo foreign key se pueden obtener los datos de la otra tabla relacionada 
+como un objeto: 
+* Si recuperamos un registro de la tabla articles: ``art1=Articles.query.get(1)``
+* Al estar relacionada con categories se puede recuperar la información de la categoría: ``art1.categories.nombre``
+
+
+Uso del ORM en archivos py
+**************************
+
+El uso del orm es similar al visto en la consola, ejecutando las operaciones desde scripts python:
+
+.. code-block:: python 
+    :linenos:
+
+    from aplicacion.models import Articles
+    @app.route('/')
+    def inicio():
+        articulos=Articles.query.all()
+        return render_template("inicio.html",articulos=articulos)
+
+* Esto en una plantilla se usaría así:
+
+.. code-block:: html 
+    :linenos:
+
+    <div class="panel-heading">Videojuegos</div>
+        <table class="table">
+                {% for art in articulos %}
+                    <tr>
+                        <td>{{art.nombre}}</td>
+                    </tr>
+                {% endfor %}
+        </table>
+    </div>
+
+Sistema de usuarios y sesiones
+##############################
+
+Modelo de usuarios
+******************
+
+Antes de nada hay que crear un modelo de usuarios en la base de datos:
+
+.. code-block:: python 
+    :linenos:
+
+    class Usuarios(db.Model):
+    """Usuarios"""
+    __tablename__ = 'usuarios'
+    id = Column(Integer, primary_key=True)
+    username = Column(String(100),nullable=False)
+    password_hash = Column(String(128),nullable=False)
+    nombre = Column(String(200),nullable=False)
+    email = Column(String(200),nullable=False)
+    admin = Column(Boolean, default=False)
+
+    def __repr__(self):
+        return (u'<{self.__class__.__name__}: {self.id}>'.format(self=self))    
+
+    @property
+    def password(self):
+        raise AttributeError('password is not a readable attribute')    
+
+    @password.setter
+    def password(self, password):
+        self.password_hash = generate_password_hash(password)
+    def verify_password(self, password):
+        return check_password_hash(self.password_hash, password)
+
+.... TODOOOO

@@ -36,11 +36,14 @@ Para ejecutar un comando de Angular CLI el prefijo que se utiliza es ``ng``:
 * Crear un pipe: ``ng generate pipe nombrePipe``
 * Crear un servicio: ``ng generate service nombreServicio``
 * Crear interface en angular: ``ng generate interface nombreInterface``
+* Construir aplicación: ``ng build`` (se guarda en la carpeta dist)
+* Instalar librerías en angular: ``ng add @angular/material``
 
 Otros comandos útiles de npm
 ****************************
 * Instalar todas las dependencias: ``npm install`` (no es un comando ng pero es importante recordarlo)
-
+* Instalar servidor para aplicación construida: ``npm install -g serve``
+* Ejecutar aplicación angular ya construida (desde su carpeta dentro de dist): ``serve``
 
 .. attention::
     Para ejecutar en Windows estos comandos CLI se usará la aplicación ``nodejs command prompt`` o ejecutar con el prefijo ``npm run ng``
@@ -1606,3 +1609,525 @@ Tipos de validaciones comunes:
 - untouched: no esta seleccionado.
 - valid: es válido.
 - invalid: no es válido.
+
+
+Peticiones HTTP
+###############
+
+Partimos de un proyecto nuevo creado con ``ng new consolasfront``
+
+Preparativos
+************
+Lo primero será cargar el modulo **HttpClientsModule** en los imports de **app.module.ts**:
+
+.. code-block:: typescript 
+    :linenos:
+
+    import { NgModule } from '@angular/core';
+    import { BrowserModule } from '@angular/platform-browser';
+
+    import { AppComponent } from './app.component';
+    import { FormsModule } from '@angular/forms';
+    import { DirectivaIfComponent } from './components/directiva-if/directiva-if.component';
+    import { DirectivaForComponent } from './components/directiva-for/directiva-for.component';
+    import { CrearConsolaComponent } from './components/crear-consola/crear-consola.component'; // se importan los forms.
+    // se carga la librería HttpClientModule:
+    import { HttpClientModule } from '@angular/common/http';
+
+    @NgModule({
+    declarations: [
+        AppComponent,
+        DirectivaForComponent,
+        CrearConsolaComponent,
+    ],
+    imports: [
+        BrowserModule,
+        HttpClientModule, // cargamos el httpclientmodule
+        FormsModule
+    ],
+    providers: [],
+    bootstrap: [AppComponent]
+    })
+    export class AppModule { }
+
+Crear servicio Http
+*******************
+
+Se crea un nuevo servicio en angular con ``ng generate service services/consolas`` y se edita:
+
+.. code-block:: typescript 
+    :linenos:
+
+    // se importa la librería http:
+    import { HttpClient } from '@angular/common/http';
+    import { Injectable } from '@angular/core';
+    // importamos map de rxjs:
+    import { map } from 'rxjs/operators';
+
+    @Injectable({
+    providedIn: 'root'
+    })
+    export class ConsolasService {
+        // definimos la ruta base que será la del servidor API:
+        base: string = 'http://localhost:3500';
+
+        // se carga la librería http en el constructor:
+        constructor(private http: HttpClient) { }
+
+        // utilizamos el getter para hacer la petición get:
+        getConsolas(): any {
+            // esto retorna una petición con get y una respuesta con pipe:
+            return this.http.get(this.base)
+                            .pipe( // se mapea la respuesta con rxjs:
+                            map((data: any)=> {
+                                return data;
+                            })
+                            );
+        }
+
+        // recuperar un solo valor del mismo modo que antes pero con un endpoint recibido por parametros:
+        getConsola(marca: any): any {
+            return this.http.get(`${this.base}/consola/${marca}`)
+                            .pipe(
+                            map((data: any)=> {
+                                return data;
+                            })
+                            );
+        }
+
+        // Hacemos un método POST:
+        postConsola(consola: any): any {
+            return this.http.post(`${this.base}/consola/crear/`, consola)
+                            .pipe(
+                            map((data: any) => {
+                                return data;
+                            })
+                            );
+        }
+
+        // Hacemos un método PUT:
+        putConsola(consola: any, modelo: string): any {
+            return this.http.put(`${this.base}/consola/actualizar/${modelo}`, consola)
+                            .pipe(
+                            map((data: any) => {
+                                return data;
+                            })
+                            );
+        }
+
+        // hacemos el metodo delete:
+        deleteConsola(modelo: string){
+            return this.http.delete(`${this.base}/consola/eliminar/${modelo}`)
+                            .pipe(
+                            map((data: any) => {
+                                return data;
+                            })
+                            );
+        }
+    }
+
+* Creamos un nuevo componente ``ng generate components pages/index`` para sacar un listado de consolas.
+* Se crea un nuevo componente ``ng generate component pages/crearConsola``
+* Se crea un componente ``ng generate component pages/actualizar``
+* Añadimos las rutas de los nuevos componentes:
+
+.. code-block:: typescript 
+    :linenos:
+
+    import { NgModule } from '@angular/core';
+    import { RouterModule, Routes } from '@angular/router';
+    import { ActualizarComponent } from './pages/actualizar/actualizar.component';
+    import { CrearConsolaComponent } from './pages/crear-consola/crear-consola.component';
+    import { IndexComponent } from './pages/index/index.component';
+
+    const routes: Routes = [
+    {path: '', component: IndexComponent},
+    {path: 'crear', component: CrearConsolaComponent},
+    {path: 'actualizar/:modelo', component: ActualizarComponent}
+    ];
+
+    @NgModule({
+    imports: [RouterModule.forRoot(routes)],
+    exports: [RouterModule]
+    })
+    export class AppRoutingModule { }
+
+
+Peticiones GET
+**************
+
+* Se edita el componente:
+
+.. code-block:: typescript 
+    :linenos:
+
+    import { Component, OnInit } from '@angular/core';
+    import { Consolas } from 'src/app/interfaces/consolas';
+    import { ConsolasService } from 'src/app/services/consolas.service';
+
+    @Component({
+        selector: 'app-index',
+        templateUrl: './index.component.html',
+        styleUrls: ['./index.component.css']
+    })
+    export class IndexComponent implements OnInit {
+
+        // se crea una colección de objetos de tipo consolas:
+        consolas: Array<Consolas> = [];
+        // se carga el servicio en el constructor:
+        constructor(private consolasService: ConsolasService) {
+
+        }
+
+        ngOnInit(): void {
+            // hay que subscribir los datos a la hora de obtenerlos con rxjs:
+            this.consolasService.getConsolas() // o se usa any o se valida que es de tipo colección de consolas:
+                                .subscribe((res:Array<Consolas>)=>{
+                                this.consolas = res;
+                                }, (err: any) =>{ // si falla se ejecuta esta linea
+                                console.log(err);
+                                });
+        }
+
+    }
+
+* Se edita el template:
+
+.. code-block:: html 
+    :linenos:
+
+    <h2>Listado de consolas</h2>
+    <table border=1>
+    <tr>
+        <th>Marca</th>
+        <th>Modelo</th>
+        <th>Lanzamiento</th>
+    </tr>
+    <tr *ngFor="let consola of consolas">
+        <td>{{ consola.marca }}</td>
+        <td>{{ consola.modelo }}</td>
+        <td>{{ consola.lanzamiento }}</td>
+    </tr>
+    </table>
+
+Peticiones POST
+***************
+
+* se edita el componente:
+
+.. code-block:: typescript 
+    :linenos:
+
+    import { Component, OnInit } from '@angular/core';
+    // cargamos el router para una redirección:
+    import { Router } from '@angular/router';
+    // se importa la interfaz consolas:
+    import { Consolas } from 'src/app/interfaces/consolas';
+    import { ConsolasService } from 'src/app/services/consolas.service';
+
+    @Component({
+        selector: 'app-crear-consola',
+        templateUrl: './crear-consola.component.html',
+        styleUrls: ['./crear-consola.component.css']
+    })
+    export class CrearConsolaComponent implements OnInit {
+        // se prepara el objeto para añadir una consola:
+        consola: Consolas = {
+            marca: '',
+            modelo: '',
+            lanzamiento: 0
+        }
+        // se trae el servicio de consolas y el router para uan redirección:
+        constructor(private consolasService: ConsolasService, private route: Router) { }
+
+        ngOnInit(): void {
+        }
+
+        crearConsola(): void{
+            this.consolasService.postConsola(this.consola)
+                                .subscribe((res: any) => {
+                                console.log(res); // esto se quita en producción
+                                // haremos una redirección al listado:
+                                this.route.navigate(['/']);
+                                }, (err: any) => {
+                                console.log(err);
+                                });
+        }
+
+    }
+
+* Y ahora se edita el template:
+
+.. code-block::
+    :linenos:
+
+    <h2>Crear nueva consola</h2>
+
+    <div>
+        <label>Marca</label>
+        <input type="text" name="marca" [(ngModel)]="consola.marca">
+        <label>Modelo</label>
+        <input type="text" name="modelo" [(ngModel)]="consola.modelo">
+        <label>Lanzamiento</label>
+        <input type="number" name="lanzamiento" [(ngModel)]="consola.lanzamiento">
+        <button (click)="crearConsola()">Añadir</button>
+    </div>
+
+.. note::
+    Se debería crear un comnponente solo para el formulario y reutilizar en la vista editar pero esto es un ejemplo básico.
+
+
+
+Peticiones PUT 
+**************
+
+* En el template del listado se añade el botón con un parámetro para buscar el elemento:
+
+.. code-block:: html 
+    :linenos:
+
+    <h2>Listado de consolas</h2>
+    <table border=1>
+    <tr>
+        <th>Marca</th>
+        <th>Modelo</th>
+        <th>Lanzamiento</th>
+    </tr>
+    <tr *ngFor="let consola of consolas">
+        <td>{{ consola.marca }}</td>
+        <td>{{ consola.modelo }}</td>
+        <td>{{ consola.lanzamiento }}</td>
+        <td>
+        <button routerLink="actualizar/{{ consola.modelo }}">editar</button>
+        </td>
+    </tr>
+    </table>
+
+* Se edita el componente actualizar:
+
+.. code-block:: typescript 
+    :linenos:
+
+    import { Component, OnInit } from '@angular/core';
+    import { ActivatedRoute, Router } from '@angular/router';
+    // cargar el interface:
+    import { Consolas } from 'src/app/interfaces/consolas';
+    // importar el servicio:
+    import { ConsolasService } from 'src/app/services/consolas.service';
+
+    @Component({
+        selector: 'app-actualizar',
+        templateUrl: './actualizar.component.html',
+        styleUrls: ['./actualizar.component.css']
+    })
+    export class ActualizarComponent implements OnInit {
+        // crear un atributo donde guardar la marca:
+        modelo: string;
+        // se prepara el objeto para añadir una consola:
+        consola: Consolas = {
+            marca: '',
+            modelo: '',
+            lanzamiento: 0
+        }
+
+        // cargar el modulo de ruta activa para coger el parámetro get y el servicio:
+        constructor(private route: ActivatedRoute, private router: Router, private consolasService: ConsolasService) {
+            // asignar el valor de modelo recibido por parámetros:
+            this.modelo = this.route.snapshot.params['modelo'];
+            // nos subscribimos al servicio:
+            this.consolasService.getConsola(this.modelo)
+                                .subscribe((res: any) =>{
+                                console.log(res);
+                                }, (err: any) => {
+                                console.log(err);
+                                });
+        }
+
+        ngOnInit(): void {
+        }
+
+        editarConsola(): void {
+            this.consolasService.putConsola(this.consola, this.modelo)
+                                .subscribe((res: any) =>{
+                                console.log(res);
+                                // redireccionamos:
+                                this.router.navigate(['/']);
+                                }, (err: any) => {
+                                console.log(err);
+                                });
+        }
+
+    }
+
+* Crear el template:
+
+.. code-block:: html 
+    :linenos:
+
+    <h2>Editar {{modelo}}</h2>
+
+    <div>
+        <label>Marca</label>
+        <input type="text" name="marca" [(ngModel)]="consola.marca">
+        <label>Modelo</label>
+        <input type="text" name="modelo" [(ngModel)]="consola.modelo">
+        <label>Lanzamiento</label>
+        <input type="number" name="lanzamiento" [(ngModel)]="consola.lanzamiento">
+        <button (click)="editarConsola()">Actualizar</button>
+    </div>
+
+
+Peticiones DELETE 
+*****************
+
+* Empezamos en el template del listado:
+
+.. code-block:: html 
+    :linenos:
+
+    <h2>Listado de consolas</h2>
+    <table border=1>
+    <tr>
+        <th>Marca</th>
+        <th>Modelo</th>
+        <th>Lanzamiento</th>
+    </tr>
+    <tr *ngFor="let consola of consolas">
+        <td>{{ consola.marca }}</td>
+        <td>{{ consola.modelo }}</td>
+        <td>{{ consola.lanzamiento }}</td>
+        <td>
+        <button routerLink="actualizar/{{ consola.modelo }}">editar</button>
+        </td>
+        <td>
+        <!-- añadir el nuevo boton de eliminar -->
+        <button (click)="eliminarConsola(consola.modelo)">Eliminar</button>
+        </td>
+    </tr>
+    </table>
+
+* Creamos el metodo y hacemos la petición delete:
+
+.. code-block:: typescript 
+    :linenos:
+
+    import { Component, OnInit } from '@angular/core';
+    import { Consolas } from 'src/app/interfaces/consolas';
+    import { ConsolasService } from 'src/app/services/consolas.service';
+
+    @Component({
+        selector: 'app-index',
+        templateUrl: './index.component.html',
+        styleUrls: ['./index.component.css']
+    })
+    export class IndexComponent implements OnInit {
+
+        consolas: Array<Consolas> = [];
+        constructor(private consolasService: ConsolasService) {
+
+        }
+
+        ngOnInit(): void {
+            this.cargarClientes();
+        }
+
+        eliminarConsola(modelo: string){
+            this.consolasService.deleteConsola(modelo)
+                                .subscribe((res:any)=>{
+                                // refrescar pantalla:
+                                this.cargarClientes();
+                                }, (err: any)=>{
+                                console.log(err);
+                                });
+        }
+
+        // recuperamos la petición del listado y la añadimos a esta función para reutilizar de manera limpia:
+        cargarClientes(){
+            this.consolasService.getConsolas()
+            .subscribe((res:Array<Consolas>)=>{
+            this.consolas = res;
+            }, (err: any) =>{
+            console.log(err);
+            });
+        }
+
+    }
+
+Angular Material 
+################
+
+Angular material es una librería de estilos muy útil en ángular. 
+
+Preparación
+***********
+
+* Instalar angular material: ``ng add @angular/material``
+* Crear módulo para separar la lógica de angular material: ``ng generate module material``
+* Cargar modulo **material.module.ts** en **app.material.ts**:
+
+.. code-block:: typescript 
+    :linenos:
+
+    import { NgModule } from '@angular/core';
+    import { BrowserModule } from '@angular/platform-browser';
+
+    import { AppRoutingModule } from './app-routing.module';
+    import { AppComponent } from './app.component';
+    import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+    // importamos el módulo:
+    import { MaterialModule } from './material/material.module';
+
+    @NgModule({
+    declarations: [
+        AppComponent
+    ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        MaterialModule
+    ],
+    providers: [],
+    bootstrap: [AppComponent]
+    })
+    export class AppModule { }
+
+
+Uso de componentes 
+******************
+
+* Editar modulo **material.module.ts** para cargar componentes de angular material y exportarlos:
+
+.. code-block:: typescript 
+    :linenos:
+
+    import { NgModule } from '@angular/core';
+    // cargamos el modulo del elemento a usar de angular material:
+    import {MatToolbarModule} from '@angular/material/toolbar';
+
+
+    @NgModule({
+    declarations: [],
+    imports: [ // se importa y se exporta:
+        MatToolbarModule
+    ],
+    exports: [
+        MatToolbarModule
+    ]
+    })
+    export class MaterialModule { }
+
+* En cualquier template se puede cargar el componente añadido, en este caso **MatToolbarModule**:
+
+.. code-block:: html 
+    :linenos:
+
+    <mat-toolbar color="primary">
+        <span>Taller angular</span>
+    </mat-toolbar>
+
+
+.. note::
+    En la página https://material.angular.io/components/categories se pueden ver los distintos componentes que pueden añadirse.
+
+    

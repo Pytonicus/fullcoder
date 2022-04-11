@@ -43,6 +43,9 @@ Bienvenido a FullCoder, un sitio de Manual
 
    javascript/sintaxis
    javascript/funciones
+   javascript/entornos
+   javascript/nodejs 
+   javascript/expressjs
 
 .. toctree::
    :maxdepth: 1
