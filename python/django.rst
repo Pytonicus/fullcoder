@@ -1144,6 +1144,7 @@ Ahora vamos a conocer los distintos comandos para realizar QuerySets:
 * ``Prueba.objects.filter(titulo__contains = 'Ejemplo').first()``: Añadiendo el metodo first trae solo el primer registro.
 * ``Prueba.objects.count()``: Devuelve el número total de registros que hay en la tabla.
 * ``Prueba.objects.order_by('fecha_creacion')``: Permite ordenar los registros de la tabla nuevamente cuando se cargan en la vista.
+* ``Prueba.objects.filter(pk=1).update(titulo="Novedad")``: Edita un registro ya existente.
 * ``Prueba.objects.delete(titulo="Ejemplo")``: Elimina un valor según el campo que hayamos elegido para buscarlo
 
 Para salir de la consola ORM escribimos ``exit()`` y pulsamos intro
@@ -1379,6 +1380,7 @@ Cargar librerías
 Se pueden llamar desde las vistas o los templates con ``request.user`` para hacer validaciones o simplemente mostrarlo.
 
 También se pueden consultar en la bases de datos con el ORM:
+
 - ``User.objects.create_user(username, password, email)``: Permite crear un nuevo usuario.
 - ``User.objects.get(username).set_password('password')``: permite cambiar la contraseña. 
 

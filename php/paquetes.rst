@@ -17,9 +17,9 @@ Manejo de paquetes y dependencias con Composer en PHP 7.4
 Instalar Composer
 #################
   
-* Primero instalamos dependencias: `sudo apt install curl php-cli php-mbstring git unzip`
-* Ahora nos vamos a nuestro directorio personal y hacemos curl: `curl -sS https://getcomposer.org/installer -o composer-setup.php`
-* Instalamos composer: `sudo php composer-setup.php --install-dir=/usr/local/bin --filename=composer`
+* Primero instalamos dependencias: ``sudo apt install curl php-cli php-mbstring git unzip``
+* Ahora nos vamos a nuestro directorio personal y hacemos curl: ``curl -sS https://getcomposer.org/installer -o composer-setup.php``
+* Instalamos composer: ``sudo php composer-setup.php --install-dir=/usr/local/bin --filename=composer``
  
 
 Archivo de configuración

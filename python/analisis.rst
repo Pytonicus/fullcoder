@@ -18,11 +18,7 @@ Anaconda
 ########
 * Para instalar Anaconda primero instalamos las siguientes dependencias: 
  
-    .. code::
-
-        sudo apt install libgl1-mesa-glx libegl1-mesa
-        libxrandr2 libxrandr2 libxss1 libxcursor1
-        libxcomposite1 libasound2 libxi6 libxtst6
+    ``sudo apt install libgl1-mesa-glx libegl1-mesa libxrandr2 libxrandr2 libxss1 libxcursor1 libxcomposite1 libasound2 libxi6 libxtst6``
         
 
 * Vamos a https://www.anaconda.com/products/individual#Downloads descargamos e instalamos.

@@ -1,5 +1,5 @@
-NVM: ntornos Virtuales
-======================
+NVM: Entornos Virtuales
+=======================
 
 .. image:: /logos/JavaScript-logo.png
     :scale: 25%

@@ -10,7 +10,7 @@ Framework: Laravel
 .. |date| date::
 .. |time| date:: %H:%M
 
-Documentación básica para trabajar con Laravel
+Documentación básica para trabajar con Laravel 5
 .. contents:: Índice
  
 Configuraciones
@@ -30,6 +30,12 @@ Creación del proyecto
 
 .. attention::
     Es importante tener instalado PHP o en su defecto un servidor Lamp o Xamp
+
+.. attention::
+    Es posible que no se ejecute el proyecto correctamente en el servidor, si es así 
+    ejecutamos ``composer install`` para solventar dependencias. También pueden faltar 
+    paquetes de php en linux, se instalan ``sudo apt install php-mbstring`` y ``sudo apt install php-xml``. 
+    Se vuelve a ejecutar ``composer install`` y no debería de dar errores.
 
 Estructura de Laravel
 *********************
@@ -113,6 +119,7 @@ Rutas sencillas
 ***************
 
 Las rutas utilizan los siguientes métodos:
+
 - GET: recuperar información 
 - POST: Enviar información 
 - PUT: Actualizar datos 
@@ -620,7 +627,8 @@ Manejar parámetros en el controlador
                 'consola' => $modelo
             ));
         }
-}
+    }
+
 
 Redirección a otra ruta
 ***********************
@@ -637,8 +645,8 @@ Crear Crud y enrutamiento automático
 ************************************
 Con Artisan se puede crear un CRUD completo y recuperar todas sus rutas de manera automática:
 
-1. - Crear controlador con CRUD: ``php artisan make:controller UserController --resource``
-2. - Crear ruta con método **resources()**:
+1. Crear controlador con CRUD: ``php artisan make:controller UserController --resource``
+2. Crear ruta con método **resources()**:
 
 .. code-block:: php 
     :linenos:
@@ -646,7 +654,7 @@ Con Artisan se puede crear un CRUD completo y recuperar todas sus rutas de maner
     // ruta de un CRUD completo:
     Route::resource('user', 'UserController');
 
-3. - Comprobar que existen las rutas nuevas: ``php artisan routes:list``
+3. Comprobar que existen las rutas nuevas: ``php artisan routes:list``
 
 Y con esto ya existen todos los métodos de un CRUD. Muy útil para crear servicios REST.
 
@@ -975,8 +983,4 @@ Actualizar registros
 
         <input type="submit" value="registrar" />
     </form>
-
-
-Sistema de usuarios Laravel
-###########################
 

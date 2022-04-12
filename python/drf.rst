@@ -10,7 +10,7 @@ Framework: Django Rest Framework
 .. |time| date:: %H:%M
 
  
-Esta es la documentación que he recopilado para trabajar con Django, un framework basado en Python que sirve para desarrollar aplicaciones web.
+Esta es la documentación que he recopilado para trabajar con Djang rest framework. Una extensión de django para crear API Rest.
  
 .. contents:: Índice 
  
@@ -501,7 +501,7 @@ La petición se podría dividir en dos partes:
         'Accept': '*/*',
     }
 
-    data = '{"username":"misterg@gmail.com", "password":"sabotaje"}'
+    data = '{"username":"misterg@gmail.com", "password":"maizfrito"}'
 
     r = requests.post('http://127.0.0.1:8000/api/token', headers=headers, data=data)
     print(r.status_code)

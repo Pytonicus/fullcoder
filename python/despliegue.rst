@@ -1,9 +1,9 @@
 Gunicorn: Despliegue web 
 ========================
 
-.. image:: /logos/logo-django.png
-    :scale: 50%
-    :alt: Logo Django
+.. image:: /logos/logo-gunicorn.png
+    :scale: 20%
+    :alt: Logo Gunicorn
     :align: center
 
 .. |date| date::
@@ -22,7 +22,8 @@ Gunicorn
 ********
 Se encarga de comunicarse con el protocolo WSGI desde línea de comandos. 
 
-Comandos útiles
+Comandos útiles:
+
 * Instalar Gunicorn: ``pip install gunicorn``
 * Ejecutar servidor Gunicorn: ``gunicorn nombreProyecto.wsgi:application``
 * Específicar número de procesos simultaneos: ``gunicorn nombreProyecto.wsgi:application --workers=4``
@@ -53,6 +54,7 @@ PaaS (Platform as a Service)
 Es un entorno cloud que nos permite crear una máquina virtual para ejecutar la aplicación web con Python.
 
 Algunas de las PaaS más famosas:
+
 * DigitalOcean
 * Heroku
 * Amazon Web Services
@@ -98,4 +100,4 @@ Deploy en Django
 3. Generamos una secret_key: ``python -c 'from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())'`` la cual luego guardaremos en la variable de entorno del servidor virtual.
 4. A la hora de desplegar el proyecto debe apuntar a las **settings_prod.py**
 
-...
+CONTINUARÁ...

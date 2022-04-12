@@ -2,7 +2,7 @@ Framework: Angular
 ==================
 
 .. image:: /logos/logo-angular.png
-    :scale: 50%
+    :scale: 20%
     :alt: Logo Angular
     :align: center
 
@@ -52,17 +52,19 @@ Estructura del proyecto
 #######################
 
 Partes importantes del proyecto:
+
 * package.json: archivo con las dependencias del proyecto.
 * angular.json: se encuentra la configuración del proyecto.
 * e2e: Carpeta test de integración 
 * src: carpeta del proyecto en la cual vemos: 
-  * index.html: pagina de entrada de la aplicación. 
-  * main.ts: es donde se cargan los módulos.
-  * style.css: estilos a nivel global.
-  * test.ts: archivo para realizar tests.
-  * enviorments: carpeta para variables de entornos.
-  * assets: carpeta de archivos estáticos como imágenes.
-  * app: carpeta del módulo principal donde se irá añadiendo el resto de componentes.
+
+    - index.html: pagina de entrada de la aplicación. 
+    - main.ts: es donde se cargan los módulos.
+    - style.css: estilos a nivel global.
+    - test.ts: archivo para realizar tests.
+    - enviorments: carpeta para variables de entornos.
+    - assets: carpeta de archivos estáticos como imágenes.
+    - app: carpeta del módulo principal donde se irá añadiendo el resto de componentes.
 
 Componentes
 ###########
@@ -70,6 +72,7 @@ Componentes
 Los componentes se encuentran en la carpeta **src**.
 Es ideal crear una carpeta **components** dentro de **src** para ordenarlos ya que se van a reutilizar en distintos módulos.
 Cada componente se organizará en una carpeta con el siguiente contenido:
+
 * Hoja de estilo CSS u otro tipo.
 * Archivo HTML.
 * Controlador Typescript.
@@ -80,9 +83,10 @@ Crear un componente
 
 Para crear un componente se ejecuta el comando: ``ng generate component nombre_componente``
 Crear componente dentro de una carpeta **components**: ``ng generate component components/menu``
+
 * Lo primero que vamos a hacer es borrar el contenido del archivo **app.component.html** y lo reemplazamos por:
 
-.. code-block:: html 
+.. code-block::  
     :linenos:
 
     <div>
@@ -93,7 +97,7 @@ Crear componente dentro de una carpeta **components**: ``ng generate component c
 
 * Ahora editamos el contenido de **menu.component.html**:
 
-.. code-block:: html 
+.. code-block::  
     :linenos:
 
     <div id="menu">
@@ -111,7 +115,7 @@ Crear componente dentro de una carpeta **components**: ``ng generate component c
 
 Esto mostrará el título del módulo y el subtítulo del componente menú de color rojo.
 
-.. atention::
+.. attention::
     Mover la carpeta de un componente de forma manual causará fallos en la aplicación ya que no coincidirán las 
     rutas.
 
@@ -147,7 +151,7 @@ Atributos
 
 * Utilizar variable en plantilla **app.template.html**:
 
-.. code-block:: html 
+.. code-block::  
     :linenos:
 
     <h1>{{mensaje}}</h1>
@@ -159,7 +163,7 @@ Métodos
 Retornar datos de un método:
 
 .. code-block:: Typescript
-    :liinenos:
+    :linenos:
 
     import { Component, OnInit } from '@angular/core';
 
@@ -191,7 +195,7 @@ Retornar datos de un método:
 
 Uso en el template:
 
-.. code-block:: html 
+.. code-block::  
     :linenos:
 
     <div class="card">
@@ -204,7 +208,7 @@ Assets
 
 * Tratamiento estático de assets en templates:
 
-.. code-block:: html 
+.. code-block::  
     :linenos:
 
     <div class="card">
@@ -224,7 +228,7 @@ Atributos dinámicos
 
 * En el controlador existe un atributo con una ruta, se carga la variable en el template:
 
-.. code-block:: html 
+.. code-block:: 
     :linenos:
 
     <img [src]="imagen">
@@ -272,7 +276,7 @@ Angular dispone de todos los métodos tácticos del DOM usados en HTML para disp
 
 * Este método ahora se puede disparar al hacer click en el botón:
 
-.. code-block:: html 
+.. code-block::  
     :linenos:
 
     <div class="card">
@@ -352,7 +356,7 @@ Para recuperar valores de la plantilla como datos de un formulario se hace lo si
 
 3. Y por último se prepara el template:
 
-.. code-block:: html 
+.. code-block::  
     :linenos:
 
     <div class="card">
@@ -368,6 +372,7 @@ Ciclo de vida
 #############
 
 El ciclo de vida va en el siguiente orden:
+
 * Constructor
 * ngOnChanges
 * ngOnInit
@@ -529,7 +534,7 @@ Pipes de texto
 
 * En el template vamos a ver los pipes:
 
-.. code-block:: html 
+.. code-block::  
     :linenos:
 
     <div class="card">
@@ -597,7 +602,7 @@ Pipes de formato y fecha
 
 * Y estos son los pypes:
 
-.. code-block:: html 
+.. code-block::  
     :linenos:
 
     <div class="card">
@@ -655,7 +660,7 @@ Pipes núméricos
 
 * Veamos los pipes numéricos:
 
-.. code-block:: html 
+.. code-block::  
     :linenos:
 
     <div class="card">
@@ -687,7 +692,7 @@ Crear un pipe
 *************
 
 * Para crear un Pipe se utiliza el comando: ``ng generate pipe nombrePipe``
-* Generar un pipe en una carpeta: ``ng generate pipe pipes/nombrePipe
+* Generar un pipe en una carpeta: ``ng generate pipe pipes/nombrePipe``
 * Editar el pipe:
 
 .. code-block:: typescript 
@@ -737,8 +742,9 @@ Las directivas sirven para controlar el comportamiento de la información desde 
 Directivas de control
 *********************
 
-Condicional if (*ngIf) 
-++++++++++++++++++++++
+Condicional if 
+++++++++++++++
+
 * Creamos un atributo edad en el componente:
 
 .. code-block:: typescript 
@@ -765,9 +771,9 @@ Condicional if (*ngIf)
 
     }
 
-* En el template veremos el *ngIf:
+* En el template veremos el ngIf:
 
-.. code-block:: html 
+.. code-block::  
     :linenos: 
 
     <div class="row">
@@ -782,17 +788,17 @@ Condicional if (*ngIf)
         </ng-template>
     </div>
 
-.. attetion::
+.. attention::
     Hay que añadir el módulo FormsModule en app.module.ts
 
 
-Condicional Switch (*ngSwitch)
-++++++++++++++++++++++++++++++
+Condicional Switch
+++++++++++++++++++
 
 * Tenemos una edad en el componente igual al ejemplo anterior.
-* En el template veremos *ngSwitch:
+* En el template veremos ngSwitch:
 
-.. code-block:: html 
+.. code-block::  
     :linenos:
 
     <div class="row">
@@ -807,8 +813,8 @@ Condicional Switch (*ngSwitch)
     </div>
 
 
-Condicional For (*ngFor)
-++++++++++++++++++++++++
+Condicional For
++++++++++++++++
 
 * Creamos una lista de elementos en el componente:
 
@@ -931,7 +937,7 @@ Implementar clase ngClass
 
 * Ahora en el template se implementan las clases según su marca:
 
-.. code-block:: html 
+.. code-block::  
     :linenos:
 
     <div class="card">
@@ -996,7 +1002,7 @@ Implementar estilo ngStyle
 
 * En el template se implementa la directiva:
 
-.. code-block:: html
+.. code-block:: 
     :linenos:
 
     <div class="row">
@@ -1046,7 +1052,7 @@ Enviar valores de padre a hijo
 
 * El padre envía a través del selector del hijo el atributo numeroPadre:
 
-.. code-blocK:: html 
+.. code-blocK::  
     :linenos:
 
     <div class="card">
@@ -1081,7 +1087,7 @@ Enviar valores de padre a hijo
 
 * Ahora se puede utilizar el atributo numeroHijo con los datos del padre:
 
-.. code-block:: html 
+.. code-block::  
     :linenos:
 
     <div class="card">
@@ -1124,7 +1130,7 @@ Enviar valores de hijo a padre
 
 * Añadimos un botón en el hijo que ejecutará el método emisor:
 
-.. code-block:: html
+.. code-block:: 
     :linenos:
 
     <div class="card">
@@ -1164,7 +1170,7 @@ Enviar valores de hijo a padre
 
 * La plantilla solo tendrá que mostrar el número por defecto que cambiará al pulsar el botón:
 
-.. code-block:: html 
+.. code-block::  
     :linenos:
 
     <div class="card">
@@ -1181,7 +1187,7 @@ Servicios en Angular
 * Crear un servicio: ``ng generate service nombreServicio``
 * Crear un servicio en un directorio: ``ng generate service services/nombreServicio``:
 
-.. code-block:: typescrypt
+.. code-block:: Typescript
     :linenos:
 
     import { Injectable } from '@angular/core';
@@ -1239,7 +1245,7 @@ Servicios en Angular
 
 * Ya se puede usar el servicio en el template:
 
-.. code-block:: html 
+.. code-block::  
     :linenos:
 
     <div class="card">
@@ -1335,7 +1341,7 @@ Para enviar información al servicio hacemos lo siguiente:
 
 * En su template tendrá un formulario:
 
-.. code-blocK:: html 
+.. code-blocK::  
     :linenos:
 
     <div class="card">
@@ -1438,7 +1444,7 @@ Si hemos añadido **angular routing** para crear nuestro proyecto podemos usar l
 
 Ahora se añade el enrutador al template de **app.component.html**:
 
-.. code-block:: html 
+.. code-block::  
     :linenos:
 
     <!-- Aquí añadimos la ruta: -->
@@ -1449,7 +1455,7 @@ Enlaces de rutas
 
 Para crear enlaces en las rutas hacemos lo siguiente en un template como **app.component.html**:
 
-.. code-block:: html 
+.. code-block::  
     :linenos:
 
     <div class="navbar">
@@ -1577,7 +1583,7 @@ Vamos a trabajar con **ReactiveFormsModule** para implementar validaciones más 
 
 * Ahora pasamos al template a crear el formulario:
 
-.. code-block:: html 
+.. code-block::  
     :linenos:
 
     <div class="card">
@@ -1793,7 +1799,7 @@ Peticiones GET
 
 * Se edita el template:
 
-.. code-block:: html 
+.. code-block::  
     :linenos:
 
     <h2>Listado de consolas</h2>
@@ -1883,7 +1889,7 @@ Peticiones PUT
 
 * En el template del listado se añade el botón con un parámetro para buscar el elemento:
 
-.. code-block:: html 
+.. code-block::  
     :linenos:
 
     <h2>Listado de consolas</h2>
@@ -1961,7 +1967,7 @@ Peticiones PUT
 
 * Crear el template:
 
-.. code-block:: html 
+.. code-block::  
     :linenos:
 
     <h2>Editar {{modelo}}</h2>
@@ -1982,7 +1988,7 @@ Peticiones DELETE
 
 * Empezamos en el template del listado:
 
-.. code-block:: html 
+.. code-block::  
     :linenos:
 
     <h2>Listado de consolas</h2>
@@ -2119,7 +2125,7 @@ Uso de componentes
 
 * En cualquier template se puede cargar el componente añadido, en este caso **MatToolbarModule**:
 
-.. code-block:: html 
+.. code-block::  
     :linenos:
 
     <mat-toolbar color="primary">

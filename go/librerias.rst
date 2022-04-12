@@ -63,7 +63,7 @@ Entrada y salida
 Impresión y recibir datos por consola
 *************************************
 
-..code-block:: GO
+.. code-block:: GO
     :linenos:
 
     package main

@@ -46,7 +46,7 @@ Codificación
 
     ?>
 
-* Método para descodificar:
+- Método para descodificar:
 
 .. code-block:: php
     :linenos:
@@ -92,7 +92,7 @@ Generar un Hash con MD5
 
 Ingresamos la url: http://localhost:8000/?password=coca-cola para ver el hash generado.
 
-* Código para descifrar el hash:
+- Código para descifrar el hash:
 
 .. code-block:: php 
     :linenos:

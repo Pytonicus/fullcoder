@@ -400,9 +400,6 @@ Random: Números aleatorios
     # Y un rango establecido de inicio a fin:
     print(random.randint(2, 8))
 
-.. note::
-    Más modulos de Python en la guía oficial: https://docs.python.org/3/library/
-
 
 Argparse: Pasar argumentos por consola
 ######################################
@@ -443,3 +440,7 @@ Su uso más frecuente es para crear pausas en el código.
     time.sleep(5)
 
     print("Hola de nuevo")
+
+
+.. note::
+    Más modulos de Python en la guía oficial: https://docs.python.org/3/library/

@@ -14,5 +14,5 @@ Tratamiento de Threads en C#
 
 .. contents:: Índice 
  
-Configurar Visual Studio
-########################
+PENDIENTE 
+#########

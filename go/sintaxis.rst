@@ -469,7 +469,7 @@ Según la guía de Go el bucle For es el bucle While de go:
 
 
 .. code-block:: GO 
-:linenos:
+    :linenos:
 
     package main
 

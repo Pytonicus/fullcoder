@@ -8,6 +8,14 @@ Bienvenido a FullCoder, un sitio de Manual
 
 .. toctree::
    :maxdepth: 1
+   :caption: Lenguajes de Marcado:
+
+   marcado/html
+   marcado/css 
+   marcado/restructured 
+
+.. toctree::
+   :maxdepth: 1
    :caption: PHP:
 
    php/sintaxis
@@ -36,6 +44,7 @@ Bienvenido a FullCoder, un sitio de Manual
    python/drf
    python/testing
    python/despliegue
+   python/monitorizar
 
 .. toctree::
    :maxdepth: 1
@@ -46,6 +55,12 @@ Bienvenido a FullCoder, un sitio de Manual
    javascript/entornos
    javascript/nodejs 
    javascript/expressjs
+
+.. toctree::
+   :maxdepth: 1
+   :caption: TypeScript:
+
+   typescript/angular
 
 .. toctree::
    :maxdepth: 1
@@ -60,12 +75,33 @@ Bienvenido a FullCoder, un sitio de Manual
 
 .. toctree::
    :maxdepth: 1
+   :caption: C:
+
+   C/sintaxis
+   C/librerias
+
+.. toctree::
+   :maxdepth: 1
+   :caption: C++:
+
+   cplus/sintaxis
+
+.. toctree::
+   :maxdepth: 1
    :caption: C#:
 
    csharp/sintaxis
    csharp/funciones
    csharp/librerias
    csharp/eventos
+   csharp/hilos
+   csharp/unity
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Sistemas y herramientas:
+
+   sistemas/nginx
 
 .. toctree::
    :maxdepth: 1

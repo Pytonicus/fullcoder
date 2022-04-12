@@ -981,7 +981,7 @@ Namespace
             }
         ?>
     
-    * Importar namespace (index.php):
+* Importar namespace (index.php):
 
     .. code-block:: php 
         :linenos:

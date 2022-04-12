@@ -21,7 +21,7 @@ Creación del proyecto
 
 * Crear un Directorio para el proyecto y acceder al mismo.
 * Crear un entorno virtual.
-* Instalar flask: `pip install flask`.
+* Instalar flask: ``pip install flask``.
 * Dentro del directorio creamos un directorio llamado templates y un archivo llamado main.py
 
 Archivo principal
@@ -226,7 +226,7 @@ Vistas
 Las vistas en Flask no suelen usarse, en su lugar se visualizan los templates con Jinja
 
 Templates (Jinja2)
-#################
+##################
 
 Jinja2 es el motor de plantillas que se utiliza de serie en Flask.
 
