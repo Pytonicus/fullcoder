@@ -20,24 +20,14 @@ Funcionamiento del Commodore 64
 Teclas
 ******
  
-* **RETURN**: Su funcionamiento base es similar a la tecla Intro de un teclado actual, efectuando un salto de línea o ejecutando un comando.
-
-* **SHIFT**: Su funcionamiento base es similar a la tecla Mayúscula de un teclado actual, al mantenerla pulsada y presionar una tecla se dibuja el caracter izquierdo bajo las teclas,
-también ejecuta el comando que se encuentra textualizado arriba en las teclas de comandos dobles.
-
-* **SHIFT LOCK**: bloquea mayúsucula, en la pantalla de los TheC64 se puede simbolizar arriba a la derecha una flecha hacia arriba indicando que esta presionada la tecla.
-
-* **CRSR** (ambas teclas): Permiten moverte a través de la pantalla según indican las flechas, la primera hacia abajo y la segunda hacia la derecha. Para ir en sentido contrario se mantiene
-pulsada la tecla SHIFT y cambiarán al sentido opuesto.
-
-* **INST - DEL**: Borra caracteres y con la tecla SHIFT presionada añade un espacio para insertar un caracter. Por defecto al situarnos en un caracter y escribir se reemplaza.
-
-* **RESTORE**: presionando la tecla RUN - STOP junto a RESTORE se restaura la pantalla a su estado inicial.
-
-* **CTRL**: Permite cambiar el color de la fuente manteniendo CTRL y pulsando entre el 1 al 8, también se puede cambiar ese color por relleno pulsando 9 para habilitarlo y 0 para deshabilitarlo.
-
-* **THEC64**: si se pulsa junto a SHIFT se cambia de mayúsculas a minúsculas y viceversa (todas las letras). Se puede acceder a colores adicionales pulsando esta tecla y cualquier número del 1 al 8.
-También se puede pintar los caracteres dibujados a la izquierda de cada tecla.
+- **RETURN**: Su funcionamiento base es similar a la tecla Intro de un teclado actual, efectuando un salto de línea o ejecutando un comando.
+- **SHIFT**: Su funcionamiento base es similar a la tecla Mayúscula de un teclado actual, al mantenerla pulsada y presionar una tecla se dibuja el caracter izquierdo bajo las teclas, también ejecuta el comando que se encuentra textualizado arriba en las teclas de comandos dobles.
+- **SHIFT LOCK**: bloquea mayúsucula, en la pantalla de los TheC64 se puede simbolizar arriba a la derecha una flecha hacia arriba indicando que esta presionada la tecla.
+- **CRSR** (ambas teclas): Permiten moverte a través de la pantalla según indican las flechas, la primera hacia abajo y la segunda hacia la derecha. Para ir en sentido contrario se mantiene pulsada la tecla SHIFT y cambiarán al sentido opuesto.
+- **INST - DEL**: Borra caracteres y con la tecla SHIFT presionada añade un espacio para insertar un caracter. Por defecto al situarnos en un caracter y escribir se reemplaza.
+- **RESTORE**: presionando la tecla RUN - STOP junto a RESTORE se restaura la pantalla a su estado inicial.
+- **CTRL**: Permite cambiar el color de la fuente manteniendo CTRL y pulsando entre el 1 al 8, también se puede cambiar ese color por relleno pulsando 9 para habilitarlo y 0 para deshabilitarlo.
+- **THEC64**: si se pulsa junto a SHIFT se cambia de mayúsculas a minúsculas y viceversa (todas las letras). Se puede acceder a colores adicionales pulsando esta tecla y cualquier número del 1 al 8. También se puede pintar los caracteres dibujados a la izquierda de cada tecla.
 
 Cargando Discos (Pendrive USB)
 ******************************

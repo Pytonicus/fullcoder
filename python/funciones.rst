@@ -389,7 +389,7 @@ Recuperar solo las claves del diccionarios
 Recuperar solo los valores del diccionario
 ******************************************
 
-.. code:: python 
+.. code-block:: python 
     :linenos:
 
     valores = diccionario.values()

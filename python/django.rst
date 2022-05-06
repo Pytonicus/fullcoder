@@ -1597,10 +1597,32 @@ Se puede reemplazar el campo para iniciar sesión por otro valor como un DNI o t
 
         return response
 
-Groups o grupos
-***************
+Permisos 
+********
 
-Los grupos se usan para agrupar permisos con determinados usuarios.
+Los permisos al igual que los grupos se generan por defecto con Django. En el caso de los permisos estos se generan nuevos (lectura, escritura, edición y borrado) con cada 
+aplicación que se crea nueva en el proyecto.
+
+Existen dos formas de editar permisos:
+
+1. Desde el panel de administración: seleccionar un usuario y añadir los permisos que debe tener.
+2. Desde la base de datos: Se pueden añadir, editar o borrar en la tabla **auth_user_user_permissions**. Se puede contrastar el id del campo **permission_id** con el campo **codename** de la tabla **permission** para así usarlo con una función especial en el código:
+
+.. code-block:: python 
+    :linenos:
+
+    def post(self, request):
+        # Se consulta si el usuario tiene el permiso en base a la app (API) y el nombre del permiso (add_consola):
+        if request.user.has_perm('API.add_consola'):
+
+            serializer = ConsolaSerializer(data=request.data)
+            if serializer.is_valid():
+                serializer.save()
+                return Response(serializer.data, status=status.HTTP_201_CREATED)
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        # sino se le revoca la acción:
+        else:
+            return Response({'error': 'Operación no AUTORIZADA'})
 
 
 Panel de administración

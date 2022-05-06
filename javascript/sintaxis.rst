@@ -58,7 +58,7 @@ Datos de entrada y salida a través de la consola y/o el navegador.
 
 
 Estructura en javascript
-*****************
+************************
 
 * Código javascript puro:
 
@@ -200,7 +200,7 @@ Operadores aritméticos
     division /= 6;
     resto %= 10;
 
-Operadores relacionales CORROBORAR
+Operadores relacionales
 ***********************
 Validación entre dos números.
 
@@ -210,7 +210,7 @@ Validación entre dos números.
 * Menor o igual que: **<=**.
 * Igual que: **==**.
 
-Operadores lógicos CORROBORAR
+Operadores lógicos
 ******************
 Expresiones de operaciones lógicas.
 
