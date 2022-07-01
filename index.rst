@@ -72,6 +72,7 @@ Bienvenido a FullCoder, un sitio de Manual
    go/concurrencia
    go/testing
    go/web
+   go/database
 
 .. toctree::
    :maxdepth: 1

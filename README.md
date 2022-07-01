@@ -8,7 +8,9 @@ También debemos instalar el tema __faculty-sphinx-theme__: ``pip install facult
 
 ## Compilar el sitio web
 
-Para compilar la web nos vamos a la raiz del proyecto desde un terminal y ejecutamos ``make html``. 
+LINUX: Para compilar la web nos vamos a la raiz del proyecto desde un terminal y ejecutamos ``make html``. 
+
+WINDOWS: Para compilar la web en windows usamos el comando ``.\make.bat html``
 
 NOTA: Alternativamente si no funciona la compilación a HTML se puede instalar sphinx del siguiente modo: ``sudo apt install python-sphinx``
 
