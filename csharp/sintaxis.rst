@@ -212,7 +212,7 @@ Operadores aritméticos
 
 .. code-block:: C# 
     :linenos:
-
+ 
     static void Main(string[] args)
         {
             int operacion;

@@ -885,7 +885,7 @@ Cargar archivos estáticos
 
         fmt.Println("Servidor corriendo en puerto 8000")
         log.Fatal(server)
-}
+    }
 
 - Ahora se crea dentro de la carpeta **static** la carpeta **css** y dentro un archivo **main.css**:
 
@@ -950,7 +950,7 @@ Paso 2. Crear un fichero **consola.go** que tendrá el modelo de consolas:
 
 Crear controlador
 *****************
-
+ 
 Procedemos a crear un directorio en raiz llamado **controllers** y creamos el primer controlador **consola.go**:
 
 Listar Elementos

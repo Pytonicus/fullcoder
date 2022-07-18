@@ -1,6 +1,6 @@
 Concurrencia
 ============
-
+ 
 .. image:: /logos/logo-go.png
     :scale: 30%
     :alt: Logo GO

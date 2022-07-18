@@ -1,6 +1,6 @@
 Sintaxis C
 ==========
-
+ 
 .. image:: /logos/logo-cpp.png
     :scale: 20%
     :alt: Logo C++

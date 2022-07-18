@@ -1,6 +1,6 @@
 Eventos y Delegados
 ===================
-
+ 
 .. image:: /logos/logo-csharp.png
     :scale: 80%
     :alt: Logo C#

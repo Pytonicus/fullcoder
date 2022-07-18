@@ -12,7 +12,7 @@ Framework: Laravel
 
 Documentación básica para trabajar con Laravel 5
 .. contents:: Índice
- 
+  
 Configuraciones
 ###############  
  

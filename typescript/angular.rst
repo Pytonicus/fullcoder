@@ -15,7 +15,7 @@ Documentación básica de Angular 12
  
 Configuraciones
 ###############  
-  
+   
 Instalación de Angular CLI
 **************************
 Para gestionar Angular hay que instalar Angular CLI: ``npm install -g @angular/cli``

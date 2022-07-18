@@ -26,7 +26,7 @@ Comentarios
 ***********
 
 * Comentarios de una sola línea: 
-
+ 
 .. code-block:: python
     :linenos:
  

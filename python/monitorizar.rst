@@ -21,7 +21,7 @@ Monitorizar Loggins
 *******************
 
 1. Configurar el **logger** en **settings.py**:
-
+ 
 .. code-block:: python 
     :linenos:
 

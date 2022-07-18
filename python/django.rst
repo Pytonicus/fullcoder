@@ -15,7 +15,7 @@ Documentación básica para trabajar con Django 3
  
 Configuraciones
 ###############  
- 
+  
 Creación del proyecto
 *********************
 

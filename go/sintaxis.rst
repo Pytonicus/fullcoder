@@ -121,7 +121,7 @@ Concatenación de variables y cadenas se realiza con **+**
         // cada %v devolverá el valor de una variable según el orden:
         fmt.Printf("Te llamas %v %v y tienes %v años", nombre, apellidos, edad)
     }
-
+ 
 GO-CLI - Comandos de GO
 ***********************
 

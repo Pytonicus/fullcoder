@@ -31,7 +31,7 @@ Tips
 Atajos de teclado 
 *****************
 
-- Comentar y descomentar varias líneas: **Mayuscula + Alt + a **
+- Comentar y descomentar varias líneas: **Mayuscula + Alt + a**
 - Mover lineas de código: Alt + flecha arriba o abajo. (seleccionar una o varias)
 - Tabular líneas: seleccionar líneas y presionar tabulador.
 - Quitar tabulación de varias líneas: seleccionar líneas y pulsar mayúscula + tab hasta posicionar.
@@ -50,7 +50,7 @@ Snippets
 
 Crear snippet personalizado  
 ***************************
-
+ 
 En Visual Studio Code podemos crear un pedazo de código personalizado para utilizar comunmente:
 
 Paso 1. Pulsamos ctrl + mayuscula + p y escribimos snippet. 

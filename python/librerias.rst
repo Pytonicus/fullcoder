@@ -19,7 +19,7 @@ platform: Manipulación del Sistema
    
 Información del sistema operativo
 *********************************
-
+ 
 .. code-block:: python 
     :linenos:
 

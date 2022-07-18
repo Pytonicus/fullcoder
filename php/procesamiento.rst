@@ -13,7 +13,7 @@ Comunicación Cliente / Servidor
 Variables superglobales para manejo y procesamiento de peticiones en PHP 7.4
 
 .. contents:: Índice
-
+  
 GET
 ###
     

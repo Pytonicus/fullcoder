@@ -13,7 +13,7 @@ Bases de datos
 Trabajando con bases de datos en Python 
 
 .. contents:: Índice
-  
+   
 Conexión SQLITE 3
 #################
  

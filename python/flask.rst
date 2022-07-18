@@ -18,7 +18,7 @@ Configuraciones
   
 Creación del proyecto
 *********************
-
+ 
 * Crear un Directorio para el proyecto y acceder al mismo.
 * Crear un entorno virtual.
 * Instalar flask: ``pip install flask``.

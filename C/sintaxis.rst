@@ -1,6 +1,6 @@
 Sintaxis C
 ==========
-
+ 
 .. image:: /logos/logo-c.png
     :scale: 50%
     :alt: Logo C

@@ -18,7 +18,7 @@ Pillow: Tratamiento de imágenes
 ###############################
    
 * Instalación: ``pip3 install Pillow``
-
+ 
 .. code-block:: python
     :linenos:
 

@@ -9,7 +9,7 @@ reStructuredText
 
 .. |date| date::
 .. |time| date:: %H:%M
-
+ 
 Última edición el día |date| a las |time|.
 
 Esta es la documentación que he recopilado para trabajar con Sphinx, un framework que tiene como proposito la creación de sitios web orientados a la documentación como es este mismo sitio.

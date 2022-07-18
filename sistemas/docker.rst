@@ -2,7 +2,7 @@
 Docker
 ======
 
-.. image:: /logos/docker.png
+.. image:: /logos/docker-logo.png
     :scale: 20%
     :alt: Logo Docker
     :align: center
@@ -15,7 +15,7 @@ Docker
 Esta es la documentación que he recopilado para instalar y configurar docker en sistemas linux.
  
 .. contents:: Índice
-
+ 
 Instalar y configurar Docker  
 ############################
 

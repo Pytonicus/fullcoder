@@ -19,7 +19,7 @@ Manipulación de variables
  
 Averiguar tipo de dato
 **********************
- 
+  
 .. code-block:: python
     :linenos:
 

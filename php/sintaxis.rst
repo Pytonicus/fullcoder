@@ -670,7 +670,7 @@ Funciones
 
 Programación orientada a objetos
 ################################
-
+ 
 Los elementos de una clase se definen con ámbito **public**, **private** y **protected**. 
 Adicionalmente se puede agregar el modificador **static** para poder acceder a los atributos y métodos sin crear un objeto.
 

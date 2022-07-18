@@ -18,7 +18,7 @@ pipenv: entorno virtual Python
 ##############################
 
 * Instalación: ``pip3 install pipenv``
-
+ 
 * Creación de entorno virtual (directorio raiz del proyecto): ``pipenv shell``
 
 .. note::

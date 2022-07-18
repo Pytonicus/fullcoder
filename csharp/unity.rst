@@ -1,6 +1,6 @@
 Unity 
 =====
-
+ 
 .. image:: /logos/logo-unity.png
     :scale: 80%
     :alt: Logo Unity

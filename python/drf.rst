@@ -16,7 +16,7 @@ Esta es la documentación que he recopilado para trabajar con Djang rest framewo
  
 Primeros Pasos
 ##############
-  
+   
 Crear un proyecto Django 
 ************************
 

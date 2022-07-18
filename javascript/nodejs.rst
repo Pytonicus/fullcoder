@@ -10,7 +10,7 @@ Entornos: Node.JS
 .. |time| date:: %H:%M
 
 Documentación básica de NodeJS 
-
+ 
 .. contents:: Índice
  
 Configuraciones

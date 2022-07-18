@@ -9,7 +9,7 @@ HTML5
 
 .. |date| date::
 .. |time| date:: %H:%M
- 
+  
 Última edición el día |date| a las |time|.
 
 Esta es la documentación que he recopilado para trabajar con HTML5, HyperText Markup Language que se utiliza para crear la estructura de un sitio web.

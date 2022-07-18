@@ -16,7 +16,7 @@ Testing en diferentes casos con Python
 
 Testing en Django  
 #################
-
+ 
 TestTipe en Apps django 
 ***********************
 Se abre una app django y se edita el archivo **test.py**:

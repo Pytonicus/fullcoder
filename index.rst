@@ -72,7 +72,6 @@ Bienvenido a FullCoder, un sitio de Manual
    go/concurrencia
    go/testing
    go/web
-   go/database
 
 .. toctree::
    :maxdepth: 1
@@ -98,6 +97,15 @@ Bienvenido a FullCoder, un sitio de Manual
    csharp/hilos
    csharp/unity
 
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Java:
+
+   java/sintaxis
+   java/funciones 
+   java/documentacion
+
 .. toctree::
    :maxdepth: 1
    :caption: Sistemas y herramientas:
@@ -110,3 +118,4 @@ Bienvenido a FullCoder, un sitio de Manual
    :caption: Otros Lenguajes:
 
    otros/basic
+   otros/vscode

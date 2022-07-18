@@ -8,7 +8,7 @@ Basic y Commodore 64
 
 .. |date| date::
 .. |time| date:: %H:%M
-
+ 
 
 Funcionamiento del Commodore 64 y Basic ejecutado desde un equipo réplica TheC64 Maxi.
   

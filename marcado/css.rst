@@ -9,7 +9,7 @@ CSS3
  
 .. |date| date::
 .. |time| date:: %H:%M
-
+ 
 Última edición el día |date| a las |time|.
 
 Esta es la documentación que he recopilado para trabajar con CSS3, un lenguaje de creación de estilos en cascada.

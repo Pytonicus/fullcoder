@@ -9,7 +9,7 @@ Funciones
 .. |date| date::
 .. |time| date:: %H:%M
 
-
+ 
 Sintáxis básica de JavaScript
   
 .. contents:: Índice

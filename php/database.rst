@@ -9,7 +9,7 @@ Manipulación de base de datos
 .. |date| date::
 .. |time| date:: %H:%M
 
- 
+  
 Manipulación de base de datos con PDO en PHP 7.4
 
 .. contents:: Índice

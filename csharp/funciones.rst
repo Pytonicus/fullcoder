@@ -1,6 +1,6 @@
 Funciones predefinidas
 ======================
-
+ 
 .. image:: /logos/logo-csharp.png
     :scale: 80%
     :alt: Logo C#

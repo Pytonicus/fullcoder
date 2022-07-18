@@ -9,7 +9,7 @@ Testing
 .. |date| date::
 .. |time| date:: %H:%M
 
-    
+     
 Testing y pruebas en GO 
 #######################
 

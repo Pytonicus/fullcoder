@@ -9,7 +9,7 @@ NVM: Entornos Virtuales
 .. |date| date::
 .. |time| date:: %H:%M
 
-
+ 
 Entornos virtuales para trabajar con NodeJS, para mas información visitar: 
 https://github.com/nvm-sh/nvm
 

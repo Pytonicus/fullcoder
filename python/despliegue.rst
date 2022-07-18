@@ -15,7 +15,7 @@ Documentación básica para realizar despliegues con Gunicorn
 
 Protocolo WSGI
 ##############
-
+ 
 Es un protocolo estandar que utilizan las aplicaciones python en el ámbito web definiendo como debe comportarse. 
 
 Gunicorn

@@ -15,7 +15,7 @@ Nginx
 Esta es la documentación que he recopilado para instalar y configurar un servidor Nginx en Ubuntu para distintos entornos.
  
 .. contents:: Índice
-
+ 
 Instalar y configurar servidor Nginx 
 ####################################
 
