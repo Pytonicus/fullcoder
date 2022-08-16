@@ -403,6 +403,18 @@
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
+  Bases de datos:
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ddbb/mongodb.html">
+   MongoDB
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
   Sistemas y herramientas:
  </span>
 </p>
@@ -427,6 +439,11 @@
  <li class="toctree-l1">
   <a class="reference internal" href="../otros/basic.html">
    Basic y Commodore 64
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../otros/vscode.html">
+   Visual Studio Code
   </a>
  </li>
 </ul>
@@ -710,6 +727,11 @@ title="Print to PDF"
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#relaciones-de-tablas-y-tablas-ya-existentes">
+     Relaciones de tablas y tablas ya existentes
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#query-builder-laravel">
      Query Builder Laravel
     </a>
@@ -737,6 +759,11 @@ title="Print to PDF"
     </ul>
    </li>
   </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#api-restful">
+   API Restful
+  </a>
  </li>
 </ul>
 
@@ -906,6 +933,11 @@ title="Print to PDF"
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#relaciones-de-tablas-y-tablas-ya-existentes">
+     Relaciones de tablas y tablas ya existentes
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#query-builder-laravel">
      Query Builder Laravel
     </a>
@@ -933,6 +965,11 @@ title="Print to PDF"
     </ul>
    </li>
   </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#api-restful">
+   API Restful
+  </a>
  </li>
 </ul>
 
@@ -1714,6 +1751,60 @@ estas plantillas se suelen guardar en la carpeta <strong>layouts</strong> la cua
 <p>En caso de que indique un error de tipo <strong>no se encuentra la clase lista_consolas_seed.php</strong> habrá que ejecutar el comando <code class="docutils literal notranslate"><span class="pre">composer</span> <span class="pre">dump-autoload</span></code> para solucionar el problema.</p>
 </div>
 </section>
+<section id="relaciones-de-tablas-y-tablas-ya-existentes">
+<h3>Relaciones de tablas y tablas ya existentes<a class="headerlink" href="#relaciones-de-tablas-y-tablas-ya-existentes" title="Enlazar permanentemente con este título">#</a></h3>
+<p>Aparte de las relaciones entre tablas veremos como tener un modelo que trabaja con una tabla que se creó desde mysql:</p>
+<ul class="simple">
+<li><p>Tabla con relación de uno a muchos (Category):</p></li>
+</ul>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="cp">&lt;?php</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="k">namespace</span> <span class="nx">App\Models</span><span class="p">;</span>
+<span class="linenos"> 4</span>
+<span class="linenos"> 5</span><span class="k">use</span> <span class="nx">Illuminate\Database\Eloquent\Factories\HasFactory</span><span class="p">;</span>
+<span class="linenos"> 6</span><span class="k">use</span> <span class="nx">Illuminate\Database\Eloquent\Model</span><span class="p">;</span>
+<span class="linenos"> 7</span>
+<span class="linenos"> 8</span><span class="k">class</span> <span class="nc">Category</span> <span class="k">extends</span> <span class="nx">Model</span>
+<span class="linenos"> 9</span><span class="p">{</span>
+<span class="linenos">10</span>    <span class="k">use</span> <span class="nx">HasFactory</span><span class="p">;</span>
+<span class="linenos">11</span>    <span class="c1">// tabla creada en mysql:</span>
+<span class="linenos">12</span>    <span class="k">protected</span> <span class="nv">$table</span> <span class="o">=</span> <span class="s1">&#39;categories&#39;</span><span class="p">;</span>
+<span class="linenos">13</span>
+<span class="linenos">14</span>    <span class="c1">// relación de uno a muchos:</span>
+<span class="linenos">15</span>    <span class="k">public</span> <span class="k">function</span> <span class="nf">posts</span><span class="p">(){</span>
+<span class="linenos">16</span>        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">hasMany</span><span class="p">(</span><span class="s1">&#39;App\Post&#39;</span><span class="p">);</span>
+<span class="linenos">17</span>    <span class="p">}</span>
+<span class="linenos">18</span><span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Tabla con relación inversa (Post):</p></li>
+</ul>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="cp">&lt;?php</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="k">namespace</span> <span class="nx">App\Models</span><span class="p">;</span>
+<span class="linenos"> 4</span>
+<span class="linenos"> 5</span><span class="k">use</span> <span class="nx">Illuminate\Database\Eloquent\Factories\HasFactory</span><span class="p">;</span>
+<span class="linenos"> 6</span><span class="k">use</span> <span class="nx">Illuminate\Database\Eloquent\Model</span><span class="p">;</span>
+<span class="linenos"> 7</span>
+<span class="linenos"> 8</span><span class="k">class</span> <span class="nc">Post</span> <span class="k">extends</span> <span class="nx">Model</span>
+<span class="linenos"> 9</span><span class="p">{</span>
+<span class="linenos">10</span>    <span class="k">use</span> <span class="nx">HasFactory</span><span class="p">;</span>
+<span class="linenos">11</span>    <span class="c1">// tabla creada en mysql:</span>
+<span class="linenos">12</span>    <span class="k">protected</span> <span class="nv">$table</span> <span class="o">=</span> <span class="s1">&#39;posts&#39;</span><span class="p">;</span>
+<span class="linenos">13</span>
+<span class="linenos">14</span>    <span class="c1">// relación de uno a muchos inversa (muchos a uno):</span>
+<span class="linenos">15</span>    <span class="k">public</span> <span class="k">function</span> <span class="nf">user</span><span class="p">(){</span>
+<span class="linenos">16</span>        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">belongsTo</span><span class="p">(</span><span class="s1">&#39;App\Models\User&#39;</span><span class="p">,</span> <span class="s1">&#39;user_id&#39;</span><span class="p">);</span>
+<span class="linenos">17</span>    <span class="p">}</span>
+<span class="linenos">18</span>
+<span class="linenos">19</span>    <span class="k">public</span> <span class="k">function</span> <span class="nf">category</span><span class="p">(){</span>
+<span class="linenos">20</span>        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">belongsTo</span><span class="p">(</span><span class="s1">&#39;App\Models\Category&#39;</span><span class="p">,</span> <span class="s1">&#39;category_id&#39;</span><span class="p">);</span>
+<span class="linenos">21</span>    <span class="p">}</span>
+<span class="linenos">22</span><span class="p">}</span>
+</pre></div>
+</div>
+</section>
 <section id="query-builder-laravel">
 <h3>Query Builder Laravel<a class="headerlink" href="#query-builder-laravel" title="Enlazar permanentemente con este título">#</a></h3>
 <section id="consultar-datos">
@@ -1859,6 +1950,9 @@ estas plantillas se suelen guardar en la carpeta <strong>layouts</strong> la cua
 </div>
 </section>
 </section>
+</section>
+<section id="api-restful">
+<h2>API Restful<a class="headerlink" href="#api-restful" title="Enlazar permanentemente con este título">#</a></h2>
 </section>
 </section>
 

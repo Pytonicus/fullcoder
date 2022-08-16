@@ -1,8 +1,8 @@
-Basic y Commodore 64
-====================
+Visual Studio Code 
+==================
 
 .. image:: /logos/logo-vsc.png
-    :scale: 100%
+    :scale: 15%
     :alt: Logo Visual Studio Code
     :align: center
 

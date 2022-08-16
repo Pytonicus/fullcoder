@@ -828,6 +828,66 @@ Los seeders se utilizan para rellenar datos de prueba en una aplicación:
 .. attention::
     En caso de que indique un error de tipo **no se encuentra la clase lista_consolas_seed.php** habrá que ejecutar el comando ``composer dump-autoload`` para solucionar el problema.
 
+
+Relaciones de tablas y tablas ya existentes
+*******************************************
+
+Aparte de las relaciones entre tablas veremos como tener un modelo que trabaja con una tabla que se creó desde mysql:
+
+* Tabla con relación de uno a muchos (Category):
+
+.. code-block:: php 
+    :linenos:
+
+    <?php
+
+    namespace App\Models;
+
+    use Illuminate\Database\Eloquent\Factories\HasFactory;
+    use Illuminate\Database\Eloquent\Model;
+
+    class Category extends Model
+    {
+        use HasFactory;
+        // tabla creada en mysql:
+        protected $table = 'categories';
+
+        // relación de uno a muchos:
+        public function posts(){
+            return $this->hasMany('App\Post');
+        }
+    }
+
+* Tabla con relación inversa (Post):
+
+.. code-block:: php 
+    :linenos:
+
+    <?php
+
+    namespace App\Models;
+
+    use Illuminate\Database\Eloquent\Factories\HasFactory;
+    use Illuminate\Database\Eloquent\Model;
+
+    class Post extends Model
+    {
+        use HasFactory;
+        // tabla creada en mysql:
+        protected $table = 'posts';
+
+        // relación de uno a muchos inversa (muchos a uno):
+        public function user(){
+            return $this->belongsTo('App\Models\User', 'user_id');
+        }
+
+        public function category(){
+            return $this->belongsTo('App\Models\Category', 'category_id');
+        }
+    }
+
+
+
 Query Builder Laravel
 *********************
 
@@ -983,4 +1043,8 @@ Actualizar registros
 
         <input type="submit" value="registrar" />
     </form>
+
+
+API Restful
+###########
 

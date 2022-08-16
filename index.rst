@@ -108,6 +108,12 @@ Bienvenido a FullCoder, un sitio de Manual
 
 .. toctree::
    :maxdepth: 1
+   :caption: Bases de datos:
+
+   ddbb/mongodb
+
+.. toctree::
+   :maxdepth: 1
    :caption: Sistemas y herramientas:
 
    sistemas/nginx
