@@ -116,6 +116,15 @@ Comandos para actualizar
 .. note::
     $gt y $set son filtros. En el primer caso $gt indica que se esta buscando un número mayor que el indicado y en el segundo que se va a editar unos campos.
 
+Actualizar Arrays 
++++++++++++++++++
+
+- Añadir elemento al array: ``db.users.updateOne({nickname:"pytonicus"}, {$addToSet: {games: "Metal Gear Solid"}})``
+- Añadir varios elementos al array (sin añadir repetidos): ``db.users.updateOne({nickname:"pytonicus"}, {$addToSet: {games: {$each: ["Metal Gear Solid", "Crash Bandicoot"]}}})``
+- Añadir varios elementos al array (añadiendo repetidos): ``db.users.updateOne({nickname:"pytonicus"}, {$addToSet: {games: {$push: ["Metal Gear Solid", "Crash Bandicoot"]}}})``
+- Eliminar último elemento del array (o primero usando -1): ``db.users.updateOne({nickname:"pytonicus"}, {$pop: {games: 1}})``
+- Eliminar un elemento del array: ``db.users.updateOne({nickname:"pytonicus"}, {$pull: {games: "Metal Gear Solid"}})``
+
 Comandos para eliminar   
 **********************
 
