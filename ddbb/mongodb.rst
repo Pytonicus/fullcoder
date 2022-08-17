@@ -86,6 +86,7 @@ Consultas básicas
 - Consultar elementos de una colección que cumplan la condición: ``db.consolas.find({modelo: "Switch"})`` 
 - Contar resultados: ``db.consolas.find().count()`` (se puede filtrar resultados)
 - Limitar resultados mostrados en búsqueda a un número determinado: ``db.consolas.find().limit(2)``
+- Consultar documentos y ordenarlos por ascendente (1) o descendiente (-1): ``db.consolas.find().sort({modelo: 1})``
 
 Consultas para Arrays 
 +++++++++++++++++++++
