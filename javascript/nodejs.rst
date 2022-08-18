@@ -19,7 +19,7 @@ Configuraciones
 Instalar NodeJS
 ***************
 
-...
+Para instalar NodeJS es recomendable acudir a su página oficial: https://nodejs.org/es/
 
 NodeJS CLI 
 **********

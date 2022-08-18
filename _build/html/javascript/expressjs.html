@@ -403,6 +403,18 @@
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
+  Bases de datos:
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ddbb/mongodb.html">
+   MongoDB
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
   Sistemas y herramientas:
  </span>
 </p>
@@ -427,6 +439,11 @@
  <li class="toctree-l1">
   <a class="reference internal" href="../otros/basic.html">
    Basic y Commodore 64
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../otros/vscode.html">
+   Visual Studio Code
   </a>
  </li>
 </ul>
@@ -612,6 +629,73 @@ title="Print to PDF"
    </li>
   </ul>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#proyecto-api-rest-estructurado">
+   Proyecto API rest Estructurado
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#paso-1-iniciar-proyecto">
+     Paso 1 - Iniciar proyecto
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#paso-2-preparar-estructura">
+     Paso 2 - Preparar estructura
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#paso-3-archivo-de-entrada-index-js">
+     Paso 3 - Archivo de entrada (index.js)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#paso-4-archivo-que-ejecuta-dependencias-app-js">
+     Paso 4 - Archivo que ejecuta dependencias (app.js)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#paso-5-crear-controlador">
+     Paso 5 - Crear controlador
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#paso-6-crear-archivo-de-rutas">
+     Paso 6 - Crear archivo de rutas
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#paso-7-conectar-a-la-base-de-datos-mongodb">
+     Paso 7 - Conectar a la base de datos MongoDB
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#paso-8-configurar-entorno-para-trabajar-con-json">
+     Paso 8 - Configurar entorno para trabajar con JSON
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#paso-9-crear-modelo-de-datos-con-mongodb">
+     Paso 9 - Crear modelo de datos con MongoDB
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#paso-10-crear-controlador-para-gestionar-peticiones">
+     Paso 10 - Crear controlador para gestionar peticiones
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#paso-11-crear-rutas-para-peticiones">
+     Paso 11: crear rutas para peticiones
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#paso-12-anadir-el-archivo-de-rutas-a-app-json">
+     Paso 12: Añadir el archivo de rutas a app.json
+    </a>
+   </li>
+  </ul>
+ </li>
 </ul>
 
     </nav>
@@ -682,6 +766,73 @@ title="Print to PDF"
    </li>
   </ul>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#proyecto-api-rest-estructurado">
+   Proyecto API rest Estructurado
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#paso-1-iniciar-proyecto">
+     Paso 1 - Iniciar proyecto
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#paso-2-preparar-estructura">
+     Paso 2 - Preparar estructura
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#paso-3-archivo-de-entrada-index-js">
+     Paso 3 - Archivo de entrada (index.js)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#paso-4-archivo-que-ejecuta-dependencias-app-js">
+     Paso 4 - Archivo que ejecuta dependencias (app.js)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#paso-5-crear-controlador">
+     Paso 5 - Crear controlador
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#paso-6-crear-archivo-de-rutas">
+     Paso 6 - Crear archivo de rutas
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#paso-7-conectar-a-la-base-de-datos-mongodb">
+     Paso 7 - Conectar a la base de datos MongoDB
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#paso-8-configurar-entorno-para-trabajar-con-json">
+     Paso 8 - Configurar entorno para trabajar con JSON
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#paso-9-crear-modelo-de-datos-con-mongodb">
+     Paso 9 - Crear modelo de datos con MongoDB
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#paso-10-crear-controlador-para-gestionar-peticiones">
+     Paso 10 - Crear controlador para gestionar peticiones
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#paso-11-crear-rutas-para-peticiones">
+     Paso 11: crear rutas para peticiones
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#paso-12-anadir-el-archivo-de-rutas-a-app-json">
+     Paso 12: Añadir el archivo de rutas a app.json
+    </a>
+   </li>
+  </ul>
+ </li>
 </ul>
 
                         </nav>
@@ -717,6 +868,22 @@ title="Print to PDF"
 <li><p><a class="reference internal" href="#peticiones-post" id="id8">Peticiones POST</a></p></li>
 <li><p><a class="reference internal" href="#peticiones-put" id="id9">Peticiones PUT</a></p></li>
 <li><p><a class="reference internal" href="#peticiones-delete" id="id10">Peticiones DELETE</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#proyecto-api-rest-estructurado" id="id11">Proyecto API rest Estructurado</a></p>
+<ul>
+<li><p><a class="reference internal" href="#paso-1-iniciar-proyecto" id="id12">Paso 1 - Iniciar proyecto</a></p></li>
+<li><p><a class="reference internal" href="#paso-2-preparar-estructura" id="id13">Paso 2 - Preparar estructura</a></p></li>
+<li><p><a class="reference internal" href="#paso-3-archivo-de-entrada-index-js" id="id14">Paso 3 - Archivo de entrada (index.js)</a></p></li>
+<li><p><a class="reference internal" href="#paso-4-archivo-que-ejecuta-dependencias-app-js" id="id15">Paso 4 - Archivo que ejecuta dependencias (app.js)</a></p></li>
+<li><p><a class="reference internal" href="#paso-5-crear-controlador" id="id16">Paso 5 - Crear controlador</a></p></li>
+<li><p><a class="reference internal" href="#paso-6-crear-archivo-de-rutas" id="id17">Paso 6 - Crear archivo de rutas</a></p></li>
+<li><p><a class="reference internal" href="#paso-7-conectar-a-la-base-de-datos-mongodb" id="id18">Paso 7 - Conectar a la base de datos MongoDB</a></p></li>
+<li><p><a class="reference internal" href="#paso-8-configurar-entorno-para-trabajar-con-json" id="id19">Paso 8 - Configurar entorno para trabajar con JSON</a></p></li>
+<li><p><a class="reference internal" href="#paso-9-crear-modelo-de-datos-con-mongodb" id="id20">Paso 9 - Crear modelo de datos con MongoDB</a></p></li>
+<li><p><a class="reference internal" href="#paso-10-crear-controlador-para-gestionar-peticiones" id="id21">Paso 10 - Crear controlador para gestionar peticiones</a></p></li>
+<li><p><a class="reference internal" href="#paso-11-crear-rutas-para-peticiones" id="id22">Paso 11: crear rutas para peticiones</a></p></li>
+<li><p><a class="reference internal" href="#paso-12-anadir-el-archivo-de-rutas-a-app-json" id="id23">Paso 12: Añadir el archivo de rutas a app.json</a></p></li>
 </ul>
 </li>
 </ul>
@@ -1021,6 +1188,332 @@ una aplicación externa se bloqueará.</p>
 <span class="linenos">68</span><span class="nx">app</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="nx">port</span><span class="p">,</span><span class="w"> </span><span class="p">()=&gt;{</span><span class="w"></span>
 <span class="linenos">69</span><span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Servidor ejecutandose en http://localhost:</span><span class="si">${</span><span class="nx">port</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span><span class="w"></span>
 <span class="linenos">70</span><span class="p">});</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="proyecto-api-rest-estructurado">
+<h2><a class="toc-backref" href="#id11">Proyecto API rest Estructurado</a><a class="headerlink" href="#proyecto-api-rest-estructurado" title="Enlazar permanentemente con este título">#</a></h2>
+<section id="paso-1-iniciar-proyecto">
+<h3><a class="toc-backref" href="#id12">Paso 1 - Iniciar proyecto</a><a class="headerlink" href="#paso-1-iniciar-proyecto" title="Enlazar permanentemente con este título">#</a></h3>
+<ul class="simple">
+<li><p>Crear una carpeta para el proyecto.</p></li>
+<li><p>Crear un repositorio en github, gitlab o simil.</p></li>
+<li><p>ejecutar <code class="docutils literal notranslate"><span class="pre">npm</span> <span class="pre">init</span></code> para iniciar el proyecto.</p></li>
+<li><p>instalar express: <code class="docutils literal notranslate"><span class="pre">npm</span> <span class="pre">install</span> <span class="pre">express</span> <span class="pre">--save</span></code></p></li>
+</ul>
+</section>
+<section id="paso-2-preparar-estructura">
+<h3><a class="toc-backref" href="#id13">Paso 2 - Preparar estructura</a><a class="headerlink" href="#paso-2-preparar-estructura" title="Enlazar permanentemente con este título">#</a></h3>
+<ul class="simple">
+<li><p>crear archivos <strong>index.js</strong> y <strong>app.js</strong></p></li>
+<li><p>crear carpetas <strong>controllers</strong>, <strong>routes</strong> y <strong>models</strong></p></li>
+</ul>
+</section>
+<section id="paso-3-archivo-de-entrada-index-js">
+<h3><a class="toc-backref" href="#id14">Paso 3 - Archivo de entrada (index.js)</a><a class="headerlink" href="#paso-3-archivo-de-entrada-index-js" title="Enlazar permanentemente con este título">#</a></h3>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="c1">// importa la constante app con express:</span><span class="w"></span>
+<span class="linenos">2</span><span class="kd">const</span><span class="w"> </span><span class="nx">app</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./app&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">3</span><span class="kd">const</span><span class="w"> </span><span class="nx">port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">3000</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">4</span>
+<span class="linenos">5</span><span class="nx">app</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="nx">port</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">6</span><span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Servidor funcionando en: http://localhost:</span><span class="si">${</span><span class="nx">port</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">7</span><span class="p">});</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="paso-4-archivo-que-ejecuta-dependencias-app-js">
+<h3><a class="toc-backref" href="#id15">Paso 4 - Archivo que ejecuta dependencias (app.js)</a><a class="headerlink" href="#paso-4-archivo-que-ejecuta-dependencias-app-js" title="Enlazar permanentemente con este título">#</a></h3>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c1">// importar e inicializar express:</span><span class="w"></span>
+<span class="linenos"> 2</span><span class="kd">const</span><span class="w"> </span><span class="nx">express</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;express&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="linenos"> 3</span><span class="kd">const</span><span class="w"> </span><span class="nx">app</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">express</span><span class="p">();</span><span class="w"></span>
+<span class="linenos"> 4</span>
+<span class="linenos"> 5</span><span class="c1">// Cargar rutas de cada archivo enrutador:</span><span class="w"></span>
+<span class="linenos"> 6</span><span class="kd">const</span><span class="w"> </span><span class="nx">pruebaRoutes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;./routes/pruebaRoutes&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="linenos"> 7</span>
+<span class="linenos"> 8</span><span class="c1">// ruta base:</span><span class="w"></span>
+<span class="linenos"> 9</span><span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="s2">&quot;/api&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">pruebaRoutes</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">10</span>
+<span class="linenos">11</span><span class="c1">// exportar app para index.js:</span><span class="w"></span>
+<span class="linenos">12</span><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">app</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="paso-5-crear-controlador">
+<h3><a class="toc-backref" href="#id16">Paso 5 - Crear controlador</a><a class="headerlink" href="#paso-5-crear-controlador" title="Enlazar permanentemente con este título">#</a></h3>
+<p>En la carpeta controllers se crea el controlador <strong>pruebaController</strong>:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="c1">// se crea la función del controlador que recibe el request y la response:</span><span class="w"></span>
+<span class="linenos">2</span><span class="kd">function</span><span class="w"> </span><span class="nx">getPrueba</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">){</span><span class="w"></span>
+<span class="linenos">3</span><span class="w">    </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">200</span><span class="p">).</span><span class="nx">send</span><span class="p">({</span><span class="nx">msg</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;controller de prueba&quot;</span><span class="p">});</span><span class="w"></span>
+<span class="linenos">4</span><span class="p">}</span><span class="w"></span>
+<span class="linenos">5</span>
+<span class="linenos">6</span><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">7</span><span class="w">    </span><span class="nx">getPrueba</span><span class="w"></span>
+<span class="linenos">8</span><span class="p">};</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="paso-6-crear-archivo-de-rutas">
+<h3><a class="toc-backref" href="#id17">Paso 6 - Crear archivo de rutas</a><a class="headerlink" href="#paso-6-crear-archivo-de-rutas" title="Enlazar permanentemente con este título">#</a></h3>
+<p>En la carpeta routes se crea el archivo <strong>pruebaRoutes</strong>:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c1">// se importa y carga el enrutador de express:</span><span class="w"></span>
+<span class="linenos"> 2</span><span class="kd">const</span><span class="w"> </span><span class="nx">express</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;express&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="linenos"> 3</span><span class="kd">const</span><span class="w"> </span><span class="nx">api</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">express</span><span class="p">.</span><span class="nx">Router</span><span class="p">();</span><span class="w"></span>
+<span class="linenos"> 4</span>
+<span class="linenos"> 5</span><span class="c1">// se importan los controladores para cada ruta:</span><span class="w"></span>
+<span class="linenos"> 6</span><span class="kd">const</span><span class="w"> </span><span class="nx">pruebaController</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;../controllers/pruebaController&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="linenos"> 7</span>
+<span class="linenos"> 8</span><span class="c1">// se le pasa el controlador a la ruta:</span><span class="w"></span>
+<span class="linenos"> 9</span><span class="nx">api</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;/prueba&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">pruebaController</span><span class="p">.</span><span class="nx">getPrueba</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">10</span>
+<span class="linenos">11</span><span class="c1">// se exporta el archivo de rutas:</span><span class="w"></span>
+<span class="linenos">12</span><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">api</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Ejecutar el servidor y acceder a la ruta: <a class="reference external" href="http://localhost:3000/api/prueba">http://localhost:3000/api/prueba</a></p>
+</section>
+<section id="paso-7-conectar-a-la-base-de-datos-mongodb">
+<h3><a class="toc-backref" href="#id18">Paso 7 - Conectar a la base de datos MongoDB</a><a class="headerlink" href="#paso-7-conectar-a-la-base-de-datos-mongodb" title="Enlazar permanentemente con este título">#</a></h3>
+<p>Lo primero será instalar en el proyecto mongoose: <code class="docutils literal notranslate"><span class="pre">npm</span> <span class="pre">install</span> <span class="pre">mongoose</span> <span class="pre">--save</span></code></p>
+<p>Ahora vamos al archivo <strong>index.js</strong> y editamos:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c1">// se importa el paquete mongoose:</span><span class="w"></span>
+<span class="linenos"> 2</span><span class="kd">const</span><span class="w"> </span><span class="nx">mongoose</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;mongoose&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="linenos"> 3</span><span class="kd">const</span><span class="w"> </span><span class="nx">app</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./app&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="linenos"> 4</span><span class="kd">const</span><span class="w"> </span><span class="nx">port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">3000</span><span class="p">;</span><span class="w"></span>
+<span class="linenos"> 5</span>
+<span class="linenos"> 6</span><span class="c1">// conectar a mongo introduciendo ruta y nombre de la base de datos tras la barra:</span><span class="w"></span>
+<span class="linenos"> 7</span><span class="nx">mongoose</span><span class="p">.</span><span class="nx">connect</span><span class="p">(</span><span class="s2">&quot;mongodb://localhost:27017/tasker&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos"> 8</span><span class="w">    </span><span class="c1">// se añade una configuración recomendada</span><span class="w"></span>
+<span class="linenos"> 9</span><span class="w">    </span><span class="nx">useNewUrlParser</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
+<span class="linenos">10</span><span class="w">    </span><span class="nx">useUnifiedTopology</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
+<span class="linenos">11</span><span class="w">    </span><span class="c1">// si existe algún tipo de mensaje de error añadir esta opción: useFindAndModify: false</span><span class="w"></span>
+<span class="linenos">12</span><span class="p">},</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)=&gt;{</span><span class="w"></span>
+<span class="linenos">13</span><span class="w">        </span><span class="k">try</span><span class="p">{</span><span class="w"></span>
+<span class="linenos">14</span><span class="w">            </span><span class="k">if</span><span class="p">(</span><span class="nx">err</span><span class="p">){</span><span class="w"></span>
+<span class="linenos">15</span><span class="w">                </span><span class="k">throw</span><span class="w"> </span><span class="nx">err</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">16</span><span class="w">            </span><span class="p">}</span><span class="k">else</span><span class="p">{</span><span class="w"></span>
+<span class="linenos">17</span><span class="w">                </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Se ha establecido la conexión a la base de datos&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">18</span><span class="w">            </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">19</span><span class="w">        </span><span class="p">}</span><span class="k">catch</span><span class="p">(</span><span class="nx">error</span><span class="p">){</span><span class="w"></span>
+<span class="linenos">20</span><span class="w">            </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">21</span><span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">22</span><span class="w">    </span><span class="p">});</span><span class="w"></span>
+<span class="linenos">23</span>
+<span class="linenos">24</span>
+<span class="linenos">25</span><span class="nx">app</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="nx">port</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">26</span><span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Servidor funcionando en: http://localhost:</span><span class="si">${</span><span class="nx">port</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">27</span><span class="p">});</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="paso-8-configurar-entorno-para-trabajar-con-json">
+<h3><a class="toc-backref" href="#id19">Paso 8 - Configurar entorno para trabajar con JSON</a><a class="headerlink" href="#paso-8-configurar-entorno-para-trabajar-con-json" title="Enlazar permanentemente con este título">#</a></h3>
+<p>Nos vamos a <strong>app.json</strong> y se añade lo siguiente:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kd">const</span><span class="w"> </span><span class="nx">express</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;express&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="linenos"> 2</span><span class="kd">const</span><span class="w"> </span><span class="nx">app</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">express</span><span class="p">();</span><span class="w"></span>
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span><span class="c1">// para trabajar con json se carga el modulo json de express:</span><span class="w"></span>
+<span class="linenos"> 5</span><span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">express</span><span class="p">.</span><span class="nx">json</span><span class="p">());</span><span class="w"></span>
+<span class="linenos"> 6</span><span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">express</span><span class="p">.</span><span class="nx">urlencoded</span><span class="p">({</span><span class="nx">extended</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">}));</span><span class="w"> </span><span class="c1">// también es necesaria la codificación</span><span class="w"></span>
+<span class="linenos"> 7</span>
+<span class="linenos"> 8</span><span class="kd">const</span><span class="w"> </span><span class="nx">hello_routes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;./routes/hello&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="linenos"> 9</span><span class="kd">const</span><span class="w"> </span><span class="nx">task_routes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./routes/taskRoutes&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">10</span>
+<span class="linenos">11</span><span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="s2">&quot;/api&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">hello_routes</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">12</span><span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="s1">&#39;/api&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">task_routes</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">13</span>
+<span class="linenos">14</span><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">app</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="paso-9-crear-modelo-de-datos-con-mongodb">
+<h3><a class="toc-backref" href="#id20">Paso 9 - Crear modelo de datos con MongoDB</a><a class="headerlink" href="#paso-9-crear-modelo-de-datos-con-mongodb" title="Enlazar permanentemente con este título">#</a></h3>
+<p>En la carpeta models se crea un archivo llamado <strong>taskModel.js</strong>:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c1">// se importa mongoose para mongodb y se inicializa el modulo schema para hacer un modelo:</span><span class="w"></span>
+<span class="linenos"> 2</span><span class="kd">const</span><span class="w"> </span><span class="nx">mongoose</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;mongoose&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="linenos"> 3</span><span class="kd">const</span><span class="w"> </span><span class="nx">Schema</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">mongoose</span><span class="p">.</span><span class="nx">Schema</span><span class="p">;</span><span class="w"></span>
+<span class="linenos"> 4</span>
+<span class="linenos"> 5</span><span class="c1">// se crea un schema del modelo:</span><span class="w"></span>
+<span class="linenos"> 6</span><span class="kd">const</span><span class="w"> </span><span class="nx">TaskSchema</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">Schema</span><span class="p">({</span><span class="w"></span>
+<span class="linenos"> 7</span><span class="w">    </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos"> 8</span><span class="w">        </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="nb">String</span><span class="p">,</span><span class="w"></span>
+<span class="linenos"> 9</span><span class="w">        </span><span class="nx">require</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"></span>
+<span class="linenos">10</span><span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="linenos">11</span><span class="w">    </span><span class="nx">description</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">12</span><span class="w">        </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="nb">String</span><span class="p">,</span><span class="w"></span>
+<span class="linenos">13</span><span class="w">        </span><span class="nx">require</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"></span>
+<span class="linenos">14</span><span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="linenos">15</span><span class="w">    </span><span class="nx">complete</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">16</span><span class="w">        </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="nb">Boolean</span><span class="p">,</span><span class="w"></span>
+<span class="linenos">17</span><span class="w">        </span><span class="nx">require</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
+<span class="linenos">18</span><span class="w">        </span><span class="k">default</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="w"></span>
+<span class="linenos">19</span><span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="linenos">20</span><span class="w">    </span><span class="nx">create_at</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">21</span><span class="w">        </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="nb">Date</span><span class="p">,</span><span class="w"></span>
+<span class="linenos">22</span><span class="w">        </span><span class="nx">require</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
+<span class="linenos">23</span><span class="w">        </span><span class="k">default</span><span class="o">:</span><span class="w"> </span><span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="w"></span>
+<span class="linenos">24</span><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">25</span><span class="p">});</span><span class="w"></span>
+<span class="linenos">26</span>
+<span class="linenos">27</span><span class="c1">// se exporta el modelo:</span><span class="w"></span>
+<span class="linenos">28</span><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">mongoose</span><span class="p">.</span><span class="nx">model</span><span class="p">(</span><span class="s2">&quot;Task&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">TaskSchema</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="paso-10-crear-controlador-para-gestionar-peticiones">
+<h3><a class="toc-backref" href="#id21">Paso 10 - Crear controlador para gestionar peticiones</a><a class="headerlink" href="#paso-10-crear-controlador-para-gestionar-peticiones" title="Enlazar permanentemente con este título">#</a></h3>
+<p>en la carpeta controllers se crea un nuevo controlador llamado <strong>taskController.js</strong>:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="linenos">  1</span><span class="kd">const</span><span class="w"> </span><span class="nx">Task</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;../models/taskModel&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">  2</span>
+<span class="linenos">  3</span><span class="c1">// la funcion será asíncrona para que espere a terminar de guardar antes de proceder:</span><span class="w"></span>
+<span class="linenos">  4</span><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">createTask</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">){</span><span class="w"></span>
+<span class="linenos">  5</span><span class="w">    </span><span class="c1">// se crea una instancia del modelo:</span><span class="w"></span>
+<span class="linenos">  6</span><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">task</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Task</span><span class="p">();</span><span class="w"></span>
+<span class="linenos">  7</span><span class="w">    </span><span class="c1">// recuperar los parámetros del body:</span><span class="w"></span>
+<span class="linenos">  8</span><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">params</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">  9</span>
+<span class="linenos"> 10</span><span class="w">    </span><span class="c1">// recuperar los datos del body y añadirlos al modelo:</span><span class="w"></span>
+<span class="linenos"> 11</span><span class="w">    </span><span class="nx">task</span><span class="p">.</span><span class="nx">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">params</span><span class="p">.</span><span class="nx">title</span><span class="p">;</span><span class="w"></span>
+<span class="linenos"> 12</span><span class="w">    </span><span class="nx">task</span><span class="p">.</span><span class="nx">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">params</span><span class="p">.</span><span class="nx">description</span><span class="p">;</span><span class="w"></span>
+<span class="linenos"> 13</span>
+<span class="linenos"> 14</span><span class="w">    </span><span class="c1">// guardar datos:</span><span class="w"></span>
+<span class="linenos"> 15</span><span class="w">    </span><span class="k">try</span><span class="p">{</span><span class="w"></span>
+<span class="linenos"> 16</span><span class="w">        </span><span class="c1">// guardar resultados en la base de datos:</span><span class="w"></span>
+<span class="linenos"> 17</span><span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">taskStore</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">task</span><span class="p">.</span><span class="nx">save</span><span class="p">();</span><span class="w"> </span><span class="c1">// el proceso será lineal hasta llegar al await (evita ejecutar todo a la vez)</span><span class="w"></span>
+<span class="linenos"> 18</span>
+<span class="linenos"> 19</span><span class="w">        </span><span class="c1">// revisar si no se ha guardado la tarea:</span><span class="w"></span>
+<span class="linenos"> 20</span><span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">taskStore</span><span class="p">){</span><span class="w"></span>
+<span class="linenos"> 21</span><span class="w">            </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">400</span><span class="p">).</span><span class="nx">send</span><span class="p">({</span><span class="nx">msg</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;No se ha guardado la tarea&quot;</span><span class="p">});</span><span class="w"></span>
+<span class="linenos"> 22</span><span class="w">        </span><span class="p">}</span><span class="k">else</span><span class="p">{</span><span class="w"></span>
+<span class="linenos"> 23</span><span class="w">            </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">200</span><span class="p">).</span><span class="nx">send</span><span class="p">({</span><span class="nx">task</span><span class="o">:</span><span class="w"> </span><span class="nx">taskStore</span><span class="p">});</span><span class="w"></span>
+<span class="linenos"> 24</span><span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="linenos"> 25</span><span class="w">    </span><span class="p">}</span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">){</span><span class="w"></span>
+<span class="linenos"> 26</span><span class="w">        </span><span class="c1">// devolver error 500 si sale mal:</span><span class="w"></span>
+<span class="linenos"> 27</span><span class="w">        </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">500</span><span class="p">).</span><span class="nx">send</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span><span class="w"></span>
+<span class="linenos"> 28</span><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="linenos"> 29</span><span class="p">}</span><span class="w"></span>
+<span class="linenos"> 30</span>
+<span class="linenos"> 31</span><span class="c1">// función para listar tareas:</span><span class="w"></span>
+<span class="linenos"> 32</span><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">getTasks</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">){</span><span class="w"></span>
+<span class="linenos"> 33</span><span class="w">    </span><span class="k">try</span><span class="p">{</span><span class="w"></span>
+<span class="linenos"> 34</span><span class="w">        </span><span class="c1">// recuperar tareas de base de datos:</span><span class="w"></span>
+<span class="linenos"> 35</span><span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">tasks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">Task</span><span class="p">.</span><span class="nx">find</span><span class="p">().</span><span class="nx">sort</span><span class="p">({</span><span class="nx">create_at</span><span class="o">:</span><span class="w"> </span><span class="o">-</span><span class="mf">1</span><span class="p">});</span><span class="w"> </span><span class="c1">// opcional: ordenar resultados con sort por un parámetro seleccionado.</span><span class="w"></span>
+<span class="linenos"> 36</span><span class="w">        </span><span class="c1">// Agregar condición dentro de find: const tasks = await Task.find({completed: false}).sort({create_at: -1});</span><span class="w"></span>
+<span class="linenos"> 37</span>
+<span class="linenos"> 38</span><span class="w">        </span><span class="c1">// comprobar si hay tareas:</span><span class="w"></span>
+<span class="linenos"> 39</span><span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">tasks</span><span class="p">){</span><span class="w"></span>
+<span class="linenos"> 40</span><span class="w">            </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">400</span><span class="p">).</span><span class="nx">send</span><span class="p">({</span><span class="nx">msg</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Error al obtener las tareas&quot;</span><span class="p">});</span><span class="w"></span>
+<span class="linenos"> 41</span><span class="w">        </span><span class="p">}</span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos"> 42</span><span class="w">            </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">200</span><span class="p">).</span><span class="nx">send</span><span class="p">(</span><span class="nx">tasks</span><span class="p">);</span><span class="w"></span>
+<span class="linenos"> 43</span><span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="linenos"> 44</span><span class="w">    </span><span class="p">}</span><span class="k">catch</span><span class="p">(</span><span class="nx">error</span><span class="p">){</span><span class="w"></span>
+<span class="linenos"> 45</span><span class="w">        </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">500</span><span class="p">).</span><span class="nx">send</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span><span class="w"></span>
+<span class="linenos"> 46</span><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="linenos"> 47</span><span class="p">}</span><span class="w"></span>
+<span class="linenos"> 48</span>
+<span class="linenos"> 49</span><span class="c1">// recuperar un solo resultado:</span><span class="w"></span>
+<span class="linenos"> 50</span><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">getTask</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">){</span><span class="w"></span>
+<span class="linenos"> 51</span><span class="w">    </span><span class="c1">// recuperar el id:</span><span class="w"></span>
+<span class="linenos"> 52</span><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">taskId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">params</span><span class="p">.</span><span class="nx">id</span><span class="p">;</span><span class="w"></span>
+<span class="linenos"> 53</span>
+<span class="linenos"> 54</span><span class="w">    </span><span class="k">try</span><span class="p">{</span><span class="w"></span>
+<span class="linenos"> 55</span><span class="w">        </span><span class="c1">// se hace un findById con el id recibido por request:</span><span class="w"></span>
+<span class="linenos"> 56</span><span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">task</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">Task</span><span class="p">.</span><span class="nx">findById</span><span class="p">(</span><span class="nx">taskId</span><span class="p">);</span><span class="w"></span>
+<span class="linenos"> 57</span>
+<span class="linenos"> 58</span><span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">task</span><span class="p">){</span><span class="w"></span>
+<span class="linenos"> 59</span><span class="w">            </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">400</span><span class="p">).</span><span class="nx">send</span><span class="p">({</span><span class="nx">msg</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;No existe la tarea&quot;</span><span class="p">});</span><span class="w"></span>
+<span class="linenos"> 60</span><span class="w">        </span><span class="p">}</span><span class="k">else</span><span class="p">{</span><span class="w"></span>
+<span class="linenos"> 61</span><span class="w">            </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">200</span><span class="p">).</span><span class="nx">send</span><span class="p">(</span><span class="nx">task</span><span class="p">);</span><span class="w"></span>
+<span class="linenos"> 62</span><span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="linenos"> 63</span><span class="w">    </span><span class="p">}</span><span class="k">catch</span><span class="p">(</span><span class="nx">error</span><span class="p">){</span><span class="w"></span>
+<span class="linenos"> 64</span><span class="w">        </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">500</span><span class="p">).</span><span class="nx">send</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span><span class="w"></span>
+<span class="linenos"> 65</span><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="linenos"> 66</span><span class="p">}</span><span class="w"></span>
+<span class="linenos"> 67</span>
+<span class="linenos"> 68</span><span class="c1">// crear la función asincrona para actualizar tareas:</span><span class="w"></span>
+<span class="linenos"> 69</span><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">updateTask</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">){</span><span class="w"></span>
+<span class="linenos"> 70</span><span class="w">    </span><span class="c1">// recuperar el id:</span><span class="w"></span>
+<span class="linenos"> 71</span><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">taskId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">params</span><span class="p">.</span><span class="nx">id</span><span class="p">;</span><span class="w"></span>
+<span class="linenos"> 72</span><span class="w">    </span><span class="c1">// recuperar parametros a actualizar:</span><span class="w"></span>
+<span class="linenos"> 73</span><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">params</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">;</span><span class="w"></span>
+<span class="linenos"> 74</span>
+<span class="linenos"> 75</span><span class="w">    </span><span class="k">try</span><span class="p">{</span><span class="w"></span>
+<span class="linenos"> 76</span><span class="w">        </span><span class="c1">// realizar consulta para recuperar la tarea y le pasamos los datos a actualizar:</span><span class="w"></span>
+<span class="linenos"> 77</span><span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">task</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">Task</span><span class="p">.</span><span class="nx">findByIdAndUpdate</span><span class="p">(</span><span class="nx">taskId</span><span class="p">,</span><span class="w"> </span><span class="nx">params</span><span class="p">);</span><span class="w"> </span><span class="c1">// OJO: ahora usamos findByIdAndUpdate()</span><span class="w"></span>
+<span class="linenos"> 78</span>
+<span class="linenos"> 79</span>
+<span class="linenos"> 80</span><span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">task</span><span class="p">){</span><span class="w"></span>
+<span class="linenos"> 81</span><span class="w">            </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">400</span><span class="p">).</span><span class="nx">send</span><span class="p">({</span><span class="nx">msg</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;No existe la tarea&quot;</span><span class="p">});</span><span class="w"></span>
+<span class="linenos"> 82</span><span class="w">        </span><span class="p">}</span><span class="k">else</span><span class="p">{</span><span class="w"></span>
+<span class="linenos"> 83</span><span class="w">            </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">200</span><span class="p">).</span><span class="nx">send</span><span class="p">(</span><span class="nx">task</span><span class="p">);</span><span class="w"></span>
+<span class="linenos"> 84</span><span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="linenos"> 85</span><span class="w">    </span><span class="p">}</span><span class="k">catch</span><span class="p">(</span><span class="nx">error</span><span class="p">){</span><span class="w"></span>
+<span class="linenos"> 86</span><span class="w">        </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">500</span><span class="p">).</span><span class="nx">send</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span><span class="w"></span>
+<span class="linenos"> 87</span><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="linenos"> 88</span><span class="p">}</span><span class="w"></span>
+<span class="linenos"> 89</span>
+<span class="linenos"> 90</span><span class="c1">// función para eliminar datos:</span><span class="w"></span>
+<span class="linenos"> 91</span><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">deleteTask</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">){</span><span class="w"></span>
+<span class="linenos"> 92</span><span class="w">    </span><span class="c1">// recuperar el id:</span><span class="w"></span>
+<span class="linenos"> 93</span><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">taskId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">params</span><span class="p">.</span><span class="nx">id</span><span class="p">;</span><span class="w"></span>
+<span class="linenos"> 94</span>
+<span class="linenos"> 95</span><span class="w">    </span><span class="k">try</span><span class="p">{</span><span class="w"></span>
+<span class="linenos"> 96</span><span class="w">        </span><span class="c1">// realizar delete:</span><span class="w"></span>
+<span class="linenos"> 97</span><span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">task</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">Task</span><span class="p">.</span><span class="nx">findByIdAndDelete</span><span class="p">(</span><span class="nx">taskId</span><span class="p">);</span><span class="w"></span>
+<span class="linenos"> 98</span>
+<span class="linenos"> 99</span><span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">task</span><span class="p">){</span><span class="w"></span>
+<span class="linenos">100</span><span class="w">            </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">400</span><span class="p">).</span><span class="nx">send</span><span class="p">({</span><span class="nx">msg</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;No existe la tarea&quot;</span><span class="p">});</span><span class="w"></span>
+<span class="linenos">101</span><span class="w">        </span><span class="p">}</span><span class="k">else</span><span class="p">{</span><span class="w"></span>
+<span class="linenos">102</span><span class="w">            </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">200</span><span class="p">).</span><span class="nx">send</span><span class="p">({</span><span class="nx">msg</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Se ha eliminado la tarea correctamente&quot;</span><span class="p">});</span><span class="w"></span>
+<span class="linenos">103</span><span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">104</span><span class="w">    </span><span class="p">}</span><span class="k">catch</span><span class="p">(</span><span class="nx">error</span><span class="p">){</span><span class="w"></span>
+<span class="linenos">105</span><span class="w">        </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">500</span><span class="p">).</span><span class="nx">send</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">106</span><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">107</span><span class="p">}</span><span class="w"></span>
+<span class="linenos">108</span>
+<span class="linenos">109</span><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">110</span><span class="w">    </span><span class="nx">createTask</span><span class="p">,</span><span class="w"></span>
+<span class="linenos">111</span><span class="w">    </span><span class="nx">getTasks</span><span class="p">,</span><span class="w"></span>
+<span class="linenos">112</span><span class="w">    </span><span class="nx">getTask</span><span class="p">,</span><span class="w"></span>
+<span class="linenos">113</span><span class="w">    </span><span class="nx">updateTask</span><span class="p">,</span><span class="w"></span>
+<span class="linenos">114</span><span class="w">    </span><span class="nx">deleteTask</span><span class="w"></span>
+<span class="linenos">115</span><span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="paso-11-crear-rutas-para-peticiones">
+<h3><a class="toc-backref" href="#id22">Paso 11: crear rutas para peticiones</a><a class="headerlink" href="#paso-11-crear-rutas-para-peticiones" title="Enlazar permanentemente con este título">#</a></h3>
+<p>Nos vamos a la carpeta routes y se crea el archivo <strong>taskRoutes.js</strong>:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kd">const</span><span class="w"> </span><span class="nx">express</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;express&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="linenos"> 2</span><span class="kd">const</span><span class="w"> </span><span class="nx">api</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">express</span><span class="p">.</span><span class="nx">Router</span><span class="p">();</span><span class="w"></span>
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span><span class="kd">const</span><span class="w"> </span><span class="nx">taskController</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;../controllers/taskController&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="linenos"> 5</span>
+<span class="linenos"> 6</span><span class="nx">api</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s2">&quot;/task&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">taskController</span><span class="p">.</span><span class="nx">createTask</span><span class="p">);</span><span class="w"></span>
+<span class="linenos"> 7</span><span class="nx">api</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;/task&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">taskController</span><span class="p">.</span><span class="nx">getTasks</span><span class="p">);</span><span class="w"></span>
+<span class="linenos"> 8</span><span class="nx">api</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;/task/:id&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">taskController</span><span class="p">.</span><span class="nx">getTask</span><span class="p">);</span><span class="w"></span>
+<span class="linenos"> 9</span><span class="nx">api</span><span class="p">.</span><span class="nx">put</span><span class="p">(</span><span class="s2">&quot;/task/:id&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">taskController</span><span class="p">.</span><span class="nx">updateTask</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">10</span><span class="nx">api</span><span class="p">.</span><span class="ow">delete</span><span class="p">(</span><span class="s2">&quot;/task/:id&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">taskController</span><span class="p">.</span><span class="nx">deleteTask</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">11</span>
+<span class="linenos">12</span><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">api</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="paso-12-anadir-el-archivo-de-rutas-a-app-json">
+<h3><a class="toc-backref" href="#id23">Paso 12: Añadir el archivo de rutas a app.json</a><a class="headerlink" href="#paso-12-anadir-el-archivo-de-rutas-a-app-json" title="Enlazar permanentemente con este título">#</a></h3>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kd">const</span><span class="w"> </span><span class="nx">express</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;express&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="linenos"> 2</span><span class="kd">const</span><span class="w"> </span><span class="nx">app</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">express</span><span class="p">();</span><span class="w"></span>
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span><span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">express</span><span class="p">.</span><span class="nx">json</span><span class="p">());</span><span class="w"></span>
+<span class="linenos"> 5</span><span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">express</span><span class="p">.</span><span class="nx">urlencoded</span><span class="p">({</span><span class="nx">extended</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">}));</span><span class="w"></span>
+<span class="linenos"> 6</span>
+<span class="linenos"> 7</span><span class="kd">const</span><span class="w"> </span><span class="nx">hello_routes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;./routes/hello&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="linenos"> 8</span><span class="kd">const</span><span class="w"> </span><span class="nx">task_routes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./routes/taskRoutes&#39;</span><span class="p">);</span><span class="w"> </span><span class="c1">// tras crear ruta se añade aquí</span><span class="w"></span>
+<span class="linenos"> 9</span>
+<span class="linenos">10</span><span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="s2">&quot;/api&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">hello_routes</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">11</span><span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="s1">&#39;/api&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">task_routes</span><span class="p">);</span><span class="w">  </span><span class="c1">// tras crear ruta se añade aquí</span><span class="w"></span>
+<span class="linenos">12</span>
+<span class="linenos">13</span><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">app</span><span class="p">;</span><span class="w"></span>
 </pre></div>
 </div>
 </section>
