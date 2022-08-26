@@ -1031,6 +1031,9 @@ Vamos al archivo **taskRoutes.js** y añadimos el middleware a las rutas:
 
 Paso 11: Habilitar CORS 
 ***********************
+
+- Instalar cors: ``npm install cors --save``
+
 Para poder utilizar nuestra API desde otro lugar o aplicación (React, Angular o Vue) es necesario 
 habilitar CORS, editamos **app.js**:
 
