@@ -35,7 +35,7 @@
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Índice" href="../genindex.html" />
     <link rel="search" title="Búsqueda" href="../search.html" />
-    <link rel="next" title="Framework: Angular" href="../typescript/angular.html" />
+    <link rel="next" title="Framework: ReactJS" href="react.html" />
     <link rel="prev" title="Entornos: Node.JS" href="nodejs.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="es">
@@ -263,6 +263,11 @@
    Framework: ExpressJS
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="react.html">
+   Framework: ReactJS
+  </a>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -427,6 +432,11 @@
  <li class="toctree-l1">
   <a class="reference internal" href="../sistemas/docker.html">
    Docker
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../sistemas/heroku.html">
+   Heroku
   </a>
  </li>
 </ul>
@@ -696,6 +706,105 @@ title="Print to PDF"
    </li>
   </ul>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#securizar-una-api-restful">
+   Securizar una API Restful
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#paso-1-instalacion-de-dependencias">
+     Paso 1: Instalación de dependencias
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#paso-2-modelo-de-usuarios">
+     Paso 2: Modelo de usuarios
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#paso-3-controlador-para-usuarios">
+     Paso 3: Controlador para usuarios
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#paso-4-endpoint-de-usuarios">
+     Paso 4: Endpoint de usuarios
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#paso-5-anadir-endpoint-de-rutas-a-usuarios">
+     Paso 5: Añadir endpoint de rutas a usuarios
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#paso-6-crear-el-servicio-jwt-para-login-por-token">
+     Paso 6: Crear el servicio JWT para login por token
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#paso-7-crear-controlador-para-hacer-login-con-jwt">
+     Paso 7: Crear controlador para hacer login con JWT
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#paso-8-crear-endpoint-para-hacer-login-con-jwt">
+     Paso 8: Crear endpoint para hacer login con JWT
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#paso-9-crear-middleware-de-autenticacion">
+     Paso 9: Crear middleware de autenticación
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#paso-10-proteger-los-endpoints-con-el-middleware">
+     Paso 10: Proteger los endpoints con el middleware
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#paso-11-habilitar-cors">
+     Paso 11: Habilitar CORS
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#paso-12-probar-los-endpoints">
+     Paso 12: probar los endpoints
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#trabajar-con-ficheros-en-api-restful">
+   Trabajar con ficheros en API Restful
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#paso-1-instalar-dependencias">
+     Paso 1: Instalar dependencias
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#paso-2-subir-imagenes-y-actualizarlas">
+     Paso 2: Subir imagenes y actualizarlas
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#paso-3-crear-ruta-para-subir-imagenes">
+     Paso 3: Crear ruta para subir imagenes
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#paso-4-preparar-funcion-para-recuperar-avatar">
+     Paso 4: preparar función para recuperar avatar
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#paso-5-ruta-para-recuperar-avatar">
+     Paso 5: Ruta para recuperar avatar
+    </a>
+   </li>
+  </ul>
+ </li>
 </ul>
 
     </nav>
@@ -833,6 +942,105 @@ title="Print to PDF"
    </li>
   </ul>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#securizar-una-api-restful">
+   Securizar una API Restful
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#paso-1-instalacion-de-dependencias">
+     Paso 1: Instalación de dependencias
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#paso-2-modelo-de-usuarios">
+     Paso 2: Modelo de usuarios
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#paso-3-controlador-para-usuarios">
+     Paso 3: Controlador para usuarios
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#paso-4-endpoint-de-usuarios">
+     Paso 4: Endpoint de usuarios
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#paso-5-anadir-endpoint-de-rutas-a-usuarios">
+     Paso 5: Añadir endpoint de rutas a usuarios
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#paso-6-crear-el-servicio-jwt-para-login-por-token">
+     Paso 6: Crear el servicio JWT para login por token
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#paso-7-crear-controlador-para-hacer-login-con-jwt">
+     Paso 7: Crear controlador para hacer login con JWT
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#paso-8-crear-endpoint-para-hacer-login-con-jwt">
+     Paso 8: Crear endpoint para hacer login con JWT
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#paso-9-crear-middleware-de-autenticacion">
+     Paso 9: Crear middleware de autenticación
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#paso-10-proteger-los-endpoints-con-el-middleware">
+     Paso 10: Proteger los endpoints con el middleware
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#paso-11-habilitar-cors">
+     Paso 11: Habilitar CORS
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#paso-12-probar-los-endpoints">
+     Paso 12: probar los endpoints
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#trabajar-con-ficheros-en-api-restful">
+   Trabajar con ficheros en API Restful
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#paso-1-instalar-dependencias">
+     Paso 1: Instalar dependencias
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#paso-2-subir-imagenes-y-actualizarlas">
+     Paso 2: Subir imagenes y actualizarlas
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#paso-3-crear-ruta-para-subir-imagenes">
+     Paso 3: Crear ruta para subir imagenes
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#paso-4-preparar-funcion-para-recuperar-avatar">
+     Paso 4: preparar función para recuperar avatar
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#paso-5-ruta-para-recuperar-avatar">
+     Paso 5: Ruta para recuperar avatar
+    </a>
+   </li>
+  </ul>
+ </li>
 </ul>
 
                         </nav>
@@ -884,6 +1092,31 @@ title="Print to PDF"
 <li><p><a class="reference internal" href="#paso-10-crear-controlador-para-gestionar-peticiones" id="id21">Paso 10 - Crear controlador para gestionar peticiones</a></p></li>
 <li><p><a class="reference internal" href="#paso-11-crear-rutas-para-peticiones" id="id22">Paso 11: crear rutas para peticiones</a></p></li>
 <li><p><a class="reference internal" href="#paso-12-anadir-el-archivo-de-rutas-a-app-json" id="id23">Paso 12: Añadir el archivo de rutas a app.json</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#securizar-una-api-restful" id="id24">Securizar una API Restful</a></p>
+<ul>
+<li><p><a class="reference internal" href="#paso-1-instalacion-de-dependencias" id="id25">Paso 1: Instalación de dependencias</a></p></li>
+<li><p><a class="reference internal" href="#paso-2-modelo-de-usuarios" id="id26">Paso 2: Modelo de usuarios</a></p></li>
+<li><p><a class="reference internal" href="#paso-3-controlador-para-usuarios" id="id27">Paso 3: Controlador para usuarios</a></p></li>
+<li><p><a class="reference internal" href="#paso-4-endpoint-de-usuarios" id="id28">Paso 4: Endpoint de usuarios</a></p></li>
+<li><p><a class="reference internal" href="#paso-5-anadir-endpoint-de-rutas-a-usuarios" id="id29">Paso 5: Añadir endpoint de rutas a usuarios</a></p></li>
+<li><p><a class="reference internal" href="#paso-6-crear-el-servicio-jwt-para-login-por-token" id="id30">Paso 6: Crear el servicio JWT para login por token</a></p></li>
+<li><p><a class="reference internal" href="#paso-7-crear-controlador-para-hacer-login-con-jwt" id="id31">Paso 7: Crear controlador para hacer login con JWT</a></p></li>
+<li><p><a class="reference internal" href="#paso-8-crear-endpoint-para-hacer-login-con-jwt" id="id32">Paso 8: Crear endpoint para hacer login con JWT</a></p></li>
+<li><p><a class="reference internal" href="#paso-9-crear-middleware-de-autenticacion" id="id33">Paso 9: Crear middleware de autenticación</a></p></li>
+<li><p><a class="reference internal" href="#paso-10-proteger-los-endpoints-con-el-middleware" id="id34">Paso 10: Proteger los endpoints con el middleware</a></p></li>
+<li><p><a class="reference internal" href="#paso-11-habilitar-cors" id="id35">Paso 11: Habilitar CORS</a></p></li>
+<li><p><a class="reference internal" href="#paso-12-probar-los-endpoints" id="id36">Paso 12: probar los endpoints</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#trabajar-con-ficheros-en-api-restful" id="id37">Trabajar con ficheros en API Restful</a></p>
+<ul>
+<li><p><a class="reference internal" href="#paso-1-instalar-dependencias" id="id38">Paso 1: Instalar dependencias</a></p></li>
+<li><p><a class="reference internal" href="#paso-2-subir-imagenes-y-actualizarlas" id="id39">Paso 2: Subir imagenes y actualizarlas</a></p></li>
+<li><p><a class="reference internal" href="#paso-3-crear-ruta-para-subir-imagenes" id="id40">Paso 3: Crear ruta para subir imagenes</a></p></li>
+<li><p><a class="reference internal" href="#paso-4-preparar-funcion-para-recuperar-avatar" id="id41">Paso 4: preparar función para recuperar avatar</a></p></li>
+<li><p><a class="reference internal" href="#paso-5-ruta-para-recuperar-avatar" id="id42">Paso 5: Ruta para recuperar avatar</a></p></li>
 </ul>
 </li>
 </ul>
@@ -1355,7 +1588,7 @@ una aplicación externa se bloqueará.</p>
 <span class="linenos">24</span><span class="w">    </span><span class="p">}</span><span class="w"></span>
 <span class="linenos">25</span><span class="p">});</span><span class="w"></span>
 <span class="linenos">26</span>
-<span class="linenos">27</span><span class="c1">// se exporta el modelo:</span><span class="w"></span>
+<span class="linenos">27</span><span class="c1">// se exporta el modelo añadiendo el nombre de la colección de MongoDB y el Schema:</span><span class="w"></span>
 <span class="linenos">28</span><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">mongoose</span><span class="p">.</span><span class="nx">model</span><span class="p">(</span><span class="s2">&quot;Task&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">TaskSchema</span><span class="p">);</span><span class="w"></span>
 </pre></div>
 </div>
@@ -1518,6 +1751,672 @@ una aplicación externa se bloqueará.</p>
 </div>
 </section>
 </section>
+<section id="securizar-una-api-restful">
+<h2><a class="toc-backref" href="#id24">Securizar una API Restful</a><a class="headerlink" href="#securizar-una-api-restful" title="Enlazar permanentemente con este título">#</a></h2>
+<section id="paso-1-instalacion-de-dependencias">
+<h3><a class="toc-backref" href="#id25">Paso 1: Instalación de dependencias</a><a class="headerlink" href="#paso-1-instalacion-de-dependencias" title="Enlazar permanentemente con este título">#</a></h3>
+<ul class="simple">
+<li><p>Se instalará <cite>moment</cite> para controlar las fechas: <code class="docutils literal notranslate"><span class="pre">npm</span> <span class="pre">install</span> <span class="pre">moment</span> <span class="pre">--save</span></code></p></li>
+<li><p>Se instalará <cite>jsonwebtoken</cite> para trabajar con JWT: <code class="docutils literal notranslate"><span class="pre">npm</span> <span class="pre">install</span> <span class="pre">jsonwebtoken</span> <span class="pre">--save</span></code></p></li>
+<li><p>Se instalará <cite>bcryptjs</cite> para encriptación de contraseñas: <code class="docutils literal notranslate"><span class="pre">npm</span> <span class="pre">install</span> <span class="pre">bcryptjs</span> <span class="pre">--</span> <span class="pre">save</span></code></p></li>
+</ul>
+</section>
+<section id="paso-2-modelo-de-usuarios">
+<h3><a class="toc-backref" href="#id26">Paso 2: Modelo de usuarios</a><a class="headerlink" href="#paso-2-modelo-de-usuarios" title="Enlazar permanentemente con este título">#</a></h3>
+<ul class="simple">
+<li><p>en la carpeta <strong>models</strong> se crea el archivo <strong>userModel.js</strong>:</p></li>
+</ul>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kd">const</span><span class="w"> </span><span class="nx">mongoose</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;mongoose&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="linenos"> 2</span><span class="kd">const</span><span class="w"> </span><span class="nx">Schema</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">mongoose</span><span class="p">.</span><span class="nx">Schema</span><span class="p">;</span><span class="w"></span>
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span><span class="kd">const</span><span class="w"> </span><span class="nx">UserSchema</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">Schema</span><span class="p">({</span><span class="w"></span>
+<span class="linenos"> 5</span><span class="w">    </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos"> 6</span><span class="w">        </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="nb">String</span><span class="p">,</span><span class="w"></span>
+<span class="linenos"> 7</span><span class="w">        </span><span class="nx">require</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="w"></span>
+<span class="linenos"> 8</span><span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="linenos"> 9</span><span class="w">    </span><span class="nx">lastname</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">10</span><span class="w">        </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="nb">String</span><span class="p">,</span><span class="w"></span>
+<span class="linenos">11</span><span class="w">        </span><span class="nx">require</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="w"></span>
+<span class="linenos">12</span><span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="linenos">13</span><span class="w">    </span><span class="nx">email</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">14</span><span class="w">        </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="nb">String</span><span class="p">,</span><span class="w"></span>
+<span class="linenos">15</span><span class="w">        </span><span class="nx">require</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
+<span class="linenos">16</span><span class="w">        </span><span class="nx">unique</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
+<span class="linenos">17</span><span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="linenos">18</span><span class="w">    </span><span class="nx">password</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">19</span><span class="w">        </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="nb">String</span><span class="p">,</span><span class="w"></span>
+<span class="linenos">20</span><span class="w">        </span><span class="nx">require</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"></span>
+<span class="linenos">21</span><span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="linenos">22</span><span class="w">    </span><span class="nx">avatar</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">23</span><span class="w">        </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="nb">String</span><span class="p">,</span><span class="w"></span>
+<span class="linenos">24</span><span class="w">        </span><span class="nx">require</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="w"></span>
+<span class="linenos">25</span><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">26</span><span class="p">});</span><span class="w"></span>
+<span class="linenos">27</span>
+<span class="linenos">28</span><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">mongoose</span><span class="p">.</span><span class="nx">model</span><span class="p">(</span><span class="s1">&#39;users&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">UserSchema</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="paso-3-controlador-para-usuarios">
+<h3><a class="toc-backref" href="#id27">Paso 3: Controlador para usuarios</a><a class="headerlink" href="#paso-3-controlador-para-usuarios" title="Enlazar permanentemente con este título">#</a></h3>
+<p>En la carpeta <strong>controllers</strong> crear el archivo <strong>userController.js</strong>:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c1">// importar el encriptador de contraseñas:</span><span class="w"></span>
+<span class="linenos"> 2</span><span class="kd">const</span><span class="w"> </span><span class="nx">bcryptjs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;bcryptjs&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="linenos"> 3</span><span class="kd">const</span><span class="w"> </span><span class="nx">User</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;../models/userModel&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="linenos"> 4</span>
+<span class="linenos"> 5</span><span class="c1">// Registro de usuarios:</span><span class="w"></span>
+<span class="linenos"> 6</span><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">register</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">){</span><span class="w"></span>
+<span class="linenos"> 7</span><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">params</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">;</span><span class="w"></span>
+<span class="linenos"> 8</span><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">User</span><span class="p">(</span><span class="nx">params</span><span class="p">);</span><span class="w"></span>
+<span class="linenos"> 9</span>
+<span class="linenos">10</span><span class="w">    </span><span class="k">try</span><span class="p">{</span><span class="w"></span>
+<span class="linenos">11</span><span class="w">        </span><span class="c1">// comprobar que los campos email y password:</span><span class="w"></span>
+<span class="linenos">12</span><span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">params</span><span class="p">.</span><span class="nx">email</span><span class="p">)</span><span class="w"> </span><span class="k">throw</span><span class="p">{</span><span class="nx">msg</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Email es un campo obligatorio&quot;</span><span class="p">};</span><span class="w"></span>
+<span class="linenos">13</span><span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">params</span><span class="p">.</span><span class="nx">password</span><span class="p">)</span><span class="w"> </span><span class="k">throw</span><span class="p">{</span><span class="nx">msg</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Contraseña es un campo obligatorio&quot;</span><span class="p">};</span><span class="w"></span>
+<span class="linenos">14</span>
+<span class="linenos">15</span><span class="w">        </span><span class="c1">// revisar si el email esta en uso:</span><span class="w"></span>
+<span class="linenos">16</span><span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">emailExists</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">User</span><span class="p">.</span><span class="nx">findOne</span><span class="p">({</span><span class="nx">email</span><span class="o">:</span><span class="w"> </span><span class="nx">params</span><span class="p">.</span><span class="nx">email</span><span class="p">});</span><span class="w"></span>
+<span class="linenos">17</span><span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="nx">emailExists</span><span class="p">)</span><span class="w"> </span><span class="k">throw</span><span class="w"> </span><span class="p">{</span><span class="nx">msg</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Email ya se encuentra en uso&quot;</span><span class="p">};</span><span class="w"></span>
+<span class="linenos">18</span>
+<span class="linenos">19</span><span class="w">        </span><span class="c1">// configurar el salt de bcrypt:</span><span class="w"></span>
+<span class="linenos">20</span><span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">salt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">bcryptjs</span><span class="p">.</span><span class="nx">genSaltSync</span><span class="p">(</span><span class="mf">10</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">21</span><span class="w">        </span><span class="c1">// encriptar la contraseña:</span><span class="w"></span>
+<span class="linenos">22</span><span class="w">        </span><span class="nx">user</span><span class="p">.</span><span class="nx">password</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">bcryptjs</span><span class="p">.</span><span class="nx">hash</span><span class="p">(</span><span class="nx">params</span><span class="p">.</span><span class="nx">password</span><span class="p">,</span><span class="w"> </span><span class="nx">salt</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">23</span>
+<span class="linenos">24</span><span class="w">        </span><span class="nx">user</span><span class="p">.</span><span class="nx">save</span><span class="p">();</span><span class="w"></span>
+<span class="linenos">25</span><span class="w">        </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">200</span><span class="p">).</span><span class="nx">send</span><span class="p">(</span><span class="nx">user</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">26</span>
+<span class="linenos">27</span><span class="w">    </span><span class="p">}</span><span class="k">catch</span><span class="p">(</span><span class="nx">error</span><span class="p">){</span><span class="w"></span>
+<span class="linenos">28</span><span class="w">        </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">500</span><span class="p">).</span><span class="nx">send</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">29</span><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">30</span><span class="p">}</span><span class="w"></span>
+<span class="linenos">31</span>
+<span class="linenos">32</span><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">33</span><span class="w">    </span><span class="nx">register</span><span class="p">,</span><span class="w"></span>
+<span class="linenos">34</span><span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="paso-4-endpoint-de-usuarios">
+<h3><a class="toc-backref" href="#id28">Paso 4: Endpoint de usuarios</a><a class="headerlink" href="#paso-4-endpoint-de-usuarios" title="Enlazar permanentemente con este título">#</a></h3>
+<p>En la carpeta <strong>routes</strong> crear el archivo <strong>userRoutes.js</strong>:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kd">const</span><span class="w"> </span><span class="nx">express</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;express&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">2</span><span class="kd">const</span><span class="w"> </span><span class="nx">userController</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;../controllers/userController&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">3</span>
+<span class="linenos">4</span><span class="kd">const</span><span class="w"> </span><span class="nx">api</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">express</span><span class="p">.</span><span class="nx">Router</span><span class="p">();</span><span class="w"></span>
+<span class="linenos">5</span>
+<span class="linenos">6</span><span class="nx">api</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s2">&quot;/register&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">userController</span><span class="p">.</span><span class="nx">register</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">7</span>
+<span class="linenos">8</span>
+<span class="linenos">9</span><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">api</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="paso-5-anadir-endpoint-de-rutas-a-usuarios">
+<h3><a class="toc-backref" href="#id29">Paso 5: Añadir endpoint de rutas a usuarios</a><a class="headerlink" href="#paso-5-anadir-endpoint-de-rutas-a-usuarios" title="Enlazar permanentemente con este título">#</a></h3>
+<p>Editar app.js para añadir las rutas de usuarios:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kd">const</span><span class="w"> </span><span class="nx">express</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;express&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="linenos"> 2</span><span class="kd">const</span><span class="w"> </span><span class="nx">app</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">express</span><span class="p">();</span><span class="w"></span>
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span><span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">express</span><span class="p">.</span><span class="nx">json</span><span class="p">());</span><span class="w"></span>
+<span class="linenos"> 5</span><span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">express</span><span class="p">.</span><span class="nx">urlencoded</span><span class="p">({</span><span class="nx">extended</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">}));</span><span class="w"></span>
+<span class="linenos"> 6</span>
+<span class="linenos"> 7</span><span class="kd">const</span><span class="w"> </span><span class="nx">hello_routes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;./routes/hello&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="linenos"> 8</span><span class="kd">const</span><span class="w"> </span><span class="nx">task_routes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./routes/taskRoutes&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="linenos"> 9</span><span class="kd">const</span><span class="w"> </span><span class="nx">user_routes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./routes/userRoutes&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">10</span>
+<span class="linenos">11</span><span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="s2">&quot;/api&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">hello_routes</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">12</span><span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="s1">&#39;/api&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">task_routes</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">13</span><span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="s1">&#39;/api&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">user_routes</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">14</span>
+<span class="linenos">15</span><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">app</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="paso-6-crear-el-servicio-jwt-para-login-por-token">
+<h3><a class="toc-backref" href="#id30">Paso 6: Crear el servicio JWT para login por token</a><a class="headerlink" href="#paso-6-crear-el-servicio-jwt-para-login-por-token" title="Enlazar permanentemente con este título">#</a></h3>
+<p>En la raiz del proyecto crear la carpeta <strong>services</strong> y dentro el archivo <strong>jwtService.js</strong>:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c1">// importar jwt:</span><span class="w"></span>
+<span class="linenos"> 2</span><span class="kd">const</span><span class="w"> </span><span class="nx">jwt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;jsonwebtoken&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span><span class="c1">// crear la clave secreta (escribe algo aleatorio):</span><span class="w"></span>
+<span class="linenos"> 5</span><span class="kd">const</span><span class="w"> </span><span class="nx">SECRET_KEY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;2ha9df238dhha87d8vaq&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="linenos"> 6</span>
+<span class="linenos"> 7</span><span class="c1">// crear token:</span><span class="w"></span>
+<span class="linenos"> 8</span><span class="kd">function</span><span class="w"> </span><span class="nx">createToken</span><span class="p">(</span><span class="nx">user</span><span class="p">,</span><span class="w"> </span><span class="nx">expiresIn</span><span class="p">){</span><span class="w"></span>
+<span class="linenos"> 9</span><span class="w">    </span><span class="c1">// recuperamos el id y el email del objeto user:</span><span class="w"></span>
+<span class="linenos">10</span><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="nx">id</span><span class="p">,</span><span class="w"> </span><span class="nx">email</span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">user</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">11</span><span class="w">    </span><span class="c1">// y lo añadimos al payload:</span><span class="w"></span>
+<span class="linenos">12</span><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">payload</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="nx">id</span><span class="p">,</span><span class="w"> </span><span class="nx">email</span><span class="p">}</span><span class="w"></span>
+<span class="linenos">13</span>
+<span class="linenos">14</span><span class="w">    </span><span class="c1">// utilizamos el payload para retornar el token tras iniciar sesión:</span><span class="w"></span>
+<span class="linenos">15</span><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">jwt</span><span class="p">.</span><span class="nx">sign</span><span class="p">(</span><span class="nx">payload</span><span class="p">,</span><span class="w"> </span><span class="nx">SECRET_KEY</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="nx">expiresIn</span><span class="o">:</span><span class="w"> </span><span class="nx">expiresIn</span><span class="p">});</span><span class="w"></span>
+<span class="linenos">16</span><span class="p">}</span><span class="w"></span>
+<span class="linenos">17</span>
+<span class="linenos">18</span><span class="c1">// crear uan función para decodificar el token:</span><span class="w"></span>
+<span class="linenos">19</span><span class="kd">function</span><span class="w"> </span><span class="nx">decodeToken</span><span class="p">(</span><span class="nx">token</span><span class="p">){</span><span class="w"></span>
+<span class="linenos">20</span><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">jwt</span><span class="p">.</span><span class="nx">decode</span><span class="p">(</span><span class="nx">token</span><span class="p">,</span><span class="w"> </span><span class="nx">SECRET_KEY</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">21</span><span class="p">}</span><span class="w"></span>
+<span class="linenos">22</span>
+<span class="linenos">23</span><span class="c1">// exportar las dos funciones para crear y decodificar token:</span><span class="w"></span>
+<span class="linenos">24</span><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">25</span><span class="w">    </span><span class="nx">createToken</span><span class="p">,</span><span class="w"></span>
+<span class="linenos">26</span><span class="w">    </span><span class="nx">decodeToken</span><span class="w"></span>
+<span class="linenos">27</span><span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="paso-7-crear-controlador-para-hacer-login-con-jwt">
+<h3><a class="toc-backref" href="#id31">Paso 7: Crear controlador para hacer login con JWT</a><a class="headerlink" href="#paso-7-crear-controlador-para-hacer-login-con-jwt" title="Enlazar permanentemente con este título">#</a></h3>
+<p>Editar el archivo <strong>userController.js</strong>:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kd">const</span><span class="w"> </span><span class="nx">bcryptjs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;bcryptjs&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="linenos"> 2</span><span class="kd">const</span><span class="w"> </span><span class="nx">User</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;../models/userModel&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="linenos"> 3</span><span class="c1">// importar el servicio jwt:</span><span class="w"></span>
+<span class="linenos"> 4</span><span class="kd">const</span><span class="w"> </span><span class="nx">jwt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;../services/jwtService&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="linenos"> 5</span>
+<span class="linenos"> 6</span><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">register</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">){</span><span class="w"></span>
+<span class="linenos"> 7</span><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">params</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">;</span><span class="w"></span>
+<span class="linenos"> 8</span><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">User</span><span class="p">(</span><span class="nx">params</span><span class="p">);</span><span class="w"></span>
+<span class="linenos"> 9</span>
+<span class="linenos">10</span><span class="w">    </span><span class="k">try</span><span class="p">{</span><span class="w"></span>
+<span class="linenos">11</span><span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">params</span><span class="p">.</span><span class="nx">email</span><span class="p">)</span><span class="w"> </span><span class="k">throw</span><span class="p">{</span><span class="nx">msg</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Email es un campo obligatorio&quot;</span><span class="p">};</span><span class="w"></span>
+<span class="linenos">12</span><span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">params</span><span class="p">.</span><span class="nx">password</span><span class="p">)</span><span class="w"> </span><span class="k">throw</span><span class="p">{</span><span class="nx">msg</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Contraseña es un campo obligatorio&quot;</span><span class="p">};</span><span class="w"></span>
+<span class="linenos">13</span>
+<span class="linenos">14</span><span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">emailExists</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">User</span><span class="p">.</span><span class="nx">findOne</span><span class="p">({</span><span class="nx">email</span><span class="o">:</span><span class="w"> </span><span class="nx">params</span><span class="p">.</span><span class="nx">email</span><span class="p">});</span><span class="w"></span>
+<span class="linenos">15</span><span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="nx">emailExists</span><span class="p">)</span><span class="w"> </span><span class="k">throw</span><span class="w"> </span><span class="p">{</span><span class="nx">msg</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Email ya se encuentra en uso&quot;</span><span class="p">};</span><span class="w"></span>
+<span class="linenos">16</span>
+<span class="linenos">17</span><span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">salt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">bcryptjs</span><span class="p">.</span><span class="nx">genSaltSync</span><span class="p">(</span><span class="mf">10</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">18</span><span class="w">        </span><span class="nx">user</span><span class="p">.</span><span class="nx">password</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">bcryptjs</span><span class="p">.</span><span class="nx">hash</span><span class="p">(</span><span class="nx">params</span><span class="p">.</span><span class="nx">password</span><span class="p">,</span><span class="w"> </span><span class="nx">salt</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">19</span>
+<span class="linenos">20</span><span class="w">        </span><span class="nx">user</span><span class="p">.</span><span class="nx">save</span><span class="p">();</span><span class="w"></span>
+<span class="linenos">21</span><span class="w">        </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">200</span><span class="p">).</span><span class="nx">send</span><span class="p">(</span><span class="nx">user</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">22</span>
+<span class="linenos">23</span><span class="w">    </span><span class="p">}</span><span class="k">catch</span><span class="p">(</span><span class="nx">error</span><span class="p">){</span><span class="w"></span>
+<span class="linenos">24</span><span class="w">        </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">500</span><span class="p">).</span><span class="nx">send</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">25</span><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">26</span><span class="p">}</span><span class="w"></span>
+<span class="linenos">27</span>
+<span class="linenos">28</span><span class="c1">// crear función para hacer login:</span><span class="w"></span>
+<span class="linenos">29</span><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">login</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">){</span><span class="w"></span>
+<span class="linenos">30</span><span class="w">    </span><span class="c1">// recuperar el email y password del body:</span><span class="w"></span>
+<span class="linenos">31</span><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="nx">email</span><span class="p">,</span><span class="w"> </span><span class="nx">password</span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">32</span>
+<span class="linenos">33</span><span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">34</span><span class="w">        </span><span class="c1">// buscamos si existe el usuario por su email:</span><span class="w"></span>
+<span class="linenos">35</span><span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">User</span><span class="p">.</span><span class="nx">findOne</span><span class="p">({</span><span class="nx">email</span><span class="o">:</span><span class="w"> </span><span class="nx">email</span><span class="p">});</span><span class="w"></span>
+<span class="linenos">36</span><span class="w">        </span><span class="c1">// si el usuario no existe se lanza un mensaje de error:</span><span class="w"></span>
+<span class="linenos">37</span><span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">user</span><span class="p">)</span><span class="w"> </span><span class="k">throw</span><span class="w"> </span><span class="p">{</span><span class="nx">msg</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;el email no existe&quot;</span><span class="p">};</span><span class="w"></span>
+<span class="linenos">38</span>
+<span class="linenos">39</span><span class="w">        </span><span class="c1">// comprobar la contraseña recibida con la contraseña encriptada:</span><span class="w"></span>
+<span class="linenos">40</span><span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">passwordCorrect</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">bcryptjs</span><span class="p">.</span><span class="nx">compare</span><span class="p">(</span><span class="nx">password</span><span class="p">,</span><span class="w"> </span><span class="nx">user</span><span class="p">.</span><span class="nx">password</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">41</span><span class="w">        </span><span class="c1">// si la contraseña no es correcta avisar:</span><span class="w"></span>
+<span class="linenos">42</span><span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">passwordCorrect</span><span class="p">)</span><span class="w"> </span><span class="k">throw</span><span class="w"> </span><span class="p">{</span><span class="nx">msg</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;la contraseña no es correcta&quot;</span><span class="p">};</span><span class="w"></span>
+<span class="linenos">43</span>
+<span class="linenos">44</span><span class="w">        </span><span class="c1">// creamos el token que lleva el usuario la fecha de expiración del token (12 horas):</span><span class="w"></span>
+<span class="linenos">45</span><span class="w">        </span><span class="nx">token</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="nx">jwt</span><span class="p">.</span><span class="nx">createToken</span><span class="p">(</span><span class="nx">user</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;12h&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">46</span>
+<span class="linenos">47</span><span class="w">        </span><span class="c1">// se responde con  el token:</span><span class="w"></span>
+<span class="linenos">48</span><span class="w">        </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">200</span><span class="p">).</span><span class="nx">send</span><span class="p">({</span><span class="nx">token</span><span class="o">:</span><span class="w"> </span><span class="nx">token</span><span class="p">});</span><span class="w"></span>
+<span class="linenos">49</span>
+<span class="linenos">50</span>
+<span class="linenos">51</span><span class="w">    </span><span class="p">}</span><span class="k">catch</span><span class="p">(</span><span class="nx">error</span><span class="p">){</span><span class="w"></span>
+<span class="linenos">52</span><span class="w">        </span><span class="nx">req</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">500</span><span class="p">).</span><span class="nx">send</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">53</span><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">54</span>
+<span class="linenos">55</span><span class="p">}</span><span class="w"></span>
+<span class="linenos">56</span>
+<span class="linenos">57</span><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">58</span><span class="w">    </span><span class="nx">register</span><span class="p">,</span><span class="w"></span>
+<span class="linenos">59</span><span class="w">    </span><span class="nx">login</span><span class="w"> </span><span class="c1">// no olvides exportar el login</span><span class="w"></span>
+<span class="linenos">60</span><span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="paso-8-crear-endpoint-para-hacer-login-con-jwt">
+<h3><a class="toc-backref" href="#id32">Paso 8: Crear endpoint para hacer login con JWT</a><a class="headerlink" href="#paso-8-crear-endpoint-para-hacer-login-con-jwt" title="Enlazar permanentemente con este título">#</a></h3>
+<p>Editar el archivo <strong>userController.js</strong>:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kd">const</span><span class="w"> </span><span class="nx">express</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;express&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="linenos"> 2</span><span class="kd">const</span><span class="w"> </span><span class="nx">userController</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;../controllers/userController&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span><span class="kd">const</span><span class="w"> </span><span class="nx">api</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">express</span><span class="p">.</span><span class="nx">Router</span><span class="p">();</span><span class="w"></span>
+<span class="linenos"> 5</span>
+<span class="linenos"> 6</span><span class="nx">api</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s2">&quot;/register&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">userController</span><span class="p">.</span><span class="nx">register</span><span class="p">);</span><span class="w"></span>
+<span class="linenos"> 7</span><span class="c1">// el login jwt va con post:</span><span class="w"></span>
+<span class="linenos"> 8</span><span class="nx">api</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s2">&quot;/login&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">userController</span><span class="p">.</span><span class="nx">login</span><span class="p">);</span><span class="w"></span>
+<span class="linenos"> 9</span>
+<span class="linenos">10</span><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">api</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+<div class="admonition attention">
+<p class="admonition-title">Atención</p>
+<p>Al hacer login en la aplicación nos devolverá un token, si copiamos ese token y lo ponemos en la página <strong>jwt.io</strong> podemos desencriptar el id y usuario.
+Por ello no es nada recomendable poner datos sensibles en un token.</p>
+</div>
+</section>
+<section id="paso-9-crear-middleware-de-autenticacion">
+<h3><a class="toc-backref" href="#id33">Paso 9: Crear middleware de autenticación</a><a class="headerlink" href="#paso-9-crear-middleware-de-autenticacion" title="Enlazar permanentemente con este título">#</a></h3>
+<p>Para proteger los endpoints, creamos un middleware que verifique si hemos hecho login:</p>
+<ul class="simple">
+<li><p>Crear una carpeta en la raiz llamada <strong>middlewares</strong> y dentro el archivo <strong>authMiddleware.js</strong>:</p></li>
+</ul>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c1">// importamos moment para las fechas:</span><span class="w"></span>
+<span class="linenos"> 2</span><span class="kd">const</span><span class="w"> </span><span class="nx">moment</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;moment&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="linenos"> 3</span><span class="c1">// importamos el servicio que hemos creado con jwt:</span><span class="w"></span>
+<span class="linenos"> 4</span><span class="kd">const</span><span class="w"> </span><span class="nx">jwt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;../services/jwtService&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="linenos"> 5</span>
+<span class="linenos"> 6</span><span class="c1">// copiamos la clave secreta de jwtService.js:</span><span class="w"></span>
+<span class="linenos"> 7</span><span class="kd">const</span><span class="w"> </span><span class="nx">SECRET_KEY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;2ha9df238dhha87d8vaq&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="linenos"> 8</span>
+<span class="linenos"> 9</span><span class="c1">// crear una función (next es una función que continuará el proceso si todo va bien):</span><span class="w"></span>
+<span class="linenos">10</span><span class="kd">function</span><span class="w"> </span><span class="nx">ensureAuth</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">,</span><span class="w"> </span><span class="nx">next</span><span class="p">){</span><span class="w"></span>
+<span class="linenos">11</span><span class="w">    </span><span class="c1">// si no recibimos el token por el apartado autorización del header:</span><span class="w"></span>
+<span class="linenos">12</span><span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">req</span><span class="p">.</span><span class="nx">headers</span><span class="p">.</span><span class="nx">authorization</span><span class="p">){</span><span class="w"></span>
+<span class="linenos">13</span><span class="w">        </span><span class="c1">// damos error de autorización:</span><span class="w"></span>
+<span class="linenos">14</span><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">403</span><span class="p">).</span><span class="nx">send</span><span class="p">({</span><span class="nx">msg</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Faltan las credenciales de autenticación&quot;</span><span class="p">});</span><span class="w"></span>
+<span class="linenos">15</span><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">16</span>
+<span class="linenos">17</span><span class="w">    </span><span class="c1">// si tenemos la cabecera con el token lo guardamos:</span><span class="w"></span>
+<span class="linenos">18</span><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">token</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">headers</span><span class="p">.</span><span class="nx">authorization</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/[&#39;&quot;]+/g</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">// reemplazar las comillas simples por nada</span><span class="w"></span>
+<span class="linenos">19</span>
+<span class="linenos">20</span><span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">21</span><span class="w">        </span><span class="c1">// decodificamos el token:</span><span class="w"></span>
+<span class="linenos">22</span><span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">payload</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">jwt</span><span class="p">.</span><span class="nx">decodeToken</span><span class="p">(</span><span class="nx">token</span><span class="p">,</span><span class="w"> </span><span class="nx">SECRET_KEY</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">23</span>
+<span class="linenos">24</span><span class="w">        </span><span class="c1">// si el token ha caducado respondemos con error:</span><span class="w"></span>
+<span class="linenos">25</span><span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="nx">payload</span><span class="p">.</span><span class="nx">exp</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="nx">moment</span><span class="p">().</span><span class="nx">unix</span><span class="p">()){</span><span class="w"></span>
+<span class="linenos">26</span><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">400</span><span class="p">).</span><span class="nx">send</span><span class="p">({</span><span class="nx">msg</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;el token ha expirado&quot;</span><span class="p">});</span><span class="w"></span>
+<span class="linenos">27</span><span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">28</span>
+<span class="linenos">29</span><span class="w">        </span><span class="c1">// si todo va bien le pasamos el payload al usuario y avanzamos a la función ext:</span><span class="w"></span>
+<span class="linenos">30</span><span class="w">        </span><span class="nx">req</span><span class="p">.</span><span class="nx">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">payload</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">31</span><span class="w">        </span><span class="nx">next</span><span class="p">();</span><span class="w"></span>
+<span class="linenos">32</span><span class="w">    </span><span class="p">}</span><span class="k">catch</span><span class="p">(</span><span class="nx">error</span><span class="p">){</span><span class="w"></span>
+<span class="linenos">33</span><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">404</span><span class="p">).</span><span class="nx">send</span><span class="p">({</span><span class="nx">msg</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Token inválido&quot;</span><span class="p">});</span><span class="w"></span>
+<span class="linenos">34</span><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">35</span><span class="p">}</span><span class="w"></span>
+<span class="linenos">36</span>
+<span class="linenos">37</span><span class="c1">// exportar la función:</span><span class="w"></span>
+<span class="linenos">38</span><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">39</span><span class="w">    </span><span class="nx">ensureAuth</span><span class="w"></span>
+<span class="linenos">40</span><span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="paso-10-proteger-los-endpoints-con-el-middleware">
+<h3><a class="toc-backref" href="#id34">Paso 10: Proteger los endpoints con el middleware</a><a class="headerlink" href="#paso-10-proteger-los-endpoints-con-el-middleware" title="Enlazar permanentemente con este título">#</a></h3>
+<p>Vamos al archivo <strong>taskRoutes.js</strong> y añadimos el middleware a las rutas:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kd">const</span><span class="w"> </span><span class="nx">express</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;express&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="linenos"> 2</span><span class="kd">const</span><span class="w"> </span><span class="nx">api</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">express</span><span class="p">.</span><span class="nx">Router</span><span class="p">();</span><span class="w"></span>
+<span class="linenos"> 3</span><span class="c1">// importar el middleware de autenticación:</span><span class="w"></span>
+<span class="linenos"> 4</span><span class="kd">const</span><span class="w"> </span><span class="nx">authMiddleware</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;../middlewares/authMiddleware&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="linenos"> 5</span>
+<span class="linenos"> 6</span><span class="kd">const</span><span class="w"> </span><span class="nx">taskController</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;../controllers/taskController&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="linenos"> 7</span>
+<span class="linenos"> 8</span><span class="c1">// añadimos el middleware a cada ruta:</span><span class="w"></span>
+<span class="linenos"> 9</span><span class="nx">api</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s2">&quot;/task&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="nx">authMiddleware</span><span class="p">.</span><span class="nx">ensureAuth</span><span class="p">],</span><span class="w"> </span><span class="nx">taskController</span><span class="p">.</span><span class="nx">createTask</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">10</span><span class="nx">api</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;/task&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="nx">authMiddleware</span><span class="p">.</span><span class="nx">ensureAuth</span><span class="p">],</span><span class="w"> </span><span class="nx">taskController</span><span class="p">.</span><span class="nx">getTasks</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">11</span><span class="nx">api</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;/task/:id&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="nx">authMiddleware</span><span class="p">.</span><span class="nx">ensureAuth</span><span class="p">],</span><span class="w"> </span><span class="nx">taskController</span><span class="p">.</span><span class="nx">getTask</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">12</span><span class="nx">api</span><span class="p">.</span><span class="nx">put</span><span class="p">(</span><span class="s2">&quot;/task/:id&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="nx">authMiddleware</span><span class="p">.</span><span class="nx">ensureAuth</span><span class="p">],</span><span class="w"> </span><span class="nx">taskController</span><span class="p">.</span><span class="nx">updateTask</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">13</span><span class="nx">api</span><span class="p">.</span><span class="ow">delete</span><span class="p">(</span><span class="s2">&quot;/task/:id&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="nx">authMiddleware</span><span class="p">.</span><span class="nx">ensureAuth</span><span class="p">],</span><span class="w"> </span><span class="nx">taskController</span><span class="p">.</span><span class="nx">deleteTask</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">14</span>
+<span class="linenos">15</span><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">api</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="paso-11-habilitar-cors">
+<h3><a class="toc-backref" href="#id35">Paso 11: Habilitar CORS</a><a class="headerlink" href="#paso-11-habilitar-cors" title="Enlazar permanentemente con este título">#</a></h3>
+<p>Para poder utilizar nuestra API desde otro lugar o aplicación (React, Angular o Vue) es necesario
+habilitar CORS, editamos <strong>app.js</strong>:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kd">const</span><span class="w"> </span><span class="nx">express</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;express&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="linenos"> 2</span><span class="kd">const</span><span class="w"> </span><span class="nx">app</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">express</span><span class="p">();</span><span class="w"></span>
+<span class="linenos"> 3</span><span class="c1">// importar cors:</span><span class="w"></span>
+<span class="linenos"> 4</span><span class="kd">const</span><span class="w"> </span><span class="nx">cors</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;cors&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="linenos"> 5</span>
+<span class="linenos"> 6</span><span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">express</span><span class="p">.</span><span class="nx">json</span><span class="p">());</span><span class="w"></span>
+<span class="linenos"> 7</span><span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">express</span><span class="p">.</span><span class="nx">urlencoded</span><span class="p">({</span><span class="nx">extended</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">}));</span><span class="w"></span>
+<span class="linenos"> 8</span><span class="c1">// habilitar todas las peticiones cors:</span><span class="w"></span>
+<span class="linenos"> 9</span><span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">cors</span><span class="p">());</span><span class="w"></span>
+<span class="linenos">10</span>
+<span class="linenos">11</span><span class="kd">const</span><span class="w"> </span><span class="nx">hello_routes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;./routes/hello&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">12</span><span class="kd">const</span><span class="w"> </span><span class="nx">task_routes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./routes/taskRoutes&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">13</span><span class="kd">const</span><span class="w"> </span><span class="nx">user_routes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./routes/userRoutes&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">14</span>
+<span class="linenos">15</span><span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="s2">&quot;/api&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">hello_routes</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">16</span><span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="s1">&#39;/api&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">task_routes</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">17</span><span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="s1">&#39;/api&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">user_routes</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">18</span>
+<span class="linenos">19</span><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">app</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="paso-12-probar-los-endpoints">
+<h3><a class="toc-backref" href="#id36">Paso 12: probar los endpoints</a><a class="headerlink" href="#paso-12-probar-los-endpoints" title="Enlazar permanentemente con este título">#</a></h3>
+<ol class="arabic simple">
+<li><p>En postman, vamos a cualquiera de los endpoints e intentamos hacer una petición.</p></li>
+<li><dl class="simple">
+<dt>Si nos avisa de que falta el token todo va bien, lo añadimos desde la pestaña <strong>Authorization</strong> elegimos la opción <strong>API Key</strong> y escribimos los valores:</dt><dd><ul class="simple">
+<li><p>Key: Authorization</p></li>
+<li><p>Value: <strong>el token que nos facilitó el sistema</strong></p></li>
+<li><p>Add to: Header</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Si todo va bien nos dejará hacer la petición.</p></li>
+</ol>
+<dl class="simple">
+<dt>..attention::</dt><dd><p>Falta definir de quien es cada tarea, hay que crear una relación entre task y user mediante id de user para consultar dichas tareas.</p>
+</dd>
+</dl>
+</section>
+</section>
+<section id="trabajar-con-ficheros-en-api-restful">
+<h2><a class="toc-backref" href="#id37">Trabajar con ficheros en API Restful</a><a class="headerlink" href="#trabajar-con-ficheros-en-api-restful" title="Enlazar permanentemente con este título">#</a></h2>
+<section id="paso-1-instalar-dependencias">
+<h3><a class="toc-backref" href="#id38">Paso 1: Instalar dependencias</a><a class="headerlink" href="#paso-1-instalar-dependencias" title="Enlazar permanentemente con este título">#</a></h3>
+<ul class="simple">
+<li><p>Instalar <strong>multyparty</strong>: <code class="docutils literal notranslate"><span class="pre">npm</span> <span class="pre">install</span> <span class="pre">connect-multiparty</span> <span class="pre">--save</span></code></p></li>
+</ul>
+</section>
+<section id="paso-2-subir-imagenes-y-actualizarlas">
+<h3><a class="toc-backref" href="#id39">Paso 2: Subir imagenes y actualizarlas</a><a class="headerlink" href="#paso-2-subir-imagenes-y-actualizarlas" title="Enlazar permanentemente con este título">#</a></h3>
+<p>Para subir imágenes editamos un controlador como <strong>userController.js</strong>:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="linenos">  1</span><span class="kd">const</span><span class="w"> </span><span class="nx">bcryptjs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;bcryptjs&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">  2</span><span class="kd">const</span><span class="w"> </span><span class="nx">User</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;../models/userModel&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">  3</span><span class="kd">const</span><span class="w"> </span><span class="nx">jwt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;../services/jwtService&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">  4</span>
+<span class="linenos">  5</span><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">register</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">){</span><span class="w"></span>
+<span class="linenos">  6</span><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">params</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">  7</span><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">User</span><span class="p">(</span><span class="nx">params</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">  8</span>
+<span class="linenos">  9</span><span class="w">    </span><span class="k">try</span><span class="p">{</span><span class="w"></span>
+<span class="linenos"> 10</span><span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">params</span><span class="p">.</span><span class="nx">email</span><span class="p">)</span><span class="w"> </span><span class="k">throw</span><span class="p">{</span><span class="nx">msg</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Email es un campo obligatorio&quot;</span><span class="p">};</span><span class="w"></span>
+<span class="linenos"> 11</span><span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">params</span><span class="p">.</span><span class="nx">password</span><span class="p">)</span><span class="w"> </span><span class="k">throw</span><span class="p">{</span><span class="nx">msg</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Contraseña es un campo obligatorio&quot;</span><span class="p">};</span><span class="w"></span>
+<span class="linenos"> 12</span>
+<span class="linenos"> 13</span><span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">emailExists</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">User</span><span class="p">.</span><span class="nx">findOne</span><span class="p">({</span><span class="nx">email</span><span class="o">:</span><span class="w"> </span><span class="nx">params</span><span class="p">.</span><span class="nx">email</span><span class="p">});</span><span class="w"></span>
+<span class="linenos"> 14</span><span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="nx">emailExists</span><span class="p">)</span><span class="w"> </span><span class="k">throw</span><span class="w"> </span><span class="p">{</span><span class="nx">msg</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Email ya se encuentra en uso&quot;</span><span class="p">};</span><span class="w"></span>
+<span class="linenos"> 15</span>
+<span class="linenos"> 16</span><span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">salt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">bcryptjs</span><span class="p">.</span><span class="nx">genSaltSync</span><span class="p">(</span><span class="mf">10</span><span class="p">);</span><span class="w"></span>
+<span class="linenos"> 17</span><span class="w">        </span><span class="nx">user</span><span class="p">.</span><span class="nx">password</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">bcryptjs</span><span class="p">.</span><span class="nx">hash</span><span class="p">(</span><span class="nx">params</span><span class="p">.</span><span class="nx">password</span><span class="p">,</span><span class="w"> </span><span class="nx">salt</span><span class="p">);</span><span class="w"></span>
+<span class="linenos"> 18</span>
+<span class="linenos"> 19</span><span class="w">        </span><span class="nx">user</span><span class="p">.</span><span class="nx">save</span><span class="p">();</span><span class="w"></span>
+<span class="linenos"> 20</span><span class="w">        </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">200</span><span class="p">).</span><span class="nx">send</span><span class="p">(</span><span class="nx">user</span><span class="p">);</span><span class="w"></span>
+<span class="linenos"> 21</span>
+<span class="linenos"> 22</span><span class="w">    </span><span class="p">}</span><span class="k">catch</span><span class="p">(</span><span class="nx">error</span><span class="p">){</span><span class="w"></span>
+<span class="linenos"> 23</span><span class="w">        </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">500</span><span class="p">).</span><span class="nx">send</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span><span class="w"></span>
+<span class="linenos"> 24</span><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="linenos"> 25</span><span class="p">}</span><span class="w"></span>
+<span class="linenos"> 26</span>
+<span class="linenos"> 27</span><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">login</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">){</span><span class="w"></span>
+<span class="linenos"> 28</span><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="nx">email</span><span class="p">,</span><span class="w"> </span><span class="nx">password</span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">;</span><span class="w"></span>
+<span class="linenos"> 29</span>
+<span class="linenos"> 30</span><span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos"> 31</span><span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">User</span><span class="p">.</span><span class="nx">findOne</span><span class="p">({</span><span class="nx">email</span><span class="o">:</span><span class="w"> </span><span class="nx">email</span><span class="p">});</span><span class="w"></span>
+<span class="linenos"> 32</span><span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">user</span><span class="p">)</span><span class="w"> </span><span class="k">throw</span><span class="w"> </span><span class="p">{</span><span class="nx">msg</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;el email no existe&quot;</span><span class="p">};</span><span class="w"></span>
+<span class="linenos"> 33</span>
+<span class="linenos"> 34</span><span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">passwordCorrect</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">bcryptjs</span><span class="p">.</span><span class="nx">compare</span><span class="p">(</span><span class="nx">password</span><span class="p">,</span><span class="w"> </span><span class="nx">user</span><span class="p">.</span><span class="nx">password</span><span class="p">);</span><span class="w"></span>
+<span class="linenos"> 35</span><span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">passwordCorrect</span><span class="p">)</span><span class="w"> </span><span class="k">throw</span><span class="w"> </span><span class="p">{</span><span class="nx">msg</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;la contraseña no es correcta&quot;</span><span class="p">};</span><span class="w"></span>
+<span class="linenos"> 36</span>
+<span class="linenos"> 37</span><span class="w">        </span><span class="nx">token</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="nx">jwt</span><span class="p">.</span><span class="nx">createToken</span><span class="p">(</span><span class="nx">user</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;12h&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="linenos"> 38</span>
+<span class="linenos"> 39</span><span class="w">        </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">200</span><span class="p">).</span><span class="nx">send</span><span class="p">({</span><span class="nx">token</span><span class="o">:</span><span class="w"> </span><span class="nx">jwt</span><span class="p">.</span><span class="nx">createToken</span><span class="p">(</span><span class="nx">user</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;12h&quot;</span><span class="p">)});</span><span class="w"></span>
+<span class="linenos"> 40</span>
+<span class="linenos"> 41</span>
+<span class="linenos"> 42</span><span class="w">    </span><span class="p">}</span><span class="k">catch</span><span class="p">(</span><span class="nx">error</span><span class="p">){</span><span class="w"></span>
+<span class="linenos"> 43</span><span class="w">        </span><span class="nx">req</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">500</span><span class="p">).</span><span class="nx">send</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span><span class="w"></span>
+<span class="linenos"> 44</span><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="linenos"> 45</span>
+<span class="linenos"> 46</span><span class="p">}</span><span class="w"></span>
+<span class="linenos"> 47</span>
+<span class="linenos"> 48</span><span class="kd">function</span><span class="w"> </span><span class="kr">protected</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">){</span><span class="w"></span>
+<span class="linenos"> 49</span><span class="w">    </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">200</span><span class="p">).</span><span class="nx">send</span><span class="p">({</span><span class="nx">msg</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;endpoint protegido&quot;</span><span class="p">});</span><span class="w"></span>
+<span class="linenos"> 50</span><span class="p">}</span><span class="w"></span>
+<span class="linenos"> 51</span>
+<span class="linenos"> 52</span><span class="c1">// se crea una función para subir avatar:</span><span class="w"></span>
+<span class="linenos"> 53</span><span class="kd">function</span><span class="w"> </span><span class="nx">uploadAvatar</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">){</span><span class="w"></span>
+<span class="linenos"> 54</span>
+<span class="linenos"> 55</span><span class="w">    </span><span class="c1">// recuperar todos los parámetros (no el body ni files):</span><span class="w"></span>
+<span class="linenos"> 56</span><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">params</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">params</span><span class="p">;</span><span class="w"></span>
+<span class="linenos"> 57</span><span class="w">    </span><span class="c1">// se recupera el  usuario:</span><span class="w"></span>
+<span class="linenos"> 58</span><span class="w">    </span><span class="nx">User</span><span class="p">.</span><span class="nx">findById</span><span class="p">({</span><span class="w"> </span><span class="nx">_id</span><span class="o">:</span><span class="w"> </span><span class="nx">params</span><span class="p">.</span><span class="nx">id</span><span class="p">},</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">,</span><span class="w"> </span><span class="nx">userData</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos"> 59</span><span class="w">        </span><span class="c1">// si da error lanzamos un 500:</span><span class="w"></span>
+<span class="linenos"> 60</span><span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="nx">err</span><span class="p">){</span><span class="w"></span>
+<span class="linenos"> 61</span><span class="w">            </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">500</span><span class="p">).</span><span class="nx">send</span><span class="p">({</span><span class="nx">msg</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Error del servidor&quot;</span><span class="p">});</span><span class="w"></span>
+<span class="linenos"> 62</span><span class="w">        </span><span class="p">}</span><span class="k">else</span><span class="p">{</span><span class="w"></span>
+<span class="linenos"> 63</span><span class="w">            </span><span class="c1">// si no tiene datos o no encuentra el usuario lanzamos 404:</span><span class="w"></span>
+<span class="linenos"> 64</span><span class="w">            </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">userData</span><span class="p">){</span><span class="w"></span>
+<span class="linenos"> 65</span><span class="w">                </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">404</span><span class="p">).</span><span class="nx">send</span><span class="p">({</span><span class="nx">msg</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;El usuario no existe&quot;</span><span class="p">});</span><span class="w"></span>
+<span class="linenos"> 66</span><span class="w">            </span><span class="p">}</span><span class="k">else</span><span class="p">{</span><span class="w"></span>
+<span class="linenos"> 67</span><span class="w">                </span><span class="c1">// recuperamos el usuario:</span><span class="w"></span>
+<span class="linenos"> 68</span><span class="w">                </span><span class="kd">let</span><span class="w"> </span><span class="nx">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">userData</span><span class="p">;</span><span class="w"></span>
+<span class="linenos"> 69</span>
+<span class="linenos"> 70</span><span class="w">                </span><span class="c1">// si tenemos datos seguimos adelante:</span><span class="w"></span>
+<span class="linenos"> 71</span><span class="w">                </span><span class="k">if</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">files</span><span class="p">){</span><span class="w"></span>
+<span class="linenos"> 72</span><span class="w">                    </span><span class="c1">// obtener el path del fichero:</span><span class="w"></span>
+<span class="linenos"> 73</span><span class="w">                    </span><span class="kd">const</span><span class="w"> </span><span class="nx">filePath</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">files</span><span class="p">.</span><span class="nx">avatar</span><span class="p">.</span><span class="nx">path</span><span class="p">;</span><span class="w"></span>
+<span class="linenos"> 74</span><span class="w">                    </span><span class="c1">// separar el id del archivo de la ruta upload:</span><span class="w"></span>
+<span class="linenos"> 75</span><span class="w">                    </span><span class="kd">const</span><span class="w"> </span><span class="nx">fileSplit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">filePath</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s2">&quot;\\&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="linenos"> 76</span><span class="w">                    </span><span class="c1">// sacamos el id unico del archivo para usarlo como nombre:</span><span class="w"></span>
+<span class="linenos"> 77</span><span class="w">                    </span><span class="kd">let</span><span class="w"> </span><span class="nx">filename</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">fileSplit</span><span class="p">[</span><span class="mf">2</span><span class="p">];</span><span class="w"></span>
+<span class="linenos"> 78</span>
+<span class="linenos"> 79</span><span class="w">                    </span><span class="c1">// filtar el tipo de fichero a subir:</span><span class="w"></span>
+<span class="linenos"> 80</span><span class="w">                    </span><span class="kd">let</span><span class="w"> </span><span class="nx">fileExt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">filename</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">// separar la extensión</span><span class="w"></span>
+<span class="linenos"> 81</span><span class="w">                    </span><span class="k">if</span><span class="p">(</span><span class="nx">fileExt</span><span class="p">[</span><span class="mf">1</span><span class="p">]</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="s2">&quot;jpg&quot;</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">fileExt</span><span class="p">[</span><span class="mf">1</span><span class="p">]</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="s2">&quot;png&quot;</span><span class="p">){</span><span class="w"></span>
+<span class="linenos"> 82</span><span class="w">                        </span><span class="c1">// se da un error 400 con las extensiones no permitidas:</span><span class="w"></span>
+<span class="linenos"> 83</span><span class="w">                        </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">400</span><span class="p">).</span><span class="nx">send</span><span class="p">({</span><span class="nx">msg</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;La extensión no es correcta, solo JPG o PNG&quot;</span><span class="p">});</span><span class="w"></span>
+<span class="linenos"> 84</span><span class="w">                    </span><span class="p">}</span><span class="k">else</span><span class="p">{</span><span class="w"></span>
+<span class="linenos"> 85</span><span class="w">                        </span><span class="c1">// le pasamos al objeto user el nombre del archivo:</span><span class="w"></span>
+<span class="linenos"> 86</span><span class="w">                        </span><span class="nx">user</span><span class="p">.</span><span class="nx">avatar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">filename</span><span class="p">;</span><span class="w"></span>
+<span class="linenos"> 87</span>
+<span class="linenos"> 88</span><span class="w">                        </span><span class="c1">// actualizar el nombre del archivo en la base de datos:</span><span class="w"></span>
+<span class="linenos"> 89</span><span class="w">                        </span><span class="nx">User</span><span class="p">.</span><span class="nx">findByIdAndUpdate</span><span class="p">({</span><span class="nx">_id</span><span class="o">:</span><span class="w"> </span><span class="nx">params</span><span class="p">.</span><span class="nx">id</span><span class="p">},</span><span class="w"> </span><span class="nx">user</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">,</span><span class="w"> </span><span class="nx">userResult</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos"> 90</span><span class="w">                            </span><span class="c1">// si hay errores un 500:</span><span class="w"></span>
+<span class="linenos"> 91</span><span class="w">                            </span><span class="k">if</span><span class="p">(</span><span class="nx">err</span><span class="p">){</span><span class="w"></span>
+<span class="linenos"> 92</span><span class="w">                                </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">500</span><span class="p">).</span><span class="nx">send</span><span class="p">({</span><span class="nx">msg</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Error en servidor&quot;</span><span class="p">});</span><span class="w"></span>
+<span class="linenos"> 93</span><span class="w">                            </span><span class="p">}</span><span class="k">else</span><span class="p">{</span><span class="w"></span>
+<span class="linenos"> 94</span><span class="w">                                </span><span class="c1">// verificar si no existe le usuario:</span><span class="w"></span>
+<span class="linenos"> 95</span><span class="w">                                </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">userResult</span><span class="p">){</span><span class="w"></span>
+<span class="linenos"> 96</span><span class="w">                                    </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">404</span><span class="p">).</span><span class="nx">send</span><span class="p">({</span><span class="nx">msg</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;No se encontró el usuario&quot;</span><span class="p">});</span><span class="w"></span>
+<span class="linenos"> 97</span><span class="w">                                </span><span class="p">}</span><span class="k">else</span><span class="p">{</span><span class="w"></span>
+<span class="linenos"> 98</span><span class="w">                                    </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">200</span><span class="p">).</span><span class="nx">send</span><span class="p">({</span><span class="nx">msg</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Se ha subido el avatar&quot;</span><span class="p">});</span><span class="w"></span>
+<span class="linenos"> 99</span><span class="w">                                </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">100</span><span class="w">                            </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">101</span><span class="w">                        </span><span class="p">});</span><span class="w"></span>
+<span class="linenos">102</span><span class="w">                    </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">103</span>
+<span class="linenos">104</span><span class="w">                </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">105</span><span class="w">            </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">106</span><span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">107</span><span class="w">    </span><span class="p">});</span><span class="w"></span>
+<span class="linenos">108</span>
+<span class="linenos">109</span><span class="p">}</span><span class="w"></span>
+<span class="linenos">110</span>
+<span class="linenos">111</span><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">112</span><span class="w">    </span><span class="nx">register</span><span class="p">,</span><span class="w"></span>
+<span class="linenos">113</span><span class="w">    </span><span class="nx">login</span><span class="p">,</span><span class="w"></span>
+<span class="linenos">114</span><span class="w">    </span><span class="kr">protected</span><span class="p">,</span><span class="w"></span>
+<span class="linenos">115</span><span class="w">    </span><span class="nx">uploadAvatar</span><span class="w"> </span><span class="c1">// se exporta</span><span class="w"></span>
+<span class="linenos">116</span><span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="paso-3-crear-ruta-para-subir-imagenes">
+<h3><a class="toc-backref" href="#id40">Paso 3: Crear ruta para subir imagenes</a><a class="headerlink" href="#paso-3-crear-ruta-para-subir-imagenes" title="Enlazar permanentemente con este título">#</a></h3>
+<p>Editar el archivo <strong>userRoutes.js</strong>:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kd">const</span><span class="w"> </span><span class="nx">express</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;express&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="linenos"> 2</span><span class="c1">// importar multiparty:</span><span class="w"></span>
+<span class="linenos"> 3</span><span class="kd">const</span><span class="w"> </span><span class="nx">multiparty</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;connect-multiparty&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="linenos"> 4</span><span class="kd">const</span><span class="w"> </span><span class="nx">userController</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;../controllers/userController&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="linenos"> 5</span><span class="kd">const</span><span class="w"> </span><span class="nx">authMiddleware</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;../middlewares/authMiddleware&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="linenos"> 6</span><span class="c1">// crear middleware con multipary:</span><span class="w"></span>
+<span class="linenos"> 7</span><span class="kd">const</span><span class="w"> </span><span class="nx">uploadAvatarMiddleware</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">multiparty</span><span class="p">({</span><span class="nx">uploadDir</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;./uploads/avatars&#39;</span><span class="p">});</span><span class="w"></span>
+<span class="linenos"> 8</span>
+<span class="linenos"> 9</span><span class="kd">const</span><span class="w"> </span><span class="nx">api</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">express</span><span class="p">.</span><span class="nx">Router</span><span class="p">();</span><span class="w"></span>
+<span class="linenos">10</span>
+<span class="linenos">11</span><span class="nx">api</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s2">&quot;/register&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">userController</span><span class="p">.</span><span class="nx">register</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">12</span><span class="nx">api</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s2">&quot;/login&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">userController</span><span class="p">.</span><span class="nx">login</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">13</span><span class="nx">api</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;/protected&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="nx">authMiddleware</span><span class="p">.</span><span class="nx">ensureAuth</span><span class="p">],</span><span class="w"> </span><span class="nx">userController</span><span class="p">.</span><span class="kr">protected</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">14</span><span class="c1">// añadimos la ruta que se utilizará para subir el avatar (sin token de momento):</span><span class="w"></span>
+<span class="linenos">15</span><span class="nx">api</span><span class="p">.</span><span class="nx">put</span><span class="p">(</span><span class="s1">&#39;/upload-avatar/:id&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="nx">uploadAvatarMiddleware</span><span class="p">],</span><span class="w"> </span><span class="nx">userController</span><span class="p">.</span><span class="nx">uploadAvatar</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">16</span>
+<span class="linenos">17</span><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">api</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+<p>A continuación hay que crear la carpeta <strong>uploads</strong> y dentro de esta la carpeta <strong>avatars</strong>.</p>
+<p>Para subir un archivo, en <strong>Postman</strong> presionar la pestaña body, elegimos la opción form-data y añadimos un campo <strong>avatar</strong> cambiamos text por file y subimos un archivo.</p>
+</section>
+<section id="paso-4-preparar-funcion-para-recuperar-avatar">
+<h3><a class="toc-backref" href="#id41">Paso 4: preparar función para recuperar avatar</a><a class="headerlink" href="#paso-4-preparar-funcion-para-recuperar-avatar" title="Enlazar permanentemente con este título">#</a></h3>
+<p>Editar nuevamente el controlador <strong>userController.js</strong>:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="linenos">  1</span><span class="kd">const</span><span class="w"> </span><span class="nx">bcryptjs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;bcryptjs&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">  2</span><span class="c1">// importar la api interna filesystem:</span><span class="w"></span>
+<span class="linenos">  3</span><span class="kd">const</span><span class="w"> </span><span class="nx">fs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;fs&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">  4</span><span class="c1">// importar la api interna path:</span><span class="w"></span>
+<span class="linenos">  5</span><span class="kd">const</span><span class="w"> </span><span class="nx">path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;path&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">  6</span><span class="kd">const</span><span class="w"> </span><span class="nx">User</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;../models/userModel&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">  7</span><span class="kd">const</span><span class="w"> </span><span class="nx">jwt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;../services/jwtService&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">  8</span>
+<span class="linenos">  9</span><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">register</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">){</span><span class="w"></span>
+<span class="linenos"> 10</span><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">params</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">;</span><span class="w"></span>
+<span class="linenos"> 11</span><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">User</span><span class="p">(</span><span class="nx">params</span><span class="p">);</span><span class="w"></span>
+<span class="linenos"> 12</span>
+<span class="linenos"> 13</span><span class="w">    </span><span class="k">try</span><span class="p">{</span><span class="w"></span>
+<span class="linenos"> 14</span><span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">params</span><span class="p">.</span><span class="nx">email</span><span class="p">)</span><span class="w"> </span><span class="k">throw</span><span class="p">{</span><span class="nx">msg</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Email es un campo obligatorio&quot;</span><span class="p">};</span><span class="w"></span>
+<span class="linenos"> 15</span><span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">params</span><span class="p">.</span><span class="nx">password</span><span class="p">)</span><span class="w"> </span><span class="k">throw</span><span class="p">{</span><span class="nx">msg</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Contraseña es un campo obligatorio&quot;</span><span class="p">};</span><span class="w"></span>
+<span class="linenos"> 16</span>
+<span class="linenos"> 17</span><span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">emailExists</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">User</span><span class="p">.</span><span class="nx">findOne</span><span class="p">({</span><span class="nx">email</span><span class="o">:</span><span class="w"> </span><span class="nx">params</span><span class="p">.</span><span class="nx">email</span><span class="p">});</span><span class="w"></span>
+<span class="linenos"> 18</span><span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="nx">emailExists</span><span class="p">)</span><span class="w"> </span><span class="k">throw</span><span class="w"> </span><span class="p">{</span><span class="nx">msg</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Email ya se encuentra en uso&quot;</span><span class="p">};</span><span class="w"></span>
+<span class="linenos"> 19</span>
+<span class="linenos"> 20</span><span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">salt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">bcryptjs</span><span class="p">.</span><span class="nx">genSaltSync</span><span class="p">(</span><span class="mf">10</span><span class="p">);</span><span class="w"></span>
+<span class="linenos"> 21</span><span class="w">        </span><span class="nx">user</span><span class="p">.</span><span class="nx">password</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">bcryptjs</span><span class="p">.</span><span class="nx">hash</span><span class="p">(</span><span class="nx">params</span><span class="p">.</span><span class="nx">password</span><span class="p">,</span><span class="w"> </span><span class="nx">salt</span><span class="p">);</span><span class="w"></span>
+<span class="linenos"> 22</span>
+<span class="linenos"> 23</span><span class="w">        </span><span class="nx">user</span><span class="p">.</span><span class="nx">save</span><span class="p">();</span><span class="w"></span>
+<span class="linenos"> 24</span><span class="w">        </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">200</span><span class="p">).</span><span class="nx">send</span><span class="p">(</span><span class="nx">user</span><span class="p">);</span><span class="w"></span>
+<span class="linenos"> 25</span>
+<span class="linenos"> 26</span><span class="w">    </span><span class="p">}</span><span class="k">catch</span><span class="p">(</span><span class="nx">error</span><span class="p">){</span><span class="w"></span>
+<span class="linenos"> 27</span><span class="w">        </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">500</span><span class="p">).</span><span class="nx">send</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span><span class="w"></span>
+<span class="linenos"> 28</span><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="linenos"> 29</span><span class="p">}</span><span class="w"></span>
+<span class="linenos"> 30</span>
+<span class="linenos"> 31</span><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">login</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">){</span><span class="w"></span>
+<span class="linenos"> 32</span><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="nx">email</span><span class="p">,</span><span class="w"> </span><span class="nx">password</span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">;</span><span class="w"></span>
+<span class="linenos"> 33</span>
+<span class="linenos"> 34</span><span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos"> 35</span><span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">User</span><span class="p">.</span><span class="nx">findOne</span><span class="p">({</span><span class="nx">email</span><span class="o">:</span><span class="w"> </span><span class="nx">email</span><span class="p">});</span><span class="w"></span>
+<span class="linenos"> 36</span><span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">user</span><span class="p">)</span><span class="w"> </span><span class="k">throw</span><span class="w"> </span><span class="p">{</span><span class="nx">msg</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;el email no existe&quot;</span><span class="p">};</span><span class="w"></span>
+<span class="linenos"> 37</span>
+<span class="linenos"> 38</span><span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">passwordCorrect</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">bcryptjs</span><span class="p">.</span><span class="nx">compare</span><span class="p">(</span><span class="nx">password</span><span class="p">,</span><span class="w"> </span><span class="nx">user</span><span class="p">.</span><span class="nx">password</span><span class="p">);</span><span class="w"></span>
+<span class="linenos"> 39</span><span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">passwordCorrect</span><span class="p">)</span><span class="w"> </span><span class="k">throw</span><span class="w"> </span><span class="p">{</span><span class="nx">msg</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;la contraseña no es correcta&quot;</span><span class="p">};</span><span class="w"></span>
+<span class="linenos"> 40</span>
+<span class="linenos"> 41</span><span class="w">        </span><span class="nx">token</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="nx">jwt</span><span class="p">.</span><span class="nx">createToken</span><span class="p">(</span><span class="nx">user</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;12h&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="linenos"> 42</span>
+<span class="linenos"> 43</span><span class="w">        </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">200</span><span class="p">).</span><span class="nx">send</span><span class="p">({</span><span class="nx">token</span><span class="o">:</span><span class="w"> </span><span class="nx">jwt</span><span class="p">.</span><span class="nx">createToken</span><span class="p">(</span><span class="nx">user</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;12h&quot;</span><span class="p">)});</span><span class="w"></span>
+<span class="linenos"> 44</span>
+<span class="linenos"> 45</span>
+<span class="linenos"> 46</span><span class="w">    </span><span class="p">}</span><span class="k">catch</span><span class="p">(</span><span class="nx">error</span><span class="p">){</span><span class="w"></span>
+<span class="linenos"> 47</span><span class="w">        </span><span class="nx">req</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">500</span><span class="p">).</span><span class="nx">send</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span><span class="w"></span>
+<span class="linenos"> 48</span><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="linenos"> 49</span>
+<span class="linenos"> 50</span><span class="p">}</span><span class="w"></span>
+<span class="linenos"> 51</span>
+<span class="linenos"> 52</span><span class="kd">function</span><span class="w"> </span><span class="kr">protected</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">){</span><span class="w"></span>
+<span class="linenos"> 53</span><span class="w">    </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">200</span><span class="p">).</span><span class="nx">send</span><span class="p">({</span><span class="nx">msg</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;endpoint protegido&quot;</span><span class="p">});</span><span class="w"></span>
+<span class="linenos"> 54</span><span class="p">}</span><span class="w"></span>
+<span class="linenos"> 55</span>
+<span class="linenos"> 56</span><span class="kd">function</span><span class="w"> </span><span class="nx">uploadAvatar</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">){</span><span class="w"></span>
+<span class="linenos"> 57</span>
+<span class="linenos"> 58</span><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">params</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">params</span><span class="p">;</span><span class="w"></span>
+<span class="linenos"> 59</span><span class="w">    </span><span class="nx">User</span><span class="p">.</span><span class="nx">findById</span><span class="p">({</span><span class="w"> </span><span class="nx">_id</span><span class="o">:</span><span class="w"> </span><span class="nx">params</span><span class="p">.</span><span class="nx">id</span><span class="p">},</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">,</span><span class="w"> </span><span class="nx">userData</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos"> 60</span><span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="nx">err</span><span class="p">){</span><span class="w"></span>
+<span class="linenos"> 61</span><span class="w">            </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">500</span><span class="p">).</span><span class="nx">send</span><span class="p">({</span><span class="nx">msg</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Error del servidor&quot;</span><span class="p">});</span><span class="w"></span>
+<span class="linenos"> 62</span><span class="w">        </span><span class="p">}</span><span class="k">else</span><span class="p">{</span><span class="w"></span>
+<span class="linenos"> 63</span><span class="w">            </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">userData</span><span class="p">){</span><span class="w"></span>
+<span class="linenos"> 64</span><span class="w">                </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">404</span><span class="p">).</span><span class="nx">send</span><span class="p">({</span><span class="nx">msg</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;El usuario no existe&quot;</span><span class="p">});</span><span class="w"></span>
+<span class="linenos"> 65</span><span class="w">            </span><span class="p">}</span><span class="k">else</span><span class="p">{</span><span class="w"></span>
+<span class="linenos"> 66</span><span class="w">                </span><span class="kd">let</span><span class="w"> </span><span class="nx">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">userData</span><span class="p">;</span><span class="w"></span>
+<span class="linenos"> 67</span>
+<span class="linenos"> 68</span><span class="w">                </span><span class="k">if</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">files</span><span class="p">){</span><span class="w"></span>
+<span class="linenos"> 69</span><span class="w">                    </span><span class="kd">const</span><span class="w"> </span><span class="nx">filePath</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">files</span><span class="p">.</span><span class="nx">avatar</span><span class="p">.</span><span class="nx">path</span><span class="p">;</span><span class="w"></span>
+<span class="linenos"> 70</span><span class="w">                    </span><span class="kd">const</span><span class="w"> </span><span class="nx">fileSplit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">filePath</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s2">&quot;\\&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="linenos"> 71</span><span class="w">                    </span><span class="kd">let</span><span class="w"> </span><span class="nx">filename</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">fileSplit</span><span class="p">[</span><span class="mf">2</span><span class="p">];</span><span class="w"></span>
+<span class="linenos"> 72</span>
+<span class="linenos"> 73</span><span class="w">                    </span><span class="kd">let</span><span class="w"> </span><span class="nx">fileExt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">filename</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="linenos"> 74</span><span class="w">                    </span><span class="k">if</span><span class="p">(</span><span class="nx">fileExt</span><span class="p">[</span><span class="mf">1</span><span class="p">]</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="s2">&quot;jpg&quot;</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">fileExt</span><span class="p">[</span><span class="mf">1</span><span class="p">]</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="s2">&quot;png&quot;</span><span class="p">){</span><span class="w"></span>
+<span class="linenos"> 75</span><span class="w">                        </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">400</span><span class="p">).</span><span class="nx">send</span><span class="p">({</span><span class="nx">msg</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;La extensión no es correcta, solo JPG o PNG&quot;</span><span class="p">});</span><span class="w"></span>
+<span class="linenos"> 76</span><span class="w">                    </span><span class="p">}</span><span class="k">else</span><span class="p">{</span><span class="w"></span>
+<span class="linenos"> 77</span><span class="w">                        </span><span class="nx">user</span><span class="p">.</span><span class="nx">avatar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">filename</span><span class="p">;</span><span class="w"></span>
+<span class="linenos"> 78</span>
+<span class="linenos"> 79</span><span class="w">                        </span><span class="nx">User</span><span class="p">.</span><span class="nx">findByIdAndUpdate</span><span class="p">({</span><span class="nx">_id</span><span class="o">:</span><span class="w"> </span><span class="nx">params</span><span class="p">.</span><span class="nx">id</span><span class="p">},</span><span class="w"> </span><span class="nx">user</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">,</span><span class="w"> </span><span class="nx">userResult</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos"> 80</span><span class="w">                            </span><span class="k">if</span><span class="p">(</span><span class="nx">err</span><span class="p">){</span><span class="w"></span>
+<span class="linenos"> 81</span><span class="w">                                </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">500</span><span class="p">).</span><span class="nx">send</span><span class="p">({</span><span class="nx">msg</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Error en servidor&quot;</span><span class="p">});</span><span class="w"></span>
+<span class="linenos"> 82</span><span class="w">                            </span><span class="p">}</span><span class="k">else</span><span class="p">{</span><span class="w"></span>
+<span class="linenos"> 83</span><span class="w">                                </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">userResult</span><span class="p">){</span><span class="w"></span>
+<span class="linenos"> 84</span><span class="w">                                    </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">404</span><span class="p">).</span><span class="nx">send</span><span class="p">({</span><span class="nx">msg</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;No se encontró el usuario&quot;</span><span class="p">});</span><span class="w"></span>
+<span class="linenos"> 85</span><span class="w">                                </span><span class="p">}</span><span class="k">else</span><span class="p">{</span><span class="w"></span>
+<span class="linenos"> 86</span><span class="w">                                    </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">200</span><span class="p">).</span><span class="nx">send</span><span class="p">({</span><span class="nx">msg</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Se ha subido el avatar&quot;</span><span class="p">});</span><span class="w"></span>
+<span class="linenos"> 87</span><span class="w">                                </span><span class="p">}</span><span class="w"></span>
+<span class="linenos"> 88</span><span class="w">                            </span><span class="p">}</span><span class="w"></span>
+<span class="linenos"> 89</span><span class="w">                        </span><span class="p">});</span><span class="w"></span>
+<span class="linenos"> 90</span><span class="w">                    </span><span class="p">}</span><span class="w"></span>
+<span class="linenos"> 91</span>
+<span class="linenos"> 92</span><span class="w">                </span><span class="p">}</span><span class="w"></span>
+<span class="linenos"> 93</span><span class="w">            </span><span class="p">}</span><span class="w"></span>
+<span class="linenos"> 94</span><span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="linenos"> 95</span><span class="w">    </span><span class="p">});</span><span class="w"></span>
+<span class="linenos"> 96</span><span class="p">}</span><span class="w"></span>
+<span class="linenos"> 97</span>
+<span class="linenos"> 98</span><span class="c1">// crear función para leer archivo:</span><span class="w"></span>
+<span class="linenos"> 99</span><span class="kd">function</span><span class="w"> </span><span class="nx">getAvatar</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">){</span><span class="w"></span>
+<span class="linenos">100</span><span class="w">    </span><span class="c1">// recuperar el nombre del avatar:</span><span class="w"></span>
+<span class="linenos">101</span><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">avatarName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">params</span><span class="p">.</span><span class="nx">avatarName</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">102</span><span class="w">    </span><span class="c1">// se prepara la ruta del archivo:</span><span class="w"></span>
+<span class="linenos">103</span><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">filePath</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`./uploads/avatars/</span><span class="si">${</span><span class="nx">avatarName</span><span class="si">}</span><span class="sb">`</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">104</span>
+<span class="linenos">105</span><span class="w">    </span><span class="c1">// comprobar que existe el fichero:</span><span class="w"></span>
+<span class="linenos">106</span><span class="w">    </span><span class="nx">fs</span><span class="p">.</span><span class="nx">stat</span><span class="p">(</span><span class="nx">filePath</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">,</span><span class="w"> </span><span class="nx">stat</span><span class="p">)=&gt;{</span><span class="w"></span>
+<span class="linenos">107</span><span class="w">        </span><span class="c1">// si no existe 404:</span><span class="w"></span>
+<span class="linenos">108</span><span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="nx">err</span><span class="p">){</span><span class="w"></span>
+<span class="linenos">109</span><span class="w">            </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">404</span><span class="p">).</span><span class="nx">send</span><span class="p">({</span><span class="nx">msg</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;el avatar no existe&quot;</span><span class="p">});</span><span class="w"></span>
+<span class="linenos">110</span><span class="w">        </span><span class="p">}</span><span class="k">else</span><span class="p">{</span><span class="w"></span>
+<span class="linenos">111</span><span class="w">            </span><span class="c1">// si existe lo recuperamos:</span><span class="w"></span>
+<span class="linenos">112</span><span class="w">            </span><span class="nx">res</span><span class="p">.</span><span class="nx">sendFile</span><span class="p">(</span><span class="nx">path</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="nx">filePath</span><span class="p">));</span><span class="w"></span>
+<span class="linenos">113</span><span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="linenos">114</span><span class="w">    </span><span class="p">});</span><span class="w"></span>
+<span class="linenos">115</span><span class="p">}</span><span class="w"></span>
+<span class="linenos">116</span>
+<span class="linenos">117</span><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="linenos">118</span><span class="w">    </span><span class="nx">register</span><span class="p">,</span><span class="w"></span>
+<span class="linenos">119</span><span class="w">    </span><span class="nx">login</span><span class="p">,</span><span class="w"></span>
+<span class="linenos">120</span><span class="w">    </span><span class="kr">protected</span><span class="p">,</span><span class="w"></span>
+<span class="linenos">121</span><span class="w">    </span><span class="nx">uploadAvatar</span><span class="p">,</span><span class="w"></span>
+<span class="linenos">122</span><span class="w">    </span><span class="nx">getAvatar</span><span class="w"> </span><span class="c1">// exportar controlador</span><span class="w"></span>
+<span class="linenos">123</span><span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="paso-5-ruta-para-recuperar-avatar">
+<h3><a class="toc-backref" href="#id42">Paso 5: Ruta para recuperar avatar</a><a class="headerlink" href="#paso-5-ruta-para-recuperar-avatar" title="Enlazar permanentemente con este título">#</a></h3>
+<p>Se crea una ruta en el archivo <strong>userRoutes.js</strong>:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kd">const</span><span class="w"> </span><span class="nx">express</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;express&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="linenos"> 2</span><span class="kd">const</span><span class="w"> </span><span class="nx">multiparty</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;connect-multiparty&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="linenos"> 3</span><span class="kd">const</span><span class="w"> </span><span class="nx">userController</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;../controllers/userController&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="linenos"> 4</span><span class="kd">const</span><span class="w"> </span><span class="nx">authMiddleware</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;../middlewares/authMiddleware&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="linenos"> 5</span><span class="kd">const</span><span class="w"> </span><span class="nx">uploadAvatarMiddleware</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">multiparty</span><span class="p">({</span><span class="nx">uploadDir</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;./uploads/avatars&#39;</span><span class="p">});</span><span class="w"></span>
+<span class="linenos"> 6</span>
+<span class="linenos"> 7</span><span class="kd">const</span><span class="w"> </span><span class="nx">api</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">express</span><span class="p">.</span><span class="nx">Router</span><span class="p">();</span><span class="w"></span>
+<span class="linenos"> 8</span>
+<span class="linenos"> 9</span><span class="nx">api</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s2">&quot;/register&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">userController</span><span class="p">.</span><span class="nx">register</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">10</span><span class="nx">api</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s2">&quot;/login&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">userController</span><span class="p">.</span><span class="nx">login</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">11</span><span class="nx">api</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;/protected&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="nx">authMiddleware</span><span class="p">.</span><span class="nx">ensureAuth</span><span class="p">],</span><span class="w"> </span><span class="nx">userController</span><span class="p">.</span><span class="kr">protected</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">12</span><span class="nx">api</span><span class="p">.</span><span class="nx">put</span><span class="p">(</span><span class="s1">&#39;/upload-avatar/:id&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="nx">uploadAvatarMiddleware</span><span class="p">],</span><span class="w"> </span><span class="nx">userController</span><span class="p">.</span><span class="nx">uploadAvatar</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">13</span><span class="c1">// recuperar avatar:</span><span class="w"></span>
+<span class="linenos">14</span><span class="nx">api</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;/avatar/:avatarName&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">userController</span><span class="p">.</span><span class="nx">getAvatar</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">15</span>
+<span class="linenos">16</span><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">api</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+</section>
 </section>
 
 
@@ -1535,10 +2434,10 @@ una aplicación externa se bloqueará.</p>
             <p class="prev-next-title">Entornos: Node.JS</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="../typescript/angular.html" title="siguiente página">
+    <a class='right-next' id="next-link" href="react.html" title="siguiente página">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">siguiente</p>
-        <p class="prev-next-title">Framework: Angular</p>
+        <p class="prev-next-title">Framework: ReactJS</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

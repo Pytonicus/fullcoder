@@ -55,6 +55,7 @@ Bienvenido a FullCoder, un sitio de Manual
    javascript/entornos
    javascript/nodejs 
    javascript/expressjs
+   javascript/react
 
 .. toctree::
    :maxdepth: 1
