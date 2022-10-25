@@ -67,8 +67,8 @@ Comandos básicos
 - Ejecutar contenedor ya arrancado: ``sudo docker exec -it f2ad9cdcc bash`` (usar CONTAINER ID y por último el programa con el que ejecutar "bash, python")
 - Salir de contenedor: ``exit``
 - Matar un contenedor en segundo plano: ``sudo docker kill 5e683ed457267``
-- Borrar contenedor usando su CONTAINER ID: ``sudo rm 4703`` (4 primeros digitos)
-- Borrar contenedor usando su NAME: ``sudo rm hello-world``
+- Borrar contenedor usando su CONTAINER ID: ``sudo docker rm 4703`` (4 primeros digitos)
+- Borrar contenedor usando su NAME: ``sudo docker rm hello-world``
 
 .. attention::
     Al crear un nuevo contenedor, docker buscará si existe imagen en local, luego lo hará en 

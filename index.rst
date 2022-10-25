@@ -25,6 +25,7 @@ Bienvenido a FullCoder, un sitio de Manual
    php/paquetes
    php/cifrado
    php/laravel
+   php/codeigniter
 
 .. toctree:: 
    :maxdepth: 1
@@ -120,11 +121,12 @@ Bienvenido a FullCoder, un sitio de Manual
 
    sistemas/nginx
    sistemas/docker
+   sistemas/docker-compose
    sistemas/heroku
+   otros/vscode
 
 .. toctree::
    :maxdepth: 1
    :caption: Otros Lenguajes:
 
    otros/basic
-   otros/vscode
