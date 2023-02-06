@@ -220,6 +220,7 @@ Redirección a otra ruta
 
 - Si ejecutamos localhost:8000/consolas/redirigir nos llevará al index de consolas via redireccionamiento. 
 
+
 .. note::
     Si queremos viajar al index de un controlador basta con escribir el nombre del mismo: ``redirect('consolas')``que en el caso expuesto sería lo mas adecuado.
 

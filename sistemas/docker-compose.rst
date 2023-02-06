@@ -23,10 +23,3 @@ Para realizar la instalación de docker en nuestra máquina seguimos estos pasos
 - Instalar motor de docker: ``sudo apt install docker-compose``
 - Instalar docker desktop (para uso local): https://docs.docker.com/engine/install/
 
-
-
-############
-
-
-************************************
-
