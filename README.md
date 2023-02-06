@@ -4,7 +4,7 @@ Bienvenid@ al repositorio de FullCoder. Con esta guía podrás desplegar tu prop
 ## Instalar dependencias
 Para poder compilar FullCoder es necesario tener instalado __Python 3__ y añadir el paquete __Sphynx__: ``pip install -U Sphinx``
 
-También debemos instalar el tema __faculty-sphinx-theme__: ``pip install faculty-sphinx-theme``
+También debemos instalar el tema __sphinx-book-theme__: ``pip install sphinx-book-theme``
 
 ## Compilar el sitio web
 

@@ -57,7 +57,6 @@ Bienvenido a FullCoder, un sitio de Manual
    javascript/nodejs 
    javascript/expressjs
    javascript/react
-   javascript/react-native
 
 .. toctree::
    :maxdepth: 1
@@ -118,7 +117,7 @@ Bienvenido a FullCoder, un sitio de Manual
 
 .. toctree::
    :maxdepth: 1
-   :caption: Sistemas y herramientas:
+   :caption: DevOps:
 
    sistemas/nginx
    sistemas/docker
@@ -127,9 +126,4 @@ Bienvenido a FullCoder, un sitio de Manual
    sistemas/programacion-bash
    sistemas/heroku
    otros/vscode
-
-.. toctree::
-   :maxdepth: 1
-   :caption: Otros Lenguajes:
-
-   otros/basic
+   sistemas/vagrant

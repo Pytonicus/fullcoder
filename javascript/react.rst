@@ -19,7 +19,7 @@ Configuraciones
 Instalar React
 **************
 
-Paso 1: Tener instalado NodeJS desde su página oficial: https://nodejs.org/es/
+Paso 1: Tener instalado NodeJS desde su página oficial: https://nodejs.org/es/ (si estas usando una distribución basada en Ubuntu te recomiendo este enlace: https://github.com/nodesource/distributions/blob/master/README.md)
 Paso 2: Instalar React con npx desde la carpeta del proyecto: ``npx create-react-app nombre-proyecto``
 Paso 3: Acceder a la carpeta del proyecto y ejecutarlo: ``npm start``
 Paso 4: Se abre el navegador con la ruta: ``http://localhost:3000``

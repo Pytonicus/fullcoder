@@ -177,26 +177,71 @@ Trabajando con estilos
 Tipos de Componentes React Native 
 #################################
 
-Componente View (pantalla)
-**************************
+View (contenedor vista)
+***********************
 
-Es un componente para crear una pantalla:
+Es un componente para crear un contenedor vista:
 
 .. code-block:: 
 
     import { Text, View } from 'react-native';
 
     export default function MainScreen() {
-        // todo lo que vaya dentro de View se mostrará en la pantalla del dispositivo de modo similar al componente Template de ReactJS:
+        // todo lo que vaya dentro de View se mostrará en la contenedor vista del dispositivo de modo similar al componente Template de ReactJS:
         return (
             <View>
-                <Text>Texto dentro de pantalla</Text>
+                <Text>Texto dentro de contenedor vista</Text>
             </View>
         );
     }
 
-Componente Text (textos)
-************************
+
+ScrollView (contenedor vista con scroll)
+****************************************
+
+- Si hay demasiados elementos en una lista, para poder verlos utilizamos el scrollview:
+
+.. code-block:: 
+
+    // Importamos ScrollView:
+    import { StyleSheet, View, ScrollView, Text } from 'react-native';
+    import {useState} from 'react';
+
+    export default function MainScreen() {
+        const [list, setList] = useState(['Galletas', 'Nocilla', 'Patatas', 'Lechuga', 'Zanahorias', 
+        'Manzanas', 'Peras', 'Galletas', 'Tomates', 'Limones', 'Fresas', 'Azucar', 'Tortilla']);
+        // el scroll tiene un estilo interno asignado con contentContainerStyle:
+        return (
+            <View style={styles.container}>
+                {/* Cargamos el scrollview, y le pasamos la lista: */}
+                <ScrollView contentContainerStyle={styles.scroll}>
+                    {list.map(element => <Text style={styles.text}>{element}</Text>)}
+                </ScrollView>
+            </View>
+        );
+    }
+
+    const styles = StyleSheet.create({
+        container: {
+            flex: 1,
+            backgroundColor: '#fff',
+            alignItems: 'center',
+            justifyContent: 'center',
+        },
+        text: {
+            fontSize: 60
+        },
+        scroll: {
+            width: "100%"
+        }
+    });
+
+.. attention::
+    Este elemento no se utiliza para listar elementos. Se suele usar para formularios. Para las listas se usa FlatList.
+
+
+Text (textos)
+*************
 
 .. code-block:: 
 
@@ -220,4 +265,133 @@ Componente Text (textos)
             justifyContent: 'center',
         },
     });
+
+TextInput (campo de texto input)
+********************************
+
+.. code-block:: 
+
+    // importamos textinput desde react-native:
+    import { StyleSheet, View, Text, TextInput } from 'react-native';
+    // probamos los hooks también:
+    import {useState} from 'react';
+
+        export default function MainScreen() {
+            // creamos un hook:
+            const [text, setText] = useState('');
+
+            return (
+                <View style={styles.container}>
+                    <Text>Te llamas: {text}</Text>
+                    {/* Por defecto textinput no tiene estilo, hay que añadirle uno: */}
+                    <TextInput style={styles.input} 
+                    placeholder="Nombre" 
+                    defaultValue={text} 
+                    çonChangeText={newText => setText(newText)}
+                    clearButtonMode="always" // opción solo para IOS. Muestra una x en el campo para borrar
+                    returnKeyType="done" // cambia a done el botón return de IOS (hay otras opciones como go..)
+                    />
+                </View>
+            );
+        }
+
+        const styles = StyleSheet.create({
+            container: {
+                flex: 1,
+                backgroundColor: '#fff',
+                alignItems: 'center',
+                justifyContent: 'center',
+            },
+            // el estilo de nuestro textinput:
+            input: {
+                backgroundColor: 'green',
+                width: "80%",
+                height: 35,
+                color: "yellow",
+                
+            }
+        });
+
+Button (botón)
+**************
+
+.. code-block::
+
+
+    // Importamos button:
+    import { StyleSheet, View, Text, Button } from 'react-native';
+    import {useState} from 'react';
+
+        export default function MainScreen() {
+            const [text, setText] = useState('Pulsa el botón para cambiar el texto');
+
+            // se crea un handle para cambiar el nombre recibido:
+            const handleButton = ()=>{
+                setText('Se ha presionado el botón');
+            }
+
+            return (
+                <View style={styles.container}>
+                    <Text>{text}</Text>
+                    {/* añadimos el botón: */}
+                    <Button title="púlsame" onPress={handleButton} />
+                </View>
+            );
+        }
+
+        const styles = StyleSheet.create({
+            container: {
+                flex: 1,
+                backgroundColor: '#fff',
+                alignItems: 'center',
+                justifyContent: 'center',
+            }
+        });
+
+
+TouchableOpacity (efecto opacidad al pulsar)
+********************************************
+
+- Al pulsar cualquier elemento envuelto en esta etiqueta presentará un efecto de opacidad:
+
+.. code-block:: 
+
+    // Importamos TouchableOpacity:
+    import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
+    import {useState} from 'react';
+
+        export default function MainScreen() {
+            const [text, setText] = useState('Pulsa el botón para cambiar el texto');
+
+            const handleButton = ()=>{
+                setText('Se ha presionado el botón');
+            }
+
+            return (
+                <View style={styles.container}>
+                    <Text>{text}</Text>
+                    {/* añadimos el touchable a un elemento: */}
+                    <TouchableOpacity>
+                        <Text style={styles.text}>PULSA ESTE TEXTO</Text>
+                    </TouchableOpacity>
+                </View>
+            );
+        }
+
+        const styles = StyleSheet.create({
+            container: {
+                flex: 1,
+                backgroundColor: '#fff',
+                alignItems: 'center',
+                justifyContent: 'center',
+            },
+            text: {
+                backgroundColor: "red",
+                width: 300,
+                height: 30
+            }
+        });
+
+Flatlist (listas)
+*****************
 
